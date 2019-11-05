@@ -13,7 +13,7 @@ class CatapultaTests {
         Catapulta catapulta = new Catapulta();
 
         Assertions.assertEquals(50, catapulta.getPuntosDeVida());
-        Assertions.assertEquals(5, catapulta.getCosto());
+        Assertions.assertEquals(59999999, catapulta.getCosto());
     }
 
 }
