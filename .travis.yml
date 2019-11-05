@@ -10,5 +10,4 @@ after_success:
 notifications:
   email:
     recipients:
-      - jbustamante@fi.uba.ar
     on_failure: always
