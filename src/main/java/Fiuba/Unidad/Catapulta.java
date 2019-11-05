@@ -3,11 +3,18 @@ import Fiuba.Excepciones.*;
 
 public class Catapulta extends Unidad {
 
-    private int costo =5;
-    private int vida =50;
-    private int danio =0;
-    private int danioADistancia =20;
 
+    private int costo;
+    private int vida;
+    private int danio;
+    private int danioADistancia;
+
+    public Catapulta(){
+        this.vida = 50;
+        this.costo = 5;
+        this.danioADistancia = 20;
+        this.danio = 0;
+    }
 
     @Override
     public int getCosto() {
@@ -19,8 +26,9 @@ public class Catapulta extends Unidad {
 
         this.dentroRango(distancia);
         unidadObjetivo.perderVida(danioADistancia);
+     }
 
-    }
+
 
     @Override
     public void perderVida(int danio) {
@@ -60,8 +68,7 @@ public class Catapulta extends Unidad {
     }
 
     @Override
-    public void pasoAlSur(){
-        throw new UnidadNoMovibleException();
+    public void pasoAlSur(){ throw new UnidadNoMovibleException();
     }
 
     @Override
