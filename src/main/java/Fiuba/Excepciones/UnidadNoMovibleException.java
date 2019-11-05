@@ -1,4 +1,4 @@
-package Fiuba.Unidad;
+package Fiuba.Excepciones;
 
 public class UnidadNoMovibleException extends RuntimeException {
 }

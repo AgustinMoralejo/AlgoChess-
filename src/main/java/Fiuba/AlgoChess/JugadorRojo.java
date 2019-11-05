@@ -1,8 +1,8 @@
-package Fiuba.Jugador;
+package Fiuba.AlgoChess;
 
-import Fiuba.Tablero.NoSePuedeColocarUnidadEnSectorEnemigoException;
+import Fiuba.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import Fiuba.Tablero.Tablero;
-import Fiuba.Unidad.Unidad;
+import Fiuba.Unidad.*;
 
 public class JugadorRojo extends Jugador {
 

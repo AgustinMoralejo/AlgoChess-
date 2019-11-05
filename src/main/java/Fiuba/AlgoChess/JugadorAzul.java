@@ -1,12 +1,13 @@
-package Fiuba.Jugador;
+package Fiuba.AlgoChess;
 
-import Fiuba.Tablero.NoSePuedeColocarUnidadEnSectorEnemigoException;
-import Fiuba.NoSePuedeComandarAUnaUnidadEnemigaException;
+import Fiuba.Excepciones.*;
 import Fiuba.Tablero.Tablero;
 import Fiuba.Unidad.Unidad;
 
+
 import java.util.Iterator;
-import static Fiuba.Alianza.AZUL;
+
+import static Fiuba.AlgoChess.Alianza.AZUL;
 
 public class JugadorAzul extends Jugador {
 
@@ -42,12 +43,19 @@ public class JugadorAzul extends Jugador {
 
     public void unidadPasoAlNorte(int fila, int columna){
 
+        seleccionarUnidad(fila, columna);
+        tablero.pasoAlNorte(fila,columna);
+
+    }
+
+    /*Con esto verifico si el casillero seleccionado tiene una unidad y si esta pertenece al jugador*/
+    public void seleccionarUnidad(int fila, int columna) {
         Iterator<Unidad> iterador = unidades.iterator();
         boolean encontro=false;
         Unidad unidadAzulActual;
 
         /**Si, no pregunta la alianza pq no se me ocurre como comparar la alianza de la unidad con la del jugador
-         * pq es jugadorAzul es una clase y no tiene sentido ponerle un atributo que sea Alianza
+         * pq es jugadorAzul es una clase y no tiene sentido ponerle un atributo que sea AlgoChess.Alianza
          * la principal razon es que no quiero estar preguntando todo el tiempo si soy el jugador azul o rojo*/
 
         /*busco una unidad en la lista del jugador cuya posicion sea la misma que las del parametro*/
@@ -57,11 +65,19 @@ public class JugadorAzul extends Jugador {
         }
 
         if(!encontro){
-            throw new NoSePuedeComandarAUnaUnidadEnemigaException();
+            throw new CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException();
         }
-
-        tablero.pasoAlNorte(fila,columna);
-
     }
 
+    /**El problema mas grande que tengo es que no se si la responsabilidad de los movimientos recae en el tablero
+     * o si recae en la unidad dado que el tablero es aquel que conoce todas las posiciones y la unidad solo sabe en donde esta
+     * HASTA EL MOMENTO LA POSICION DE LA UNIDAD SOLO LA UTILIZE PARA seleccionarUnidad()*/
+
+    public void moverUnidad(int fila, int columna, int orientacion) {
+        int[] offset = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[orientacion]; // 0 es norte {-1,0}
+
+        seleccionarUnidad(fila, columna);
+        tablero.moverUnidad(fila,columna,offset);
+
+    }
 }

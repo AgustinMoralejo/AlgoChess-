@@ -1,4 +1,4 @@
-package Fiuba;
+package Fiuba.AlgoChess;
 
 public enum Alianza {
     AZUL,

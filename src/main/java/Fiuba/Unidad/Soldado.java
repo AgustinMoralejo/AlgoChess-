@@ -1,6 +1,7 @@
 package Fiuba.Unidad;
 
-import Fiuba.ObjetivoFueraDeRangoException;
+import Fiuba.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
+import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
@@ -18,29 +19,28 @@ public class Soldado extends Unidad {
     @Override
     public void atacar(int distancia, Unidad unidadObjetivo) {
 
-        if(unidadObjetivo.getAlianza() != alianza){
-            this.dentroRango(distancia);
-            unidadObjetivo.perderVida(danioCuerpoACuerpo);
-        }else{
-            System.out.println("No se pueden atacar unidades aliadas");
-        };
+        if(unidadObjetivo.getAlianza() == alianza) {
+            throw new NoSePuedeAtacarAUnaUnidadAliadaException();
+        }
+
+        this.dentroRango(distancia);
+        unidadObjetivo.perderVida(danioCuerpoACuerpo);
 
     }
 
+    /*
     @Override
     public void atacar(Unidad unidadObjetivo) {
 
-        if(unidadObjetivo.getAlianza() != alianza){
-            int distancia = max(abs(tFila - unidadObjetivo.getFila()), abs(tColumna - unidadObjetivo.getColumna()));
-            this.dentroRango(distancia);
-            unidadObjetivo.perderVida(danioCuerpoACuerpo);
+        if(unidadObjetivo.getAlianza() != alianza) {
+            throw new Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException();
         }
-        else{
-            System.out.println("No se pueden atacar unidades aliadas");
-        }
+        int distancia = max(abs(tFila - unidadObjetivo.getFila()), abs(tColumna - unidadObjetivo.getColumna()));
+        this.dentroRango(distancia);
+        unidadObjetivo.perderVida(danioCuerpoACuerpo);
 
     }
-
+*/
     @Override
     public void perderVida(int danio) {
         vida -= danio;

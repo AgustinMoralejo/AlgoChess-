@@ -1,5 +1,6 @@
-package Fiuba.Tablero;
+package Fiuba.AlgoChess;
 
+import Fiuba.Excepciones.CasilleroEstaOcupadoException;
 import Fiuba.Unidad.Unidad;
 
 public class Casillero {

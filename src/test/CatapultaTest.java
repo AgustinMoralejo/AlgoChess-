@@ -1,6 +1,6 @@
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
-import Fiuba.Unidad.Catapulta;
+import Fiuba.Unidad.*;
 
 public
 class CatapultaTest {

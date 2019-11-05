@@ -1,7 +1,7 @@
 package Fiuba.Unidad;
 
-import Fiuba.Alianza;
-
+import Fiuba.Excepciones.UnidadEstaMuertaException;
+import Fiuba.AlgoChess.Alianza;
 public abstract class Unidad {
 
     protected int vida;
@@ -31,7 +31,7 @@ public abstract class Unidad {
 
     public abstract void atacar(int distancia, Unidad unidadObjetivo);
 
-    public abstract void atacar(Unidad unidadObjetivo);
+    //public abstract void atacar(Unidad unidadObjetivo);
 
     protected Alianza getAlianza() {
         return alianza;
@@ -65,18 +65,23 @@ public abstract class Unidad {
         tColumna-=1;
     }
 
-    public
-    int getFila() {
+    public int getFila() {
         return tFila;
     }
 
-    public
-    int getColumna() {
+    public int getColumna() {
         return tColumna;
     }
 
     public void setAlianza(Alianza alianza) {
 
         this.alianza = alianza;
+    }
+
+    public String getSimbolo(){
+
+        String unidadEnTablero = "x";
+
+        return unidadEnTablero ;
     }
 }

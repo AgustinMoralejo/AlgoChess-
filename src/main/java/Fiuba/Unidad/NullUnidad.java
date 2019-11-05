@@ -2,14 +2,14 @@ package Fiuba.Unidad;
 
 public class NullUnidad extends Unidad {
 
-
     @Override
-    public void atacar(int distancia, Unidad unidadObjetivo) {
-
+    public String getSimbolo(){
+        String unidadEnTablero = "-";
+        return unidadEnTablero ;
     }
 
     @Override
-    public void atacar(Unidad unidadObjetivo) {
+    public void atacar(int distancia, Unidad unidadObjetivo) {
 
     }
 

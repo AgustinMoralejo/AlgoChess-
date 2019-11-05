@@ -1,7 +1,7 @@
 
-import Fiuba.Unidad.Jinete;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import Fiuba.Unidad.*;
 
 public
 class JineteTest {

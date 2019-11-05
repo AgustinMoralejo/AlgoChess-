@@ -1,16 +1,14 @@
 package Fiuba.Unidad;
 
-import Fiuba.ObjetivoFueraDeRangoException;
+import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
 
 public class Curandero extends Unidad {
 
     public Curandero(){
-
         vida = 75;
         costo = 2;
         danioCuerpoACuerpo = 0;
         danioADistancia = -15;
-
     }
 
     @Override
@@ -32,10 +30,6 @@ public class Curandero extends Unidad {
         }
     }
 
-    @Override
-    public void atacar(Unidad unidadObjetivo) {
-
-    }
 
     @Override
     public void perderVida(int danio) {

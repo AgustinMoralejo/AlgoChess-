@@ -1,6 +1,5 @@
-package Fiuba;
+package Fiuba.AlgoChess;
 
-import Fiuba.Jugador.*;
 import Fiuba.Tablero.Tablero;
 
 public class Juego {

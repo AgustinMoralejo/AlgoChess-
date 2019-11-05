@@ -1,7 +1,5 @@
 package Fiuba.Unidad;
-
-import Fiuba.NoSePuedenCurarUnidadesNoOrganicasException;
-import Fiuba.ObjetivoFueraDeRangoException;
+import Fiuba.Excepciones.*;
 
 public class Catapulta extends Unidad {
 
@@ -21,11 +19,6 @@ public class Catapulta extends Unidad {
 
         this.dentroRango(distancia);
         unidadObjetivo.perderVida(danioADistancia);
-
-    }
-
-    @Override
-    public void atacar(Unidad unidadObjetivo) {
 
     }
 

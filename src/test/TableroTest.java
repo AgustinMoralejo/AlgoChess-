@@ -1,12 +1,10 @@
-import Fiuba.Jugador.JugadorAzul;
-import Fiuba.Jugador.JugadorRojo;
-import Fiuba.NoSePuedeComandarAUnaUnidadEnemigaException;
-import Fiuba.Tablero.CasilleroEstaOcupadoException;
-import Fiuba.Tablero.NoSePuedeColocarUnidadEnSectorEnemigoException;
+import Fiuba.AlgoChess.*;
 import Fiuba.Tablero.Tablero;
-import Fiuba.Unidad.Soldado;
+import Fiuba.Excepciones.*;
+import Fiuba.Unidad.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+
 
 public
 class TableroTest {
@@ -156,18 +154,6 @@ class TableroTest {
 
     }
 
-    @Test
-    public void testJugadorAzulNoPuedeMoverUnaUnidadEnemiga(){
 
-        Tablero tablero = new Tablero();
-        JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
-        Soldado soldadoEnemigo = new Soldado();
-
-        jugadorAzul.comprarUnidad("soldado",18,12);
-        tablero.colocarUnidad(soldadoEnemigo,6,6);
-
-        Assertions.assertThrows(NoSePuedeComandarAUnaUnidadEnemigaException.class, () -> jugadorAzul.unidadPasoAlNorte(6,6));
-
-    }
 
 }

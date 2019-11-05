@@ -1,6 +1,6 @@
-import Fiuba.Unidad.Curandero;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import Fiuba.Unidad.*;
 
 public
 class CuranderoTest {

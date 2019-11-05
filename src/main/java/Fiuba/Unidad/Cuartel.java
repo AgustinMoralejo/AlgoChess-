@@ -1,9 +1,6 @@
-package Fiuba;
+package Fiuba.Unidad;
 
-import Fiuba.Unidad.*;
-import Fiuba.Jugador.Jugador;
-import Fiuba.Unidad.Soldado;
-import Fiuba.Unidad.Unidad;
+import Fiuba.AlgoChess.Jugador;
 
 import java.util.HashMap;
 import java.util.Map;

@@ -1,9 +1,9 @@
-import Fiuba.*;
-import Fiuba.Jugador.JugadorAzul;
-import Fiuba.Jugador.JugadorRojo;
-import Fiuba.Tablero.Tablero;;
-import Fiuba.Unidad.Soldado;
-import Fiuba.Unidad.Curandero;
+
+import Fiuba.AlgoChess.*;
+import Fiuba.Unidad.*;
+import Fiuba.Tablero.Tablero;
+import Fiuba.Excepciones.*;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -125,19 +125,6 @@ class AtaquesTest {
         Assertions.assertEquals(100, soldadoRojo.getPuntosDeVida());
     }
 
-    @Test
-    public void testSoldadoAzulNoPuedeAtacarAUnSoldadoAzul(){
-
-        Tablero tablero = new Tablero();
-        JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
-
-        jugadorAzul.comprarUnidad("soldado",18,12);
-        jugadorAzul.comprarUnidad("soldado",17,14);
-
-        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(18,12,17,14);
-
-        Assertions.assertEquals(100, tablero.getPuntosDeVidaUnidadEnPosicion(17,14));
-    }
 
 
 
