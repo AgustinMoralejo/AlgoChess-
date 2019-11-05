@@ -3,17 +3,11 @@ import Fiuba.Excepciones.*;
 
 public class Catapulta extends Unidad {
 
-
-    private int costo;
-    private int vida;
-    private int danio;
-    private int danioADistancia;
-
     public Catapulta(){
         this.vida = 50;
         this.costo = 5;
         this.danioADistancia = 20;
-        this.danio = 0;
+        this.danioCuerpoACuerpo = 0;
     }
 
     @Override
@@ -55,6 +49,11 @@ public class Catapulta extends Unidad {
     @Override
     public int getPuntosDeVida() {
         return vida;
+    }
+
+    @Override
+    public boolean esMovible(){
+        return false;
     }
 
     @Override

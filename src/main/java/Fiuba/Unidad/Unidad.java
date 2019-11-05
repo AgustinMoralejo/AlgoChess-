@@ -78,6 +78,10 @@ public abstract class Unidad {
         this.alianza = alianza;
     }
 
+    public boolean esMovible(){
+        return true;
+    }
+
     public String getSimbolo(){
 
         String unidadEnTablero = "x";

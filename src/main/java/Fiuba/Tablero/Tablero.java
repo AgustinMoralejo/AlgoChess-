@@ -1,6 +1,7 @@
 package Fiuba.Tablero;
 
 import Fiuba.Excepciones.CasilleroEstaOcupadoException;
+import Fiuba.Excepciones.UnidadNoMovibleException;
 import Fiuba.Unidad.NullUnidad;
 import Fiuba.Unidad.Unidad;
 import Fiuba.Excepciones.noHayUnidadEnCasilleroException;
@@ -111,9 +112,14 @@ public class Tablero {
 
         offsetEnFila = offset[0];
         offsetEnColumna = offset[1];
-
         unidadAMover = this.punteroAUnidad(fila,columna);
-        this.colocarUnidad(unidadAMover,fila+offsetEnFila,columna+offsetEnColumna);
+        if( unidadAMover.esMovible()){
+            this.colocarUnidad(unidadAMover,fila+offsetEnFila,columna+offsetEnColumna);
+
+        }
+        else{
+            throw new UnidadNoMovibleException();
+        }
     }
 
     public void unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(int filaAliado, int columnaAliado, int filaEnemigo, int columnaEnemigo) {
