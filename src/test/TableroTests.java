@@ -1,10 +1,7 @@
-package test;
-
-import Fiuba.TP3.*;
-import Fiuba.TP3.Jugador.JugadorAzul;
-import Fiuba.TP3.Jugador.JugadorRojo;
-import Fiuba.TP3.Tablero.Tablero;
-import Fiuba.TP3.Unidad.Soldado;
+import Fiuba.Jugador.*;
+import Fiuba.*;
+import Fiuba.Tablero.Tablero;
+import Fiuba.Unidad.Soldado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

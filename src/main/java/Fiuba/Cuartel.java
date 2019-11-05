@@ -1,6 +1,6 @@
-package Fiuba.TP3;
+package Fiuba;
 
-import Fiuba.TP3.Unidad.*;
+import Fiuba.Unidad.*;
 
 import java.util.HashMap;
 import java.util.Map;

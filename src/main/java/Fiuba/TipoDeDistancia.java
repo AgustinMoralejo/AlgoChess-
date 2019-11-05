@@ -1,6 +1,6 @@
-package Fiuba.TP3;
+package Fiuba;
 
-import Fiuba.TP3.Unidad.Unidad;
+import Fiuba.Unidad.Unidad;
 
 public interface TipoDeDistancia {
 

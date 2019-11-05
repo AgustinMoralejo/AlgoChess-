@@ -1,8 +1,9 @@
-package Fiuba.TP3.Jugador;
+package Fiuba.Jugador;
 
-import Fiuba.TP3.NoSePuedeColocarUnidadEnSectorEnemigoException;
-import Fiuba.TP3.Tablero.Tablero;
-import Fiuba.TP3.Unidad.Unidad;
+
+import Fiuba.Tablero.Tablero;
+import Fiuba.Unidad.Unidad;
+import Fiuba.NoSePuedeColocarUnidadEnSectorEnemigoException;
 
 public class JugadorAzul extends Jugador {
 

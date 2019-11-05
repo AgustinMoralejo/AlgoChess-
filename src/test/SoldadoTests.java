@@ -1,6 +1,4 @@
-package test;
-
-import Fiuba.TP3.Unidad.Soldado;
+import Fiuba.Unidad.Soldado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

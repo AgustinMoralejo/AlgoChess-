@@ -1,6 +1,4 @@
-package test;
-
-import Fiuba.TP3.Unidad.Catapulta;
+import Fiuba.Unidad.Catapulta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

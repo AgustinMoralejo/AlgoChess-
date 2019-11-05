@@ -1,6 +1,6 @@
-package Fiuba.TP3.Unidad;
+package Fiuba.Unidad;
 
-import Fiuba.TP3.ObjetivoFueraDeRangoException;
+import Fiuba.ObjetivoFueraDeRangoException;
 
 import static java.lang.Math.abs;
 

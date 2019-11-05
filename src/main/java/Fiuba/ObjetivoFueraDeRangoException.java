@@ -1,4 +1,4 @@
-package Fiuba.TP3;
+package Fiuba;
 
 public class ObjetivoFueraDeRangoException extends RuntimeException {
 }

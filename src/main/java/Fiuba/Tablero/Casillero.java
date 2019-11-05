@@ -1,7 +1,7 @@
-package Fiuba.TP3.Tablero;
+package Fiuba.Tablero;
 
-import Fiuba.TP3.CasilleroEstaOcupadoException;
-import Fiuba.TP3.Unidad.Unidad;
+import Fiuba.Unidad.Unidad;
+import Fiuba.CasilleroEstaOcupadoException;
 
 public class Casillero {
 

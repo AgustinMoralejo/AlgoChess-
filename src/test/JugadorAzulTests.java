@@ -1,8 +1,5 @@
-package test;
-
-import Fiuba.TP3.Jugador.Jugador;
-import Fiuba.TP3.Jugador.JugadorAzul;
-import Fiuba.TP3.PuntosInsuficientes;
+import Fiuba.Jugador.*;
+import Fiuba.PuntosInsuficientes;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

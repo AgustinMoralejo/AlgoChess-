@@ -1,22 +1,14 @@
-package Fiuba.TP3.Unidad;
+package Fiuba.Unidad;
 
-import Fiuba.TP3.ObjetivoFueraDeRangoException;
+import Fiuba.NoSePuedenCurarUnidadesNoOrganicasException;
+import Fiuba.ObjetivoFueraDeRangoException;
 
-public class Curandero extends Unidad {
+public class Catapulta extends Unidad {
 
-    public Curandero(){
-
-        vida = 75;
-        costo = 2;
-        danioCuerpoACuerpo = 0;
-        danioADistancia = -15;
-
-    }
-
-    @Override
-    public int getPuntosDeVida() {
-        return vida;
-    }
+    private int costo =5;
+    private int vida =50;
+    private int danio =0;
+    private int danioADistancia =20;
 
     @Override
     public int getCosto() {
@@ -33,22 +25,30 @@ public class Curandero extends Unidad {
 
     @Override
     public void perderVida(int danio) {
+        if (danio < 0) {
+            throw (new NoSePuedenCurarUnidadesNoOrganicasException());
+        }
         vida -= danio;
     }
 
     @Override
     protected void dentroRango(int distancia) {
 
-        if(distancia > 2){
+        if ( distancia < 6){
             throw new ObjetivoFueraDeRangoException();
         }
-
     }
 
     @Override
     public
     Unidad copiar() {
-        return new Curandero();
+
+        return new Catapulta();
+    }
+
+    @Override
+    public int getPuntosDeVida() {
+        return vida;
     }
 
 }
