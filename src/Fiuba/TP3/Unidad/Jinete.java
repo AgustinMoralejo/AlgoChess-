@@ -1,11 +1,24 @@
-package Fiuba.TP3;
+package Fiuba.TP3.Unidad;
 
-public class Catapulta extends Unidad {
+import Fiuba.TP3.ObjetivoFueraDeRangoException;
 
-    private int costo =5;
-    private int vida =50;
-    private int danio =0;
-    private int danioADistancia =20;
+import static java.lang.Math.abs;
+
+public class Jinete extends Unidad {
+
+
+    public Jinete(){
+
+        vida = 100;
+        costo = 3;
+        danioCuerpoACuerpo = 5;
+        danioADistancia = 15;
+
+    }
+    @Override
+    public int getPuntosDeVida() {
+        return vida;
+    }
 
     @Override
     public int getCosto() {
@@ -20,18 +33,16 @@ public class Catapulta extends Unidad {
 
     }
 
+
     @Override
     public void perderVida(int danio) {
-        if (danio < 0) {
-            throw (new NoSePuedenCurarUnidadesNoOrganicasException());
-        }
         vida -= danio;
     }
 
     @Override
     protected void dentroRango(int distancia) {
 
-        if ( distancia < 6){
+        if (distancia > 5) {
             throw new ObjetivoFueraDeRangoException();
         }
     }
@@ -39,13 +50,7 @@ public class Catapulta extends Unidad {
     @Override
     public
     Unidad copiar() {
-
-        return new Catapulta();
-    }
-
-    @Override
-    public int getPuntosDeVida() {
-        return vida;
+        return new Jinete();
     }
 
 }

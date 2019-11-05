@@ -1,4 +1,8 @@
-package Fiuba.TP3;
+package Fiuba.TP3.Jugador;
+
+import Fiuba.TP3.Cuartel;
+import Fiuba.TP3.Tablero.Tablero;
+import Fiuba.TP3.Unidad.Unidad;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -1,4 +1,7 @@
-package Fiuba.TP3;
+package Fiuba.TP3.Tablero;
+
+import Fiuba.TP3.Unidad.Unidad;
+import Fiuba.TP3.noHayUnidadEnCasilleroException;
 
 import static java.lang.Math.abs;
 import static java.lang.Math.max;

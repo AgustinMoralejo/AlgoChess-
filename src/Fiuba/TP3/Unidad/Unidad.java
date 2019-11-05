@@ -1,4 +1,6 @@
-package Fiuba.TP3;
+package Fiuba.TP3.Unidad;
+
+import Fiuba.TP3.unidadEstaMuertaException;
 
 public abstract class Unidad {
 
