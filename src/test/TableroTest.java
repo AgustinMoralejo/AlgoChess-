@@ -1,12 +1,15 @@
-import Fiuba.Jugador.*;
-import Fiuba.*;
+import Fiuba.Jugador.JugadorAzul;
+import Fiuba.Jugador.JugadorRojo;
+import Fiuba.NoSePuedeComandarAUnaUnidadEnemigaException;
+import Fiuba.Tablero.CasilleroEstaOcupadoException;
+import Fiuba.Tablero.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import Fiuba.Tablero.Tablero;
 import Fiuba.Unidad.Soldado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public
-class TableroTests {
+class TableroTest {
 
 
     @Test
@@ -17,6 +20,9 @@ class TableroTests {
         Assertions.assertEquals(20*20, tablero.getTamanio());
     }
 
+    /**Posicion y movimientos*/
+
+    /*Instancia jugador pq es necesario saber de que color es*/
     @Test
     public void testJugadorAzulColocaUnSoldadoEnUnCasilleroVacioDelSectorAliadoConExito() {
 
@@ -60,6 +66,7 @@ class TableroTests {
         Assertions.assertThrows(NoSePuedeColocarUnidadEnSectorEnemigoException.class, () -> jugadorRojo.comprarUnidad("soldado",11,18));
     }
 
+    /*Fin test sectores*/
 
     @Test
     public void testAlColocarUnSoldadoEnUnCasilleroEstePasaAEstarOcupadoYNoSePuedeColocarOtraUnidadEncima(){
@@ -146,6 +153,20 @@ class TableroTests {
 
         Assertions.assertThrows(CasilleroEstaOcupadoException.class, () -> tablero.pasoAlEste(5,5));
 
+
+    }
+
+    @Test
+    public void testJugadorAzulNoPuedeMoverUnaUnidadEnemiga(){
+
+        Tablero tablero = new Tablero();
+        JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
+        Soldado soldadoEnemigo = new Soldado();
+
+        jugadorAzul.comprarUnidad("soldado",18,12);
+        tablero.colocarUnidad(soldadoEnemigo,6,6);
+
+        Assertions.assertThrows(NoSePuedeComandarAUnaUnidadEnemigaException.class, () -> jugadorAzul.unidadPasoAlNorte(6,6));
 
     }
 

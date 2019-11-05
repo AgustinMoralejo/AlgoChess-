@@ -26,8 +26,14 @@ public class Curandero extends Unidad {
     @Override
     public void atacar(int distancia, Unidad unidadObjetivo) {
 
-        this.dentroRango(distancia);
-        unidadObjetivo.perderVida(danioADistancia);
+        if(unidadObjetivo.getAlianza() == alianza ){
+            this.dentroRango(distancia);
+            unidadObjetivo.perderVida(danioADistancia);
+        }
+    }
+
+    @Override
+    public void atacar(Unidad unidadObjetivo) {
 
     }
 
@@ -46,8 +52,7 @@ public class Curandero extends Unidad {
     }
 
     @Override
-    public
-    Unidad copiar() {
+    public Unidad copiar() {
         return new Curandero();
     }
 

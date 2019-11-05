@@ -1,7 +1,6 @@
 package Fiuba.Tablero;
 
 import Fiuba.Unidad.Unidad;
-import Fiuba.CasilleroEstaOcupadoException;
 
 public class Casillero {
 
@@ -24,8 +23,7 @@ public class Casillero {
         }
     }
 
-    public
-    Unidad getUnidad() {
+    public Unidad getUnidad() {
         return unidad;
     }
 
@@ -41,8 +39,7 @@ public class Casillero {
     }
 
 
-    public
-    Unidad removerUnidad() {
+    public Unidad removerUnidad() {
 
         Unidad unidadARetornar = unidad;
         unidad = null;

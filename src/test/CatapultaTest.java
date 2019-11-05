@@ -1,9 +1,12 @@
-import Fiuba.Unidad.Catapulta;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import Fiuba.Unidad.Catapulta;
 
 public
-class CatapultaTests {
+class CatapultaTest {
+
+
+
 
     @Test
     public void testCrearCatapultaTiene50DeVidaYCuesta5Puntos(){
@@ -13,5 +16,6 @@ class CatapultaTests {
         Assertions.assertEquals(50, catapulta.getPuntosDeVida());
         Assertions.assertEquals(5, catapulta.getCosto());
     }
+
 
 }

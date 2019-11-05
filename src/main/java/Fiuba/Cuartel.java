@@ -1,6 +1,9 @@
 package Fiuba;
 
 import Fiuba.Unidad.*;
+import Fiuba.Jugador.Jugador;
+import Fiuba.Unidad.Soldado;
+import Fiuba.Unidad.Unidad;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -11,7 +14,7 @@ public class Cuartel {
 
     public Cuartel(){
 
-        unidades = new HashMap<String, Unidad>();
+        unidades = new HashMap<String,Unidad>();
         unidades.put("soldado",new Soldado());
         unidades.put("jinete",new Jinete());
         unidades.put("curandero", new Curandero());
@@ -19,13 +22,10 @@ public class Cuartel {
 
     }
 
-    public
-    Unidad getUnidad(String nombreUnidad, int puntos) {
+    public Unidad getUnidad(String nombreUnidad, Jugador unJugador) {
 
         Unidad unidad = unidades.get(nombreUnidad);
-        if( unidad.getCosto() > puntos){
-            throw new PuntosInsuficientes();
-        }
+        unJugador.pagar(unidad.getCosto());
 
         return unidad.copiar();
     }

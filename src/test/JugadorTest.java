@@ -1,10 +1,10 @@
-import Fiuba.Jugador.*;
 import Fiuba.PuntosInsuficientes;
+import Fiuba.Jugador.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public
-class JugadorAzulTests {
+class JugadorTest {
 
     @Test
     public void testCrearJugadorEquipoAzulConNombreAgustinY20Puntos(){
@@ -67,4 +67,7 @@ class JugadorAzulTests {
         Assertions.assertThrows(PuntosInsuficientes.class, () -> jugadorAzul.comprarUnidad("catapulta"));
         Assertions.assertEquals(2, jugadorAzul.getPuntos());
     }
+
+
+
 }

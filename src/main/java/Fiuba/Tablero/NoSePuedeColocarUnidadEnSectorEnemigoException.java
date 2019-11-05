@@ -1,4 +1,4 @@
-package Fiuba;
+package Fiuba.Tablero;
 
 public class NoSePuedeColocarUnidadEnSectorEnemigoException extends RuntimeException {
 }

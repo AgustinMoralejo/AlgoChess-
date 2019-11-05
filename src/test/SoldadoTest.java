@@ -3,7 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public
-class SoldadoTests {
+class SoldadoTest {
 
     @Test
     public void testCrearSoldadoDeInfanteriaTiene100DeVidaYCuesta1Puntos() {
@@ -13,4 +13,6 @@ class SoldadoTests {
         Assertions.assertEquals(100, soldado.getPuntosDeVida());
         Assertions.assertEquals(1, soldado.getCosto());
     }
+
+
 }

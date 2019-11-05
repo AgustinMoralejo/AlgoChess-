@@ -3,8 +3,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public
-class CuranderoTests {
-
+class CuranderoTest {
 
     @Test
     public void testCrearCuranderoTiene75DeVidaYCuesta2Puntos(){
@@ -14,5 +13,7 @@ class CuranderoTests {
         Assertions.assertEquals(75, curandero.getPuntosDeVida());
         Assertions.assertEquals(2, curandero.getCosto());
     }
+
+
 
 }

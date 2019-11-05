@@ -1,18 +1,23 @@
 import Fiuba.*;
-import Fiuba.Jugador.*;
-import Fiuba.Tablero.Tablero;
+import Fiuba.Jugador.JugadorAzul;
+import Fiuba.Jugador.JugadorRojo;
+import Fiuba.Tablero.Tablero;;
 import Fiuba.Unidad.Soldado;
+import Fiuba.Unidad.Curandero;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public
-class AtaquesTests {
+class AtaquesTest {
 
     @Test
     public void testSoldadoAtacaAOtroSoldadoQueEstaEnDistanciaCercanaYLeQuita10PuntosDeVida(){
 
         Soldado soldado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
+
+        soldado.setAlianza(Alianza.AZUL);
+        soldadoEnemigo.setAlianza(Alianza.ROJO);
 
         soldado.atacar(2,soldadoEnemigo);
 
@@ -25,6 +30,9 @@ class AtaquesTests {
 
         Soldado soldado = new Soldado();
         Soldado soldadoEnemigo = new Soldado();
+
+        soldado.setAlianza(Alianza.AZUL);
+        soldadoEnemigo.setAlianza(Alianza.ROJO);
 
         Assertions.assertEquals(100, soldadoEnemigo.getPuntosDeVida());
         Assertions.assertThrows(ObjetivoFueraDeRangoException.class, () -> soldado.atacar(3,soldadoEnemigo));
@@ -99,5 +107,38 @@ class AtaquesTests {
 
         Assertions.assertThrows(NoSePuedenCurarUnidadesNoOrganicasException.class, () -> tablero.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(18,12,17,14));
     }
+
+    /**Unidades aliadas no pueden atacarse y curanderos no pueden curar unidades enemigas*/
+    @Test
+    public void testCuranderoAzulNoPuedeCurarAUnSoldadoRojo(){
+
+        Tablero tablero = new Tablero();
+
+        Curandero curanderoAzul = new Curandero();
+        Soldado soldadoRojo = new Soldado();
+
+        soldadoRojo.setAlianza(Alianza.ROJO);
+        curanderoAzul.setAlianza(Alianza.AZUL);
+
+        curanderoAzul.atacar(2,soldadoRojo);
+
+        Assertions.assertEquals(100, soldadoRojo.getPuntosDeVida());
+    }
+
+    @Test
+    public void testSoldadoAzulNoPuedeAtacarAUnSoldadoAzul(){
+
+        Tablero tablero = new Tablero();
+        JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
+
+        jugadorAzul.comprarUnidad("soldado",18,12);
+        jugadorAzul.comprarUnidad("soldado",17,14);
+
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(18,12,17,14);
+
+        Assertions.assertEquals(100, tablero.getPuntosDeVidaUnidadEnPosicion(17,14));
+    }
+
+
 
 }

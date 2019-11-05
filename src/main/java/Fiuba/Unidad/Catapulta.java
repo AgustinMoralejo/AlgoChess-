@@ -10,6 +10,7 @@ public class Catapulta extends Unidad {
     private int danio =0;
     private int danioADistancia =20;
 
+
     @Override
     public int getCosto() {
         return costo;
@@ -20,6 +21,11 @@ public class Catapulta extends Unidad {
 
         this.dentroRango(distancia);
         unidadObjetivo.perderVida(danioADistancia);
+
+    }
+
+    @Override
+    public void atacar(Unidad unidadObjetivo) {
 
     }
 
@@ -40,8 +46,7 @@ public class Catapulta extends Unidad {
     }
 
     @Override
-    public
-    Unidad copiar() {
+    public Unidad copiar() {
 
         return new Catapulta();
     }
@@ -49,6 +54,26 @@ public class Catapulta extends Unidad {
     @Override
     public int getPuntosDeVida() {
         return vida;
+    }
+
+    @Override
+    public void pasoAlNorte(){
+        throw new UnidadNoMovibleException();
+    }
+
+    @Override
+    public void pasoAlEste(){
+        throw new UnidadNoMovibleException();
+    }
+
+    @Override
+    public void pasoAlSur(){
+        throw new UnidadNoMovibleException();
+    }
+
+    @Override
+    public void pasoAlOeste(){
+        throw new UnidadNoMovibleException();
     }
 
 }

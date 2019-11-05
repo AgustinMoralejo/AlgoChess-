@@ -1,9 +1,10 @@
+
 import Fiuba.Unidad.Jinete;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public
-class JineteTests {
+class JineteTest {
 
 
     @Test
@@ -14,5 +15,6 @@ class JineteTests {
         Assertions.assertEquals(100, jinete.getPuntosDeVida());
         Assertions.assertEquals(3, jinete.getCosto());
     }
+
 
 }
