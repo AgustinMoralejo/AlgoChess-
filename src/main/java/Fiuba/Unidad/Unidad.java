@@ -33,7 +33,7 @@ public abstract class Unidad {
 
     //public abstract void atacar(Unidad unidadObjetivo);
 
-    protected Alianza getAlianza() {
+    public Alianza getAlianza() {
         return alianza;
     }
 

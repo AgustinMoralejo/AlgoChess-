@@ -1,11 +1,14 @@
 package Fiuba.Tablero;
 
 import Fiuba.Excepciones.CasilleroEstaOcupadoException;
+import Fiuba.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import Fiuba.Excepciones.UnidadNoMovibleException;
 import Fiuba.Unidad.NullUnidad;
 import Fiuba.Unidad.Unidad;
 import Fiuba.Excepciones.noHayUnidadEnCasilleroException;
 
+import static Fiuba.AlgoChess.Alianza.AZUL;
+import static Fiuba.AlgoChess.Alianza.ROJO;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
@@ -21,6 +24,27 @@ public class Tablero {
         for ( i = 0; i < 20 ; i++) {
             for (j = 0; j < 20 ; j++) {
                 tablero[i][j] = new NullUnidad();
+            }
+        }
+        this.dividirTableroAzul();
+        this.dividirTableroRojo();
+    }
+
+    public void dividirTableroAzul(){
+        int i,j;
+        for ( i = 0; i < 20 ; i++) {
+            for (j = 0; j < 10 ; j++) {
+                (tablero[i][j]).setAlianza(AZUL);
+            }
+        }
+    }
+
+
+    public void dividirTableroRojo(){
+        int i,j;
+        for ( i = 0; i < 20 ; i++) {
+            for (j = 10; j < 20 ; j++) {
+                (tablero[i][j]).setAlianza(ROJO);
             }
         }
     }
@@ -62,10 +86,22 @@ public class Tablero {
     public void colocarUnidad(Unidad unaUnidad, int fila, int columna) {
 
         casilleroEstaOcupado(fila,columna);
-        tablero[fila][columna] = unaUnidad;
-        unaUnidad.setPosicion(fila,columna);
+
+        if(esTerritorioAliado(fila, columna, unaUnidad)){
+            tablero[fila][columna] = unaUnidad;
+            unaUnidad.setPosicion(fila,columna);
+        }
+        else{
+            throw new NoSePuedeColocarUnidadEnSectorEnemigoException();
+        }
+
     }
 
+    public boolean esTerritorioAliado(int fila, int columna, Unidad unaUnidad){
+
+        return ((tablero[fila][columna]).getAlianza()==unaUnidad.getAlianza());
+
+    }
     private Unidad punteroAUnidad(int fila, int columna) {
 
         Unidad unidadAMover = tablero[fila][columna];

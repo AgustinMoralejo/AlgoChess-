@@ -1,3 +1,4 @@
+import Fiuba.Excepciones.CasilleroEstaOcupadoException;
 import Fiuba.Excepciones.UnidadNoMovibleException;
 import Fiuba.Unidad.*;
 import Fiuba.Tablero.Tablero;
@@ -15,13 +16,14 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlNorteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,5));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,15));
+
 
     }
 
@@ -29,13 +31,13 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlNorteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,5));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,15));
 
     }
 
@@ -44,32 +46,27 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlNorteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,5));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,15));
 
     }
 
     @Test
     public void testCatapultaEnTableroSeMueveAlNorteYLoOcupaConExito(){
 
+
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]));
 
     }
 
@@ -79,13 +76,13 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlNoresteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,16));
 
     }
 
@@ -93,13 +90,13 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlNoresteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,16));
 
     }
 
@@ -108,13 +105,13 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlNoresteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,16));
 
     }
 
@@ -122,18 +119,12 @@ public class MovimientoUnidadesTest {
     public void testCatapultaEnTableroSeMueveAlNoresteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]));
 
     }
 
@@ -144,13 +135,13 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlEsteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(5,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(15,16));
 
     }
 
@@ -158,13 +149,13 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlEsteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(5,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(15,16));
 
     }
 
@@ -173,13 +164,13 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlEsteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(5,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(15,16));
 
     }
 
@@ -187,18 +178,12 @@ public class MovimientoUnidadesTest {
     public void testCatapultaEnTableroSeMueveAlEsteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]));
 
     }
 
@@ -210,13 +195,14 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlSuresteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,16));
+
 
     }
 
@@ -225,13 +211,13 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlSurEsteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,6));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,16));
 
     }
 
@@ -240,31 +226,25 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlSurEsteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,6));
+
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,16));
     }
 
     @Test
     public void testCatapultaEnTableroSeMueveAlSurEsteYLoOcupaConExito(){
-
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]));
 
     }
 
@@ -274,13 +254,13 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlSurYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,5));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,15));
 
     }
 
@@ -289,13 +269,13 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlSurYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,5));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,15));
 
     }
 
@@ -304,31 +284,25 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlSurYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,5));
+
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,15));
     }
 
     @Test
     public void testCatapultaEnTableroSeMueveAlSurYLoOcupaConExito(){
-
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]));
 
     }
 
@@ -340,13 +314,13 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlSuroesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,4));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,14));
 
     }
 
@@ -355,13 +329,14 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlSuroesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,4));
+
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,14));
 
     }
 
@@ -370,31 +345,24 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlSuroesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(6,4));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(16,14));
     }
 
     @Test
     public void testCatapultaEnTableroSeMueveAlSuroesteYLoOcupaConExito(){
-
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]));
 
     }
 
@@ -405,13 +373,14 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlOesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(5,4));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(15,14));
+
 
     }
 
@@ -420,13 +389,13 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlOesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(5,4));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(15,14));
 
     }
 
@@ -435,31 +404,25 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlOesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(5,4));
+
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(15,14));
     }
 
     @Test
     public void testCatapultaEnTableroSeMueveAlOesteYLoOcupaConExito(){
-
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]));
 
     }
 
@@ -470,13 +433,13 @@ public class MovimientoUnidadesTest {
     public void testSoldadoEnTableroSeMueveAlNoroesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Soldado soldado = new Soldado();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(soldado,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
+        jugadorRojo.comprarUnidad("soldado",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,4));
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,14));
 
     }
 
@@ -485,13 +448,14 @@ public class MovimientoUnidadesTest {
     public void testJineteEnTableroSeMueveAlNoroesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(jinete,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
+        jugadorRojo.comprarUnidad("jinete",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,4));
+
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,14));
 
     }
 
@@ -500,75 +464,28 @@ public class MovimientoUnidadesTest {
     public void testCuranderoEnTableroSeMueveAlNoroesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(curandero,5,5);
-        tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
+        jugadorRojo.comprarUnidad("curandero",15,15);
+        tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
 
-        Assertions.assertTrue(tablero.estaVacio(5,5));
-        Assertions.assertFalse(tablero.estaVacio(4,4));
+
+        Assertions.assertTrue(tablero.estaVacio(15,15));
+        Assertions.assertFalse(tablero.estaVacio(14,14));
     }
 
     @Test
     public void testCatapultaEnTableroSeMueveAlNoroesteYLoOcupaConExito(){
 
         Tablero tablero = new Tablero();
-        Catapulta catapulta = new Catapulta();
-        String resultado = "Sin excepciones.";
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
 
-        tablero.colocarUnidad(catapulta,5,5);
-        try {
-            tablero.moverUnidad(5,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        }
-        catch(UnidadNoMovibleException ex){
-            resultado = "NoEsPosibleMoverLaUnidad";
-        }
+        jugadorRojo.comprarUnidad("catapulta",15,15);
 
-        assertEquals("NoEsPosibleMoverLaUnidad",resultado);
+
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]));
+
 
     }
-
-    /** De integracion */
-
-    @Test
-    public void testJineteEnTableroSeMueveNorteEsteSurOesteSurYVuelveASuPosicionInicial(){
-
-        Tablero tablero = new Tablero();
-        Jinete jinete = new Jinete();
-
-        tablero.colocarUnidad(jinete,12,4);
-        tablero.moverUnidad(12,4,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
-        tablero.moverUnidad(11,4,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        tablero.moverUnidad(11,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
-        tablero.moverUnidad(12,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
-
-        Assertions.assertFalse(tablero.estaVacio(12,4));
-
-    }
-
-
-    @Test
-    public void testCuranderoEnTableroSeMueveNorteEsteSurOesteSurYVuelveASuPosicionInicial(){
-
-        Tablero tablero = new Tablero();
-        Curandero curandero = new Curandero();
-
-        tablero.imprimirTablero();
-        tablero.colocarUnidad(curandero,12,4);
-        tablero.imprimirTablero();
-        tablero.moverUnidad(12,4,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
-        tablero.imprimirTablero();
-        tablero.moverUnidad(11,4,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
-        tablero.imprimirTablero();
-        tablero.moverUnidad(11,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
-        tablero.imprimirTablero();
-        tablero.moverUnidad(12,5,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
-        tablero.imprimirTablero();
-
-        Assertions.assertFalse(tablero.estaVacio(12,4));
-
-    }
-
-
 
 }

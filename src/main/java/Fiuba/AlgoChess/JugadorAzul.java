@@ -24,9 +24,15 @@ public class JugadorAzul extends Jugador {
     public void comprarUnidad(String nombreUnidad, int fila, int columna) {
 
         /*BRUTO hardcodeo para ver si estoy en el sector azul*/
+
+/*
         if(fila < 10 ){
             throw new NoSePuedeColocarUnidadEnSectorEnemigoException();
         }
+
+
+        */
+
 
         Unidad unidadComprada;
         unidadComprada = cuartel.getUnidad(nombreUnidad, this);

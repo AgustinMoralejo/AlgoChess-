@@ -46,11 +46,11 @@ class AtaquesTest {
         JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
         JugadorRojo jugadorRojo = new JugadorRojo("lego",tablero);
 
-        jugadorAzul.comprarUnidad("soldado",11,5);
-        jugadorRojo.comprarUnidad("soldado",10,5);
-        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,5,10,5);
+        jugadorAzul.comprarUnidad("soldado",11,9);
+        jugadorRojo.comprarUnidad("soldado",11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
 
-        Assertions.assertEquals(90, tablero.getPuntosDeVidaUnidadEnPosicion(10,5));
+        Assertions.assertEquals(90, tablero.getPuntosDeVidaUnidadEnPosicion(11,10));
     }
 
 
@@ -75,11 +75,11 @@ class AtaquesTest {
         JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
         JugadorRojo jugadorRojo = new JugadorRojo("lego",tablero);
 
-        jugadorAzul.comprarUnidad("jinete",10,12);
-        jugadorRojo.comprarUnidad("jinete",6,14);
-        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(10,12,6,14);
+        jugadorAzul.comprarUnidad("jinete",11,9);
+        jugadorRojo.comprarUnidad("jinete",11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
 
-        Assertions.assertEquals(85, tablero.getPuntosDeVidaUnidadEnPosicion(6,14));
+        Assertions.assertEquals(85, tablero.getPuntosDeVidaUnidadEnPosicion(11,10));
     }
 
 
@@ -89,11 +89,11 @@ class AtaquesTest {
         Tablero tablero = new Tablero();
         JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
 
-        jugadorAzul.comprarUnidad("curandero",18,12);
-        jugadorAzul.comprarUnidad("soldado",17,14);
-        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(18,12,17,14);
+        jugadorAzul.comprarUnidad("curandero",7,7);
+        jugadorAzul.comprarUnidad("soldado",7,8);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(7,7,7,8);
 
-        Assertions.assertEquals(115, tablero.getPuntosDeVidaUnidadEnPosicion(17,14));
+        Assertions.assertEquals(115, tablero.getPuntosDeVidaUnidadEnPosicion(7,8));
     }
 
     @Test
@@ -102,10 +102,10 @@ class AtaquesTest {
         Tablero tablero = new Tablero();
         JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
 
-        jugadorAzul.comprarUnidad("curandero",18,12);
-        jugadorAzul.comprarUnidad("catapulta",17,14);
+        jugadorAzul.comprarUnidad("curandero",15,2);
+        jugadorAzul.comprarUnidad("catapulta",15,3);
 
-        Assertions.assertThrows(NoSePuedenCurarUnidadesNoOrganicasException.class, () -> tablero.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(18,12,17,14));
+        Assertions.assertThrows(NoSePuedenCurarUnidadesNoOrganicasException.class, () -> tablero.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(15,2,15,3));
     }
 
     /**Unidades aliadas no pueden atacarse y curanderos no pueden curar unidades enemigas*/
