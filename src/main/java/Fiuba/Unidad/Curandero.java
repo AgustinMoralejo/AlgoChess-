@@ -9,6 +9,7 @@ public class Curandero extends Unidad {
         costo = 2;
         danioCuerpoACuerpo = 0;
         danioADistancia = -15;
+        simbolo = "CR";
     }
 
     @Override

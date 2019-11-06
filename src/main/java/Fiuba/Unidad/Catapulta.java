@@ -8,6 +8,7 @@ public class Catapulta extends Unidad {
         this.costo = 5;
         this.danioADistancia = 20;
         this.danioCuerpoACuerpo = 0;
+        this.simbolo = "CT";
     }
 
     @Override

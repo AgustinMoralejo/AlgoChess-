@@ -7,6 +7,7 @@ public class Juego {
     private Tablero tablero;
     private JugadorAzul jugadorAzul;
     private JugadorRojo jugadorRojo;
+    private int turno;
 
     public Juego(String nombreJugadorAzul, String nombreJugadorRojo){
 

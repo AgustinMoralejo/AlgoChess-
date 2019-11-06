@@ -35,7 +35,6 @@ public class Casillero {
     }
 
     public void unidadAtacar(int distancia, Unidad unidadObjetivo) {
-
         unidad.atacar(distancia, unidadObjetivo);
     }
 

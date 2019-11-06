@@ -8,10 +8,12 @@ public abstract class Unidad {
     protected int costo;
     protected int danioCuerpoACuerpo;
     protected int danioADistancia;
+    protected String simbolo;
 
     protected Alianza alianza;
     protected int tFila;
     protected int tColumna;
+
 
     public int getPuntosDeVida(){
         return vida;
@@ -83,9 +85,6 @@ public abstract class Unidad {
     }
 
     public String getSimbolo(){
-
-        String unidadEnTablero = "x";
-
-        return unidadEnTablero ;
+        return simbolo;
     }
 }

@@ -76,6 +76,10 @@ public class Tablero {
         return tablero[fila][columna].getSimbolo() == "-";
     }
 
+    public boolean posicionValida(int fila, int columna){
+        return((fila >= 0) && (fila < 20) && (columna >= 0) && (columna < 20));
+    }
+
     public void casilleroEstaOcupado(int fila, int columna){
 
         if(tablero[fila][columna].getSimbolo() != "-"){
@@ -178,4 +182,16 @@ public class Tablero {
         return tablero[fila][columna].getPuntosDeVida();
     }
 
+    public int cantidadDeUnidadesAlrrededor(int filaActual, int columnaActual, String simboloUnidad){
+        int cantidadDeUnidades = 0;
+
+        for (int i = -1; i < 2 ; i++) {
+            for (int j = -1; j < 2 ; j++) {
+                if(!(j==0 && i ==0) && (this.posicionValida(filaActual+i, columnaActual+j) && (simboloUnidad == tablero[filaActual+i][columnaActual+j].getSimbolo()))){
+                    cantidadDeUnidades ++;
+                }
+            }
+        }
+        return cantidadDeUnidades;
+    }
 }

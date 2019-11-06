@@ -146,6 +146,16 @@ class TableroTest {
         Assertions.assertThrows(CasilleroEstaOcupadoException.class, () -> tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]));
 
     }
+    @Test
+    public void testCantidadDeUnidadesCatapultaAlrrededorEsCorrecta(){
+
+        Tablero tablero = new Tablero();
+        JugadorAzul jugadorAzul = new JugadorAzul("pedro", tablero);
+        jugadorAzul.comprarUnidad("catapulta", 3,1);
+        jugadorAzul.comprarUnidad("catapulta", 3,3);
+        jugadorAzul.comprarUnidad("catapulta", 5, 2);
+        Assertions.assertTrue(tablero.cantidadDeUnidadesAlrrededor(4,2, "CT") == 3);
+    }
 
 
 

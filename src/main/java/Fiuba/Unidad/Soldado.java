@@ -14,6 +14,7 @@ public class Soldado extends Unidad {
         costo = 1;
         danioCuerpoACuerpo = 10;
         danioADistancia = 0;
+        simbolo = "S";
     }
 
     @Override

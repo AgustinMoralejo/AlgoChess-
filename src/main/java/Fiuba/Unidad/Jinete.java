@@ -13,6 +13,7 @@ public class Jinete extends Unidad {
         costo = 3;
         danioCuerpoACuerpo = 5;
         danioADistancia = 15;
+        simbolo = "J";
     }
     @Override
     public int getPuntosDeVida() {
