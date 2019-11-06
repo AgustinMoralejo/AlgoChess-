@@ -1,5 +1,6 @@
 package Fiuba.Tablero;
 
+import Fiuba.AlgoChess.Alianza;
 import Fiuba.Excepciones.CasilleroEstaOcupadoException;
 import Fiuba.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import Fiuba.Excepciones.UnidadNoMovibleException;
@@ -172,8 +173,8 @@ public class Tablero {
         if(unidadAliada.getSimbolo() == "-" || unidadEnemiga.getSimbolo() == "-"){
             throw new noHayUnidadEnCasilleroException();
         }
-
         int distancia = max(abs(filaAliado - filaEnemigo), abs(columnaAliado - columnaEnemigo));
+
         unidadAliada.atacar(distancia, unidadEnemiga);
     }
 
