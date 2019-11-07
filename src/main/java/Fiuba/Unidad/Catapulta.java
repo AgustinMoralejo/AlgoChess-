@@ -1,6 +1,8 @@
 package Fiuba.Unidad;
 import Fiuba.Excepciones.*;
 
+import java.util.ArrayList;
+
 public class Catapulta extends Unidad {
 
     public Catapulta(){
@@ -9,14 +11,19 @@ public class Catapulta extends Unidad {
         this.danioADistancia = 20;
         this.danioCuerpoACuerpo = 0;
         this.simbolo = "CT";
+        this.unidadesContiguas = new ArrayList<>();
     }
 
     @Override
     public void atacar(int distancia, Unidad unidadObjetivo) {
+        ArrayList<Unidad> unidades = unidadObjetivo.getUnidadesContiguas();
 
         this.dentroRango(distancia);
-        unidadObjetivo.perderVida(danioADistancia);
-     }
+        unidades.add(unidadObjetivo);
+        for(Unidad unidadAtacada: unidades) {
+            unidadAtacada.perderVida(danioADistancia);
+        }
+    }
 
     @Override
     public void perderVida(int danio) {

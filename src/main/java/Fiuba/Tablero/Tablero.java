@@ -1,11 +1,14 @@
 package Fiuba.Tablero;
 
+import Fiuba.AlgoChess.Alianza;
 import Fiuba.Excepciones.CasilleroEstaOcupadoException;
 import Fiuba.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import Fiuba.Excepciones.UnidadNoMovibleException;
 import Fiuba.Unidad.NullUnidad;
 import Fiuba.Unidad.Unidad;
 import Fiuba.Excepciones.noHayUnidadEnCasilleroException;
+
+import java.util.ArrayList;
 
 import static Fiuba.AlgoChess.Alianza.AZUL;
 import static Fiuba.AlgoChess.Alianza.ROJO;
@@ -48,6 +51,26 @@ public class Tablero {
             }
         }
     }
+
+    /*
+    public void imprimirTablero(){
+
+        int i,j;
+
+        System.out.print(" *****************Tablero del juego******************** \n") ;
+        System.out.print("\t0\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\t14\t15\t16\t17\t18\t19\t\n") ;
+
+        for ( i = 0; i < 20 ; i++) {
+            System.out.print(i +"\t| ") ;
+            for (j = 0; j < 20 ; j++) {
+                System.out.print(tablero[i][j].getSimbolo() + " | ") ;
+            }
+            System.out.print("\n") ;
+        }
+    }
+
+
+     */
 
     public int getTamanio(){
 
@@ -97,6 +120,13 @@ public class Tablero {
         return unidadAMover;
     }
 
+    public void pasoAlNorte(int fila, int columna) {
+
+        Unidad unidadAMover;
+        unidadAMover = this.punteroAUnidad(fila,columna);
+        this.colocarUnidad(unidadAMover,fila-1,columna);
+    }
+
     public void moverUnidad(int fila, int columna, int[] offset) {
         Unidad unidadAMover;
         int offsetEnFila, offsetEnColumna;
@@ -125,8 +155,25 @@ public class Tablero {
         }
         int distancia = max(abs(filaAliado - filaEnemigo), abs(columnaAliado - columnaEnemigo));
 
+        if(unidadAliada.getSimbolo()=="CT"){
+
+        }
         unidadAliada.atacar(distancia, unidadEnemiga);
     }
+
+    public void unidadAliadaAtacaAUnidadEnemiga(int filaAliado, int columnaAliado, int filaEnemigo, int columnaEnemigo){
+
+        Unidad unidadAliada = tablero[filaAliado][columnaAliado];
+        Unidad unidadEnemiga = tablero[filaEnemigo][columnaEnemigo];
+
+        if(unidadAliada.getSimbolo() == "CT"){
+            obtenerUnidadesEncontradasAlrrededorDePosicion(filaEnemigo, columnaEnemigo);
+        }
+        int distancia = max(abs(filaAliado - filaEnemigo), abs(columnaAliado - columnaEnemigo));
+        unidadAliada.atacar(distancia, unidadEnemiga);
+    }
+
+
 
     public int getPuntosDeVidaUnidadEnPosicion(int fila, int columna) {
 
@@ -146,6 +193,22 @@ public class Tablero {
         return cantidadDeUnidades;
     }
 
+    public void obtenerUnidadesEncontradasAlrrededorDePosicion(int filaAtaque, int columnaAtaque){
+        Unidad unidadActual = tablero[filaAtaque][columnaAtaque];
+
+        for (int i = -1; i < 2 ; i++) {
+            for (int j = -1; j < 2 ; j++) {
+                if(!(j==0 && i ==0) && !(estaVacio(filaAtaque+i, columnaAtaque+j))){
+                    unidadActual.agregarUnidadesContiguas(tablero[filaAtaque+i][columnaAtaque+j]);
+                }
+            }
+        }
+    }
+
+    public Unidad getUnidad(int fila, int columna){
+        return tablero[fila][columna];
+    }
+
     /*
 
     public ArrayList<Unidad> obtenerUnidadesContiguas(int fila, int columna){
@@ -162,26 +225,4 @@ public class Tablero {
         return unidadesContiguas;
     }
     */
-
-    /*
-    public void imprimirTablero(){
-
-        int i,j;
-
-        System.out.print(" *****************Tablero del juego******************** \n") ;
-        System.out.print("\t0\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\t14\t15\t16\t17\t18\t19\t\n") ;
-
-        for ( i = 0; i < 20 ; i++) {
-            System.out.print(i +"\t| ") ;
-            for (j = 0; j < 20 ; j++) {
-                System.out.print(tablero[i][j].getSimbolo() + " | ") ;
-            }
-            System.out.print("\n") ;
-        }
-    }
-
-
-     */
-
-
 }

@@ -3,6 +3,8 @@ package Fiuba.Unidad;
 import Fiuba.Excepciones.UnidadEstaMuertaException;
 import Fiuba.AlgoChess.Alianza;
 
+import java.util.ArrayList;
+
 public abstract class Unidad {
 
     protected int vida;
@@ -15,6 +17,11 @@ public abstract class Unidad {
     protected int tFila;
     protected int tColumna;
 
+    protected ArrayList<Unidad> unidadesContiguas;
+
+    public Unidad(){
+        unidadesContiguas = new ArrayList<>();
+    }
 
     public int getPuntosDeVida(){
         return vida;
@@ -66,5 +73,13 @@ public abstract class Unidad {
 
     public String getSimbolo(){
         return simbolo;
+    }
+
+    public void agregarUnidadesContiguas(Unidad unidadContigua){
+        unidadesContiguas.add(unidadContigua);
+    }
+
+    public ArrayList<Unidad> getUnidadesContiguas(){
+        return unidadesContiguas;
     }
 }
