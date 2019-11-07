@@ -5,15 +5,14 @@ import Fiuba.Tablero.Tablero;
 public class Juego {
 
     private Tablero tablero;
-    private JugadorAzul jugadorAzul;
-    private JugadorRojo jugadorRojo;
-    private int turno;
+    private Jugador jugadorAzul;
+    private Jugador jugadorRojo;
 
     public Juego(String nombreJugadorAzul, String nombreJugadorRojo){
 
         tablero = new Tablero();
-        jugadorAzul = new JugadorAzul(nombreJugadorAzul);
-        jugadorRojo = new JugadorRojo(nombreJugadorRojo);
+        jugadorAzul = new Jugador(nombreJugadorAzul);
+        jugadorRojo = new Jugador(nombreJugadorRojo);
     }
 
 

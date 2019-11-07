@@ -1,60 +1,61 @@
 package Fiuba.Unidad;
 
-import Fiuba.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
-import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
+import Fiuba.Excepciones.*;
+import Fiuba.AlgoChess.*;
+import Fiuba.Tablero.*;
 
-import java.util.List;
 
-import static java.lang.Math.abs;
-import static java.lang.Math.max;
-
-public class Soldado extends Unidad {
+public class Soldado extends Unidad{
 
     public Soldado(){
-
         vida = 100;
         costo = 1;
-        danioCuerpoACuerpo = 10;
-        danioADistancia = 0;
-        simbolo = "S";
+        costoCuerpoACuerpo = 10;
+        costoADistancia = 0;
+        estadoAlianzas = new EstadoAliado();
+    }
+    
+    @Override
+    public Unidad copiar() {
+    	return new Soldado();
     }
 
     @Override
-    public void atacar(int distancia, Unidad unidadObjetivo) {
+    public void perderVida(int costoAtaque){
+        vida -= costoAtaque;
+    }   
 
-        if(unidadObjetivo.getAlianza() == alianza) {
-            throw new NoSePuedeAtacarAUnaUnidadAliadaException();
-        }
-
-        this.dentroRango(distancia);
-        unidadObjetivo.perderVida(danioCuerpoACuerpo);
-
-    }
-
-    /*
     @Override
-    public void atacar(Unidad unidadObjetivo) {
-
-        if(unidadObjetivo.getAlianza() != alianza) {
-            throw new Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException();
-        }
-        int distancia = max(abs(tFila - unidadObjetivo.getFila()), abs(tColumna - unidadObjetivo.getColumna()));
-        this.dentroRango(distancia);
-        unidadObjetivo.perderVida(danioCuerpoACuerpo);
-
+    public void cambiarEstadoAlianzas(){
+        estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
     }
-*/
 
+    @Override
+    public void moveteA(Casillero zonaInicial, Casillero zonaFinal){
+        estadoAlianzas.puedeActuar();
+        zonaFinal.recibirUnidad(this, zonaFinal);
+    }
+
+    @Override
+    public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
+        estadoAlianzas.puedeActuar();
+        this.dentroRango(distancia);
+        Unidad defensa = unidadDefensa.getUnidad();
+        int costo = unidadDefensa.calcularCostoAtaque(costoCuerpoACuerpo);
+        int costo_total = defensa.calcularCostoUnidad(costo);
+        defensa.perderVida(costo_total);
+    }
+
+    @Override
     protected void dentroRango(int distancia) {
-
         if(distancia > 2){
             throw new ObjetivoFueraDeRangoException();
         }
     }
-
+    
     @Override
-    public Unidad copiar() {
-        return new Soldado();
+    public Arma seleccionarArmasJinete(Arma armaAnterior) {
+    	return estadoAlianzas.seleccionarArmaSoldado(armaAnterior);
     }
 
 }

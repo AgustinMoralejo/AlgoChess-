@@ -1,26 +1,17 @@
 package Fiuba.Unidad;
-
-import Fiuba.Excepciones.UnidadEstaMuertaException;
-import Fiuba.AlgoChess.Alianza;
-
-import java.util.ArrayList;
+import Fiuba.Tablero.*;
+import Fiuba.AlgoChess.*;
 
 public abstract class Unidad {
 
     protected int vida;
     protected int costo;
-    protected int danioCuerpoACuerpo;
-    protected int danioADistancia;
-    protected String simbolo;
+    protected int costoCuerpoACuerpo;
+    protected int costoADistancia;
+    protected EstadoAlianzas estadoAlianzas;
 
-    protected Alianza alianza;
-    protected int tFila;
-    protected int tColumna;
-
-    protected ArrayList<Unidad> unidadesContiguas;
-
-    public Unidad(){
-        unidadesContiguas = new ArrayList<>();
+    public void cambiarEstadoAlianzas(){
+        estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
     }
 
     public int getPuntosDeVida(){
@@ -31,55 +22,18 @@ public abstract class Unidad {
         return costo;
     }
 
-    public void perderVida(int danio){
-
-        if (vida < 0){
-            throw (new UnidadEstaMuertaException());
-        }
-        else{
-            vida -= danio;
-        }
+    public int calcularCostoUnidad(int costo){
+        return estadoAlianzas.calcularCostoUnidad(costo);
     }
 
-    public abstract void atacar(int distancia, Unidad unidadObjetivo);
-
-    public Alianza getAlianza() {
-        return alianza;
+    public int calcularCostoCuracion(int costo){
+        return estadoAlianzas.calcularCostoCuracion(costo);
     }
-
+    
+    public abstract Arma seleccionarArmasJinete(Arma armaAnterior);
+    public abstract void perderVida(int costoAtaque);
+    public abstract void atacar(CondicionesAtaqueMovimiento condiciones, int distancia, Casillero unidadDefensa);
+    public abstract void moveteA(Casillero zonaInicial, Casillero zonaFinal);
+    protected abstract void dentroRango(int distancia);
     public abstract Unidad copiar();
-
-    public void setPosicion(int fila, int columna){
-        tFila = fila;
-        tColumna = columna;
-    }
-
-    public int getFila() {
-        return tFila;
-    }
-
-    public int getColumna() {
-        return tColumna;
-    }
-
-    public void setAlianza(Alianza alianza) {
-
-        this.alianza = alianza;
-    }
-
-    public boolean esMovible(){
-        return true;
-    }
-
-    public String getSimbolo(){
-        return simbolo;
-    }
-
-    public void agregarUnidadesContiguas(Unidad unidadContigua){
-        unidadesContiguas.add(unidadContigua);
-    }
-
-    public ArrayList<Unidad> getUnidadesContiguas(){
-        return unidadesContiguas;
-    }
 }

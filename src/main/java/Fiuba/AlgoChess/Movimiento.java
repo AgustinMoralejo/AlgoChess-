@@ -6,13 +6,13 @@ public class Movimiento {
     termine siendo solo del Jugador o la Unidad*/
 
     public static final int[][] OFFSET_COORDENADAS_MOVIMIENTO = {
-            {-1,0}, /*Norte '0'*/
-            {-1,1},/*Noreste '1' */
-            {0,1},/*Este '2' */
-            {1,1},/*Sureste '3' */
-            {1,0},/*Sur '4' */
-            {1,-1},/*Suroeste '5' */
-            {0,-1},/*Oeste '6' */
-            {-1,-1}/*Noroeste '7' */
+            {-1,0}, /*Norte*/
+            {-1,1},/*Noreste*/
+            {0,1},/*Este*/
+            {1,1},/*Sureste*/
+            {1,0},/*Sur*/
+            {1,-1},/*Suroeste*/
+            {0,-1},/*Oeste*/
+            {-1,-1}/*Noroeste*/
     };
 }

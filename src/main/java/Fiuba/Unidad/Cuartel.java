@@ -11,9 +11,9 @@ public class Cuartel {
 
     public Cuartel(){
 
-        unidades = new HashMap<String,Unidad>();
-        unidades.put("soldado",new Soldado());
-        unidades.put("jinete",new Jinete());
+        unidades = new HashMap<String, Unidad>();
+        unidades.put("soldado", new Soldado());
+        unidades.put("jinete", new Jinete());
         unidades.put("curandero", new Curandero());
         unidades.put("catapulta", new Catapulta());
 
@@ -22,9 +22,8 @@ public class Cuartel {
     public Unidad getUnidad(String nombreUnidad, Jugador unJugador) {
 
         Unidad unidad = unidades.get(nombreUnidad);
-        unJugador.pagar(unidad.getCosto());
-
-        return unidad.copiar();
+        Unidad copia = unidad.copiar();
+        return copia;
     }
 
 }

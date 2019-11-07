@@ -1,4 +1,4 @@
 package Fiuba.Excepciones;
 
-public class noHayUnidadEnCasilleroException extends RuntimeException {
+public class NoHayUnidadEnCasilleroException extends RuntimeException {
 }

@@ -1,14 +1,15 @@
 package Fiuba.AlgoChess;
 
 import Fiuba.Excepciones.PuntosInsuficientesException;
-import Fiuba.Tablero.Tablero;
+
+import Fiuba.Tablero.*;
 import Fiuba.Unidad.Cuartel;
-import Fiuba.Unidad.Unidad;
+import Fiuba.Unidad.*;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public abstract class Jugador {
+public class Jugador {
 
     protected String nombre;
     protected int puntos;
@@ -45,10 +46,6 @@ public abstract class Jugador {
         return puntos;
     }
 
-    /*Uso overload la primera solo compra y la segunda compra y coloca en tablero
-    * pq no se me ocurre como comprar primero y luego en otra funcion colocar sin tener que buscar
-    * la unidad en la lista y ver si ya fue colocada o no asi que mejor hacerlo de una */
-
     public void comprarUnidad(String nombreUnidad){
 
         Unidad unidadComprada;
@@ -57,15 +54,25 @@ public abstract class Jugador {
 
     }
 
-    public abstract void comprarUnidad(String nombreUnidad, int fila, int columna);
-
-    public void unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo) {
-
-        tablero.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(filaAliada, columnaAliado, filaEnemigo, columnaEnemigo);
+    public void comprarUnidad(String nombreUnidad, int fila, int columna){
+        Unidad unidadComprada = cuartel.getUnidad(nombreUnidad, this);
+        tablero.colocarUnidad(unidadComprada, fila, columna);
+        unidades.add(unidadComprada);
     }
 
-    public boolean perdio(){
-        return ((unidades.isEmpty())&(puntos<=0));
+    public void atacar(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo){
+        Casillero zonaAliada = tablero.getCasillero(filaAliada, columnaAliado);
+        Casillero zonaEnemiga = tablero.getCasillero(filaEnemigo, columnaEnemigo);
+        int distancia = zonaAliada.calcularDistancia(zonaEnemiga);
+        Unidad unidadAliada = zonaAliada.getUnidad();
+        Casillero [][] tabla = tablero.getTablero();
+        CondicionesAtaqueMovimiento condiciones = new CondicionesAtaqueMovimiento(filaAliada, columnaAliado, tabla);
+        unidadAliada.atacar(condiciones, distancia, zonaEnemiga);
+    }
+
+    public void moverUnidad(int fila, int columna, int orientacion){
+        int[] offset = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[orientacion];
+        tablero.moverUnidad(fila, columna, offset);
     }
 
     public void pagar(int costo){

@@ -1,50 +1,19 @@
 package Fiuba.Unidad;
+
 import Fiuba.Excepciones.*;
+import Fiuba.AlgoChess.*;
+import Fiuba.Tablero.*;
 
-import java.util.ArrayList;
-
-public class Catapulta extends Unidad {
+public class Catapulta extends Unidad{
 
     public Catapulta(){
-        this.vida = 50;
-        this.costo = 5;
-        this.danioADistancia = 20;
-        this.danioCuerpoACuerpo = 0;
-        this.simbolo = "CT";
-        this.unidadesContiguas = new ArrayList<>();
+        vida = 50;
+        costo = 5;
+        costoADistancia = 20;
+        costoCuerpoACuerpo = 0;
+        estadoAlianzas = new EstadoAliado();
     }
-
-    @Override
-    public void atacar(int distancia, Unidad unidadObjetivo) {
-        ArrayList<Unidad> unidades = unidadObjetivo.getUnidadesContiguas();
-
-        this.dentroRango(distancia);
-        unidades.add(unidadObjetivo);
-        for(Unidad unidadAtacada: unidades) {
-            unidadAtacada.perderVida(danioADistancia);
-        }
-    }
-
-    @Override
-    public void perderVida(int danio) {
-        if (danio < 0) {
-            throw (new NoSePuedenCurarUnidadesNoOrganicasException());
-        }
-        else if (vida < 0){
-            throw (new UnidadEstaMuertaException());
-        }
-        else{
-            vida -= danio;
-        }
-    }
-
-    protected void dentroRango(int distancia) {
-
-        if ( distancia < 6){
-            throw new ObjetivoFueraDeRangoException();
-        }
-    }
-
+    
     @Override
     public Unidad copiar() {
 
@@ -52,8 +21,47 @@ public class Catapulta extends Unidad {
     }
 
     @Override
-    public boolean esMovible(){
-        return false;
+    public int getCosto() {
+        return costo;
+    }
+
+    @Override
+    public void moveteA(Casillero zonaInicial, Casillero zonaFinal){
+        throw new UnidadNoMovibleException();   
+    }
+
+    @Override
+    public void cambiarEstadoAlianzas(){
+        estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
+    }
+
+    @Override
+    public void perderVida(int costo) {
+        if (costo < 0) {
+            throw (new NoSePuedenCurarUnidadesNoOrganicasException());
+        }
+        vida -= costo;
+    }
+
+    @Override
+    public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
+        this.dentroRango(distancia);
+        Unidad defensa = unidadDefensa.getUnidad();
+        int costo = unidadDefensa.calcularCostoAtaque(costoADistancia);
+        int costo_total = defensa.calcularCostoUnidad(costo);
+        defensa.perderVida(costo_total);
+    }
+
+    @Override
+    protected void dentroRango(int distancia) {
+        if ( distancia < 6){
+            throw new ObjetivoFueraDeRangoException();
+        }
+    }
+    
+    @Override 
+    public Arma seleccionarArmasJinete(Arma armaAnterior) {
+    	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);
     }
 
 }
