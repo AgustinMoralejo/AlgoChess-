@@ -2,6 +2,9 @@ package Fiuba.Unidad;
 
 import Fiuba.Excepciones.UnidadEstaMuertaException;
 import Fiuba.AlgoChess.Alianza;
+
+import java.util.ArrayList;
+
 public abstract class Unidad {
 
     protected int vida;

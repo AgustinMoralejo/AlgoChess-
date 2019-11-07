@@ -1,6 +1,8 @@
 package Fiuba.Unidad;
 import Fiuba.Excepciones.*;
 
+import java.util.ArrayList;
+
 public class Catapulta extends Unidad {
 
     public Catapulta(){
@@ -22,8 +24,6 @@ public class Catapulta extends Unidad {
         this.dentroRango(distancia);
         unidadObjetivo.perderVida(danioADistancia);
      }
-
-
 
     @Override
     public void perderVida(int danio) {

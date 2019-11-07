@@ -8,6 +8,8 @@ import Fiuba.Unidad.NullUnidad;
 import Fiuba.Unidad.Unidad;
 import Fiuba.Excepciones.noHayUnidadEnCasilleroException;
 
+import java.util.ArrayList;
+
 import static Fiuba.AlgoChess.Alianza.AZUL;
 import static Fiuba.AlgoChess.Alianza.ROJO;
 import static java.lang.Math.abs;
@@ -153,6 +155,9 @@ public class Tablero {
         }
         int distancia = max(abs(filaAliado - filaEnemigo), abs(columnaAliado - columnaEnemigo));
 
+        if(unidadAliada.getSimbolo()=="CT"){
+
+        }
         unidadAliada.atacar(distancia, unidadEnemiga);
     }
 
@@ -174,5 +179,20 @@ public class Tablero {
         return cantidadDeUnidades;
     }
 
+    /*
 
+    public ArrayList<Unidad> obtenerUnidadesContiguas(int fila, int columna){
+
+        ArrayList<Unidad> unidadesContiguas = ArrayList<Unidad> new();
+        int i,j;
+        for( i = fila-1, i< fila+1, i++){
+            for( j = columna-1, j<columna+1,j++){
+                if(!(i==fila && j==columna)&&(tablero[i][j].getSimbolo()!="-")){
+                    unidadesContiguas.add(tablero[i][j]);
+                }
+            }
+        }
+        return unidadesContiguas;
+    }
+    */
 }
