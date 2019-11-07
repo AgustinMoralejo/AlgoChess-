@@ -1,8 +1,6 @@
 package Fiuba.Unidad;
 import Fiuba.Excepciones.*;
 
-import java.util.ArrayList;
-
 public class Catapulta extends Unidad {
 
     public Catapulta(){

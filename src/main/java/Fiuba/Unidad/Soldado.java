@@ -3,6 +3,8 @@ package Fiuba.Unidad;
 import Fiuba.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
 import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
 
+import java.util.List;
+
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 

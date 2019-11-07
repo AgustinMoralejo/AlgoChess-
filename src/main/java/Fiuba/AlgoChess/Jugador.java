@@ -59,7 +59,10 @@ public abstract class Jugador {
 
     public abstract void comprarUnidad(String nombreUnidad, int fila, int columna);
 
-    public abstract void unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo);
+    public void unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo) {
+
+        tablero.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(filaAliada, columnaAliado, filaEnemigo, columnaEnemigo);
+    }
 
     public boolean perdio(){
         return ((unidades.isEmpty())&(puntos<=0));

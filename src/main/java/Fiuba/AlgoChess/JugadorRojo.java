@@ -27,12 +27,4 @@ public class JugadorRojo extends Jugador {
 
     }
 
-    @Override
-    public void unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo) {
-
-        tablero.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(filaAliada, columnaAliado, filaEnemigo, columnaEnemigo);
-
-    }
-
-
 }

@@ -30,11 +30,7 @@ public class JugadorAzul extends Jugador {
         unidades.add(unidadComprada);
     }
 
-    @Override
-    public void unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo) {
 
-        tablero.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(filaAliada, columnaAliado, filaEnemigo, columnaEnemigo);
-    }
 
     /*Con esto verifico si el casillero seleccionado tiene una unidad y si esta pertenece al jugador*/
     public void seleccionarUnidad(int fila, int columna) {

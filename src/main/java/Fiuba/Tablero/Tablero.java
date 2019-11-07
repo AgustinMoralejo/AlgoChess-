@@ -120,13 +120,6 @@ public class Tablero {
         return unidadAMover;
     }
 
-    public void pasoAlNorte(int fila, int columna) {
-
-        Unidad unidadAMover;
-        unidadAMover = this.punteroAUnidad(fila,columna);
-        this.colocarUnidad(unidadAMover,fila-1,columna);
-    }
-
     public void moverUnidad(int fila, int columna, int[] offset) {
         Unidad unidadAMover;
         int offsetEnFila, offsetEnColumna;
@@ -155,9 +148,6 @@ public class Tablero {
         }
         int distancia = max(abs(filaAliado - filaEnemigo), abs(columnaAliado - columnaEnemigo));
 
-        if(unidadAliada.getSimbolo()=="CT"){
-
-        }
         unidadAliada.atacar(distancia, unidadEnemiga);
     }
 
