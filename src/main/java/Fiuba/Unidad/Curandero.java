@@ -13,16 +13,6 @@ public class Curandero extends Unidad {
     }
 
     @Override
-    public int getPuntosDeVida() {
-        return vida;
-    }
-
-    @Override
-    public int getCosto() {
-        return costo;
-    }
-
-    @Override
     public void atacar(int distancia, Unidad unidadObjetivo) {
 
         if(unidadObjetivo.getAlianza() == alianza ){

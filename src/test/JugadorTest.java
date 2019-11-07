@@ -69,5 +69,14 @@ class JugadorTest {
     }
 
 
+    @Test
+    public void testJugadorPierde(){
+
+        Jugador jugadorAzul = new JugadorAzul("agustin");
+        jugadorAzul.pagar(20);
+
+        Assertions.assertTrue(jugadorAzul.perdio());
+
+    }
 
 }

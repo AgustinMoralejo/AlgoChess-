@@ -13,7 +13,6 @@ public class Casillero {
     }
 
     public void colocarUnidad(Unidad unaUnidad){
-
         unidad = unaUnidad;
     }
 

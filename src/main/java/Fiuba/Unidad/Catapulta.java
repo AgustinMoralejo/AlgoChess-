@@ -14,11 +14,6 @@ public class Catapulta extends Unidad {
     }
 
     @Override
-    public int getCosto() {
-        return costo;
-    }
-
-    @Override
     public void atacar(int distancia, Unidad unidadObjetivo) {
 
         this.dentroRango(distancia);
@@ -49,11 +44,6 @@ public class Catapulta extends Unidad {
     public Unidad copiar() {
 
         return new Catapulta();
-    }
-
-    @Override
-    public int getPuntosDeVida() {
-        return vida;
     }
 
     @Override

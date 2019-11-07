@@ -15,15 +15,6 @@ public class Jinete extends Unidad {
         danioADistancia = 15;
         simbolo = "J";
     }
-    @Override
-    public int getPuntosDeVida() {
-        return vida;
-    }
-
-    @Override
-    public int getCosto() {
-        return costo;
-    }
 
     @Override
     public void atacar(int distancia, Unidad unidadObjetivo) {

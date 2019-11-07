@@ -61,21 +61,8 @@ public abstract class Jugador {
 
     public abstract void unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo);
 
-    /*
-    Paso las dos unidades por parametro dado que como saben su posicion pueden calcular la distancia entre ellas
-
-    public  void unidadAliadaAtacarUnidadEnemiga(Unidad unidadAliada, Unidad unidadEnemiga){
-
-        if (unidades.contains(unidadAliada) & !unidades.contains(unidadEnemiga)){
-
-            unidadAliada.atacar(unidadEnemiga);
-        }
-
-    }
-    */
-
     public boolean perdio(){
-        return ((unidades==null)&(puntos==0));
+        return ((unidades.isEmpty())&(puntos<=0));
     }
 
     public void pagar(int costo){
