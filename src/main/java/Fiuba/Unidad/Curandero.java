@@ -33,11 +33,6 @@ public class Curandero extends Unidad {
 
 
     @Override
-    public void perderVida(int danio) {
-        vida -= danio;
-    }
-
-    @Override
     protected void dentroRango(int distancia) {
 
         if(distancia > 2){

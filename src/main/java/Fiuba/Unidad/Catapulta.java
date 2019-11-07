@@ -30,7 +30,12 @@ public class Catapulta extends Unidad {
         if (danio < 0) {
             throw (new NoSePuedenCurarUnidadesNoOrganicasException());
         }
-        vida -= danio;
+        else if (vida < 0){
+            throw (new UnidadEstaMuertaException());
+        }
+        else{
+            vida -= danio;
+        }
     }
 
     @Override

@@ -74,6 +74,10 @@ public abstract class Jugador {
     }
     */
 
+    public boolean perdio(){
+        return ((unidades==null)&(puntos==0));
+    }
+
     public void pagar(int costo){
 
         if( costo > puntos){

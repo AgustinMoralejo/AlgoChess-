@@ -28,7 +28,9 @@ public abstract class Unidad {
         if (vida < 0){
             throw (new UnidadEstaMuertaException());
         }
-        vida -= danio;
+        else{
+            vida -= danio;
+        }
     }
 
     public abstract void atacar(int distancia, Unidad unidadObjetivo);
