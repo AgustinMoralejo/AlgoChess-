@@ -33,18 +33,26 @@ public class Jinete extends Unidad {
             unidadObjetivo.perderVida(danioCuerpoACuerpo);
 
         }
-        */
+
         this.dentroRango(distancia);
         unidadObjetivo.perderVida(danioADistancia);
+
+         */
+        unidadObjetivo.perderVida(this.obtenerDanioEnRango(distancia));
+
 
     }
 
 
-    @Override
-    protected void dentroRango(int distancia) {
-
+    protected int obtenerDanioEnRango(int distancia){
         if (distancia > 5) {
             throw new ObjetivoFueraDeRangoException();
+        }
+        else if(distancia < 3){
+            return danioCuerpoACuerpo;
+        }
+        else{
+            return danioADistancia;
         }
     }
 

@@ -38,7 +38,7 @@ class JineteTest {
         jinete.setAlianza(AZUL);
         soldado1.setAlianza(ROJO);
         jinete.atacar(1, soldado1);
-        Assertions.assertEquals(85, soldado1.getPuntosDeVida());
+        Assertions.assertEquals(95, soldado1.getPuntosDeVida());
     }
 
     @Test
@@ -48,7 +48,7 @@ class JineteTest {
         Catapulta catapulta = new Catapulta();
         jinete.setAlianza(AZUL);
         catapulta.setAlianza(ROJO);
-        jinete.atacar(1, catapulta);
+        jinete.atacar(4, catapulta);
         Assertions.assertEquals(35, catapulta.getPuntosDeVida());
     }
 
@@ -60,7 +60,7 @@ class JineteTest {
         jinete1.setAlianza(AZUL);
         jinete.setAlianza(ROJO);
         jinete1.atacar(1, jinete);
-        Assertions.assertEquals(85, jinete.getPuntosDeVida());
+        Assertions.assertEquals(95, jinete.getPuntosDeVida());
     }
 
 
@@ -72,7 +72,7 @@ class JineteTest {
         jinete.setAlianza(AZUL);
         curandero.setAlianza(ROJO);
         jinete.atacar(1, curandero);
-        Assertions.assertEquals(60, curandero.getPuntosDeVida());
+        Assertions.assertEquals(70, curandero.getPuntosDeVida());
     }
 
 }

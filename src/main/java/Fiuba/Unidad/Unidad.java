@@ -35,38 +35,15 @@ public abstract class Unidad {
 
     public abstract void atacar(int distancia, Unidad unidadObjetivo);
 
-    //public abstract void atacar(Unidad unidadObjetivo);
-
     public Alianza getAlianza() {
         return alianza;
     }
-
-    protected abstract void dentroRango(int distancia);
 
     public abstract Unidad copiar();
 
     public void setPosicion(int fila, int columna){
         tFila = fila;
         tColumna = columna;
-    }
-
-    public void pasoAlNorte() {
-
-        tFila -=1;
-    }
-
-    public void pasoAlEste() {
-
-        tColumna+=1;
-    }
-
-    public void pasoAlSur() {
-        tFila += 1;
-    }
-
-    public void pasoAlOeste() {
-
-        tColumna-=1;
     }
 
     public int getFila() {

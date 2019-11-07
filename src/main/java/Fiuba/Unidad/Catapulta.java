@@ -38,7 +38,6 @@ public class Catapulta extends Unidad {
         }
     }
 
-    @Override
     protected void dentroRango(int distancia) {
 
         if ( distancia < 6){
@@ -60,25 +59,6 @@ public class Catapulta extends Unidad {
     @Override
     public boolean esMovible(){
         return false;
-    }
-
-    @Override
-    public void pasoAlNorte(){
-        throw new UnidadNoMovibleException();
-    }
-
-    @Override
-    public void pasoAlEste(){
-        throw new UnidadNoMovibleException();
-    }
-
-    @Override
-    public void pasoAlSur(){ throw new UnidadNoMovibleException();
-    }
-
-    @Override
-    public void pasoAlOeste(){
-        throw new UnidadNoMovibleException();
     }
 
 }

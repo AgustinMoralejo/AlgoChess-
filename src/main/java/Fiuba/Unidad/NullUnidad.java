@@ -14,11 +14,6 @@ public class NullUnidad extends Unidad {
     }
 
     @Override
-    protected void dentroRango(int distancia) {
-
-    }
-
-    @Override
     public Unidad copiar() {
         return new NullUnidad();
     }

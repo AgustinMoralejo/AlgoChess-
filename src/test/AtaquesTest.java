@@ -79,7 +79,7 @@ class AtaquesTest {
         jugadorRojo.comprarUnidad("jinete",11,10);
         jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
 
-        Assertions.assertEquals(85, tablero.getPuntosDeVidaUnidadEnPosicion(11,10));
+        Assertions.assertEquals(95, tablero.getPuntosDeVidaUnidadEnPosicion(11,10));
     }
 
 

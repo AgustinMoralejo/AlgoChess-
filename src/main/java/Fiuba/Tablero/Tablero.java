@@ -50,6 +50,7 @@ public class Tablero {
         }
     }
 
+    /*
     public void imprimirTablero(){
 
         int i,j;
@@ -65,6 +66,9 @@ public class Tablero {
             System.out.print("\n") ;
         }
     }
+
+
+     */
 
     public int getTamanio(){
 
@@ -121,32 +125,6 @@ public class Tablero {
         this.colocarUnidad(unidadAMover,fila-1,columna);
     }
 
-
-    public void pasoAlEste(int fila, int columna) {
-
-        Unidad unidadAMover;
-        unidadAMover = this.punteroAUnidad(fila,columna);
-        this.colocarUnidad(unidadAMover,fila,columna+1);
-    }
-
-    public void pasoAlSur(int fila, int columna) {
-
-        Unidad unidadAMover;
-        unidadAMover = this.punteroAUnidad(fila,columna);
-        this.colocarUnidad(unidadAMover,fila+1,columna);
-    }
-
-    public void pasoAlOeste(int fila, int columna) {
-
-        Unidad unidadAMover;
-        unidadAMover = this.punteroAUnidad(fila,columna);
-        this.colocarUnidad(unidadAMover,fila,columna-1);
-    }
-
-
-    /*El siguiente metodo reemplaza a todos los de arriba*/
-    /*OJO esto hace que las catapultas se muevan*/
-
     public void moverUnidad(int fila, int columna, int[] offset) {
         Unidad unidadAMover;
         int offsetEnFila, offsetEnColumna;
@@ -195,4 +173,6 @@ public class Tablero {
         }
         return cantidadDeUnidades;
     }
+
+
 }

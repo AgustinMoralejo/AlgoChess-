@@ -32,7 +32,6 @@ public class Curandero extends Unidad {
     }
 
 
-    @Override
     protected void dentroRango(int distancia) {
 
         if(distancia > 2){
