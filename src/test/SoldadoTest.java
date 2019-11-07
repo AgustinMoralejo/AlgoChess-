@@ -1,3 +1,4 @@
+import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -73,6 +74,15 @@ class SoldadoTest {
     }
 
 
+    @Test
+    public void testSoldadoAtacaSoldadoFueraDeRango() {
+
+        Soldado soldado = new Soldado();
+        Soldado soldado1 = new Soldado();
+        soldado.setAlianza(AZUL);
+        soldado1.setAlianza(ROJO);
+        Assertions.assertThrows(ObjetivoFueraDeRangoException.class, () -> soldado.atacar(3,soldado1));
+    }
 
 
 }

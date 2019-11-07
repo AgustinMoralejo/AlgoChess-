@@ -5,6 +5,9 @@ import Fiuba.Unidad.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
+import static Fiuba.AlgoChess.Alianza.AZUL;
+import static Fiuba.AlgoChess.Alianza.ROJO;
+
 
 public
 class TableroTest {
@@ -157,6 +160,33 @@ class TableroTest {
         Assertions.assertTrue(tablero.cantidadDeUnidadesAlrrededor(4,2, "CT") == 3);
     }
 
+    @Test
+    public void testCorrectaInicializacionTableroAzul(){
+
+        Tablero tablero = new Tablero();
+        Unidad unidadAzul = new Soldado();
+        unidadAzul.setAlianza(AZUL);
+        int i,j;
+        for ( i = 0; i < 20 ; i++) {
+            for (j = 0; j < 10 ; j++) {
+                Assertions.assertTrue(tablero.esTerritorioAliado(i,j,unidadAzul));
+            }
+        }
+    }
+
+    @Test
+    public void testCorrectaInicializacionTableroRojo(){
+
+        Tablero tablero = new Tablero();
+        Unidad unidadRoja = new Soldado();
+        unidadRoja.setAlianza(ROJO);
+        int i,j;
+        for ( i = 0; i < 20 ; i++) {
+            for (j = 10; j < 20 ; j++) {
+                Assertions.assertTrue(tablero.esTerritorioAliado(i,j,unidadRoja));
+            }
+        }
+    }
 
 
 }

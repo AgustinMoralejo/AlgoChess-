@@ -488,4 +488,18 @@ public class MovimientoUnidadesTest {
 
     }
 
+    @Test
+    public void testUnidadNoPuedeMoverseAUnEspacioOcupado(){
+
+        Tablero tablero = new Tablero();
+        JugadorRojo jugadorRojo = new JugadorRojo("agus",tablero);
+
+        jugadorRojo.comprarUnidad("catapulta",15,15);
+        jugadorRojo.comprarUnidad("soldado",15,16);
+
+        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () -> tablero.moverUnidad(15,16,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]));
+
+
+    }
+
 }

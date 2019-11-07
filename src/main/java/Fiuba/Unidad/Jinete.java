@@ -2,8 +2,6 @@ package Fiuba.Unidad;
 
 import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
 
-import static java.lang.Math.abs;
-
 public class Jinete extends Unidad {
 
 
@@ -19,16 +17,6 @@ public class Jinete extends Unidad {
     @Override
     public void atacar(int distancia, Unidad unidadObjetivo) {
 
-        /*
-        if(distancia < 3){
-            unidadObjetivo.perderVida(danioCuerpoACuerpo);
-
-        }
-
-        this.dentroRango(distancia);
-        unidadObjetivo.perderVida(danioADistancia);
-
-         */
         unidadObjetivo.perderVida(this.obtenerDanioEnRango(distancia));
 
 

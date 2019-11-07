@@ -1,14 +1,11 @@
 package Fiuba.Tablero;
 
-import Fiuba.AlgoChess.Alianza;
 import Fiuba.Excepciones.CasilleroEstaOcupadoException;
 import Fiuba.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import Fiuba.Excepciones.UnidadNoMovibleException;
 import Fiuba.Unidad.NullUnidad;
 import Fiuba.Unidad.Unidad;
 import Fiuba.Excepciones.noHayUnidadEnCasilleroException;
-
-import java.util.ArrayList;
 
 import static Fiuba.AlgoChess.Alianza.AZUL;
 import static Fiuba.AlgoChess.Alianza.ROJO;
@@ -51,26 +48,6 @@ public class Tablero {
             }
         }
     }
-
-    /*
-    public void imprimirTablero(){
-
-        int i,j;
-
-        System.out.print(" *****************Tablero del juego******************** \n") ;
-        System.out.print("\t0\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\t14\t15\t16\t17\t18\t19\t\n") ;
-
-        for ( i = 0; i < 20 ; i++) {
-            System.out.print(i +"\t| ") ;
-            for (j = 0; j < 20 ; j++) {
-                System.out.print(tablero[i][j].getSimbolo() + " | ") ;
-            }
-            System.out.print("\n") ;
-        }
-    }
-
-
-     */
 
     public int getTamanio(){
 
@@ -185,4 +162,26 @@ public class Tablero {
         return unidadesContiguas;
     }
     */
+
+    /*
+    public void imprimirTablero(){
+
+        int i,j;
+
+        System.out.print(" *****************Tablero del juego******************** \n") ;
+        System.out.print("\t0\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\t14\t15\t16\t17\t18\t19\t\n") ;
+
+        for ( i = 0; i < 20 ; i++) {
+            System.out.print(i +"\t| ") ;
+            for (j = 0; j < 20 ; j++) {
+                System.out.print(tablero[i][j].getSimbolo() + " | ") ;
+            }
+            System.out.print("\n") ;
+        }
+    }
+
+
+     */
+
+
 }

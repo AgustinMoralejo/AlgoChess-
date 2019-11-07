@@ -125,7 +125,59 @@ class AtaquesTest {
         Assertions.assertEquals(100, soldadoRojo.getPuntosDeVida());
     }
 
+    @Test
+    public void testNoSePuedeAtacarUnidadesAliadas(){
 
+        Tablero tablero = new Tablero();
+        JugadorAzul jugador1 = new JugadorAzul("agus",tablero);
+        JugadorAzul jugador2 = new JugadorAzul("lego",tablero);
+
+        jugador1.comprarUnidad("soldado",11,9);
+        jugador2.comprarUnidad("soldado",11,8);
+
+        Assertions.assertThrows(NoSePuedeAtacarAUnaUnidadAliadaException.class, () ->jugador1.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,8));
+
+    }
+
+    @Test
+    public void testNoSePuedeAtacarNoExisteUnidadEnPosicionParaRealizarElAtaque(){
+
+        Tablero tablero = new Tablero();
+        JugadorAzul jugador1 = new JugadorAzul("agus",tablero);
+        JugadorAzul jugador2 = new JugadorAzul("lego",tablero);
+
+        jugador1.comprarUnidad("soldado",11,9);
+        jugador2.comprarUnidad("soldado",11,8);
+
+        Assertions.assertThrows(noHayUnidadEnCasilleroException.class, () ->jugador1.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,7,11,8));
+
+    }
+
+    @Test
+    public void testSoldadoNoPuedeAtacarAUnidadYaMuerta(){
+
+        Tablero tablero = new Tablero();
+        JugadorAzul jugadorAzul = new JugadorAzul("agus",tablero);
+        JugadorRojo jugadorRojo = new JugadorRojo("lego",tablero);
+
+        jugadorAzul.comprarUnidad("soldado",11,9);
+        jugadorRojo.comprarUnidad("soldado",11,10);
+
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+        jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10);
+
+        Assertions.assertThrows(UnidadEstaMuertaException.class, () ->jugadorAzul.unidadAliadaEnPosicionAtacarUnidadEnemigaEnPosicion(11,9,11,10));
+
+    }
 
 
 }
