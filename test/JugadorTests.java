@@ -4,7 +4,7 @@ import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
 public
-class JugadorTest {
+class JugadorTests {
 
     @Test
     public void testCrearJugadorEquipoAzulConNombreAgustinY20Puntos(){
