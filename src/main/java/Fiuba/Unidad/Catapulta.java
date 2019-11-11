@@ -11,7 +11,7 @@ public class Catapulta extends Unidad{
         costo = 5;
         costoADistancia = 20;
         costoCuerpoACuerpo = 0;
-        estadoAlianzas = new EstadoAliado();
+       // estadoAlianzas = new EstadoAliado();
     }
     
     @Override
@@ -24,16 +24,16 @@ public class Catapulta extends Unidad{
     public int getCosto() {
         return costo;
     }
-
+/*
     @Override
     public void moveteA(Casillero zonaInicial, Casillero zonaFinal){
         throw new UnidadNoMovibleException();   
     }
 
-    @Override
-    public void cambiarEstadoAlianzas(){
-        estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
-    }
+    // @Override
+//    public void cambiarEstadoAlianzas(){
+  //      estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
+    //}
 
     @Override
     public void perderVida(int costo) {
@@ -42,7 +42,7 @@ public class Catapulta extends Unidad{
         }
         vida -= costo;
     }
-
+/*
     @Override
     public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
         this.dentroRango(distancia);
@@ -63,5 +63,5 @@ public class Catapulta extends Unidad{
     public Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);
     }
-
+*/
 }

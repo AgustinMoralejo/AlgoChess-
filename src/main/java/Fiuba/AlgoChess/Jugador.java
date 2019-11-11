@@ -13,6 +13,7 @@ public class Jugador {
 
     protected String nombre;
     protected int puntos;
+    protected String alianza;
 
     /*Asi el jugador puede ver el estado de sus unidades sin tener que buscarlas,
     al colocar una unidad coloca en el casillero el puntero a la unidad presente en esta lista*/
@@ -30,20 +31,25 @@ public class Jugador {
         unidades =  new ArrayList<>();
     }
 
-    public Jugador(String unNombre, Tablero tableroDelJuego) {
+    public Jugador(String unNombre, Tablero tableroDelJuego, String unaAlianza) {
 
-        nombre = unNombre;
-        puntos = 20;
-        unidades =  new ArrayList<>();
-        tablero = tableroDelJuego;
+        this.nombre = unNombre;
+        this.puntos = 20;
+        this.unidades =  new ArrayList<>();
+        this.tablero = tableroDelJuego;
+        this.alianza = unaAlianza;
     }
 
     public String getNombre() {
-        return nombre;
+        return this.nombre;
     }
 
     public int getPuntos() {
-        return puntos;
+        return this.puntos;
+    }
+
+    public String getAlianza(){
+        return this.alianza;
     }
 
     public void comprarUnidad(String nombreUnidad){
@@ -61,6 +67,7 @@ public class Jugador {
     }
 
     public void atacar(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo){
+        /*
         Casillero zonaAliada = tablero.getCasillero(filaAliada, columnaAliado);
         Casillero zonaEnemiga = tablero.getCasillero(filaEnemigo, columnaEnemigo);
         int distancia = zonaAliada.calcularDistancia(zonaEnemiga);
@@ -68,11 +75,8 @@ public class Jugador {
         Casillero [][] tabla = tablero.getTablero();
         CondicionesAtaqueMovimiento condiciones = new CondicionesAtaqueMovimiento(filaAliada, columnaAliado, tabla);
         unidadAliada.atacar(condiciones, distancia, zonaEnemiga);
-    }
 
-    public void moverUnidad(int fila, int columna, int orientacion){
-        int[] offset = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[orientacion];
-        tablero.moverUnidad(fila, columna, offset);
+         */
     }
 
     public void pagar(int costo){

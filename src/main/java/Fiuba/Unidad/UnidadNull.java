@@ -7,9 +7,7 @@ import Fiuba.Tablero.*;
 
 public class UnidadNull extends Unidad{
 
-    public UnidadNull(){
-    	estadoAlianzas = new EstadoAliado();
-    }
+    /*
 
     @Override
     public void perderVida(int costoAtaque){
@@ -18,11 +16,11 @@ public class UnidadNull extends Unidad{
     @Override
     public void cambiarEstadoAlianzas(){
     }
-    
+    */
     public Unidad copiar() {
     	return new UnidadNull();
     }
-
+/*
     @Override
     public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
         throw new NoHayUnidadEnCasilleroException();
@@ -41,6 +39,6 @@ public class UnidadNull extends Unidad{
     public Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaNull(armaAnterior);
     }
-    
+    */
 
 }

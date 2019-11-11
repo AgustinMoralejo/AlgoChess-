@@ -11,14 +11,14 @@ public class Curandero extends Unidad{
         costo = 2;
         costoADistancia = 0;
         costoCuerpoACuerpo = -15;
-        estadoAlianzas = new EstadoAliado();
+       // estadoAlianzas = new EstadoAliado();
     }
     
     @Override
     public Unidad copiar() {
     	return new Curandero();
     }
-
+/*
     @Override
     public void perderVida(int costoAtaque){
         vida -= costoAtaque;
@@ -31,10 +31,14 @@ public class Curandero extends Unidad{
 
     @Override
     public void moveteA(Casillero zonaInicial, Casillero zonaFinal){
+        /*
         estadoAlianzas.puedeActuar();
         zonaFinal.recibirUnidad(this, zonaFinal);
-    }
 
+         */
+    //}
+
+/*
     @Override
     public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
         estadoAlianzas.puedeActuar();
@@ -56,6 +60,6 @@ public class Curandero extends Unidad{
     public Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);
     }
-
+*/
     
 }

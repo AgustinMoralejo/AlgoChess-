@@ -1,6 +1,7 @@
 package Fiuba.Tablero;
 
 import Fiuba.Unidad.Unidad;
+import Fiuba.AlgoChess.*;
 
 public class Tablero{
 
@@ -10,9 +11,8 @@ public class Tablero{
         int i,j;
         tablero = new Casillero[20][20];
         for ( i = 0; i < 20 ; i++) {
-            for (j = 0; j < 20 ; j++) {
-                Casillero casillero = new Casillero(i, j);
-                tablero[i][j] = casillero;
+            for (j = 0; j < 20; j++) {
+                tablero[i][j] = new Casillero(i, j);
             }
         }
         this.iniciarEstado();
@@ -21,17 +21,17 @@ public class Tablero{
     public void iniciarEstado(){
         for (int i = 0; i < 10 ; i++) {
             for (int j = 0; j < 10 ; j++) {
-                tablero[i][j].iniciarZonaAliada();
+                tablero[i][j].iniciarZonaPorAlianza("aliado");
             }
         }
 
         for (int i = 10; i < 20 ; i++) {
             for (int j = 10; j < 20 ; j++) {
-                tablero[i][j].iniciarZonaEnemiga();
+                tablero[i][j].iniciarZonaPorAlianza("enemigo");
             }
         }
     }
-
+/*
     public void cambiarEstado(){
         for (int i = 0; i < 20 ; i++) {
             for (int j = 0; j < 20 ; j++) {
@@ -40,11 +40,16 @@ public class Tablero{
         }
     }
 
-    
+
+ */
+    public int getTamanio(){
+
+        return tablero.length * tablero[0].length;
+    }
     
     public void colocarUnidad(Unidad unaUnidad, int fila, int columna){
         Casillero casillero = tablero[fila][columna];
-        casillero.ocuparUnidad(unaUnidad);
+        casillero.ocuparConUnidad(unaUnidad);
     }
 
     public Casillero getCasillero(int fila, int columna){
@@ -52,12 +57,18 @@ public class Tablero{
     }
 
     public void moverUnidad(int fila, int columna, int[] offset){
+
         int offsetEnFila, offsetEnColumna;
-        Casillero zonaInicial = tablero[fila][columna];
         offsetEnFila = offset[0];
         offsetEnColumna = offset[1];
-        Casillero zonaFinal = tablero[fila + offsetEnFila][columna + offsetEnColumna];
-        zonaInicial.moverUnidad(zonaFinal);
+
+        Casillero casilleroActual = tablero[fila][columna];
+        Unidad unidadAMover = casilleroActual.getUnidad();
+
+        Casillero casilleroAOcupar = tablero[fila + offsetEnFila][columna + offsetEnColumna];
+        casilleroAOcupar.colocarNuevaUnidad(unidadAMover);
+
+        casilleroActual.quitarUnidad();
     }
 
 
@@ -70,5 +81,9 @@ public class Tablero{
     	return tablero;
     }
 
+    public boolean estaOcupado(int fila, int columna){
+        tablero[fila][columna].casilleroEstaOcupado();
+        return false;
+    }
 
 }

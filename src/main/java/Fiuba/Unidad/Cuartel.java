@@ -23,6 +23,8 @@ public class Cuartel {
 
         Unidad unidad = unidades.get(nombreUnidad);
         Unidad copia = unidad.copiar();
+        unJugador.pagar(copia.getCosto());
+        copia.setAlianza(unJugador.getAlianza());
         return copia;
     }
 
