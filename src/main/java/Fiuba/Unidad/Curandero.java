@@ -10,20 +10,34 @@ public class Curandero extends Unidad{
         vida = 75;
         costo = 2;
         costoADistancia = 0;
-        costoCuerpoACuerpo = -15;
+        costoCuerpoACuerpo = 15;
        // estadoAlianzas = new EstadoAliado();
     }
-    
+
+    @Override
+    public void atacar(int distancia, Unidad unidadACurar) {
+        if(unidadACurar.getAlianza() != this.alianza ){
+            throw new NoSePuedeCurarEnemigoException();
+        }
+        this.dentroRango(distancia);
+        unidadACurar.sumarVida(this.costoCuerpoACuerpo);
+    }
+
     @Override
     public Unidad copiar() {
     	return new Curandero();
     }
-/*
+
     @Override
     public void perderVida(int costoAtaque){
-        vida -= costoAtaque;
+        this.vida -= costoAtaque;
     }
 
+    @Override
+    public void sumarVida(int suma) {
+        this.vida += suma;
+    }
+/*
     @Override
     public void cambiarEstadoAlianzas(){
         estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
@@ -48,14 +62,14 @@ public class Curandero extends Unidad{
 
         defensa.perderVida(costoCuracion);
     }
-
+*/
     @Override
     protected void dentroRango(int distancia) {
         if(distancia > 2){
             throw new ObjetivoFueraDeRangoException();
         }
     }
-    
+  /*
     @Override 
     public Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);

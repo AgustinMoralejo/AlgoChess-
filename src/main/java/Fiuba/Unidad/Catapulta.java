@@ -24,6 +24,11 @@ public class Catapulta extends Unidad{
     public int getCosto() {
         return costo;
     }
+
+    @Override
+    public void atacar(int distancia, Unidad unidadDefensa) {
+
+    }
 /*
     @Override
     public void moveteA(Casillero zonaInicial, Casillero zonaFinal){
@@ -34,7 +39,7 @@ public class Catapulta extends Unidad{
 //    public void cambiarEstadoAlianzas(){
   //      estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
     //}
-
+*/
     @Override
     public void perderVida(int costo) {
         if (costo < 0) {
@@ -42,23 +47,29 @@ public class Catapulta extends Unidad{
         }
         vida -= costo;
     }
-/*
+
     @Override
-    public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
-        this.dentroRango(distancia);
-        Unidad defensa = unidadDefensa.getUnidad();
-        int costo = unidadDefensa.calcularCostoAtaque(costoADistancia);
-        int costo_total = defensa.calcularCostoUnidad(costo);
-        defensa.perderVida(costo_total);
+    public void sumarVida(int suma) {
+        vida += suma;
     }
 
+    /*
+        @Override
+        public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
+            this.dentroRango(distancia);
+            Unidad defensa = unidadDefensa.getUnidad();
+            int costo = unidadDefensa.calcularCostoAtaque(costoADistancia);
+            int costo_total = defensa.calcularCostoUnidad(costo);
+            defensa.perderVida(costo_total);
+        }
+    */
     @Override
     protected void dentroRango(int distancia) {
         if ( distancia < 6){
             throw new ObjetivoFueraDeRangoException();
         }
     }
-    
+  /*
     @Override 
     public Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);

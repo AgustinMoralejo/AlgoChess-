@@ -8,10 +8,10 @@ import Fiuba.Tablero.*;
 public class Soldado extends Unidad {
 
     public Soldado() {
-        vida = 100;
-        costo = 1;
-        costoCuerpoACuerpo = 10;
-        costoADistancia = 0;
+        this.vida = 100;
+        this.costo = 1;
+        this.costoCuerpoACuerpo = 10;
+        this.costoADistancia = 0;
         //estadoAlianzas = new EstadoAliado();
     }
 
@@ -22,9 +22,14 @@ public class Soldado extends Unidad {
 
     //@Override
     public void perderVida(int costoAtaque) {
-        vida -= costoAtaque;
+        this.vida -= costoAtaque;
     }
-}
+
+    @Override
+    public void sumarVida(int suma) {
+        this.vida += suma;
+    }
+
 
     /*
         @Override
@@ -40,19 +45,22 @@ public class Soldado extends Unidad {
         estadoAlianzas.puedeActuar();
         zonaFinal.recibirUnidad(this, zonaFinal);
 
-         *//*
-    }
-        @Override
-        public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
-           /* estadoAlianzas.puedeActuar();
-            this.dentroRango(distancia);
-            Unidad defensa = unidadDefensa.getUnidad();
-            int costo = unidadDefensa.calcularCostoAtaque(costoCuerpoACuerpo);
-            int costo_total = defensa.calcularCostoUnidad(costo);
-            defensa.perderVida(costo_total);
+         */
 
-            */
-        /*
+    @Override
+    public void atacar(int distancia, Unidad unidadAAtacar) {
+
+        // estadoAlianzas.puedeActuar();
+        //int costo = unidadDefensa.calcularCostoAtaque(costoCuerpoACuerpo);
+        //int costo_total = defensa.calcularCostoUnidad(costo);
+
+        if(this.alianza == unidadAAtacar.getAlianza()){
+            throw new NoSePuedeAtacarAUnaUnidadAliadaException();
+        }
+        this.dentroRango(distancia);
+        unidadAAtacar.perderVida(this.costoCuerpoACuerpo);
+    }
+
 
     @Override
     protected void dentroRango(int distancia) {
@@ -60,10 +68,11 @@ public class Soldado extends Unidad {
             throw new ObjetivoFueraDeRangoException();
         }
     }
-
+}
+/*
     @Override
     public Arma seleccionarArmasJinete(Arma armaAnterior) {
-    	//return estadoAlianzas.seleccionarArmaSoldado(armaAnterior);
+        //return estadoAlianzas.seleccionarArmaSoldado(armaAnterior);
         return armaAnterior;
     }
 */

@@ -73,14 +73,13 @@ public class Casillero{
         return estadoAlianzas.calcularCostoCasillero(costo);
     }
 
-    /*
+     */
+
     public int calcularDistancia(Casillero otroCasillero){
-        int otraFila = otroCasillero.getFila();
-        int otraColumna = otroCasillero.getColumna();
-        int distancia = max(abs(fila - otraFila), abs(columna - otraColumna));
+        Coordenada coordenadaOtroCasillero = otroCasillero.getCoordenada();
+        int distancia = this.coordenada.calcularDistanciaEntreCoordenadas(coordenadaOtroCasillero);
         return distancia;
     }
-    */
 
     public void moverUnidad(Coordenada coordenadaFinal){
 

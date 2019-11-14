@@ -48,6 +48,7 @@ public class Tablero{
     }
     
     public void colocarUnidad(Unidad unaUnidad, int fila, int columna){
+
         Casillero casillero = tablero[fila][columna];
         casillero.ocuparConUnidad(unaUnidad);
     }
@@ -69,6 +70,17 @@ public class Tablero{
         casilleroAOcupar.colocarNuevaUnidad(unidadAMover);
 
         casilleroActual.quitarUnidad();
+    }
+
+    public void unidadAliadaAtacaAUnidadEnemiga(int filaAliada, int columnaAliada, int filaEnemiga, int columnaEnemiga){
+        Casillero casilleroAliado = tablero[filaAliada][columnaAliada];
+        Casillero casilleroEnemigo = tablero[filaEnemiga][columnaEnemiga];
+
+        int distancia = casilleroAliado.calcularDistancia(casilleroEnemigo);
+        Unidad unidadAliada = casilleroAliado.getUnidad();
+        Unidad unidadEnemiga = casilleroEnemigo.getUnidad();
+
+        unidadAliada.atacar(distancia, unidadEnemiga);
     }
 
 
