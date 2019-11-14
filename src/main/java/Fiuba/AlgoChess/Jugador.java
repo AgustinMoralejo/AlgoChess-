@@ -66,7 +66,7 @@ public class Jugador {
         unidades.add(unidadComprada);
     }
 
-    public void atacar(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo){
+    public void atacar(int filaAliada, int columnaAliada, int filaEnemigo, int columnaEnemigo){
         /*
         Casillero zonaAliada = tablero.getCasillero(filaAliada, columnaAliado);
         Casillero zonaEnemiga = tablero.getCasillero(filaEnemigo, columnaEnemigo);
@@ -77,6 +77,7 @@ public class Jugador {
         unidadAliada.atacar(condiciones, distancia, zonaEnemiga);
 
          */
+        this.tablero.unidadAliadaAtacaAUnidadEnemiga(filaAliada,columnaAliada, filaEnemigo, columnaEnemigo);
     }
 
     public void pagar(int costo){

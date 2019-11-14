@@ -35,8 +35,25 @@ public class Jinete extends Unidad {
     }
 
     @Override
-    public void atacar(int distancia, Unidad unidadDefensa) {
+    public void atacar(int distancia, Unidad unidadAAtacar) {
 
+        if(this.alianza == unidadAAtacar.getAlianza()){
+            throw new NoSePuedeAtacarAUnaUnidadAliadaException();
+        }
+        unidadAAtacar.perderVida(this.obtenerDanioEnRango(distancia));
+    }
+
+
+    protected int obtenerDanioEnRango(int distancia){
+        if (distancia > 5) {
+            throw new ObjetivoFueraDeRangoException();
+        }
+        else if(distancia < 3){
+            return this.costoCuerpoACuerpo;
+        }
+        else{
+            return this.costoADistancia;
+        }
     }
 /*
     @Override

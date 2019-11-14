@@ -50,7 +50,7 @@ public class Catapulta extends Unidad{
 
     @Override
     public void sumarVida(int suma) {
-        vida += suma;
+        throw new NoSePuedenCurarUnidadesNoOrganicasException();
     }
 
     /*

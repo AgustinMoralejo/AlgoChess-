@@ -19,13 +19,13 @@ public class Tablero{
     }
 
     public void iniciarEstado(){
-        for (int i = 0; i < 10 ; i++) {
+        for (int i = 0; i < 20 ; i++) {
             for (int j = 0; j < 10 ; j++) {
                 tablero[i][j].iniciarZonaPorAlianza("aliado");
             }
         }
 
-        for (int i = 10; i < 20 ; i++) {
+        for (int i = 0; i < 20 ; i++) {
             for (int j = 10; j < 20 ; j++) {
                 tablero[i][j].iniciarZonaPorAlianza("enemigo");
             }
