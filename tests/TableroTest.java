@@ -60,6 +60,6 @@ public class TableroTest {
         Unidad jinete = new Jinete();
         jinete.setAlianza("aliado");
 
-        Assertions.assertThrows(NoSePuedeColocarUnidadEnSectorEnemigoException.class, () -> tablero.colocarUnidad(jinete, 15,11));
+        Assertions.assertThrows(NoSePuedeColocarUnidadEnSectorEnemigoException.class, () -> tablero.colocarUnidad(jinete, 15,12));
     }
 }

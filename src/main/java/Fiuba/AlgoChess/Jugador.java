@@ -1,5 +1,7 @@
 package Fiuba.AlgoChess;
 
+import Fiuba.Alianza;
+import Fiuba.Excepciones.CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException;
 import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
 import Fiuba.Excepciones.PuntosInsuficientesException;
 
@@ -8,6 +10,7 @@ import Fiuba.Unidad.Cuartel;
 import Fiuba.Unidad.*;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Jugador {
@@ -65,6 +68,33 @@ public class Jugador {
         Unidad unidadComprada = cuartel.getUnidad(nombreUnidad, this);
         tablero.colocarUnidad(unidadComprada, fila, columna);
         unidades.add(unidadComprada);
+    }
+
+    public void seleccionarUnidad(int fila, int columna) {
+
+        Iterator<Unidad> iterador = unidades.iterator();
+        boolean encontro=false;
+        Unidad unidadAliadaActual;
+
+        /*busco una unidad en la lista del jugador cuya posicion sea la misma que las del parametro*/
+
+        while(iterador.hasNext() && !encontro){
+            unidadAliadaActual = iterador.next();
+            encontro = (unidadAliadaActual.getCoordenada().getFila() == fila && unidadAliadaActual.getCoordenada().getColumna() == columna);
+        }
+
+        if(!encontro){
+            throw new CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException();
+        }
+
+    }
+
+    public void moverUnidad(int fila, int columna, int orientacion) {
+        int[] offset = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[orientacion]; // 0 es norte {-1,0}
+
+        seleccionarUnidad(fila, columna);
+        tablero.moverUnidad(fila,columna,offset);
+
     }
 
     public void atacar(int filaAliada, int columnaAliada, int filaEnemigo, int columnaEnemigo){

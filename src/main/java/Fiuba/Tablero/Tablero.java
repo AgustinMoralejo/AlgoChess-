@@ -4,15 +4,23 @@ import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
 import Fiuba.Unidad.Unidad;
 import Fiuba.AlgoChess.*;
 
+import java.util.List;
+
+import static Fiuba.AlgoChess.Movimiento.OFFSET_COORDENADAS_MOVIMIENTO;
+
 public class Tablero{
 
     private Casillero tablero[][];
 
+    public static final int FILAS_TABLERO = 20;
+
+    public static final int COLUMNAS_TABLERO = 20;
+
     public Tablero(){
         int i,j;
-        tablero = new Casillero[20][20];
-        for ( i = 0; i < 20 ; i++) {
-            for (j = 0; j < 20; j++) {
+        tablero = new Casillero[FILAS_TABLERO][COLUMNAS_TABLERO];
+        for ( i = 0; i < FILAS_TABLERO ; i++) {
+            for (j = 0; j < COLUMNAS_TABLERO; j++) {
                 tablero[i][j] = new Casillero(i, j);
             }
         }
@@ -20,17 +28,33 @@ public class Tablero{
     }
 
     public void iniciarEstado(){
-        for (int i = 0; i < 20 ; i++) {
-            for (int j = 0; j < 10 ; j++) {
+        for (int i = 0; i < FILAS_TABLERO ; i++) {
+            for (int j = 0; j < COLUMNAS_TABLERO/2 ; j++) {
                 tablero[i][j].iniciarZonaPorAlianza("aliado");
             }
         }
 
-        for (int i = 0; i < 20 ; i++) {
-            for (int j = 10; j < 20 ; j++) {
+        for (int i = 0; i < FILAS_TABLERO ; i++) {
+            for (int j = COLUMNAS_TABLERO/2; j < 20 ; j++) {
                 tablero[i][j].iniciarZonaPorAlianza("enemigo");
             }
         }
+
+        /*El tablero le asigna los casilleros contiguos a cada casillero de la iteracion utilizando el static offset
+         * no lo pruebo en los bordes pq si no tengo un puntero a la nada*/
+        for (int i = 1; i < 19 ; i++) {
+            for (int j = 1; j < 19 ; j++) {
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][1]]);
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1][1]]);
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2][1]]);
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3][1]]);
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4][1]]);
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5][1]]);
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6][1]]);
+                tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7][1]]);
+            }
+        }
+
     }
 /*
     public void cambiarEstado(){
@@ -60,18 +84,34 @@ public class Tablero{
 
     public Unidad getUnidad(int fila, int columna){ return tablero[fila][columna].getUnidad();}
 
+
     public void moverUnidad(int fila, int columna, int[] offset){
 
         int offsetEnFila, offsetEnColumna;
         offsetEnFila = offset[0];
         offsetEnColumna = offset[1];
+        List<Casillero> batallon;
 
         Casillero casilleroActual = tablero[fila][columna];
         Unidad unidadAMover = casilleroActual.getUnidad();
 
+
+        /**Batallon*/
+        if(unidadAMover.getSimbolo() == "S"){
+            batallon = tablero[fila][columna].batallon();
+
+            for(Casillero casilleroBatallon : batallon){
+
+                Casillero casilleroAOcupar = tablero[casilleroBatallon.getCoordenada().getFila() + offsetEnFila]
+                        [casilleroBatallon.getCoordenada().getColumna() + offsetEnColumna];
+                casilleroAOcupar.colocarNuevaUnidad(casilleroBatallon.getUnidad());
+                casilleroBatallon.quitarUnidad();
+            }
+        }
+        /**Fin Batallon*/
+
         Casillero casilleroAOcupar = tablero[fila + offsetEnFila][columna + offsetEnColumna];
         casilleroAOcupar.colocarNuevaUnidad(unidadAMover);
-
         casilleroActual.quitarUnidad();
     }
 

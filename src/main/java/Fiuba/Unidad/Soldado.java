@@ -12,6 +12,7 @@ public class Soldado extends Unidad {
         this.costo = 1;
         this.costoCuerpoACuerpo = 10;
         this.costoADistancia = 0;
+        this.simbolo = "S";
         //estadoAlianzas = new EstadoAliado();
     }
 
