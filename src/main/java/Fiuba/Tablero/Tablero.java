@@ -1,5 +1,6 @@
 package Fiuba.Tablero;
 
+import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
 import Fiuba.Unidad.Unidad;
 import Fiuba.AlgoChess.*;
 
@@ -72,18 +73,6 @@ public class Tablero{
         casilleroActual.quitarUnidad();
     }
 
-    public void unidadAliadaAtacaAUnidadEnemiga(int filaAliada, int columnaAliada, int filaEnemiga, int columnaEnemiga){
-        Casillero casilleroAliado = tablero[filaAliada][columnaAliada];
-        Casillero casilleroEnemigo = tablero[filaEnemiga][columnaEnemiga];
-
-        int distancia = casilleroAliado.calcularDistancia(casilleroEnemigo);
-        Unidad unidadAliada = casilleroAliado.getUnidad();
-        Unidad unidadEnemiga = casilleroEnemigo.getUnidad();
-
-        unidadAliada.atacar(distancia, unidadEnemiga);
-    }
-
-
     public int getPuntosDeVidaUnidadEnPosicion(int fila, int columna){
         Unidad unidad = tablero[fila][columna].getUnidad();
         return unidad.getPuntosDeVida();
@@ -94,8 +83,21 @@ public class Tablero{
     }
 
     public boolean estaOcupado(int fila, int columna){
-        tablero[fila][columna].casilleroEstaOcupado();
-        return false;
+       return tablero[fila][columna].casilleroEstaOcupado();
+    }
+
+    public void obtenerUnidadesContiguas(int filaAtaque, int columnaAtaque){
+        Casillero casilleroActual = tablero[filaAtaque][columnaAtaque];
+        Unidad unidadActual = casilleroActual.getUnidad();
+
+        for (int i = -1; i < 2 ; i++) {
+            for (int j = -1; j < 2 ; j++) {
+                if(!(j==0 && i ==0) && !(estaOcupado(filaAtaque+i, columnaAtaque+j))){
+                    Casillero casillero = tablero[filaAtaque+i][columnaAtaque+j];
+                    unidadActual.agregarUnidadesContiguas(casillero.getUnidad());
+                }
+            }
+        }
     }
 
 }

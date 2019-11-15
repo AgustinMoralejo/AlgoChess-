@@ -20,11 +20,6 @@ public class Soldado extends Unidad {
         return new Soldado();
     }
 
-    //@Override
-    public void perderVida(int costoAtaque) {
-        this.vida -= costoAtaque;
-    }
-
     @Override
     public void sumarVida(int suma) {
         this.vida += suma;

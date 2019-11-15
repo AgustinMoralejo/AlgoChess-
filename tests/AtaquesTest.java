@@ -1,9 +1,5 @@
 import Fiuba.AlgoChess.Jugador;
-import Fiuba.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
-import Fiuba.Excepciones.NoSePuedeCurarEnemigoException;
-import Fiuba.Excepciones.NoSePuedenCurarUnidadesNoOrganicasException;
-import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
-import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
+import Fiuba.Excepciones.*;
 import Fiuba.Tablero.Tablero;
 import Fiuba.Unidad.Curandero;
 import Fiuba.Unidad.Soldado;
@@ -63,7 +59,7 @@ public class AtaquesTest {
         jugador1.comprarUnidad("soldado", 12, 5);
         jugador2.comprarUnidad("soldado", 4, 10);
 
-        Assertions.assertThrows(ObjetivoFueraDeRangoException.class, () -> tablero.unidadAliadaAtacaAUnidadEnemiga(12, 5, 4, 10));
+        Assertions.assertThrows(ObjetivoFueraDeRangoException.class, () -> jugador1.atacar(12, 5, 4, 10));
         Assertions.assertEquals(100, tablero.getPuntosDeVidaUnidadEnPosicion(12, 5));
     }
 
@@ -103,7 +99,7 @@ public class AtaquesTest {
         jugadorAzul.comprarUnidad("curandero", 15, 2);
         jugadorAzul.comprarUnidad("catapulta", 15, 3);
 
-        Assertions.assertThrows(NoSePuedenCurarUnidadesNoOrganicasException.class, () -> tablero.unidadAliadaAtacaAUnidadEnemiga(15, 2, 15, 3));
+        Assertions.assertThrows(NoSePuedenCurarUnidadesNoOrganicasException.class, () -> jugadorAzul.atacar(15, 2, 15, 3));
     }
 
     /**
@@ -137,4 +133,42 @@ public class AtaquesTest {
         Assertions.assertThrows(NoSePuedeAtacarAUnaUnidadAliadaException.class, () -> jugador1.atacar(11, 9, 11, 8));
 
     }
+
+    @Test
+    public void testNoSePuedeAtacarNoExisteUnidadEnPosicionParaRealizarElAtaque(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugador1 = new Jugador("agus",tablero, "aliado");
+
+        jugador1.comprarUnidad("soldado",11,9);
+
+        Assertions.assertThrows(NoHayUnidadEnCasilleroException.class, ()-> jugador1.atacar(11,7,11,8));
+
+    }
+
+    @Test
+    public void testSoldadoNoPuedeAtacarAUnidadYaMuerta(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAzul = new Jugador("agus",tablero, "aliado");
+        Jugador jugadorRojo = new Jugador("lego",tablero, "enemigo");
+
+        jugadorAzul.comprarUnidad("soldado",11,9);
+        jugadorRojo.comprarUnidad("soldado",11,10);
+
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+        jugadorAzul.atacar(11,9,11,10);
+
+        Assertions.assertThrows(UnidadEstaMuertaException.class, () ->jugadorAzul.atacar(11,9,11,10));
+    }
+
 }

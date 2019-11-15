@@ -1,6 +1,9 @@
 package Fiuba.Unidad;
+import Fiuba.Excepciones.UnidadEstaMuertaException;
 import Fiuba.Tablero.*;
 import Fiuba.AlgoChess.*;
+
+import java.util.ArrayList;
 
 public abstract class Unidad {
 
@@ -12,6 +15,15 @@ public abstract class Unidad {
 
     protected Coordenada coordenada;
 
+    protected ArrayList<Unidad> unidadesContiguas;
+
+    protected String simbolo;
+
+    public Unidad(){
+        unidadesContiguas = new ArrayList<>();
+    }
+
+    public String getSimbolo(){ return this.simbolo; }
 
     public void setCoordenada(Coordenada coordenada){
         this.coordenada = coordenada;
@@ -43,7 +55,13 @@ public abstract class Unidad {
         return costo;
     }
 
-    public abstract void perderVida(int costoAtaque);
+    public void perderVida(int costoAtaque){
+
+        if(this.vida < 0){
+            throw new UnidadEstaMuertaException();
+        }
+        this.vida -= costoAtaque;
+    }
 
     public abstract void sumarVida(int suma);
 
@@ -67,4 +85,13 @@ public abstract class Unidad {
 
     protected abstract void dentroRango(int distancia);
     public abstract Unidad copiar();
+
+
+    public void agregarUnidadesContiguas(Unidad unidadContigua){
+        unidadesContiguas.add(unidadContigua);
+    }
+
+    public ArrayList<Unidad> getUnidadesContiguas(){
+        return unidadesContiguas;
+    }
 }

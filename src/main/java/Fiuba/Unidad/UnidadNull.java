@@ -8,11 +8,6 @@ import Fiuba.Tablero.*;
 public class UnidadNull extends Unidad{
 
     @Override
-    public void perderVida(int costoAtaque) {
-
-    }
-
-    @Override
     public void sumarVida(int suma) {
 
     }

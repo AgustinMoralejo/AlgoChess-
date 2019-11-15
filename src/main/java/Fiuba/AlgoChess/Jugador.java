@@ -1,5 +1,6 @@
 package Fiuba.AlgoChess;
 
+import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
 import Fiuba.Excepciones.PuntosInsuficientesException;
 
 import Fiuba.Tablero.*;
@@ -67,17 +68,19 @@ public class Jugador {
     }
 
     public void atacar(int filaAliada, int columnaAliada, int filaEnemigo, int columnaEnemigo){
-        /*
-        Casillero zonaAliada = tablero.getCasillero(filaAliada, columnaAliado);
-        Casillero zonaEnemiga = tablero.getCasillero(filaEnemigo, columnaEnemigo);
-        int distancia = zonaAliada.calcularDistancia(zonaEnemiga);
-        Unidad unidadAliada = zonaAliada.getUnidad();
-        Casillero [][] tabla = tablero.getTablero();
-        CondicionesAtaqueMovimiento condiciones = new CondicionesAtaqueMovimiento(filaAliada, columnaAliado, tabla);
-        unidadAliada.atacar(condiciones, distancia, zonaEnemiga);
 
-         */
-        this.tablero.unidadAliadaAtacaAUnidadEnemiga(filaAliada,columnaAliada, filaEnemigo, columnaEnemigo);
+        Casillero casilleroAliado = this.tablero.getCasillero(filaAliada,columnaAliada);
+        Casillero casilleroEnemigo = this.tablero.getCasillero(filaEnemigo, columnaEnemigo);
+
+        if(!casilleroEnemigo.casilleroEstaOcupado()){
+            throw new NoHayUnidadEnCasilleroException();
+        }
+
+        int distancia = casilleroAliado.calcularDistancia(casilleroEnemigo);
+        Unidad unidadAliada = casilleroAliado.getUnidad();
+        Unidad unidadEnemiga = casilleroEnemigo.getUnidad();
+
+        unidadAliada.atacar(distancia, unidadEnemiga);
     }
 
     public void pagar(int costo){

@@ -4,14 +4,18 @@ import Fiuba.Excepciones.*;
 import Fiuba.AlgoChess.*;
 import Fiuba.Tablero.*;
 
+import java.util.ArrayList;
+
 public class Catapulta extends Unidad{
 
     public Catapulta(){
-        vida = 50;
-        costo = 5;
-        costoADistancia = 20;
-        costoCuerpoACuerpo = 0;
+        this.vida = 50;
+        this.costo = 5;
+        this.costoADistancia = 20;
+        this.costoCuerpoACuerpo = 0;
+        this.simbolo = "CT";
        // estadoAlianzas = new EstadoAliado();
+        this.unidadesContiguas = new ArrayList<>();
     }
     
     @Override
@@ -26,8 +30,10 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public void atacar(int distancia, Unidad unidadDefensa) {
+    public void atacar(int distancia, Unidad unidadAAtacar) {
 
+        this.dentroRango(distancia);
+        unidadAAtacar.perderVida(this.costoADistancia);
     }
 /*
     @Override
@@ -40,13 +46,6 @@ public class Catapulta extends Unidad{
   //      estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
     //}
 */
-    @Override
-    public void perderVida(int costo) {
-        if (costo < 0) {
-            throw (new NoSePuedenCurarUnidadesNoOrganicasException());
-        }
-        vida -= costo;
-    }
 
     @Override
     public void sumarVida(int suma) {

@@ -22,12 +22,6 @@ public class Jinete extends Unidad {
         return new Jinete();
     }
 
-    @Override
-    public void perderVida(int costoAtaque) {
-        // int perdidaTotal = estadoAlianzas.calcularCostoUnidad(costoAtaque);
-        // vida -= perdidaTotal;
-        this.vida -= costoAtaque;
-    }
 
     @Override
     public void sumarVida(int suma) {

@@ -31,7 +31,7 @@ public class TableroTest {
         Jugador jugadorAliado = new Jugador("Juan", tablero, "aliado");
         jugadorAliado.comprarUnidad("soldado",1,1);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(1,1));
+        Assertions.assertTrue(tablero.estaOcupado(1,1));
     }
 
     @Test

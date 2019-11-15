@@ -19,7 +19,7 @@ public class MovimientosUnidadesTest {
 
         tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(0,1));
+        Assertions.assertTrue(tablero.estaOcupado(0,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
     }
 
@@ -32,7 +32,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,15));
+        Assertions.assertTrue(tablero.estaOcupado(14,15));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -46,7 +46,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,15));
+        Assertions.assertTrue(tablero.estaOcupado(14,15));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -60,7 +60,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,15));
+        Assertions.assertTrue(tablero.estaOcupado(14,15));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -75,7 +75,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("soldado",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,16));
+        Assertions.assertTrue(tablero.estaOcupado(14,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -90,7 +90,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,16));
+        Assertions.assertTrue(tablero.estaOcupado(14,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -106,7 +106,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,16));
+        Assertions.assertTrue(tablero.estaOcupado(14,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -120,7 +120,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,16));
+        Assertions.assertTrue(tablero.estaOcupado(14,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -136,7 +136,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("soldado",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,16));
+        Assertions.assertTrue(tablero.estaOcupado(15,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -149,7 +149,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,16));
+        Assertions.assertTrue(tablero.estaOcupado(15,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -164,7 +164,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,16));
+        Assertions.assertTrue(tablero.estaOcupado(15,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -178,7 +178,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,16));
+        Assertions.assertTrue(tablero.estaOcupado(15,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -193,7 +193,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("soldado",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,16));
+        Assertions.assertTrue(tablero.estaOcupado(16,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -207,7 +207,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,16));
+        Assertions.assertTrue(tablero.estaOcupado(16,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -221,7 +221,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,16));
+        Assertions.assertTrue(tablero.estaOcupado(16,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -233,7 +233,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,16));
+        Assertions.assertTrue(tablero.estaOcupado(16,16));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -248,7 +248,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("soldado",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,15));
+        Assertions.assertTrue(tablero.estaOcupado(16,15));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -263,7 +263,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,15));
+        Assertions.assertTrue(tablero.estaOcupado(16,15));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
 
@@ -279,7 +279,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,15));
+        Assertions.assertTrue(tablero.estaOcupado(16,15));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -293,7 +293,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,15));
+        Assertions.assertTrue(tablero.estaOcupado(16,15));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -309,7 +309,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("soldado",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,14));
+        Assertions.assertTrue(tablero.estaOcupado(16,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -324,7 +324,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,14));
+        Assertions.assertTrue(tablero.estaOcupado(16,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -339,7 +339,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,14));
+        Assertions.assertTrue(tablero.estaOcupado(16,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -352,7 +352,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(16,14));
+        Assertions.assertTrue(tablero.estaOcupado(16,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -367,7 +367,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("soldado",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,14));
+        Assertions.assertTrue(tablero.estaOcupado(15,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -381,7 +381,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,14));
+        Assertions.assertTrue(tablero.estaOcupado(15,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -396,7 +396,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,14));
+        Assertions.assertTrue(tablero.estaOcupado(15,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -409,7 +409,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(15,14));
+        Assertions.assertTrue(tablero.estaOcupado(15,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -424,7 +424,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("soldado",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,14));
+        Assertions.assertTrue(tablero.estaOcupado(14,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
 
     }
@@ -439,7 +439,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("jinete",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,14));
+        Assertions.assertTrue(tablero.estaOcupado(14,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -453,7 +453,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("curandero",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,14));
+        Assertions.assertTrue(tablero.estaOcupado(14,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 
@@ -466,7 +466,7 @@ public class MovimientosUnidadesTest {
         jugador.comprarUnidad("catapulta",15,15);
         tablero.moverUnidad(15,15,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
 
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () ->  tablero.estaOcupado(14,14));
+        Assertions.assertTrue(tablero.estaOcupado(14,14));
         Assertions.assertFalse(tablero.estaOcupado(15,15));
     }
 

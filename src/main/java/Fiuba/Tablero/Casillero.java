@@ -27,15 +27,15 @@ public class Casillero{
         this.coordenada = new Coordenada(fila, columna);
     }
 
-    public void casilleroEstaOcupado(){
-        if(this.estaOcupado){
-            throw new CasilleroEstaOcupadoException();
-        }
+    public boolean casilleroEstaOcupado(){
+        return this.estaOcupado;
     }
 
     public void ocuparConUnidad(Unidad unaUnidad){
 
-        this.casilleroEstaOcupado();
+        if(casilleroEstaOcupado()){
+            throw new CasilleroEstaOcupadoException();
+        }
 
         if(unaUnidad.getAlianza() != this.alianza) {
             throw new NoSePuedeColocarUnidadEnSectorEnemigoException();
@@ -47,7 +47,9 @@ public class Casillero{
     }
 
     public void colocarNuevaUnidad(Unidad unaUnidad){
-        this.casilleroEstaOcupado();
+        if(this.casilleroEstaOcupado()){
+            throw new CasilleroEstaOcupadoException();
+        }
         this.unidad = unaUnidad;
         this.estaOcupado = true;
     }
