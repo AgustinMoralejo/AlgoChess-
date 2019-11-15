@@ -70,12 +70,6 @@ public class Casillero{
     public Coordenada getCoordenada(){
         return this.coordenada;
     }
-    /*
-    public int calcularCostoAtaque(int costo){
-        return estadoAlianzas.calcularCostoCasillero(costo);
-    }
-
-     */
 
     public int calcularDistancia(Casillero otroCasillero){
         Coordenada coordenadaOtroCasillero = otroCasillero.getCoordenada();
