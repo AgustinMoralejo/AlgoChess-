@@ -42,6 +42,7 @@ public class Tablero{
 
         /*El tablero le asigna los casilleros contiguos a cada casillero de la iteracion utilizando el static offset
          * no lo pruebo en los bordes pq si no tengo un puntero a la nada*/
+
         for (int i = 1; i < 19 ; i++) {
             for (int j = 1; j < 19 ; j++) {
                 tablero[i][j].agregarUnCasilleroContiguo(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][1]]);
