@@ -58,6 +58,8 @@ public class Tablero{
         return tablero[fila][columna];
     }
 
+    public Unidad getUnidad(int fila, int columna){ return tablero[fila][columna].getUnidad();}
+
     public void moverUnidad(int fila, int columna, int[] offset){
 
         int offsetEnFila, offsetEnColumna;
@@ -92,7 +94,7 @@ public class Tablero{
 
         for (int i = -1; i < 2 ; i++) {
             for (int j = -1; j < 2 ; j++) {
-                if(!(j==0 && i ==0) && !(estaOcupado(filaAtaque+i, columnaAtaque+j))){
+                if(!(j==0 && i ==0) && (estaOcupado(filaAtaque+i, columnaAtaque+j))){
                     Casillero casillero = tablero[filaAtaque+i][columnaAtaque+j];
                     unidadActual.agregarUnidadesContiguas(casillero.getUnidad());
                 }

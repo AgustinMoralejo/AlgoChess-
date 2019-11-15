@@ -15,7 +15,6 @@ public class Catapulta extends Unidad{
         this.costoCuerpoACuerpo = 0;
         this.simbolo = "CT";
        // estadoAlianzas = new EstadoAliado();
-        this.unidadesContiguas = new ArrayList<>();
     }
     
     @Override
@@ -31,9 +30,13 @@ public class Catapulta extends Unidad{
 
     @Override
     public void atacar(int distancia, Unidad unidadAAtacar) {
+        ArrayList<Unidad> unidades = unidadAAtacar.getUnidadesContiguas();
 
         this.dentroRango(distancia);
-        unidadAAtacar.perderVida(this.costoADistancia);
+        unidades.add(unidadAAtacar);
+        for(Unidad unidadAtacada: unidades) {
+            unidadAtacada.perderVida(this.costoADistancia);
+        }
     }
 /*
     @Override

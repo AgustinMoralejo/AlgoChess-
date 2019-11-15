@@ -80,6 +80,10 @@ public class Jugador {
         Unidad unidadAliada = casilleroAliado.getUnidad();
         Unidad unidadEnemiga = casilleroEnemigo.getUnidad();
 
+        if(unidadAliada.getSimbolo() == "CT"){
+            this.tablero.obtenerUnidadesContiguas(filaEnemigo, columnaEnemigo);
+        }
+
         unidadAliada.atacar(distancia, unidadEnemiga);
     }
 
