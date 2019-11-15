@@ -1,7 +1,6 @@
-import Fiuba.Unidad.Catapulta;
-import Fiuba.Unidad.Curandero;
-import Fiuba.Unidad.Jinete;
-import Fiuba.Unidad.Soldado;
+import Fiuba.AlgoChess.Jugador;
+import Fiuba.Tablero.Tablero;
+import Fiuba.Unidad.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -69,5 +68,23 @@ public class CatapultaTest {
         Assertions.assertEquals(55, curandero.getPuntosDeVida());
     }
 
+    @Test
+    public void testCatapultaAtacaAUnaDistanciaLejana(){
 
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("pedro", tablero, "aliado");
+        Jugador jugadorEnemigo = new Jugador("juan", tablero, "enemigo");
+        jugadorAliado.comprarUnidad("soldado", 3,1);
+        jugadorAliado.comprarUnidad("curandero", 3,3);
+        jugadorAliado.comprarUnidad("soldado", 3, 2);
+        jugadorEnemigo.comprarUnidad("catapulta", 15, 15);
+
+        jugadorEnemigo.atacar(15,15,3,2);
+        Unidad soldado1 = tablero.getUnidad(3,1);
+        Unidad soldado2 = tablero.getUnidad(3,2);
+        Unidad curandero = tablero.getUnidad(3,3);
+        Assertions.assertEquals(80, soldado1.getPuntosDeVida());
+        Assertions.assertEquals(80, soldado2.getPuntosDeVida());
+        Assertions.assertEquals(55, curandero.getPuntosDeVida());
+    }
 }
