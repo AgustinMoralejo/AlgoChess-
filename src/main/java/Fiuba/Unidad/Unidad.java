@@ -67,25 +67,9 @@ public abstract class Unidad {
 
     public abstract void atacar(int distancia, Unidad unidadDefensa);
 
-/*
-    public int calcularCostoUnidad(int costo){
-        return estadoAlianzas.calcularCostoUnidad(costo);
-    }
-
-
-    public int calcularCostoCuracion(int costo){
-        return estadoAlianzas.calcularCostoCuracion(costo);
-    }
-
-*/
- /*
-    public abstract Arma seleccionarArmasJinete(Arma armaAnterior);
-    public abstract void moveteA(Casillero zonaInicial, Casillero zonaFinal);
-    */
-
     protected abstract void dentroRango(int distancia);
-    public abstract Unidad copiar();
 
+    public abstract Unidad copiar();
 
     public void agregarUnidadesContiguas(Unidad unidadContigua){
         unidadesContiguas.add(unidadContigua);
