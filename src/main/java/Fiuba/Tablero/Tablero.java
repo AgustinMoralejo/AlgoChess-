@@ -4,6 +4,7 @@ import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
 import Fiuba.Unidad.Unidad;
 import Fiuba.AlgoChess.*;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import static Fiuba.AlgoChess.Movimiento.OFFSET_COORDENADAS_MOVIMIENTO;
@@ -35,7 +36,7 @@ public class Tablero{
         }
 
         for (int i = 0; i < FILAS_TABLERO ; i++) {
-            for (int j = COLUMNAS_TABLERO/2; j < 20 ; j++) {
+            for (int j = COLUMNAS_TABLERO/2; j < COLUMNAS_TABLERO ; j++) {
                 tablero[i][j].iniciarZonaPorAlianza("enemigo");
             }
         }
@@ -85,35 +86,45 @@ public class Tablero{
 
     public Unidad getUnidad(int fila, int columna){ return tablero[fila][columna].getUnidad();}
 
-
     public void moverUnidad(int fila, int columna, int[] offset){
 
         int offsetEnFila, offsetEnColumna;
         offsetEnFila = offset[0];
         offsetEnColumna = offset[1];
-        List<Casillero> batallon;
+        List<Casillero> batallon = new ArrayList<>();
+        List<Unidad> bufferBatallon = new ArrayList<>();
 
-        Casillero casilleroActual = tablero[fila][columna];
-        Unidad unidadAMover = casilleroActual.getUnidad();
+        Casillero casilleroSeleccionado = tablero[fila][columna];
+        Unidad unidadAMover = casilleroSeleccionado.getUnidad();
+        batallon.add(casilleroSeleccionado);
 
-
-        /**Batallon*/
         if(unidadAMover.getSimbolo() == "S"){
-            batallon = tablero[fila][columna].batallon();
+            tablero[fila][columna].agregarCasillerosAlBatallon(batallon, 1);
 
-            for(Casillero casilleroBatallon : batallon){
-
-                Casillero casilleroAOcupar = tablero[casilleroBatallon.getCoordenada().getFila() + offsetEnFila]
-                        [casilleroBatallon.getCoordenada().getColumna() + offsetEnColumna];
-                casilleroAOcupar.colocarNuevaUnidad(casilleroBatallon.getUnidad());
-                casilleroBatallon.quitarUnidad();
-            }
         }
-        /**Fin Batallon*/
 
-        Casillero casilleroAOcupar = tablero[fila + offsetEnFila][columna + offsetEnColumna];
-        casilleroAOcupar.colocarNuevaUnidad(unidadAMover);
-        casilleroActual.quitarUnidad();
+        /*si no se forma un batallon quita al unico soldado adyacente*/
+        if(batallon.size() == 2){
+            batallon.remove(1);
+        }
+
+
+        for(Casillero casilleroBatallon : batallon) {
+            bufferBatallon.add(casilleroBatallon.getUnidad());
+            casilleroBatallon.quitarUnidad();
+        }
+
+        for(Casillero casilleroBatallon : batallon){
+            int i=0;
+
+            Casillero casilleroAOcupar = tablero[casilleroBatallon.getCoordenada().getFila() + offsetEnFila]
+            [casilleroBatallon.getCoordenada().getColumna() + offsetEnColumna];
+
+            casilleroAOcupar.colocarNuevaUnidad(bufferBatallon.get(i));
+            i++;
+        }
+
+
     }
 
     public int getPuntosDeVidaUnidadEnPosicion(int fila, int columna){

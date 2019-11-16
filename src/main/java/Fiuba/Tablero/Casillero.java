@@ -17,7 +17,7 @@ public class Casillero{
     private boolean estaOcupado;
     private Coordenada coordenada;
 
-    private ArrayList<Casillero> casillerosContiguos;
+    private ArrayList<Casillero> casillerosAdyacentes;
 
 
     private String alianza;
@@ -26,7 +26,7 @@ public class Casillero{
         this.unidad = new UnidadNull();
         this.estaOcupado = false;
         this.coordenada = new Coordenada(fila, columna);
-        this.casillerosContiguos = new ArrayList<>();
+        this.casillerosAdyacentes = new ArrayList<>();
     }
 
     public boolean casilleroEstaOcupado(){
@@ -85,7 +85,7 @@ public class Casillero{
 
     public void agregarUnCasilleroContiguo(Casillero unCasilleroContiguo){
 
-        casillerosContiguos.add(unCasilleroContiguo);
+        casillerosAdyacentes.add(unCasilleroContiguo);
 
     }
 
@@ -93,29 +93,33 @@ public class Casillero{
         return this.unidad;
     }
 
-    public void unidadEnCasilleroEsAliada(String alianza) {
+    public boolean unidadEnCasilleroEsAliada(String alianza) {
+
+        return (this.unidad.getAlianza() == alianza);
+
     }
 
-    public List<Casillero> batallon() {
+    public void agregarCasillerosAlBatallon(List<Casillero> batallon, int i) {
 
-        Casillero casilleroActual;
+        Casillero casilleroAdyacente;
+        Iterator<Casillero> iterador = casillerosAdyacentes.iterator();
 
-        List<Casillero> batallon = new ArrayList<>();
+        while(iterador.hasNext() && batallon.size() < 3){
 
-        Iterator<Casillero> iterador = casillerosContiguos.iterator();
-        while(iterador.hasNext() && batallon.size() < 2){
+            casilleroAdyacente = iterador.next();
 
-            casilleroActual = iterador.next();
-            if(casilleroActual.getAlianza() == unidad.getAlianza() && casilleroActual.getUnidad().getSimbolo() == "S"){
-                batallon.add(casilleroActual);
+            if(!batallon.contains(casilleroAdyacente) && casilleroAdyacente.unidadEnCasilleroEsAliada(this.unidad.getAlianza())  && casilleroAdyacente.getUnidad().getSimbolo() == "S"){
+                batallon.add(casilleroAdyacente);
             }
 
         }
 
-        if(batallon.size() < 2){
-            batallon.removeAll(batallon);
+        /*Si todavia no hay 3 soldados busca en los soldados adyacentes a los del "batallon"*/
+        if(batallon.size() > i){
+            batallon.get(i).agregarCasillerosAlBatallon(batallon, i+1);
         }
 
-        return batallon;
     }
+
+
 }

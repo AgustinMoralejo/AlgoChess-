@@ -537,6 +537,7 @@ public class MovimientosUnidadesTest {
         Assertions.assertTrue(tablero.estaOcupado(13,7));
 
     }
+
     @Test
     public void testJugadorAliadoMueveUnSoldadoQueTieneSoloUnoAdyacenteYElOtroNoSeMueve(){
 
@@ -548,12 +549,115 @@ public class MovimientosUnidadesTest {
 
         jugadorAliado.moverUnidad(14,5,0);
 
-        Assertions.assertTrue(tablero.estaOcupado(14,6));
-        Assertions.assertFalse(tablero.estaOcupado(13,6));
-
         Assertions.assertTrue(tablero.estaOcupado(13,5));
 
+        Assertions.assertFalse(tablero.estaOcupado(13,6));
+        Assertions.assertTrue(tablero.estaOcupado(14,6));
+
     }
+
+    @Test
+    public void testJugadorAliadoMueveUnSoldadoQueTieneUnoSoloAdyacentePeroEsteTieneOtroAdyacentePorLoQueSeMuevenLosTres(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",14,5);
+        jugadorAliado.comprarUnidad("soldado",14,6);
+        jugadorAliado.comprarUnidad("soldado",14,7);
+
+        jugadorAliado.moverUnidad(14,5,0);
+
+
+        Assertions.assertFalse(tablero.estaOcupado(14,5));
+        Assertions.assertFalse(tablero.estaOcupado(14,6));
+        Assertions.assertFalse(tablero.estaOcupado(14,7));
+        Assertions.assertTrue(tablero.estaOcupado(13,5));
+        Assertions.assertTrue(tablero.estaOcupado(13,6));
+        Assertions.assertTrue(tablero.estaOcupado(13,7));
+
+    }
+
+
+    @Test
+    public void testJugadorAliadoMueveUnBatallonEnColumnaHaciaElNorteYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",14,5);
+        jugadorAliado.comprarUnidad("soldado",15,5);
+        jugadorAliado.comprarUnidad("soldado",16,5);
+
+        jugadorAliado.moverUnidad(14,5,0);
+
+        Assertions.assertFalse(tablero.estaOcupado(16,5));
+        Assertions.assertTrue(tablero.estaOcupado(13,5));
+        Assertions.assertTrue(tablero.estaOcupado(14,5));
+        Assertions.assertTrue(tablero.estaOcupado(15,5));
+
+    }
+
+    @Test
+    public void testJugadorAliadoMueveUnBatallonEnFilaHaciaElEsteYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",14,5);
+        jugadorAliado.comprarUnidad("soldado",14,6);
+        jugadorAliado.comprarUnidad("soldado",14,7);
+
+        jugadorAliado.moverUnidad(14,5,2);
+
+        Assertions.assertFalse(tablero.estaOcupado(14,5));
+        Assertions.assertTrue(tablero.estaOcupado(14,6));
+        Assertions.assertTrue(tablero.estaOcupado(14,7));
+        Assertions.assertTrue(tablero.estaOcupado(14,8));
+
+    }
+
+
+    @Test
+    public void testJugadorAliadoMueveUnBatallonEnColumnaHaciaElSurYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",14,5);
+        jugadorAliado.comprarUnidad("soldado",15,5);
+        jugadorAliado.comprarUnidad("soldado",16,5);
+
+        jugadorAliado.moverUnidad(14,5,4);
+
+        Assertions.assertFalse(tablero.estaOcupado(14,5));
+        Assertions.assertTrue(tablero.estaOcupado(15,5));
+        Assertions.assertTrue(tablero.estaOcupado(16,5));
+        Assertions.assertTrue(tablero.estaOcupado(17,5));
+
+    }
+
+    @Test
+    public void testJugadorAliadoMueveUnBatallonEnFilaHaciaElOesteYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",14,5);
+        jugadorAliado.comprarUnidad("soldado",14,6);
+        jugadorAliado.comprarUnidad("soldado",14,7);
+
+        jugadorAliado.moverUnidad(14,5,6);
+
+        Assertions.assertFalse(tablero.estaOcupado(14,7));
+        Assertions.assertTrue(tablero.estaOcupado(14,4));
+        Assertions.assertTrue(tablero.estaOcupado(14,5));
+        Assertions.assertTrue(tablero.estaOcupado(14,6));
+
+    }
+
+
+
 
 
 }
