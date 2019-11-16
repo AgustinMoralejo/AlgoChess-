@@ -7,12 +7,15 @@ import Fiuba.Tablero.*;
 
 public class Soldado extends Unidad {
 
+    boolean estaEnUnBatallon;
+
     public Soldado() {
         this.vida = 100;
         this.costo = 1;
         this.costoCuerpoACuerpo = 10;
         this.costoADistancia = 0;
         this.simbolo = "S";
+        this.estaEnUnBatallon = false;
         //estadoAlianzas = new EstadoAliado();
     }
 

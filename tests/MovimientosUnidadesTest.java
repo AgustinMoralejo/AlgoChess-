@@ -657,6 +657,97 @@ public class MovimientosUnidadesTest {
     }
 
 
+    @Test
+    public void testJugadorAliadoMueveUnBatallonHaciaElNoresteYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",14,5);
+        jugadorAliado.comprarUnidad("soldado",13,6);
+        jugadorAliado.comprarUnidad("soldado",14,7);
+
+        jugadorAliado.moverUnidad(14,5,1);
+
+        Assertions.assertTrue(tablero.estaOcupado(13,6));
+        Assertions.assertTrue(tablero.estaOcupado(12,7));
+        Assertions.assertTrue(tablero.estaOcupado(13,8));
+
+    }
+
+    @Test
+    public void testJugadorAliadoMueveUnBatallonHaciaElSuresteYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",12,5);
+        jugadorAliado.comprarUnidad("soldado",11,6);
+        jugadorAliado.comprarUnidad("soldado",10,7);
+
+        jugadorAliado.moverUnidad(10,7,1);
+
+        Assertions.assertTrue(tablero.estaOcupado(11,6));
+        Assertions.assertTrue(tablero.estaOcupado(10,7));
+        Assertions.assertTrue(tablero.estaOcupado(9,8));
+
+    }
+
+    @Test
+    public void testJugadorAliadoMueveUnBatallonHaciaElSuroesteYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",4,3);
+        jugadorAliado.comprarUnidad("soldado",5,4);
+        jugadorAliado.comprarUnidad("soldado",6,5);
+
+        jugadorAliado.moverUnidad(4,3,5);
+
+        Assertions.assertTrue(tablero.estaOcupado(5,2));
+        Assertions.assertTrue(tablero.estaOcupado(6,3));
+        Assertions.assertTrue(tablero.estaOcupado(7,4));
+
+    }
+
+    @Test
+    public void testJugadorAliadoMueveUnBatallonHaciaElNoroesteYCadaUnoOcupaSuNuevoCasilleroConExito(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",7,5);
+        jugadorAliado.comprarUnidad("soldado",7,6);
+        jugadorAliado.comprarUnidad("soldado",8,7);
+
+        jugadorAliado.moverUnidad(8,7,5);
+
+        Assertions.assertTrue(tablero.estaOcupado(8,4));
+        Assertions.assertTrue(tablero.estaOcupado(8,5));
+        Assertions.assertTrue(tablero.estaOcupado(9,6));
+
+    }
+
+    @Test
+    public void testJugadorAliadoMueveUnSoldadoQueNoConformaUnBatallonYLosOtrosSoldadosNoSeMueven(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero, "aliado");
+
+        jugadorAliado.comprarUnidad("soldado",7,5);
+        jugadorAliado.comprarUnidad("soldado",7,7);
+        jugadorAliado.comprarUnidad("soldado",9,5);
+
+        jugadorAliado.moverUnidad(7,5,0);
+
+        Assertions.assertTrue(tablero.estaOcupado(6,5));
+        Assertions.assertTrue(tablero.estaOcupado(7,7));
+        Assertions.assertTrue(tablero.estaOcupado(9,5));
+
+    }
+
+
 
 
 
