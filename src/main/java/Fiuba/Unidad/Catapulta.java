@@ -31,7 +31,7 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, Casillero zonaFinal){
+    public void moveteA(Casillero zonaInicial, Casillero zonaFinal, int orientacion){
         throw new UnidadNoMovibleException();   
     }
 

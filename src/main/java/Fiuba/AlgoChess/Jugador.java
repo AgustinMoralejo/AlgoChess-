@@ -74,8 +74,8 @@ public class Jugador {
     }
 
     public void moverUnidad(int fila, int columna, int orientacion){
-        int[] offset = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[orientacion];
-        tablero.moverUnidad(fila, columna, offset);
+        Casillero zonaInicial = tablero.getCasillero(fila, columna);
+        zonaInicial.moverUnidad(orientacion);
     }
 
     public void pagar(int costo){

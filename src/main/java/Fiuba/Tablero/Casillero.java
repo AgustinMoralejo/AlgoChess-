@@ -85,8 +85,14 @@ public class Casillero{
         return distancia;
     }
 
-    public void moverUnidad(Casillero otroCasillero){
-        unidad.moveteA(this, otroCasillero);
+    public void moverUnidad(int orientacion){
+    	Casillero otroCasillero = adyacentes.get(orientacion);
+        unidad.moveteA(this, otroCasillero, orientacion);
+    }
+    
+    public void moverUnidadBatallon(int orientacion, Unidad unidad) {
+    	Casillero zonaFinal = adyacentes.get(orientacion);
+    	zonaFinal.ocuparUnidad(unidad);
     }
 
     public Unidad getUnidad(){
@@ -95,6 +101,10 @@ public class Casillero{
     
     public boolean estaOcupado() {
     	return estado.estaOcupado();
+    }
+    
+    public Casillero getAdyacente(int orientacion) {
+    	return adyacentes.get(orientacion);
     }
     
     public void agregarCasillerosAlBatallon(List<Casillero> batallon, int i) {

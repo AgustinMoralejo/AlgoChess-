@@ -1,7 +1,6 @@
 package Fiuba.Tablero;
 
 import Fiuba.Unidad.Unidad;
-import java.util.List;
 import java.util.ArrayList;
 
 public class Tablero{
@@ -38,17 +37,12 @@ public class Tablero{
     }
 
     public void agregarAdyacente(int fila, int columna) {
-    	for (int i = -1; i < 2 ; i++) {
-            for (int j = -1; j < 2 ; j++) {
-            	if (fila + i < 0 || fila + j < 0 || columna + i < 0 || columna + j < 0) {
-            		continue;
-            	}
-            	if(fila + i > 19 || fila + j > 19 || columna + i > 19 || columna + j > 19){
-            		continue;
-            	}
+    	for (int i = fila -1; i < fila + 2 ; i++) {
+            for (int j = columna - 1; j < columna + 2 ; j++) {
+            	if (i < 0 || j < 0 || i > 19 || j > 19) {continue;}
             	if(i == fila && j == columna) {continue;}
             	
-            	Casillero adyacente = tablero[fila + i][columna + j];
+            	Casillero adyacente = tablero[i][j];
             	tablero[fila][columna].agregarAdyacentes(adyacente);
             }
     	}
@@ -61,6 +55,7 @@ public class Tablero{
     			if (i > 19 || j > 19 || i < 0 || j < 0) {
     				continue;
     			}
+    			if (i == fila && j == columna) {continue;}
     			Casillero zona = tablero[i][j];
     			casilleros.add(zona);
     		}
@@ -85,43 +80,6 @@ public class Tablero{
 
     public Casillero getCasillero(int fila, int columna){
         return tablero[fila][columna];
-    }
-
-    public void moverUnidad(int fila, int columna, int[] offset){
-        int offsetEnFila, offsetEnColumna;
-        Casillero zonaInicial = tablero[fila][columna];
-        offsetEnFila = offset[0];
-        offsetEnColumna = offset[1];
-        List<Casillero> batallon = new ArrayList<>();
-        List<Unidad> bufferBatallon = new ArrayList<>();
-        Casillero zonaAMover = tablero[fila + offsetEnFila][columna + offsetEnColumna];
-        
-        Unidad unidadAMover = zonaInicial.getUnidad();
-        batallon.add(zonaInicial);
-        
-        if(unidadAMover.getSimbolo() == "S"){
-            zonaInicial.agregarCasillerosAlBatallon(batallon, 1);
-        }
-        
-        if(batallon.size() < 3){
-            zonaInicial.moverUnidad(zonaAMover);
-            return;
-        }
-        
-        for(Casillero casilleroBatallon : batallon) {
-            bufferBatallon.add(casilleroBatallon.getUnidad());
-            casilleroBatallon.quitarUnidad();
-        }
-        
-        for(Casillero casilleroBatallon : batallon){
-        	int i=0;
-        	
-            Casillero zonaFinal = tablero[casilleroBatallon.getFila() + offsetEnFila]
-            		[casilleroBatallon.getColumna() + offsetEnColumna];
-            
-            zonaFinal.ocuparUnidad(bufferBatallon.get(i));
-            i++;
-        }
     }
 
 

@@ -36,9 +36,28 @@ public class Soldado extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, Casillero zonaFinal){
+    public void moveteA(Casillero zonaInicial, Casillero zonaFinal, int orientacion){
         estadoAlianzas.puedeActuar();
-        zonaFinal.recibirUnidad(this, zonaInicial);
+        List<Casillero> batallon = new ArrayList<>();
+        List<Unidad> bufferBatallon = new ArrayList<>();
+        batallon.add(zonaInicial);
+        zonaInicial.agregarCasillerosAlBatallon(batallon, 1);
+        if (batallon.size() < 3) {
+        	 zonaFinal.recibirUnidad(this, zonaInicial);
+        	 return;
+        }
+        for(Casillero casilleroBatallon : batallon) {
+            bufferBatallon.add(casilleroBatallon.getUnidad());
+            casilleroBatallon.quitarUnidad();
+        }
+        for(Casillero casilleroBatallon : batallon) {
+        	int i = 0;
+        	Unidad unidad = bufferBatallon.get(i);
+        	Casillero zonaAOcupar = casilleroBatallon.getAdyacente(orientacion);
+        	zonaAOcupar.ocuparUnidad(unidad);
+        	i++;
+        }
+        
     }
 
     @Override

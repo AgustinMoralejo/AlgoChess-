@@ -4,14 +4,15 @@ import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
 import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
 import Fiuba.Excepciones.UnidadNoMovibleException;
 import Fiuba.Unidad.*;
-import Fiuba.Tablero.Tablero;
+import Fiuba.Tablero.*;
 import Fiuba.AlgoChess.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import java.util.*;
 
 public class MovimientosUnidadesTest {
 
-    /* Norte */
+	/* Norte */
 
     @Test
     public void testSoldadoEnTableroSeMueveHaciaArribaYLoOcupaConExito(){
@@ -20,7 +21,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        jugador.moverUnidad(1,1, 0);
+        jugador.moverUnidad(1,1, 1);
         
         Assertions.assertTrue(tablero.estaOcupado(0,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -33,7 +34,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
+        jugador.moverUnidad(1,1, 1);
         
         Assertions.assertTrue(tablero.estaOcupado(0,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -46,7 +47,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0]);
+        jugador.moverUnidad(1,1,1);
         
         Assertions.assertTrue(tablero.estaOcupado(0,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -59,7 +60,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("catapulta",1,1);
         
-        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 0));
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 1));
     }
     
 /* Este */
@@ -71,7 +72,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
+        jugador.moverUnidad(1,1,4);
         
         Assertions.assertTrue(tablero.estaOcupado(1,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -84,7 +85,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
+        jugador.moverUnidad(1,1,4);
         
         Assertions.assertTrue(tablero.estaOcupado(1,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -97,7 +98,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2]);
+        jugador.moverUnidad(1,1,4);
         
         Assertions.assertTrue(tablero.estaOcupado(1,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -110,7 +111,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("catapulta",1,1);
         
-        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 1));
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 4));
     
     }
     
@@ -123,7 +124,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
+        jugador.moverUnidad(1,1,7);
         
         Assertions.assertTrue(tablero.estaOcupado(2,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -136,7 +137,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
+        jugador.moverUnidad(1,1,7);
         
         Assertions.assertTrue(tablero.estaOcupado(2,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -149,7 +150,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3]);
+        jugador.moverUnidad(1,1, 7);
         
         Assertions.assertTrue(tablero.estaOcupado(2,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -162,7 +163,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("catapulta",1,1);
         
-        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 3));
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 7));
     
     }
     
@@ -176,7 +177,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
+        jugador.moverUnidad(1,1, 2);
         
         Assertions.assertTrue(tablero.estaOcupado(0,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -189,7 +190,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
+        jugador.moverUnidad(1,1,2);
         
         Assertions.assertTrue(tablero.estaOcupado(0,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -202,7 +203,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1]);
+        jugador.moverUnidad(1,1,2);
         
         Assertions.assertTrue(tablero.estaOcupado(0,2));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -215,7 +216,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("catapulta",1,1);
         
-        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 1));
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 2));
     
     }
     
@@ -228,7 +229,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
+        jugador.moverUnidad(1,1, 6);
         
         Assertions.assertTrue(tablero.estaOcupado(2,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -241,7 +242,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
+        jugador.moverUnidad(1,1,6);
         
         Assertions.assertTrue(tablero.estaOcupado(2,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -254,7 +255,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4]);
+        jugador.moverUnidad(1,1, 6);
         
         Assertions.assertTrue(tablero.estaOcupado(2,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -267,7 +268,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("catapulta",1,1);
         
-        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 4));
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 6));
     
     }
     
@@ -281,7 +282,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
+        jugador.moverUnidad(1,1, 5);
         
         Assertions.assertTrue(tablero.estaOcupado(2,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -294,7 +295,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
+        jugador.moverUnidad(1,1, 5);
         
         Assertions.assertTrue(tablero.estaOcupado(2,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -307,7 +308,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5]);
+        jugador.moverUnidad(1,1, 5);
         
         Assertions.assertTrue(tablero.estaOcupado(2,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -334,7 +335,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
+        jugador.moverUnidad(1,1, 3);
         
         Assertions.assertTrue(tablero.estaOcupado(1,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -347,7 +348,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
+        jugador.moverUnidad(1,1,3);
         
         Assertions.assertTrue(tablero.estaOcupado(1,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -360,7 +361,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6]);
+        jugador.moverUnidad(1,1, 3);
         
         Assertions.assertTrue(tablero.estaOcupado(1,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -373,7 +374,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("catapulta",1,1);
         
-        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 6));
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 3));
     
     }
     
@@ -387,7 +388,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
+        jugador.moverUnidad(1,1,0);
         
         Assertions.assertTrue(tablero.estaOcupado(0,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -400,7 +401,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
+        jugador.moverUnidad(1,1,0);
         
         Assertions.assertTrue(tablero.estaOcupado(0,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -413,7 +414,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
         
-        tablero.moverUnidad(1,1, Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]);
+        jugador.moverUnidad(1,1,0);
         
         Assertions.assertTrue(tablero.estaOcupado(0,0));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -426,7 +427,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("catapulta",1,1);
         
-        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 7));
+        Assertions.assertThrows(UnidadNoMovibleException.class, () -> jugador.moverUnidad(1, 1, 0));
     
     }
     
@@ -435,10 +436,10 @@ public class MovimientosUnidadesTest {
     	
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
-        jugador.comprarUnidad("soldado",1,1);
-        jugador.comprarUnidad("soldado",0,0);
+        jugador.comprarUnidad("jinete",1,1);
+        jugador.comprarUnidad("jinete",0,0);
         
-        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () -> tablero.moverUnidad(1,1,Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7]));
+        Assertions.assertThrows(CasilleroEstaOcupadoException.class, () -> jugador.moverUnidad(1,1,0));
     }
     
     
@@ -463,16 +464,15 @@ public class MovimientosUnidadesTest {
     	Jugador jugador1 = new Jugador("Juan", tablero);
     	Jugador jugador2 = new Jugador("Pedro", tablero);
     	
-    	jugador1.comprarUnidad("soldado", 9, 10);
+    	jugador1.comprarUnidad("jinete", 9, 10);
     	tablero.cambiarEstado();
-    	jugador2.comprarUnidad("soldado", 11, 12);
+    	jugador2.comprarUnidad("jinete", 11, 12);
     	tablero.cambiarEstado();
     	
     	Assertions.assertThrows(CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException.class,
                 () -> jugador1.moverUnidad(11,12,0));
     	
     }
-    
     
     @Test
     public void testJugadorAliadoMueveUnSoldadoQueTieneOtrosDosAdyacentesYLosTresSeMuevenALaVez() {
@@ -484,7 +484,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",2,6);
         jugadorAliado.comprarUnidad("soldado",2,7);
         
-        jugadorAliado.moverUnidad(2,6,0);
+        jugadorAliado.moverUnidad(2,6,1);
         
         Assertions.assertFalse(tablero.estaOcupado(2,5));
         Assertions.assertFalse(tablero.estaOcupado(2,6));
@@ -503,7 +503,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",2,5);
         jugadorAliado.comprarUnidad("soldado",2,6);
 
-        jugadorAliado.moverUnidad(2,5,0);
+        jugadorAliado.moverUnidad(2,5,1);
 
         Assertions.assertTrue(tablero.estaOcupado(1,5));
 
@@ -521,7 +521,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",2,6);
         jugadorAliado.comprarUnidad("soldado",2,7);
 
-        jugadorAliado.moverUnidad(2,5,0);
+        jugadorAliado.moverUnidad(2,5,1);
 
 
         Assertions.assertFalse(tablero.estaOcupado(2,5));
@@ -543,7 +543,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",15,5);
         jugadorAliado.comprarUnidad("soldado",16,5);
 
-        jugadorAliado.moverUnidad(14,5,0);
+        jugadorAliado.moverUnidad(14,5,1);
 
         Assertions.assertFalse(tablero.estaOcupado(16,5));
         Assertions.assertTrue(tablero.estaOcupado(13,5));
@@ -551,7 +551,7 @@ public class MovimientosUnidadesTest {
         Assertions.assertTrue(tablero.estaOcupado(15,5));
 
     }
-
+    
     @Test
     public void testJugadorAliadoMueveUnBatallonEnFilaHaciaElEsteYCadaUnoOcupaSuNuevoCasilleroConExito(){
 
@@ -563,7 +563,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,6);
         jugadorAliado.comprarUnidad("soldado",14,7);
 
-        jugadorAliado.moverUnidad(14,5,2);
+        jugadorAliado.moverUnidad(14,5,4);
 
         Assertions.assertFalse(tablero.estaOcupado(14,5));
         Assertions.assertTrue(tablero.estaOcupado(14,6));
@@ -583,7 +583,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",15,5);
         jugadorAliado.comprarUnidad("soldado",16,5);
 
-        jugadorAliado.moverUnidad(14,5,4);
+        jugadorAliado.moverUnidad(14,5,6);
 
         Assertions.assertFalse(tablero.estaOcupado(14,5));
         Assertions.assertTrue(tablero.estaOcupado(15,5));
@@ -603,7 +603,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,6);
         jugadorAliado.comprarUnidad("soldado",14,7);
 
-        jugadorAliado.moverUnidad(14,5,6);
+        jugadorAliado.moverUnidad(14,5,3);
 
         Assertions.assertFalse(tablero.estaOcupado(14,7));
         Assertions.assertTrue(tablero.estaOcupado(14,4));
@@ -623,7 +623,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",13,6);
         jugadorAliado.comprarUnidad("soldado",14,7);
 
-        jugadorAliado.moverUnidad(14,5,1);
+        jugadorAliado.moverUnidad(14,5,2);
 
         Assertions.assertTrue(tablero.estaOcupado(13,6));
         Assertions.assertTrue(tablero.estaOcupado(12,7));
@@ -642,7 +642,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",11,6);
         jugadorAliado.comprarUnidad("soldado",10,7);
 
-        jugadorAliado.moverUnidad(10,7,1);
+        jugadorAliado.moverUnidad(10,7,2);
 
         Assertions.assertTrue(tablero.estaOcupado(11,6));
         Assertions.assertTrue(tablero.estaOcupado(10,7));
@@ -696,12 +696,14 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,7);
         jugadorAliado.comprarUnidad("soldado",9,5);
 
-        jugadorAliado.moverUnidad(7,5,0);
+        jugadorAliado.moverUnidad(7,5,1);
 
         Assertions.assertTrue(tablero.estaOcupado(6,5));
         Assertions.assertTrue(tablero.estaOcupado(7,7));
         Assertions.assertTrue(tablero.estaOcupado(9,5));
 
     }
+    
+    
 
 }
