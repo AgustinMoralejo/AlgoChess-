@@ -21,4 +21,9 @@ public class EstadoCasilleroOcupado implements EstadoCasillero{
     public void puedeColocar() {
     	throw new CasilleroEstaOcupadoException();
     }
+    
+    @Override
+    public void recibirUnidadBatallon(Casillero casillero, Unidad unidad) {
+    	throw new CasilleroEstaOcupadoException();
+    }
 }

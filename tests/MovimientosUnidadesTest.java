@@ -563,7 +563,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,6);
         jugadorAliado.comprarUnidad("soldado",14,7);
 
-        jugadorAliado.moverUnidad(14,5,4);
+        jugadorAliado.moverUnidad(14,7,4);
 
         Assertions.assertFalse(tablero.estaOcupado(14,5));
         Assertions.assertTrue(tablero.estaOcupado(14,6));
@@ -704,6 +704,63 @@ public class MovimientosUnidadesTest {
 
     }
     
+    @Test 
+    public void testJugadorAliadoMueveUnBatallonConUnObstaculoSeMuevenDosYUnoNo() {
+    	
+    	Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",7,6);
+        jugadorAliado.comprarUnidad("soldado",7,7);
+        jugadorAliado.comprarUnidad("soldado",7,5);
+        jugadorAliado.comprarUnidad("jinete", 8,5);
+
+        jugadorAliado.moverUnidad(7,7,6);
+
+        Assertions.assertTrue(tablero.estaOcupado(8,6));
+        Assertions.assertTrue(tablero.estaOcupado(8,7));
+        Assertions.assertTrue(tablero.estaOcupado(7,5));
+        Assertions.assertTrue(tablero.estaOcupado(8,5));
+    }
     
+    @Test
+    public void testSeDisuelveElBatallonLuegoDeQueUnSoldadoSeTopeConUnObstaculo() {
+    	
+    	Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",7,6);
+        jugadorAliado.comprarUnidad("soldado",7,7);
+        jugadorAliado.comprarUnidad("soldado",7,5);
+        jugadorAliado.comprarUnidad("jinete", 8,5);
+
+        jugadorAliado.moverUnidad(7,7,6);
+        jugadorAliado.moverUnidad(8,7,6);
+        jugadorAliado.moverUnidad(9,7,6);
+        
+        Assertions.assertTrue(tablero.estaOcupado(10,7));
+        Assertions.assertTrue(tablero.estaOcupado(9,6));
+        Assertions.assertTrue(tablero.estaOcupado(8,5));
+        Assertions.assertTrue(tablero.estaOcupado(7,5));
+    }
+    
+    @Test
+    public void testBatallonDeCuatroSoldadosSeMuevenSoloTres() {
+    	
+    	Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",7,6);
+        jugadorAliado.comprarUnidad("soldado",7,7);
+        jugadorAliado.comprarUnidad("soldado",7,5);
+        jugadorAliado.comprarUnidad("soldado", 8,5);
+        
+        jugadorAliado.moverUnidad(8,5,6);
+        
+        Assertions.assertTrue(tablero.estaOcupado(9,5));
+        Assertions.assertTrue(tablero.estaOcupado(8,6));
+        Assertions.assertTrue(tablero.estaOcupado(8,5));
+        Assertions.assertTrue(tablero.estaOcupado(7,7));
+    }
 
 }

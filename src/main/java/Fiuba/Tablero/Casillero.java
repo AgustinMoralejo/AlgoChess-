@@ -90,9 +90,8 @@ public class Casillero{
         unidad.moveteA(this, otroCasillero, orientacion);
     }
     
-    public void moverUnidadBatallon(int orientacion, Unidad unidad) {
-    	Casillero zonaFinal = adyacentes.get(orientacion);
-    	zonaFinal.ocuparUnidad(unidad);
+    public void recibirUnidadBatallon(Unidad unidad) {
+    	estado.recibirUnidadBatallon(this, unidad);
     }
 
     public Unidad getUnidad(){

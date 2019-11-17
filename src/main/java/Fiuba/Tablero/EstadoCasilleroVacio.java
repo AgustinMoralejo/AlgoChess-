@@ -18,4 +18,9 @@ public class EstadoCasilleroVacio implements EstadoCasillero{
     
     @Override 
     public void puedeColocar() {}
+    
+    @Override
+    public void recibirUnidadBatallon(Casillero casillero, Unidad unidad) {
+    	casillero.ocuparUnidad(unidad);
+    }
 }

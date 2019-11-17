@@ -54,7 +54,10 @@ public class Soldado extends Unidad{
         	int i = 0;
         	Unidad unidad = bufferBatallon.get(i);
         	Casillero zonaAOcupar = casilleroBatallon.getAdyacente(orientacion);
-        	zonaAOcupar.ocuparUnidad(unidad);
+        	try{zonaAOcupar.recibirUnidadBatallon(unidad);}
+        	catch(Exception CasilleroEstaOcupadoException) {
+        		casilleroBatallon.ocuparUnidad(unidad);
+        	}
         	i++;
         }
         
