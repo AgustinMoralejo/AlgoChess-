@@ -1,125 +1,137 @@
 package Fiuba.Tablero;
 
-import Fiuba.Excepciones.CasilleroEstaOcupadoException;
-import Fiuba.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import Fiuba.Unidad.*;
 
-import java.util.ArrayList;
+import Fiuba.AlgoChess.*;
 import java.util.Iterator;
 import java.util.List;
-
+import java.util.ArrayList;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
 public class Casillero{
 
     private Unidad unidad;
-    private boolean estaOcupado;
-    private Coordenada coordenada;
+    private EstadoCasillero estado;
+    private EstadoAlianzas estadoAlianzas;
+    private int fila;
+    private int columna;
+    private ArrayList<Casillero> adyacentes;
 
-    private ArrayList<Casillero> casillerosAdyacentes;
 
-
-    private String alianza;
-
-    public Casillero(int fila, int columna){
+    public Casillero(int fil, int col){
+        fila = fil;
+        columna = col;
         this.unidad = new UnidadNull();
-        this.estaOcupado = false;
-        this.coordenada = new Coordenada(fila, columna);
-        this.casillerosAdyacentes = new ArrayList<>();
+        this.estado = new EstadoCasilleroVacio();
+        this.estadoAlianzas = new EstadoAliado();
+        this.adyacentes = new ArrayList<Casillero>();
+    }
+    
+    public void comprarUnidad(Unidad unaUnidad) {
+    	estadoAlianzas.comprarUnidad();
+    	estado.puedeColocar();
+    	unidad = unaUnidad;
+    	estado = new EstadoCasilleroOcupado();
+    }
+    
+    public void agregarAdyacentes(Casillero adyacente) {
+    	adyacentes.add(adyacente);
     }
 
-    public boolean casilleroEstaOcupado(){
-        return this.estaOcupado;
+    public void recibirUnidad(Unidad unaUnidad, Casillero CasilleroAnterior){
+        estado.agregarUnidad(unaUnidad, this, CasilleroAnterior);
     }
 
-    public void ocuparConUnidad(Unidad unaUnidad){
-
-        if(casilleroEstaOcupado()){
-            throw new CasilleroEstaOcupadoException();
-        }
-
-        if(unaUnidad.getAlianza() != this.alianza) {
-            throw new NoSePuedeColocarUnidadEnSectorEnemigoException();
-        }
-
-        this.unidad = unaUnidad;
-        this.estaOcupado = true;
-        unidad.setCoordenada(coordenada);
-    }
-
-    public void colocarNuevaUnidad(Unidad unaUnidad){
-        if(this.casilleroEstaOcupado()){
-            throw new CasilleroEstaOcupadoException();
-        }
-        this.unidad = unaUnidad;
-        this.estaOcupado = true;
+    public void ocuparUnidad(Unidad unaUnidad){
+        unidad = unaUnidad;
+        estado = new EstadoCasilleroOcupado();
     }
 
     public void quitarUnidad(){
         unidad = new UnidadNull();
-        this.estaOcupado = false;
+        estado = new EstadoCasilleroVacio();
     }
 
-    public void iniciarZonaPorAlianza(String alianza){
-        this.alianza = alianza;
+    public void cambiarEstadoAlianzas(){
+       estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
+       unidad.cambiarEstadoAlianzas();
     }
 
-    public String getAlianza(){
-        return alianza;
+    public void iniciarZonaAliada(){
+        estadoAlianzas = new EstadoAliado();
     }
 
-    public Coordenada getCoordenada(){
-        return this.coordenada;
+    public void iniciarZonaEnemiga(){
+        estadoAlianzas = new EstadoEnemigo();
+    }
+
+    public int calcularCostoAtaque(int costo){
+        return estadoAlianzas.calcularCostoCasillero(costo);
+    }
+    
+    public int getFila() {
+    	return fila;
+    }
+    
+    public int getColumna() {
+    	return columna;
     }
 
     public int calcularDistancia(Casillero otroCasillero){
-        Coordenada coordenadaOtroCasillero = otroCasillero.getCoordenada();
-        int distancia = this.coordenada.calcularDistanciaEntreCoordenadas(coordenadaOtroCasillero);
+        int otraFila = otroCasillero.getFila();
+        int otraColumna = otroCasillero.getColumna();
+        int distancia = max(abs(fila - otraFila), abs(columna - otraColumna));
         return distancia;
     }
 
-    public void moverUnidad(Coordenada coordenadaFinal){
-
-    }
-
-    public void agregarUnCasilleroContiguo(Casillero unCasilleroContiguo){
-
-        casillerosAdyacentes.add(unCasilleroContiguo);
-
+    public void moverUnidad(Casillero otroCasillero){
+        unidad.moveteA(this, otroCasillero);
     }
 
     public Unidad getUnidad(){
-        return this.unidad;
+        return unidad;
     }
-
-    public boolean unidadEnCasilleroEsAliada(String alianza) {
-
-        return (this.unidad.getAlianza() == alianza);
-
+    
+    public boolean estaOcupado() {
+    	return estado.estaOcupado();
     }
-
+    
     public void agregarCasillerosAlBatallon(List<Casillero> batallon, int i) {
-
-        Casillero casilleroAdyacente;
-        Iterator<Casillero> iterador = casillerosAdyacentes.iterator();
-
-        while(iterador.hasNext() && batallon.size() < 3){
-
-            casilleroAdyacente = iterador.next();
-
-            if(!batallon.contains(casilleroAdyacente) && casilleroAdyacente.unidadEnCasilleroEsAliada(this.unidad.getAlianza())  && casilleroAdyacente.getUnidad().getSimbolo() == "S"){
-                batallon.add(casilleroAdyacente);
-            }
-
+    	
+    	Casillero casilleroAdyacente;
+        Iterator<Casillero> iterador = adyacentes.iterator();
+        
+        while(iterador.hasNext() && batallon.size() < 3) {
+        	
+        	casilleroAdyacente = iterador.next();
+        	
+        	if(!batallon.contains(casilleroAdyacente)) {
+        		casilleroAdyacente.getUnidad().agregarCasillerosAlBatallon(batallon, casilleroAdyacente);
+        	}
         }
-
-        /*Si todavia no hay 3 soldados busca en los soldados adyacentes a los del "batallon"*/
+        
         if(batallon.size() > i){
-            batallon.get(i).agregarCasillerosAlBatallon(batallon, i+1);
+                batallon.get(i).agregarCasillerosAlBatallon(batallon, i+1);
         }
-
+        
     }
 
-
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
+    
 }

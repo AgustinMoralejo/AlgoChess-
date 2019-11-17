@@ -1,7 +1,13 @@
 import Fiuba.Excepciones.NoSePuedeCurarEnemigoException;
+import Fiuba.Excepciones.NoSePuedenCurarUnidadesNoOrganicasException;
+
+import java.util.ArrayList;
+
+import Fiuba.Unidad.Catapulta;
 import Fiuba.Unidad.Curandero;
 import Fiuba.Unidad.Jinete;
 import Fiuba.Unidad.Soldado;
+import Fiuba.Tablero.Casillero;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -31,20 +37,22 @@ public class CuranderoTest {
 
         Curandero curandero = new Curandero();
         Soldado soldadoACurar = new Soldado();
-        curandero.setAlianza("aliado");
-        soldadoACurar.setAlianza("aliado");
-        curandero.atacar(2, soldadoACurar);
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(soldadoACurar);
+        ArrayList<Casillero> zonas = new ArrayList();
+        curandero.atacar(zonas,  2, casillero);
         Assertions.assertEquals(115, soldadoACurar.getPuntosDeVida());
     }
 
     @Test
     public void testCuranderoCuraJineteEnRango() {
 
-        Curandero curandero = new Curandero();
+    	Curandero curandero = new Curandero();
         Jinete jinete = new Jinete();
-        curandero.setAlianza("aliado");
-        jinete.setAlianza("aliado");
-        curandero.atacar(2, jinete);
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(jinete);
+        ArrayList<Casillero> zonas = new ArrayList();
+        curandero.atacar(zonas,  2, casillero);
         Assertions.assertEquals(115, jinete.getPuntosDeVida());
     }
 
@@ -54,9 +62,10 @@ public class CuranderoTest {
 
         Curandero curandero = new Curandero();
         Curandero curanderoACurar = new Curandero();
-        curandero.setAlianza("aliado");
-        curanderoACurar.setAlianza("aliado");
-        curandero.atacar(2, curanderoACurar);
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(curanderoACurar);
+        ArrayList<Casillero> zonas = new ArrayList();
+        curandero.atacar(zonas,  2, casillero);
         Assertions.assertEquals(90, curanderoACurar.getPuntosDeVida());
     }
 
@@ -64,8 +73,26 @@ public class CuranderoTest {
     public void testCuranderoNoPuedeCurarAUnidadEnemiga(){
         Curandero curandero = new Curandero();
         Jinete jinete = new Jinete();
-        curandero.setAlianza("aliado");
-        jinete.setAlianza("enemigo");
-        Assertions.assertThrows(NoSePuedeCurarEnemigoException.class, () -> curandero.atacar(1, jinete));
+        jinete.cambiarEstadoAlianzas();
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(jinete);
+        ArrayList<Casillero> zonas = new ArrayList();
+        
+        Assertions.assertThrows(NoSePuedeCurarEnemigoException.class, () -> curandero.atacar(zonas, 1, casillero));
+    }
+    
+    @Test
+    public void testCuranderoNoPuedeCurarCatapultas() {
+    	
+    	Catapulta catapulta = new Catapulta();
+    	Curandero curandero = new Curandero();
+    	
+    	Casillero casillero = new Casillero(2,2);
+    	casillero.ocuparUnidad(catapulta);
+    	
+    	ArrayList<Casillero> zonasCercanas = new ArrayList();
+    	
+    	Assertions.assertThrows(NoSePuedenCurarUnidadesNoOrganicasException.class, () -> curandero.atacar(zonasCercanas, 2, casillero));
+    	Assertions.assertEquals(50, catapulta.getPuntosDeVida());
     }
 }

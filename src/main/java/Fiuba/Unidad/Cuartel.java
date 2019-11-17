@@ -21,10 +21,9 @@ public class Cuartel {
 
     public Unidad getUnidad(String nombreUnidad, Jugador unJugador) {
 
-        Unidad unidad = unidades.get(nombreUnidad);
+    	Unidad unidad = unidades.get(nombreUnidad);
         Unidad copia = unidad.copiar();
         unJugador.pagar(copia.getCosto());
-        copia.setAlianza(unJugador.getAlianza());
         return copia;
     }
 

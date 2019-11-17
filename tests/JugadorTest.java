@@ -1,5 +1,6 @@
 import Fiuba.AlgoChess.*;
-import Fiuba.Excepciones.PuntosInsuficientesException;
+import Fiuba.Tablero.*;
+import Fiuba.Excepciones.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -64,5 +65,14 @@ public class JugadorTest {
 
         Assertions.assertThrows(PuntosInsuficientesException.class, () -> jugador.comprarUnidad("catapulta"));
         Assertions.assertEquals(2, jugador.getPuntos());
+    }
+    
+    @Test
+    public void testJugadorNoPuedeComprarUnidadEnTerritorioEnemigo() {
+    	
+    	Tablero tablero = new Tablero();
+    	Jugador jugador = new Jugador("agustin", tablero);
+    	Assertions.assertThrows(NoSePuedeColocarUnidadEnSectorEnemigoException.class, () 
+    			-> jugador.comprarUnidad("catapulta", 15, 15));
     }
 }

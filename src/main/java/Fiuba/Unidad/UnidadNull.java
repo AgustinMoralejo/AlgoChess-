@@ -1,5 +1,8 @@
 package Fiuba.Unidad;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import Fiuba.AlgoChess.*;
 
 import Fiuba.Excepciones.*;
@@ -7,33 +10,30 @@ import Fiuba.Tablero.*;
 
 public class UnidadNull extends Unidad{
 
+    public UnidadNull(){
+    	estadoAlianzas = new EstadoAliado();
+    }
+    
+    @Override 
+    public int calcularCostoUnidad(int costo) {
+    	throw new NoHayUnidadEnCasilleroException();
+    }
+    
     @Override
-    public void sumarVida(int suma) {
-
+    public void perderVida(int costoAtaque){
     }
 
     @Override
-    public void atacar(int distancia, Unidad unidadDefensa) {
-
+    public void cambiarEstadoAlianzas(){
+    	estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
     }
-
-    @Override
-    protected void dentroRango(int distancia) {
-
-    }
-
-    /*
-
-        @Override
-        public void cambiarEstadoAlianzas(){
-        }
-        */
+    
     public Unidad copiar() {
     	return new UnidadNull();
     }
-/*
+
     @Override
-    public void atacar(CondicionesAtaqueMovimiento condidiones, int distancia, Casillero unidadDefensa){
+    public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa){
         throw new NoHayUnidadEnCasilleroException();
     }
 
@@ -43,9 +43,16 @@ public class UnidadNull extends Unidad{
     }
     
     @Override
+    public void dentroRango(int distancia) {
+    }
+    
+    @Override
     public Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaNull(armaAnterior);
     }
-    */
+    
+    @Override
+    public void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero) {}
+    
 
 }

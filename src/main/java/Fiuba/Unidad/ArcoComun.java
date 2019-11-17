@@ -25,7 +25,7 @@ public class ArcoComun implements Arma {
 	
 	@Override 
 	public Arma cambiarArmaEnemiga() {
-		return new NullInamovible();
+		return new ArmaNull();
 	}
 	
 	public Arma cambiarArmaNull() {

@@ -1,10 +1,14 @@
 import Fiuba.AlgoChess.*;
 import Fiuba.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
 import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
+import Fiuba.Tablero.Casillero;
 import Fiuba.Unidad.Catapulta;
 import Fiuba.Unidad.Curandero;
 import Fiuba.Unidad.Jinete;
 import Fiuba.Unidad.Soldado;
+
+import java.util.ArrayList;
+
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -33,9 +37,11 @@ public class SoldadoTest {
 
         Soldado soldado = new Soldado();
         Soldado soldadoAAtacar = new Soldado();
-        soldado.setAlianza("aliado");
-        soldadoAAtacar.setAlianza("enemigo");
-        soldado.atacar(1, soldadoAAtacar);
+        soldadoAAtacar.cambiarEstadoAlianzas();
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(soldadoAAtacar);
+        ArrayList<Casillero> zonas = new ArrayList();
+        soldado.atacar(zonas,  2, casillero);
         Assertions.assertEquals(90, soldadoAAtacar.getPuntosDeVida());
     }
 
@@ -44,9 +50,11 @@ public class SoldadoTest {
 
         Soldado soldado = new Soldado();
         Catapulta catapulta = new Catapulta();
-        soldado.setAlianza("aliado");
-        catapulta.setAlianza("enemigo");
-        soldado.atacar(1, catapulta);
+        catapulta.cambiarEstadoAlianzas();
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(catapulta);
+        ArrayList<Casillero> zonas = new ArrayList();
+        soldado.atacar(zonas,  2, casillero);
         Assertions.assertEquals(40, catapulta.getPuntosDeVida());
     }
 
@@ -55,9 +63,11 @@ public class SoldadoTest {
 
         Soldado soldado = new Soldado();
         Jinete jinete = new Jinete();
-        soldado.setAlianza("aliado");
-        jinete.setAlianza("enemigo");
-        soldado.atacar(1, jinete);
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(jinete);
+        jinete.cambiarEstadoAlianzas();
+        ArrayList<Casillero> zonas = new ArrayList();
+        soldado.atacar(zonas,  2, casillero);
         Assertions.assertEquals(90, jinete.getPuntosDeVida());
     }
 
@@ -66,9 +76,11 @@ public class SoldadoTest {
 
         Soldado soldado = new Soldado();
         Curandero curandero = new Curandero();
-        soldado.setAlianza("aliado");
-        curandero.setAlianza("enemigo");
-        soldado.atacar(1, curandero);
+        curandero.cambiarEstadoAlianzas();
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(curandero);
+        ArrayList<Casillero> zonas = new ArrayList();
+        soldado.atacar(zonas,  2, casillero);
         Assertions.assertEquals(65, curandero.getPuntosDeVida());
     }
 
@@ -77,9 +89,11 @@ public class SoldadoTest {
 
         Soldado soldado = new Soldado();
         Soldado soldadoAAtacar = new Soldado();
-        soldado.setAlianza("aliado");
-        soldadoAAtacar.setAlianza("enemigo");
-        Assertions.assertThrows(ObjetivoFueraDeRangoException.class, () -> soldado.atacar(3,soldadoAAtacar));
+        soldadoAAtacar.cambiarEstadoAlianzas();
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(soldadoAAtacar);
+        ArrayList<Casillero> zonas = new ArrayList();
+        Assertions.assertThrows(ObjetivoFueraDeRangoException.class, () -> soldado.atacar(zonas, 3, casillero));
     }
 
     @Test
@@ -87,8 +101,9 @@ public class SoldadoTest {
 
         Soldado soldado = new Soldado();
         Soldado soldadoAAtacar = new Soldado();
-        soldado.setAlianza("aliado");
-        soldadoAAtacar.setAlianza("aliado");
-        Assertions.assertThrows(NoSePuedeAtacarAUnaUnidadAliadaException.class, () -> soldado.atacar(1,soldadoAAtacar));
+        Casillero casillero = new Casillero(1,1);
+        casillero.ocuparUnidad(soldadoAAtacar);
+        ArrayList<Casillero> zonas = new ArrayList();
+        Assertions.assertThrows(NoSePuedeAtacarAUnaUnidadAliadaException.class, () -> soldado.atacar(zonas,1,casillero));
     }
 }

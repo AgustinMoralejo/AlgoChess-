@@ -1,12 +1,18 @@
 package Fiuba.AlgoChess;
+import java.util.List;
+
 import Fiuba.Excepciones.*;
+import Fiuba.Tablero.Casillero;
 import Fiuba.Unidad.Arma;
 
 public class EstadoAliado implements EstadoAlianzas{
 	
 	public EstadoAliado() {}
-
-    @Override
+	
+	@Override
+	public void comprarUnidad() {}
+    
+	@Override
     public EstadoEnemigo cambiarEstadoAlianzas(){
         return new EstadoEnemigo();
     }
@@ -44,6 +50,11 @@ public class EstadoAliado implements EstadoAlianzas{
     @Override
     public Arma seleccionarArmaNull(Arma armaAnterior) {
     	return armaAnterior.cambiarArmaNull();
+    }
+    
+    @Override
+    public void agregarCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {
+    	batallon.add(casillero);
     }
 
 }

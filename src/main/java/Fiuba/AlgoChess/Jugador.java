@@ -1,8 +1,5 @@
 package Fiuba.AlgoChess;
 
-import Fiuba.Alianza;
-import Fiuba.Excepciones.CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException;
-import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
 import Fiuba.Excepciones.PuntosInsuficientesException;
 
 import Fiuba.Tablero.*;
@@ -10,14 +7,12 @@ import Fiuba.Unidad.Cuartel;
 import Fiuba.Unidad.*;
 
 import java.util.ArrayList;
-import java.util.Iterator;
 import java.util.List;
 
 public class Jugador {
 
     protected String nombre;
     protected int puntos;
-    protected String alianza;
 
     /*Asi el jugador puede ver el estado de sus unidades sin tener que buscarlas,
     al colocar una unidad coloca en el casillero el puntero a la unidad presente en esta lista*/
@@ -35,25 +30,20 @@ public class Jugador {
         unidades =  new ArrayList<>();
     }
 
-    public Jugador(String unNombre, Tablero tableroDelJuego, String unaAlianza) {
+    public Jugador(String unNombre, Tablero tableroDelJuego) {
 
-        this.nombre = unNombre;
-        this.puntos = 20;
-        this.unidades =  new ArrayList<>();
-        this.tablero = tableroDelJuego;
-        this.alianza = unaAlianza;
+        nombre = unNombre;
+        puntos = 20;
+        unidades =  new ArrayList<>();
+        tablero = tableroDelJuego;
     }
 
     public String getNombre() {
-        return this.nombre;
+        return nombre;
     }
 
     public int getPuntos() {
-        return this.puntos;
-    }
-
-    public String getAlianza(){
-        return this.alianza;
+        return puntos;
     }
 
     public void comprarUnidad(String nombreUnidad){
@@ -70,51 +60,22 @@ public class Jugador {
         unidades.add(unidadComprada);
     }
 
-    public void seleccionarUnidad(int fila, int columna) {
-
-        Iterator<Unidad> iterador = unidades.iterator();
-        boolean encontro=false;
-        Unidad unidadAliadaActual;
-
-        /*busco una unidad en la lista del jugador cuya posicion sea la misma que las del parametro*/
-
-        while(iterador.hasNext() && !encontro){
-            unidadAliadaActual = iterador.next();
-            encontro = (unidadAliadaActual.getCoordenada().getFila() == fila && unidadAliadaActual.getCoordenada().getColumna() == columna);
+    public void atacar(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo){
+        Casillero zonaAliada = tablero.getCasillero(filaAliada, columnaAliado);
+        Casillero zonaEnemiga = tablero.getCasillero(filaEnemigo, columnaEnemigo);
+        int distancia = zonaAliada.calcularDistancia(zonaEnemiga);
+        Unidad unidadAliada = zonaAliada.getUnidad();
+        ArrayList<Casillero> zonasCercanas = tablero.buscarCasilleros(3, filaAliada, columnaAliado);
+        int vida = unidadAliada.atacar(zonasCercanas, distancia, zonaEnemiga);
+        if (vida <= 0) {
+        	zonaEnemiga.quitarUnidad();
         }
-
-        if(!encontro){
-            throw new CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException();
-        }
-
+        
     }
 
-    public void moverUnidad(int fila, int columna, int orientacion) {
-        int[] offset = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[orientacion]; // 0 es norte {-1,0}
-
-        seleccionarUnidad(fila, columna);
-        tablero.moverUnidad(fila,columna,offset);
-
-    }
-
-    public void atacar(int filaAliada, int columnaAliada, int filaEnemigo, int columnaEnemigo){
-
-        Casillero casilleroAliado = this.tablero.getCasillero(filaAliada,columnaAliada);
-        Casillero casilleroEnemigo = this.tablero.getCasillero(filaEnemigo, columnaEnemigo);
-
-        if(!casilleroEnemigo.casilleroEstaOcupado()){
-            throw new NoHayUnidadEnCasilleroException();
-        }
-
-        int distancia = casilleroAliado.calcularDistancia(casilleroEnemigo);
-        Unidad unidadAliada = casilleroAliado.getUnidad();
-        Unidad unidadEnemiga = casilleroEnemigo.getUnidad();
-
-        if(unidadAliada.getSimbolo() == "CT"){
-            this.tablero.obtenerUnidadesContiguas(filaEnemigo, columnaEnemigo);
-        }
-
-        unidadAliada.atacar(distancia, unidadEnemiga);
+    public void moverUnidad(int fila, int columna, int orientacion){
+        int[] offset = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[orientacion];
+        tablero.moverUnidad(fila, columna, offset);
     }
 
     public void pagar(int costo){

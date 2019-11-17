@@ -1,9 +1,7 @@
 package Fiuba.Unidad;
-import Fiuba.Excepciones.UnidadEstaMuertaException;
 import Fiuba.Tablero.*;
 import Fiuba.AlgoChess.*;
-
-import java.util.ArrayList;
+import java.util.*;
 
 public abstract class Unidad {
 
@@ -11,42 +9,13 @@ public abstract class Unidad {
     protected int costo;
     protected int costoCuerpoACuerpo;
     protected int costoADistancia;
-    protected String alianza;
-
-    protected Coordenada coordenada;
-
-    protected ArrayList<Unidad> unidadesContiguas;
-
+    protected EstadoAlianzas estadoAlianzas;
     protected String simbolo;
 
-    public Unidad(){
-        unidadesContiguas = new ArrayList<>();
-    }
-
-    public String getSimbolo(){ return this.simbolo; }
-
-    public void setCoordenada(Coordenada coordenada){
-        this.coordenada = coordenada;
-    }
-
-    public void setAlianza(String alianza){
-        this.alianza = alianza;
-    }
-
-    public String getAlianza(){
-        return this.alianza;
-    }
-
-    public Coordenada getCoordenada(){
-        return this.coordenada;
-    }
-/*
     public void cambiarEstadoAlianzas(){
         estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
     }
 
-
- */
     public int getPuntosDeVida(){
         return vida;
     }
@@ -55,27 +24,23 @@ public abstract class Unidad {
         return costo;
     }
 
-    public void perderVida(int costoAtaque){
-
-        if(this.vida < 0){
-            throw new UnidadEstaMuertaException();
-        }
-        this.vida -= costoAtaque;
+    public int calcularCostoUnidad(int costo){
+        return estadoAlianzas.calcularCostoUnidad(costo);
     }
 
-    public abstract void sumarVida(int suma);
-
-    public abstract void atacar(int distancia, Unidad unidadDefensa);
-
+    public int calcularCostoCuracion(int costo){
+        return estadoAlianzas.calcularCostoCuracion(costo);
+    }
+    
+    public String getSimbolo() {
+    	return this.simbolo;
+    }
+    
+    public abstract void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero);
+    public abstract Arma seleccionarArmasJinete(Arma armaAnterior);
+    public abstract void perderVida(int costoAtaque);
+    public abstract int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa);
+    public abstract void moveteA(Casillero zonaInicial, Casillero zonaFinal);
     protected abstract void dentroRango(int distancia);
-
     public abstract Unidad copiar();
-
-    public void agregarUnidadesContiguas(Unidad unidadContigua){
-        unidadesContiguas.add(unidadContigua);
-    }
-
-    public ArrayList<Unidad> getUnidadesContiguas(){
-        return unidadesContiguas;
-    }
 }

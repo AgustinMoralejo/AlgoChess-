@@ -1,3 +1,4 @@
+
 package Fiuba.Unidad;
 
 import Fiuba.Excepciones.*;
@@ -6,7 +7,7 @@ public class ArmaNull implements Arma {
 	
 	@Override
 	public int atacar(int distancia, int costoCuerpoACuerpo, int costoADistancia) {
-		throw new NoSePuedeAtacarCasilleroVacioException();
+		throw new NoEstanDadasLasCondicionesDeAtaqueException();
 	}
 	
 	
@@ -22,7 +23,7 @@ public class ArmaNull implements Arma {
 	
 	@Override 
 	public Arma cambiarArmaEnemiga() {
-		return new Espada();
+		return this;
 	}
 	
 	public Arma cambiarArmaNull() {
