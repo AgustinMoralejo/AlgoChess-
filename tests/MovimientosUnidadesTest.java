@@ -1,8 +1,4 @@
-import Fiuba.Excepciones.CasilleroEstaOcupadoException;
-import Fiuba.Excepciones.CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException;
-import Fiuba.Excepciones.NoHayUnidadEnCasilleroException;
-import Fiuba.Excepciones.ObjetivoFueraDeRangoException;
-import Fiuba.Excepciones.UnidadNoMovibleException;
+import Fiuba.Excepciones.*;
 import Fiuba.Unidad.*;
 import Fiuba.Tablero.*;
 import Fiuba.AlgoChess.*;
@@ -779,11 +775,6 @@ public class MovimientosUnidadesTest {
 
     }
 
-    /* TODO: 1) SI un soldado del batallon no se puede mover, que la excepcion no rompa la ejecucion
-     * TODO: 2) que una vez formado el batallon se mantengan esos soldados sin formar nuevos batallones con otros
-     * */
-
-
 
     @Test
     public void testBatallonDeCuatroSoldadosSeMuevenSoloTres() {
@@ -840,12 +831,146 @@ public class MovimientosUnidadesTest {
         jugadorAliado.moverUnidad(7,7,4);
         jugadorAliado.moverUnidad(8,7,4);
         jugadorAliado.moverUnidad(9,7,4);
-        
+
         Assertions.assertTrue(tablero.estaOcupado(10,7));
         Assertions.assertTrue(tablero.estaOcupado(9,6));
         Assertions.assertTrue(tablero.estaOcupado(8,5));
         Assertions.assertTrue(tablero.estaOcupado(7,5));
     }
 
+    @Test
+    public void testSeDisuelveElBatallonLuegoDeDosMovimientosEnLosQueElMismoSoldadoSeTopaConUnObstaculo() {
+
+    	Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",7,7);
+        jugadorAliado.comprarUnidad("soldado",7,6);
+        jugadorAliado.comprarUnidad("soldado",7,5);
+        jugadorAliado.comprarUnidad("jinete", 8,5);
+
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(7,7,4);
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(8,6,4);
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(9,7,4);
+        tablero.imprimirTablero();
+
+        Assertions.assertTrue(tablero.estaOcupado(10,7));
+        Assertions.assertTrue(tablero.estaOcupado(9,6));
+        Assertions.assertTrue(tablero.estaOcupado(8,5));
+        Assertions.assertTrue(tablero.estaOcupado(7,5));
+    }
+
+
+    @Test
+    public void testCuandoBatallonSeDisuelveSePasaAMoverUnSoloSodado() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",4,6);
+        jugadorAliado.comprarUnidad("soldado",5,6);
+        jugadorAliado.comprarUnidad("soldado",6,6);
+        jugadorAliado.comprarUnidad("catapulta", 5,7);
+
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(4,6,2);
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(4,7,2);
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(4,8,2);
+        tablero.imprimirTablero();
+
+
+        Assertions.assertTrue(tablero.estaOcupado(4,9));
+        Assertions.assertTrue(tablero.estaOcupado(5,6));
+        Assertions.assertTrue(tablero.estaOcupado(5,7));
+        Assertions.assertTrue(tablero.estaOcupado(6,8));
+
+    }
+
+
+    @Test
+    public void testBatallonSeMueveEnLosBorderDelTableroConExito() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",0,0);
+        jugadorAliado.comprarUnidad("soldado",0,1);
+        jugadorAliado.comprarUnidad("soldado",0,2);
+
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(0,0,2);
+        jugadorAliado.moverUnidad(0,2,2);
+        jugadorAliado.moverUnidad(0,2,2);
+
+        Assertions.assertTrue(tablero.estaOcupado(0,3));
+        Assertions.assertTrue(tablero.estaOcupado(0,4));
+        Assertions.assertTrue(tablero.estaOcupado(0,5));
+
+    }
+
+
+    @Test
+    public void testBatallonEnFilaSeIntentaMoverAlEstePeroTieneUnObstaculoPorLoQueNingunSoldadoSeMueve() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",4,0);
+        jugadorAliado.comprarUnidad("soldado",4,1);
+        jugadorAliado.comprarUnidad("soldado",4,2);
+        jugadorAliado.comprarUnidad("curandero",4,3);
+
+        Assertions.assertThrows(BatallonNoSePuedeMoverException.class,
+                () -> jugadorAliado.moverUnidad(4,0,2));
+        Assertions.assertTrue(tablero.estaOcupado(4,0));
+        Assertions.assertTrue(tablero.estaOcupado(4,1));
+        Assertions.assertTrue(tablero.estaOcupado(4,2));
+
+    }
+
+    @Test
+    public void testBatallonEnColumnaSeIntentaMoverAlSurPeroTieneUnObstaculoPorLoQueNingunSoldadoSeMueve() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",4,2);
+        jugadorAliado.comprarUnidad("soldado",5,2);
+        jugadorAliado.comprarUnidad("soldado",6,2);
+        jugadorAliado.comprarUnidad("soldado",7,2);
+        jugadorAliado.comprarUnidad("catapulta",8,2);
+
+        Assertions.assertThrows(BatallonNoSePuedeMoverException.class,
+                () -> jugadorAliado.moverUnidad(4,2,4));
+
+    }
+
+
+    @Test
+    public void testUnBatallonAliadoMantieneSusSoldadosAlPasarPorOtrosSoldadosAliados() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",4,2);
+        jugadorAliado.comprarUnidad("soldado",5,2);
+        jugadorAliado.comprarUnidad("soldado",6,2);
+        jugadorAliado.comprarUnidad("soldado",4,4);
+        jugadorAliado.comprarUnidad("soldado",5,4);
+        jugadorAliado.comprarUnidad("soldado",6,4);
+        tablero.imprimirTablero();
+
+        jugadorAliado.moverUnidad(5,2,2);
+        tablero.imprimirTablero();
+        jugadorAliado.moverUnidad(5,3,6);
+        tablero.imprimirTablero();
+
+
+    }
 
 }

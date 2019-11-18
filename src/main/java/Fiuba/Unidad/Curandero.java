@@ -36,7 +36,7 @@ public class Curandero extends Unidad{
     @Override
     public void moveteA(Casillero zonaInicial, int orientacion) {
         estadoAlianzas.puedeActuar();
-        Casillero zonaFinal = zonaInicial.getZonaFinal(orientacion);
+        Casillero zonaFinal = zonaInicial.getAdyacente(orientacion);
         zonaFinal.recibirUnidad(this, zonaInicial);
     }
 
@@ -64,7 +64,7 @@ public class Curandero extends Unidad{
     }
     
     @Override
-    public void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero) {}
+    public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {}
 
     
 }

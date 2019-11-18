@@ -36,11 +36,12 @@ public abstract class Unidad {
     	return this.simbolo;
     }
     
-    public abstract void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero);
+    public abstract void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero);
     public abstract Arma seleccionarArmasJinete(Arma armaAnterior);
     public abstract void perderVida(int costoAtaque);
     public abstract int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa);
     public abstract void moveteA(Casillero zonaInicial, int orientacion);
     protected abstract void dentroRango(int distancia);
     public abstract Unidad copiar();
+
 }

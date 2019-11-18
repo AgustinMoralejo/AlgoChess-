@@ -35,10 +35,10 @@ public class Jinete extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, int orientacion) {
+    public void moveteA(Casillero casilleroInicial, int orientacion) {
         estadoAlianzas.puedeActuar();
-        Casillero zonaFinal = zonaInicial.getZonaFinal(orientacion);
-        zonaFinal.recibirUnidad(this, zonaInicial);
+        Casillero casilleroFinal = casilleroInicial.getAdyacente(orientacion);
+        casilleroFinal.recibirUnidad(this, casilleroInicial);
     }
 
     @Override
@@ -73,7 +73,7 @@ public class Jinete extends Unidad{
     }
     
     @Override
-    public void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero) {}
+    public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {}
 
 
 }

@@ -32,27 +32,46 @@ public class Tablero{
     public void agregarTodosAdyacentes() {
     	for ( int i = 0; i < 20 ; i++) {
             for (int j = 0; j < 20 ; j++) {
-            	this.agregarAdyacente(i, j);
+                for (int k = 0; k < 8; k++) {
+
+                    int casilleroAdyacenteHorizontal = i + Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[k][0];
+                    int casilleroAdyacenteVertical = j + Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[k][1];
+
+                    if(casilleroAdyacenteHorizontal > -1 && casilleroAdyacenteHorizontal < 20 &&
+                    casilleroAdyacenteVertical > -1 && casilleroAdyacenteVertical < 20){
+                        tablero[i][j].agregarAdyacente(tablero[casilleroAdyacenteHorizontal]
+                                [casilleroAdyacenteVertical]);
+                    }
+                    else{
+                        tablero[i][j].agregarAdyacente(
+                                new Casillero(casilleroAdyacenteHorizontal,
+                                        casilleroAdyacenteVertical));
+                    }
+
+                }
             }
     	}
     }
 
-    public void agregarAdyacente(int fila, int columna) {
-        for (int i = 1; i < 19 ; i++) {
-            for (int j = 1; j < 19 ; j++) {
-                tablero[i][j].agregarAdyacente(tablero[i+ Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][1]]);
-                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1][1]]);
-                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2][1]]);
-                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3][1]]);
-                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4][1]]);
-                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5][1]]);
-                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6][1]]);
-                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7][1]]);
-            }
-        }
 
+    public void imprimirTablero(){
+
+        int i,j;
+
+        System.out.print(" *****************Tablero del juego******************** \n") ;
+        System.out.print("\t0\t1\t2\t3\t4\t5\t6\t7\t8\t9\t10\t11\t12\t13\t14\t15\t16\t17\t18\t19\t\n") ;
+
+        for ( i = 0; i < 20 ; i++) {
+            System.out.print(i +"\t| ") ;
+            for (j = 0; j < 20 ; j++) {
+                System.out.print(tablero[i][j].getSimbolo() + " | ") ;
+            }
+            System.out.print("\n") ;
+        }
     }
-    
+
+
+
     public ArrayList<Casillero> buscarCasilleros(int distancia, int fila, int columna){
     	ArrayList<Casillero> casilleros = new ArrayList<Casillero>();
     	for(int i = fila - distancia; i < fila + distancia + 1; i++) {

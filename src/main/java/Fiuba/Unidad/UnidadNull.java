@@ -10,10 +10,17 @@ import Fiuba.Tablero.*;
 
 public class UnidadNull extends Unidad{
 
+
+
     public UnidadNull(){
     	estadoAlianzas = new EstadoAliado();
     }
-    
+
+    @Override
+    public String getSimbolo(){
+      return "-";
+    };
+
     @Override 
     public int calcularCostoUnidad(int costo) {
     	throw new NoHayUnidadEnCasilleroException();
@@ -52,7 +59,7 @@ public class UnidadNull extends Unidad{
     }
     
     @Override
-    public void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero) {}
+    public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {}
     
 
 }

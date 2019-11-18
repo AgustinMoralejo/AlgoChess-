@@ -39,23 +39,24 @@ public class Soldado extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, int orientacion){
+    public void moveteA(Casillero casilleroInicial, int orientacion){
+
         estadoAlianzas.puedeActuar();
 
         ArrayList<Casillero> batallon = new ArrayList<>();
 
-        batallon.add(zonaInicial);
-        zonaInicial.agregarCasillerosAlBatallon(batallon,1);
+        batallon.add(casilleroInicial);
+        casilleroInicial.agregarCasillerosAlBatallon(batallon,1);
 
         if(batallon.size() > 2){
             estadoBatallon = new SoldadoEnBatallon();
         }
 
-        estadoBatallon.moveteA(zonaInicial, orientacion, batallon);
+        estadoBatallon.moveteA(casilleroInicial, orientacion, batallon);
 
-        /*Puede pasar que si alguno no se logra mover el batallon se disuelva en cada movimiento se tiene que
-         * ver que siga siendo un batallon*/
         estadoBatallon = new SoldadoSolo();
+
+
     }
 
     @Override
@@ -82,9 +83,12 @@ public class Soldado extends Unidad{
     }
     
     @Override
-    public void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero) {
-    	
-    	estadoAlianzas.agregarCasilleroAlBatallon(batallon, casillero);
+    public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {
+
+        /*no funciona pq excluye a los mismos soldados del batallon*/
+        //if(!estadoBatallon.perteneceABatallon()){
+            estadoAlianzas.agregarCasilleroAlBatallon(batallon, casillero);
+        //}
     }
 
 }

@@ -103,10 +103,6 @@ public class Casillero{
     	return estado.estaOcupado();
     }
     
-    public Casillero getAdyacente(int orientacion) {
-    	return adyacentes.get(orientacion);
-    }
-    
     public void agregarCasillerosAlBatallon(List<Casillero> batallon, int i) {
     	
     	Casillero casilleroAdyacente;
@@ -117,7 +113,7 @@ public class Casillero{
         	casilleroAdyacente = iterador.next();
         	
         	if(!batallon.contains(casilleroAdyacente)) {
-        		casilleroAdyacente.getUnidad().agregarCasillerosAlBatallon(batallon, casilleroAdyacente);
+        		casilleroAdyacente.getUnidad().agregarUnCasilleroAlBatallon(batallon, casilleroAdyacente);
         	}
         }
         
@@ -131,7 +127,11 @@ public class Casillero{
         adyacentes.add(adyacente);
     }
 
-    public Casillero getZonaFinal(int orientacion) {
+    public Casillero getAdyacente(int orientacion) {
         return adyacentes.get(orientacion);
+    }
+
+    public String getSimbolo() {
+        return this.unidad.getSimbolo();
     }
 }

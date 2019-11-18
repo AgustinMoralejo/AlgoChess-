@@ -9,10 +9,11 @@ public class SoldadoSolo implements EstadoBatallon {
     @Override
     public void moveteA(Casillero zonaInicial, int orientacion, ArrayList<Casillero> batallon) {
 
-        Casillero zonaFinal = zonaInicial.getZonaFinal(orientacion);
+        Casillero zonaFinal = zonaInicial.getAdyacente(orientacion);
         zonaFinal.recibirUnidad(zonaInicial.getUnidad(), zonaInicial);
 
     }
+
 
 
 }

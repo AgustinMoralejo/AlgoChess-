@@ -73,6 +73,6 @@ public class Catapulta extends Unidad{
     }
     
     @Override
-    public void agregarCasillerosAlBatallon(List<Casillero> batallon, Casillero casillero) {}
+    public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {}
 
 }

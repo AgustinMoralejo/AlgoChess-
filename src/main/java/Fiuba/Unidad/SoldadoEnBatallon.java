@@ -1,5 +1,6 @@
 package Fiuba.Unidad;
 
+import Fiuba.Excepciones.BatallonNoSePuedeMoverException;
 import Fiuba.Excepciones.CasilleroEstaOcupadoException;
 import Fiuba.Tablero.Casillero;
 
@@ -12,6 +13,15 @@ public class SoldadoEnBatallon implements EstadoBatallon {
     public void moveteA(Casillero zonaInicial, int orientacion, ArrayList<Casillero> batallon) {
 
         ArrayList<Unidad> bufferBatallon = new ArrayList<>();
+
+        /*Se puede mover el batallon?*/;
+        if(batallon.get(0).getAdyacente(orientacion).estaOcupado() &&
+        batallon.get(1).getAdyacente(orientacion).estaOcupado() &&
+        batallon.get(2).getAdyacente(orientacion).estaOcupado()
+        ){
+            throw new BatallonNoSePuedeMoverException();
+
+        }
 
         /**Cargo todas las unidades del batallon en un buffer, quitandolas del tablero*/
         for(Casillero casilleroBatallon : batallon) {
