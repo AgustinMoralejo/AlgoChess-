@@ -35,8 +35,9 @@ public class Jinete extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, Casillero zonaFinal, int orientacion){
+    public void moveteA(Casillero zonaInicial, int orientacion) {
         estadoAlianzas.puedeActuar();
+        Casillero zonaFinal = zonaInicial.getZonaFinal(orientacion);
         zonaFinal.recibirUnidad(this, zonaInicial);
     }
 

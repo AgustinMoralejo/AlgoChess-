@@ -74,8 +74,7 @@ public class Jugador {
     }
 
     public void moverUnidad(int fila, int columna, int orientacion){
-        Casillero zonaInicial = tablero.getCasillero(fila, columna);
-        zonaInicial.moverUnidad(orientacion);
+        tablero.moverUnidad(fila, columna, orientacion);
     }
 
     public void pagar(int costo){

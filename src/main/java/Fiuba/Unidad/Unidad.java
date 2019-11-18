@@ -40,7 +40,7 @@ public abstract class Unidad {
     public abstract Arma seleccionarArmasJinete(Arma armaAnterior);
     public abstract void perderVida(int costoAtaque);
     public abstract int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa);
-    public abstract void moveteA(Casillero zonaInicial, Casillero zonaFinal, int orientacion);
+    public abstract void moveteA(Casillero zonaInicial, int orientacion);
     protected abstract void dentroRango(int distancia);
     public abstract Unidad copiar();
 }

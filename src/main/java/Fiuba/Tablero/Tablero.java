@@ -1,5 +1,6 @@
 package Fiuba.Tablero;
 
+import Fiuba.AlgoChess.Movimiento;
 import Fiuba.Unidad.Unidad;
 import java.util.ArrayList;
 
@@ -37,15 +38,19 @@ public class Tablero{
     }
 
     public void agregarAdyacente(int fila, int columna) {
-    	for (int i = fila -1; i < fila + 2 ; i++) {
-            for (int j = columna - 1; j < columna + 2 ; j++) {
-            	if (i < 0 || j < 0 || i > 19 || j > 19) {continue;}
-            	if(i == fila && j == columna) {continue;}
-            	
-            	Casillero adyacente = tablero[i][j];
-            	tablero[fila][columna].agregarAdyacentes(adyacente);
+        for (int i = 1; i < 19 ; i++) {
+            for (int j = 1; j < 19 ; j++) {
+                tablero[i][j].agregarAdyacente(tablero[i+ Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[0][1]]);
+                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[1][1]]);
+                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[2][1]]);
+                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[3][1]]);
+                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[4][1]]);
+                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[5][1]]);
+                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[6][1]]);
+                tablero[i][j].agregarAdyacente(tablero[i+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7][0]][j+Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[7][1]]);
             }
-    	}
+        }
+
     }
     
     public ArrayList<Casillero> buscarCasilleros(int distancia, int fila, int columna){
@@ -71,7 +76,15 @@ public class Tablero{
         }
     }
 
-    
+
+    public void moverUnidad(int fila, int columna, int orientacion){
+
+        /**Como los casillero ya saben cuales son adyacentes podemos delegar la responsabilidad al casillero*/
+
+        Casillero casilleroInicial = tablero[fila][columna];
+        casilleroInicial.moverUnidad(orientacion);
+
+    }
     
     public void colocarUnidad(Unidad unaUnidad, int fila, int columna){
         Casillero casillero = tablero[fila][columna];

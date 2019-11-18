@@ -10,7 +10,13 @@ public class EstadoCasilleroVacio implements EstadoCasillero{
         CasilleroAnterior.quitarUnidad();
         CasilleroFinal.ocuparUnidad(unaUnidad);   
     }
-    
+
+    @Override
+    public void agregarUnidad(Unidad unaUnidad, Casillero CasilleroFinal) {
+        CasilleroFinal.ocuparUnidad(unaUnidad);
+    }
+
+
     @Override 
     public boolean estaOcupado() {
     	return false;
@@ -19,8 +25,4 @@ public class EstadoCasilleroVacio implements EstadoCasillero{
     @Override 
     public void puedeColocar() {}
     
-    @Override
-    public void recibirUnidadBatallon(Casillero casillero, Unidad unidad) {
-    	casillero.ocuparUnidad(unidad);
-    }
 }

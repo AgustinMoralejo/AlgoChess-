@@ -38,10 +38,10 @@ public class UnidadNull extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, Casillero zonaFinal, int orientacion){
+    public void moveteA(Casillero zonaInicial, int orientacion) {
         throw new NoHayUnidadEnCasilleroException();
     }
-    
+
     @Override
     public void dentroRango(int distancia) {
     }

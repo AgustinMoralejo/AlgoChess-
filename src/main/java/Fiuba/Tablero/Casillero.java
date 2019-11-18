@@ -34,13 +34,14 @@ public class Casillero{
     	unidad = unaUnidad;
     	estado = new EstadoCasilleroOcupado();
     }
-    
-    public void agregarAdyacentes(Casillero adyacente) {
-    	adyacentes.add(adyacente);
-    }
 
     public void recibirUnidad(Unidad unaUnidad, Casillero CasilleroAnterior){
         estado.agregarUnidad(unaUnidad, this, CasilleroAnterior);
+    }
+
+
+    private void recibirUnidad(Unidad unaUnidad) {
+        estado.agregarUnidad(unaUnidad,this);
     }
 
     public void ocuparUnidad(Unidad unaUnidad){
@@ -85,14 +86,16 @@ public class Casillero{
         return distancia;
     }
 
-    public void moverUnidad(int orientacion){
-    	Casillero otroCasillero = adyacentes.get(orientacion);
-        unidad.moveteA(this, otroCasillero, orientacion);
+    public void moverUnidad(int orientacion) {
+        unidad.moveteA(this, orientacion);
     }
-    
-    public void recibirUnidadBatallon(Unidad unidad) {
-    	estado.recibirUnidadBatallon(this, unidad);
+
+    public void moverUnidadBatallon(Unidad unidad, int orientacion) {
+        /*Este metodo no toma en cuenta si el casillero esta ocupado, lo que deberia hacer es chequear dado
+         * que en el caso de que haya unidades enemigas, las termina pisando*/
+        adyacentes.get(orientacion).recibirUnidad(unidad);
     }
+
 
     public Unidad getUnidad(){
         return unidad;
@@ -126,21 +129,11 @@ public class Casillero{
         
     }
 
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+    public void agregarAdyacente(Casillero adyacente) {
+        adyacentes.add(adyacente);
+    }
+
+    public Casillero getZonaFinal(int orientacion) {
+        return adyacentes.get(orientacion);
+    }
 }

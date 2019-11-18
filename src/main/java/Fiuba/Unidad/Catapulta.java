@@ -18,7 +18,7 @@ public class Catapulta extends Unidad{
         estadoAlianzas = new EstadoAliado();
         simbolo = "CT";
     }
-    
+
     @Override
     public Unidad copiar() {
 
@@ -31,8 +31,8 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, Casillero zonaFinal, int orientacion){
-        throw new UnidadNoMovibleException();   
+    public void moveteA(Casillero zonaInicial, int orientacion) {
+            throw new UnidadNoMovibleException();
     }
 
     @Override
@@ -58,6 +58,7 @@ public class Catapulta extends Unidad{
         defensa.perderVida(costo_total);
         return defensa.getPuntosDeVida();
     }
+
 
     @Override
     protected void dentroRango(int distancia) {

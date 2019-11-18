@@ -11,12 +11,15 @@ import Fiuba.Tablero.*;
 
 public class Soldado extends Unidad{
 
+    EstadoBatallon estadoBatallon;
+
     public Soldado(){
         vida = 100;
         costo = 1;
         costoCuerpoACuerpo = 10;
         costoADistancia = 0;
         estadoAlianzas = new EstadoAliado();
+        estadoBatallon = new SoldadoSolo();
         simbolo = "S";
     }
     
@@ -36,31 +39,23 @@ public class Soldado extends Unidad{
     }
 
     @Override
-    public void moveteA(Casillero zonaInicial, Casillero zonaFinal, int orientacion){
+    public void moveteA(Casillero zonaInicial, int orientacion){
         estadoAlianzas.puedeActuar();
-        List<Casillero> batallon = new ArrayList<>();
-        List<Unidad> bufferBatallon = new ArrayList<>();
+
+        ArrayList<Casillero> batallon = new ArrayList<>();
+
         batallon.add(zonaInicial);
-        zonaInicial.agregarCasillerosAlBatallon(batallon, 1);
-        if (batallon.size() < 3) {
-        	 zonaFinal.recibirUnidad(this, zonaInicial);
-        	 return;
+        zonaInicial.agregarCasillerosAlBatallon(batallon,1);
+
+        if(batallon.size() > 2){
+            estadoBatallon = new SoldadoEnBatallon();
         }
-        for(Casillero casilleroBatallon : batallon) {
-            bufferBatallon.add(casilleroBatallon.getUnidad());
-            casilleroBatallon.quitarUnidad();
-        }
-        for(Casillero casilleroBatallon : batallon) {
-        	int i = 0;
-        	Unidad unidad = bufferBatallon.get(i);
-        	Casillero zonaAOcupar = casilleroBatallon.getAdyacente(orientacion);
-        	try{zonaAOcupar.recibirUnidadBatallon(unidad);}
-        	catch(Exception CasilleroEstaOcupadoException) {
-        		casilleroBatallon.ocuparUnidad(unidad);
-        	}
-        	i++;
-        }
-        
+
+        estadoBatallon.moveteA(zonaInicial, orientacion, batallon);
+
+        /*Puede pasar que si alguno no se logra mover el batallon se disuelva en cada movimiento se tiene que
+         * ver que siga siendo un batallon*/
+        estadoBatallon = new SoldadoSolo();
     }
 
     @Override
