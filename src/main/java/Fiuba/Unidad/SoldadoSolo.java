@@ -14,6 +14,10 @@ public class SoldadoSolo implements EstadoBatallon {
 
     }
 
+    @Override
+    public boolean perteneceABatallon() {
+        return false;
+    }
 
 
 }

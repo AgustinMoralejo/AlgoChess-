@@ -42,5 +42,10 @@ public class SoldadoEnBatallon implements EstadoBatallon {
         }
     }
 
+    @Override
+    public boolean perteneceABatallon() {
+        return true;
+    }
+
 
 }

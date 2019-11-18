@@ -16,6 +16,7 @@ public class Jinete extends Unidad{
         costoCuerpoACuerpo = 5;
         costoADistancia = 15;
         estadoAlianzas = new EstadoAliado();
+        simbolo = "J";
     }
     
     @Override

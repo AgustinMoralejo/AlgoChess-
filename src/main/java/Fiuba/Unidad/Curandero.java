@@ -16,6 +16,7 @@ public class Curandero extends Unidad{
         costoADistancia = 0;
         costoCuerpoACuerpo = -15;
         estadoAlianzas = new EstadoAliado();
+        simbolo = "C";
     }
     
     @Override

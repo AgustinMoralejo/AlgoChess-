@@ -51,10 +51,11 @@ public class Soldado extends Unidad{
         if(batallon.size() > 2){
             estadoBatallon = new SoldadoEnBatallon();
         }
+        else{
+            estadoBatallon = new SoldadoSolo();
+        }
 
         estadoBatallon.moveteA(casilleroInicial, orientacion, batallon);
-
-        estadoBatallon = new SoldadoSolo();
 
 
     }
@@ -86,7 +87,7 @@ public class Soldado extends Unidad{
     public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {
 
         /*no funciona pq excluye a los mismos soldados del batallon*/
-        //if(!estadoBatallon.perteneceABatallon()){
+        //if(estadoBatallon.perteneceABatallon()){
             estadoAlianzas.agregarCasilleroAlBatallon(batallon, casillero);
         //}
     }
