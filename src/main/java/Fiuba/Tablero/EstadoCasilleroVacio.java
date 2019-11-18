@@ -12,7 +12,7 @@ public class EstadoCasilleroVacio implements EstadoCasillero{
     }
 
     @Override
-    public void agregarUnidad(Unidad unaUnidad, Casillero CasilleroFinal) {
+    public void agregarUnidadBatallon(Unidad unaUnidad, Casillero CasilleroFinal) {
         CasilleroFinal.ocuparUnidad(unaUnidad);
     }
 

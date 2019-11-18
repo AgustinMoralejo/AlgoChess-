@@ -805,7 +805,7 @@ public class MovimientosUnidadesTest {
     }
 
 
-    /*
+
     @Test 
     public void testJugadorAliadoMueveUnBatallonConUnObstaculoSeMuevenDosYUnoNo() {
     	
@@ -817,14 +817,15 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
 
-        jugadorAliado.moverUnidad(7,7,6);
+        jugadorAliado.moverUnidad(7,7,4);
 
         Assertions.assertTrue(tablero.estaOcupado(8,6));
         Assertions.assertTrue(tablero.estaOcupado(8,7));
         Assertions.assertTrue(tablero.estaOcupado(7,5));
         Assertions.assertTrue(tablero.estaOcupado(8,5));
     }
-    
+
+
     @Test
     public void testSeDisuelveElBatallonLuegoDeQueUnSoldadoSeTopeConUnObstaculo() {
     	
@@ -836,15 +837,15 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
 
-        jugadorAliado.moverUnidad(7,7,6);
-        jugadorAliado.moverUnidad(8,7,6);
-        jugadorAliado.moverUnidad(9,7,6);
+        jugadorAliado.moverUnidad(7,7,4);
+        jugadorAliado.moverUnidad(8,7,4);
+        jugadorAliado.moverUnidad(9,7,4);
         
         Assertions.assertTrue(tablero.estaOcupado(10,7));
         Assertions.assertTrue(tablero.estaOcupado(9,6));
         Assertions.assertTrue(tablero.estaOcupado(8,5));
         Assertions.assertTrue(tablero.estaOcupado(7,5));
     }
-    */
+
 
 }

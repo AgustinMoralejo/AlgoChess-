@@ -13,7 +13,7 @@ public class EstadoCasilleroOcupado implements EstadoCasillero{
     }
 
     @Override
-    public void agregarUnidad(Unidad unaUnidad, Casillero zonaFinal) {
+    public void agregarUnidadBatallon(Unidad unaUnidad, Casillero zonaFinal) {
         throw new CasilleroEstaOcupadoException();
     }
 

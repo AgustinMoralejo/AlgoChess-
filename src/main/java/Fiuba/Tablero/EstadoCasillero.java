@@ -7,6 +7,6 @@ public interface EstadoCasillero{
     public abstract void agregarUnidad(Unidad unaUnidad,Casillero zonaFinal, Casillero zonaAnterior);
     public abstract boolean estaOcupado();
     public abstract void puedeColocar();
-    void agregarUnidad(Unidad unaUnidad, Casillero zonaFinal);
+    void agregarUnidadBatallon(Unidad unaUnidad, Casillero zonaFinal);
 
 }

@@ -40,8 +40,8 @@ public class Casillero{
     }
 
 
-    private void recibirUnidad(Unidad unaUnidad) {
-        estado.agregarUnidad(unaUnidad,this);
+    private void recibirUnidadBatallon(Unidad unaUnidad) {
+        estado.agregarUnidadBatallon(unaUnidad,this);
     }
 
     public void ocuparUnidad(Unidad unaUnidad){
@@ -91,9 +91,7 @@ public class Casillero{
     }
 
     public void moverUnidadBatallon(Unidad unidad, int orientacion) {
-        /*Este metodo no toma en cuenta si el casillero esta ocupado, lo que deberia hacer es chequear dado
-         * que en el caso de que haya unidades enemigas, las termina pisando*/
-        adyacentes.get(orientacion).recibirUnidad(unidad);
+        adyacentes.get(orientacion).recibirUnidadBatallon(unidad);
     }
 
 
