@@ -11,8 +11,6 @@ import fiuba.algo3.TP2.Tablero.Casillero;
 
 public class Catapulta extends Unidad{
 
-    private ArrayList<Unidad> unidadesAtacadas;
-
     public Catapulta(){
         vida = 50;
         costo = 5;
@@ -53,31 +51,36 @@ public class Catapulta extends Unidad{
 
     @Override
     public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero casilleroDefensa){
-        this.unidadesAtacadas = new ArrayList<>();
-
         estadoAlianzas.puedeActuar();
         this.dentroRango(distancia);
         Unidad defensa = casilleroDefensa.getUnidad();
         int costo = casilleroDefensa.calcularCostoAtaque(costoADistancia);
         int costoTotal = defensa.calcularCostoUnidad(costo);
 
+        ArrayList<Unidad> unidadesAtacadas = new ArrayList<Unidad>();
         unidadesAtacadas.add(casilleroDefensa.getUnidad());
-        casilleroDefensa.getUnidad().perderVida(costoTotal);
+        unidadesAtacadas = buscarUnidadesAdyacentes(unidadesAtacadas, casilleroDefensa);
 
-        atacarCasillerosAdyacentes(casilleroDefensa, costoTotal);
+        atacarUnidadesCorrespondientes(costoTotal, unidadesAtacadas);
 
         return defensa.getPuntosDeVida();
     }
 
-    public void atacarCasillerosAdyacentes(Casillero casillero, int costo){
+    public ArrayList<Unidad> buscarUnidadesAdyacentes(ArrayList<Unidad> unidadesAtacadas, Casillero casillero){
 
         for(Casillero casilleroAdyacente: casillero.getCasillerosConUnidadesAdyacentes()){
             Unidad unidadAtacada = casilleroAdyacente.getUnidad();
-            if(!this.unidadesAtacadas.contains(unidadAtacada)){
-                this.unidadesAtacadas.add(unidadAtacada);
-                unidadAtacada.perderVida(costo);
-                atacarCasillerosAdyacentes(casilleroAdyacente, costo);
+            if(!unidadesAtacadas.contains(unidadAtacada)){
+                unidadesAtacadas.add(unidadAtacada);
+                buscarUnidadesAdyacentes(unidadesAtacadas, casilleroAdyacente);
             }
+        }
+        return unidadesAtacadas;
+    }
+
+    public void atacarUnidadesCorrespondientes(int costo, ArrayList<Unidad> unidadesAtacadas){
+        for(Unidad unidad: unidadesAtacadas){
+            unidad.perderVida(costo);
         }
     }
 
