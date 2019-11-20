@@ -20,7 +20,6 @@ public class Catapulta extends Unidad{
         costoCuerpoACuerpo = 0;
         estadoAlianzas = new EstadoAliado();
         simbolo = "CT";
-        this.unidadesAtacadas = new ArrayList<>();
     }
 
     @Override
@@ -54,28 +53,31 @@ public class Catapulta extends Unidad{
 
     @Override
     public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero casilleroDefensa){
-    	estadoAlianzas.puedeActuar();
+        this.unidadesAtacadas = new ArrayList<>();
+
+        estadoAlianzas.puedeActuar();
         this.dentroRango(distancia);
         Unidad defensa = casilleroDefensa.getUnidad();
         int costo = casilleroDefensa.calcularCostoAtaque(costoADistancia);
         int costoTotal = defensa.calcularCostoUnidad(costo);
 
+        unidadesAtacadas.add(casilleroDefensa.getUnidad());
+        casilleroDefensa.getUnidad().perderVida(costoTotal);
+
         atacarCasillerosAdyacentes(casilleroDefensa, costoTotal);
+
         return defensa.getPuntosDeVida();
     }
 
     public void atacarCasillerosAdyacentes(Casillero casillero, int costo){
-        for(Casillero casilleroAdyacente: casillero.getAdyacentes()){
-            atacarAUnidadesAdyacentes(casilleroAdyacente.getUnidadesAdyacentes(), costo);
-        }
-    }
 
-    public void atacarAUnidadesAdyacentes(ArrayList<Unidad> unidadesAdyacentes, int costo){
-
-        for(Unidad unidadAAtacar: unidadesAdyacentes) {
-            if(!unidadesAtacadas.contains(unidadAAtacar))
-            unidadAAtacar.perderVida(costo);
-            unidadesAtacadas.add(unidadAAtacar);
+        for(Casillero casilleroAdyacente: casillero.getCasillerosConUnidadesAdyacentes()){
+            Unidad unidadAtacada = casilleroAdyacente.getUnidad();
+            if(!this.unidadesAtacadas.contains(unidadAtacada)){
+                this.unidadesAtacadas.add(unidadAtacada);
+                unidadAtacada.perderVida(costo);
+                atacarCasillerosAdyacentes(casilleroAdyacente, costo);
+            }
         }
     }
 

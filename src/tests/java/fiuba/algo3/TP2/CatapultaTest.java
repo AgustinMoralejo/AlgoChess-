@@ -72,14 +72,23 @@ public class CatapultaTest {
     @Test
     public void testCatapultaAtacaCuranderoEnRango() {
 
-        Catapulta catapulta = new Catapulta();
-        Curandero curandero = new Curandero();
-        curandero.cambiarEstadoAlianzas();
-        Casillero casillero = new Casillero(1,1);
-        casillero.ocuparUnidad(curandero);
-        ArrayList<Casillero> zonas = new ArrayList();
-        catapulta.atacar(zonas, 7, casillero);
-        Assertions.assertEquals(54, curandero.getPuntosDeVida());
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("pedro", tablero);
+        Jugador jugadorEnemigo = new Jugador("juan", tablero);
+
+        jugadorAliado.comprarUnidad("catapulta", 1, 1);
+
+        tablero.cambiarEstado();
+
+        jugadorEnemigo.comprarUnidad("curandero", 15,15);
+
+        tablero.cambiarEstado();
+
+        jugadorAliado.atacar(1,1,15,15);
+
+        Unidad curandero = tablero.getUnidad(15,15);
+
+        Assertions.assertEquals(55, curandero.getPuntosDeVida());
     }
 
     @Test
@@ -120,6 +129,7 @@ public class CatapultaTest {
         jugadorAliado.comprarUnidad("soldado", 3, 2);
         jugadorAliado.comprarUnidad("jinete", 4,1);
         jugadorAliado.comprarUnidad("catapulta", 2,4);
+        jugadorAliado.comprarUnidad("curandero",1,5);
 
         tablero.cambiarEstado();
 
@@ -132,11 +142,13 @@ public class CatapultaTest {
         Unidad soldado2 = tablero.getUnidad(3,2);
         Unidad jinete = tablero.getUnidad(4,1);
         Unidad catapulta = tablero.getUnidad(2,4);
+        Unidad curandero2 = tablero.getUnidad(1,5);
 
         Assertions.assertEquals(80, soldado1.getPuntosDeVida());
         Assertions.assertEquals(80, soldado2.getPuntosDeVida());
         Assertions.assertEquals(55, curandero.getPuntosDeVida());
         Assertions.assertEquals(80, jinete.getPuntosDeVida());
         Assertions.assertEquals(30, catapulta.getPuntosDeVida());
+        Assertions.assertEquals(55, curandero2.getPuntosDeVida());
     }
 }
