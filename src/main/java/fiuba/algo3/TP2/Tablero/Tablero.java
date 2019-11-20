@@ -38,8 +38,7 @@ public class Tablero{
                     int casilleroAdyacenteHorizontal = i + Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[k][0];
                     int casilleroAdyacenteVertical = j + Movimiento.OFFSET_COORDENADAS_MOVIMIENTO[k][1];
 
-                    if(casilleroAdyacenteHorizontal > -1 && casilleroAdyacenteHorizontal < 20 &&
-                    casilleroAdyacenteVertical > -1 && casilleroAdyacenteVertical < 20){
+                    if(estaEnRangoValido(casilleroAdyacenteHorizontal, casilleroAdyacenteVertical)){
                         tablero[i][j].agregarAdyacente(tablero[casilleroAdyacenteHorizontal]
                                 [casilleroAdyacenteVertical]);
                     }
@@ -52,6 +51,11 @@ public class Tablero{
                 }
             }
     	}
+    }
+
+
+    public boolean estaEnRangoValido(int fila, int columna){
+        return ((fila > -1) && (fila < 20) && (columna > -1) && (columna < 20));
     }
 
 

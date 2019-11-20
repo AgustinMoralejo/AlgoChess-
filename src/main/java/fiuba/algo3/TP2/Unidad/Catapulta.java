@@ -11,6 +11,8 @@ import fiuba.algo3.TP2.Tablero.Casillero;
 
 public class Catapulta extends Unidad{
 
+    private ArrayList<Unidad> unidadesAtacadas;
+
     public Catapulta(){
         vida = 50;
         costo = 5;
@@ -18,6 +20,7 @@ public class Catapulta extends Unidad{
         costoCuerpoACuerpo = 0;
         estadoAlianzas = new EstadoAliado();
         simbolo = "CT";
+        this.unidadesAtacadas = new ArrayList<>();
     }
 
     @Override
@@ -57,16 +60,22 @@ public class Catapulta extends Unidad{
         int costo = casilleroDefensa.calcularCostoAtaque(costoADistancia);
         int costoTotal = defensa.calcularCostoUnidad(costo);
 
-        atacarACasillerosAdyacentes(casilleroDefensa, costoTotal);
+        atacarCasillerosAdyacentes(casilleroDefensa, costoTotal);
         return defensa.getPuntosDeVida();
     }
 
-    public void atacarACasillerosAdyacentes(Casillero casilleroAtacado, int costo){
+    public void atacarCasillerosAdyacentes(Casillero casillero, int costo){
+        for(Casillero casilleroAdyacente: casillero.getAdyacentes()){
+            atacarAUnidadesAdyacentes(casilleroAdyacente.getUnidadesAdyacentes(), costo);
+        }
+    }
 
-        ArrayList<Casillero> casillerosAdyacentes = casilleroAtacado.getAdyacentes();
-        casillerosAdyacentes.add(casilleroAtacado);
-        for(Casillero casilleroAAtacar: casillerosAdyacentes) {
-            casilleroAAtacar.getUnidad().perderVida(costo);
+    public void atacarAUnidadesAdyacentes(ArrayList<Unidad> unidadesAdyacentes, int costo){
+
+        for(Unidad unidadAAtacar: unidadesAdyacentes) {
+            if(!unidadesAtacadas.contains(unidadAAtacar))
+            unidadAAtacar.perderVida(costo);
+            unidadesAtacadas.add(unidadAAtacar);
         }
     }
 

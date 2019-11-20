@@ -86,22 +86,57 @@ public class CatapultaTest {
     public void testCatapultaAtacaAUnaDistanciaLejana(){
 
         Tablero tablero = new Tablero();
-        Jugador jugadorAzul = new Jugador("pedro", tablero);
-        Jugador jugadorRojo = new Jugador("juan", tablero);
-        jugadorAzul.comprarUnidad("soldado", 3,1);
-        jugadorAzul.comprarUnidad("curandero", 3,3);
-        jugadorAzul.comprarUnidad("soldado", 3, 2);
+        Jugador jugadorAliado = new Jugador("pedro", tablero);
+        Jugador jugadorEnemigo = new Jugador("juan", tablero);
+
+        jugadorAliado.comprarUnidad("soldado", 3,1);
+        jugadorAliado.comprarUnidad("curandero", 3,3);
+        jugadorAliado.comprarUnidad("soldado", 3, 2);
 
         tablero.cambiarEstado();
 
-        jugadorRojo.comprarUnidad("catapulta", 15, 15);
+        jugadorEnemigo.comprarUnidad("catapulta", 15, 15);
 
-        jugadorRojo.atacar(15,15,3,2);
+        jugadorEnemigo.atacar(15,15,3,2);
+
         Unidad soldado1 = tablero.getUnidad(3,1);
         Unidad soldado2 = tablero.getUnidad(3,2);
         Unidad curandero = tablero.getUnidad(3,3);
+
         Assertions.assertEquals(80, soldado1.getPuntosDeVida());
         Assertions.assertEquals(80, soldado2.getPuntosDeVida());
         Assertions.assertEquals(55, curandero.getPuntosDeVida());
+    }
+
+    @Test
+    public void testCatapultaAtacaATodasLasUnidadesAdyacentes(){
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("pedro", tablero);
+        Jugador jugadorEnemigo = new Jugador("juan", tablero);
+
+        jugadorAliado.comprarUnidad("soldado", 3,1);
+        jugadorAliado.comprarUnidad("curandero", 3,3);
+        jugadorAliado.comprarUnidad("soldado", 3, 2);
+        jugadorAliado.comprarUnidad("jinete", 4,1);
+        jugadorAliado.comprarUnidad("catapulta", 2,4);
+
+        tablero.cambiarEstado();
+
+        jugadorEnemigo.comprarUnidad("catapulta", 15, 15);
+
+        jugadorEnemigo.atacar(15,15,3,2);
+
+        Unidad soldado1 = tablero.getUnidad(3,1);
+        Unidad curandero = tablero.getUnidad(3,3);
+        Unidad soldado2 = tablero.getUnidad(3,2);
+        Unidad jinete = tablero.getUnidad(4,1);
+        Unidad catapulta = tablero.getUnidad(2,4);
+
+        Assertions.assertEquals(80, soldado1.getPuntosDeVida());
+        Assertions.assertEquals(80, soldado2.getPuntosDeVida());
+        Assertions.assertEquals(55, curandero.getPuntosDeVida());
+        Assertions.assertEquals(80, jinete.getPuntosDeVida());
+        Assertions.assertEquals(30, catapulta.getPuntosDeVida());
     }
 }

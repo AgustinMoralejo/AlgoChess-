@@ -141,7 +141,17 @@ public class Casillero{
         return this.unidad.getSimbolo();
     }
 
+    public ArrayList<Unidad> getUnidadesAdyacentes(){
+        ArrayList<Unidad> unidadesAdyacentes = new ArrayList<>();
+        for(Casillero casillero: this.adyacentes){
+            if(casillero.getUnidad().getSimbolo() != "-"){
+                unidadesAdyacentes.add(casillero.getUnidad());
+            }
+        }
+        return unidadesAdyacentes;
+    }
+
     public ArrayList<Casillero> getAdyacentes(){
-        return adyacentes;
+        return this.adyacentes;
     }
 }
