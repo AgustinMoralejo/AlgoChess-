@@ -50,16 +50,25 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa){
+    public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero casilleroDefensa){
     	estadoAlianzas.puedeActuar();
         this.dentroRango(distancia);
-        Unidad defensa = unidadDefensa.getUnidad();
-        int costo = unidadDefensa.calcularCostoAtaque(costoADistancia);
-        int costo_total = defensa.calcularCostoUnidad(costo);
-        defensa.perderVida(costo_total);
+        Unidad defensa = casilleroDefensa.getUnidad();
+        int costo = casilleroDefensa.calcularCostoAtaque(costoADistancia);
+        int costoTotal = defensa.calcularCostoUnidad(costo);
+
+        atacarACasillerosAdyacentes(casilleroDefensa, costoTotal);
         return defensa.getPuntosDeVida();
     }
 
+    public void atacarACasillerosAdyacentes(Casillero casilleroAtacado, int costo){
+
+        ArrayList<Casillero> casillerosAdyacentes = casilleroAtacado.getAdyacentes();
+        casillerosAdyacentes.add(casilleroAtacado);
+        for(Casillero casilleroAAtacar: casillerosAdyacentes) {
+            casilleroAAtacar.getUnidad().perderVida(costo);
+        }
+    }
 
     @Override
     protected void dentroRango(int distancia) {

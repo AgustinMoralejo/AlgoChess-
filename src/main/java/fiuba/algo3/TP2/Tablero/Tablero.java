@@ -133,7 +133,9 @@ public class Tablero{
     	return tablero.length * tablero[0].length;
     }
 
-
+    public Unidad getUnidad(int fila, int columna){
+        return tablero[fila][columna].getUnidad();
+    }
     
 
 

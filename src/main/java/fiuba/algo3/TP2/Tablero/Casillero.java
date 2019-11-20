@@ -140,4 +140,8 @@ public class Casillero{
     public String getSimbolo() {
         return this.unidad.getSimbolo();
     }
+
+    public ArrayList<Casillero> getAdyacentes(){
+        return adyacentes;
+    }
 }
