@@ -1,4 +1,4 @@
-package fiuba.algo3.TP2.Unidad;
+package fiuba.algo3.TP2.Unidad.Armas;
 
 public interface Arma {
 	

@@ -4,7 +4,7 @@ import java.util.List;
 import fiuba.algo3.TP2.Excepciones.CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException;
 import fiuba.algo3.TP2.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import fiuba.algo3.TP2.Tablero.Casillero;
-import fiuba.algo3.TP2.Unidad.Arma;
+import fiuba.algo3.TP2.Unidad.Armas.Arma;
 import fiuba.algo3.TP2.Excepciones.NoSePuedeCurarEnemigoException;
 
 public class EstadoEnemigo implements EstadoAlianzas{

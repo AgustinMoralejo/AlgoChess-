@@ -189,7 +189,7 @@ public class AtaquesTest {
         
         Assertions.assertThrows(NoHayUnidadEnCasilleroException.class, () -> jugadorAzul.atacar(9,9,11,10));
     }
-    
+
     @Test
     public void testNoSePuedeAtacarNoExisteUnidadEnPosicionParaRealizarElAtaque() {
     	
@@ -200,39 +200,5 @@ public class AtaquesTest {
 
         Assertions.assertThrows(NoHayUnidadEnCasilleroException.class, ()-> jugador1.atacar(11,7,11,8));
     }
-    
-    
-   
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
 }
     

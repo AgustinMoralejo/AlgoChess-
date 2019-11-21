@@ -1,8 +1,8 @@
-package fiuba.algo3.TP2.Unidad;
+package fiuba.algo3.TP2.Unidad.Armas;
 
 import fiuba.algo3.TP2.Excepciones.ObjetivoFueraDeRangoException;
 
-public class ArcoComun implements Arma {
+public class Arco implements Arma {
 	
 	@Override
 	public int atacar(int distancia, int costoCuerpoACuerpo, int costoADistancia) {
@@ -12,7 +12,6 @@ public class ArcoComun implements Arma {
 		return costoADistancia;
 	}
 	
-	
 	@Override
 	public Arma cambiarArmaSoldado() {
 		return new ArcoInamovible();
@@ -20,12 +19,12 @@ public class ArcoComun implements Arma {
 	
 	@Override
 	public Arma cambiarArmaOtraUnidad() {
-		return this;
+		return new ArcoComun();
 	}
 	
 	@Override 
 	public Arma cambiarArmaEnemiga() {
-		return new ArmaNull();
+		return new Espada();
 	}
 	
 	public Arma cambiarArmaNull() {

@@ -6,6 +6,7 @@ import java.util.List;
 import fiuba.algo3.TP2.AlgoChess.EstadoAliado;
 import fiuba.algo3.TP2.Excepciones.NoHayUnidadEnCasilleroException;
 import fiuba.algo3.TP2.Tablero.Casillero;
+import fiuba.algo3.TP2.Unidad.Armas.Arma;
 
 public class UnidadNull extends Unidad{
 
@@ -53,7 +54,8 @@ public class UnidadNull extends Unidad{
     }
     
     @Override
-    public Arma seleccionarArmasJinete(Arma armaAnterior) {
+    public
+    Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaNull(armaAnterior);
     }
     

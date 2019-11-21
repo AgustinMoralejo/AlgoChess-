@@ -1,6 +1,7 @@
 package fiuba.algo3.TP2.Unidad;
 import fiuba.algo3.TP2.AlgoChess.EstadoAlianzas;
 import fiuba.algo3.TP2.Tablero.Casillero;
+import fiuba.algo3.TP2.Unidad.Armas.Arma;
 
 import java.util.*;
 

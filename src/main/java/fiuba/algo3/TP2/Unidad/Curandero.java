@@ -1,14 +1,12 @@
 package fiuba.algo3.TP2.Unidad;
 
-import fiuba.algo3.TP2.Excepciones.*;
 import java.util.ArrayList;
 import java.util.List;
 
-import fiuba.algo3.TP2.AlgoChess.*;
-import fiuba.algo3.TP2.Tablero.*;
 import fiuba.algo3.TP2.AlgoChess.EstadoAliado;
 import fiuba.algo3.TP2.Excepciones.ObjetivoFueraDeRangoException;
 import fiuba.algo3.TP2.Tablero.Casillero;
+import fiuba.algo3.TP2.Unidad.Armas.Arma;
 
 public class Curandero extends Unidad{
 
@@ -62,7 +60,8 @@ public class Curandero extends Unidad{
     }
     
     @Override 
-    public Arma seleccionarArmasJinete(Arma armaAnterior) {
+    public
+    Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);
     }
     

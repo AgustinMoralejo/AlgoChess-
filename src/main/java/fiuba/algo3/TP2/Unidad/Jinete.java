@@ -3,6 +3,8 @@ package fiuba.algo3.TP2.Unidad;
 import fiuba.algo3.TP2.AlgoChess.EstadoAliado;
 import fiuba.algo3.TP2.Excepciones.ObjetivoFueraDeRangoException;
 import fiuba.algo3.TP2.Tablero.Casillero;
+import fiuba.algo3.TP2.Unidad.Armas.Arco;
+import fiuba.algo3.TP2.Unidad.Armas.Arma;
 
 import java.util.ArrayList;
 import java.util.List;

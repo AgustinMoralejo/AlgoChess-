@@ -8,6 +8,7 @@ import fiuba.algo3.TP2.Excepciones.NoSePuedenCurarUnidadesNoOrganicasException;
 import fiuba.algo3.TP2.Excepciones.ObjetivoFueraDeRangoException;
 import fiuba.algo3.TP2.Excepciones.UnidadNoMovibleException;
 import fiuba.algo3.TP2.Tablero.Casillero;
+import fiuba.algo3.TP2.Unidad.Armas.Arma;
 
 public class Catapulta extends Unidad{
 
@@ -92,7 +93,8 @@ public class Catapulta extends Unidad{
     }
     
     @Override 
-    public Arma seleccionarArmasJinete(Arma armaAnterior) {
+    public
+    Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);
     }
     

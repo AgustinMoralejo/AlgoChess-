@@ -1,19 +1,21 @@
+package fiuba.algo3.TP2.Unidad.Armas;
 
-package fiuba.algo3.TP2.Unidad;
+import fiuba.algo3.TP2.Excepciones.ObjetivoFueraDeRangoException;
 
-import fiuba.algo3.TP2.Excepciones.NoEstanDadasLasCondicionesDeAtaqueException;
-
-public class ArmaNull implements Arma {
+public class ArcoInamovible implements Arma{
 	
 	@Override
 	public int atacar(int distancia, int costoCuerpoACuerpo, int costoADistancia) {
-		throw new NoEstanDadasLasCondicionesDeAtaqueException();
+		if (distancia < 3 | distancia > 6) {
+			throw new ObjetivoFueraDeRangoException();
+		}
+		return costoADistancia;
 	}
 	
 	
 	@Override
 	public Arma cambiarArmaSoldado() {
-		return new ArcoInamovible();
+		return this;
 	}
 	
 	@Override
@@ -29,4 +31,5 @@ public class ArmaNull implements Arma {
 	public Arma cambiarArmaNull() {
 		return this;
 	}
+
 }

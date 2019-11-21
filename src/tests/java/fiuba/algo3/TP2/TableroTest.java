@@ -2,6 +2,7 @@ package fiuba.algo3.TP2;
 
 import fiuba.algo3.TP2.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.TP2.Excepciones.NoHayUnidadEnCasilleroException;
 import fiuba.algo3.TP2.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import fiuba.algo3.TP2.Tablero.Tablero;
 import fiuba.algo3.TP2.Unidad.Jinete;
@@ -55,4 +56,36 @@ public class TableroTest {
 
         Assertions.assertThrows(NoSePuedeColocarUnidadEnSectorEnemigoException.class, () -> tablero.colocarUnidad(jinete, 15,11));
     }
+
+    @Test
+    public void testSePuedeColocarUnidadLuegoDeQueOtraMueraEnLaMismaPosicion() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAzul = new Jugador("agus", tablero);
+        Jugador enemigo = new Jugador("lego", tablero);
+
+        jugadorAzul.comprarUnidad("soldado", 9, 9);
+        tablero.cambiarEstado();
+
+        enemigo.comprarUnidad("soldado", 11, 10);
+
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.atacar(9,9,11,10);
+
+        tablero.cambiarEstado();
+        enemigo.comprarUnidad("soldado",11,10);
+        Assertions.assertEquals(100, tablero.getUnidad(11,10).getPuntosDeVida());
+
+    }
+
 }

@@ -3,7 +3,7 @@ import java.util.List;
 
 import fiuba.algo3.TP2.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
 import fiuba.algo3.TP2.Tablero.Casillero;
-import fiuba.algo3.TP2.Unidad.Arma;
+import fiuba.algo3.TP2.Unidad.Armas.Arma;
 
 public class EstadoAliado implements EstadoAlianzas{
 	
