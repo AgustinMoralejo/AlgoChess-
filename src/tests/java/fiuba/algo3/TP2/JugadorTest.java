@@ -78,4 +78,50 @@ public class JugadorTest {
     	Assertions.assertThrows(NoSePuedeColocarUnidadEnSectorEnemigoException.class, ()
     			-> jugador.comprarUnidad("catapulta", 15, 15));
     }
+
+    @Test
+    public void testUnidadesVivasDeUnJugador() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugador = new Jugador("agustin", tablero);
+
+        jugador.comprarUnidad("soldado", 8,8);
+        jugador.comprarUnidad("soldado", 8,9);
+        jugador.comprarUnidad("soldado", 8,7);
+
+
+        Assertions.assertEquals(3,jugador.unidadesRestantesVivas());
+
+
+    }
+
+
+    @Test
+    public void testJugadorPierde() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAzul = new Jugador("agus", tablero);
+        Jugador enemigo = new Jugador("lego", tablero);
+
+        jugadorAzul.comprarUnidad("catapulta", 3, 3);
+
+        tablero.cambiarEstado();
+
+        enemigo.comprarUnidad("catapulta", 11, 10);
+        enemigo.comprarUnidad("catapulta", 12, 10);
+        enemigo.comprarUnidad("catapulta", 12, 11);
+        enemigo.comprarUnidad("catapulta", 11, 11);
+
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(3,3,11,10);
+        jugadorAzul.atacar(3,3,11,10);
+        jugadorAzul.atacar(3,3,11,10);
+
+        Assertions.assertTrue(enemigo.perdio());
+
+    }
+
+
+
 }

@@ -164,19 +164,18 @@ public class AtaquesTest {
     
     @Test
     public void testSoldadoNoPuedeAtacarAUnidadYaMuerta() {
-    	
-    	Tablero tablero = new Tablero();
-    	Jugador jugadorAzul = new Jugador("agus", tablero);
-    	Jugador enemigo = new Jugador("lego", tablero);
-    	
-    	jugadorAzul.comprarUnidad("soldado", 9, 9);
-    	tablero.cambiarEstado();
-    	
-    	enemigo.comprarUnidad("soldado", 11, 10);
-    	
-    	tablero.cambiarEstado();
-    	
-    	jugadorAzul.atacar(9,9,11,10);
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAzul = new Jugador("agus", tablero);
+        Jugador enemigo = new Jugador("lego", tablero);
+
+        jugadorAzul.comprarUnidad("soldado", 9, 9);
+        tablero.cambiarEstado();
+
+        enemigo.comprarUnidad("soldado", 11, 10);
+
+        tablero.cambiarEstado();
+
         jugadorAzul.atacar(9,9,11,10);
         jugadorAzul.atacar(9,9,11,10);
         jugadorAzul.atacar(9,9,11,10);
@@ -186,7 +185,8 @@ public class AtaquesTest {
         jugadorAzul.atacar(9,9,11,10);
         jugadorAzul.atacar(9,9,11,10);
         jugadorAzul.atacar(9,9,11,10);
-        
+        jugadorAzul.atacar(9,9,11,10);
+
         Assertions.assertThrows(NoHayUnidadEnCasilleroException.class, () -> jugadorAzul.atacar(9,9,11,10));
     }
 

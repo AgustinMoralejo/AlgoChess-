@@ -86,5 +86,18 @@ public class Jugador {
         puntos -= costo;
     }
 
+    public int unidadesRestantesVivas(){
+        int unidadesConVida = 0;
+        for(int i = 0; i<unidades.size(); i++){
+            if(unidades.get(i).getPuntosDeVida()>0){
+                unidadesConVida++;
+            }
+        }
+        return unidadesConVida;
+    }
+
+    public boolean perdio(){
+        return ((unidadesRestantesVivas()<=0)&&(puntos<=0));
+    }
 
 }
