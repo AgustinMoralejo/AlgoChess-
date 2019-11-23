@@ -4,17 +4,30 @@ import fiuba.algo3.TP2.Excepciones.BatallonNoSePuedeMoverException;
 import fiuba.algo3.TP2.Excepciones.CasilleroEstaOcupadoException;
 import fiuba.algo3.TP2.Tablero.Casillero;
 
-import java.util.ArrayList;
+import java.util.*;
 
 public class SoldadoEnBatallon implements EstadoBatallon {
 
 
+    ArrayList<Casillero> batallon;
+
+    public SoldadoEnBatallon(ArrayList<Casillero> batallon){
+        this.batallon = batallon;
+        for(Casillero casilleroBatallon : batallon){
+            casilleroBatallon.unirABatallon(batallon);
+        }
+    }
+
+    public SoldadoEnBatallon(ArrayList<Casillero> batallon, int i) {
+        this.batallon = batallon;
+    }
+
     @Override
-    public void moveteA(Casillero zonaInicial, int orientacion, ArrayList<Casillero> batallon) {
+    public void moveteA(Casillero zonaInicial, int orientacion) {
 
         ArrayList<Unidad> bufferBatallon = new ArrayList<>();
 
-        /*Se puede mover el batallon?*/;
+
         if(batallon.get(0).getAdyacente(orientacion).estaOcupado() &&
         batallon.get(1).getAdyacente(orientacion).estaOcupado() &&
         batallon.get(2).getAdyacente(orientacion).estaOcupado()
@@ -23,7 +36,24 @@ public class SoldadoEnBatallon implements EstadoBatallon {
 
         }
 
-        /**Cargo todas las unidades del batallon en un buffer, quitandolas del tablero*/
+        /*
+        for(int j=0; j < 3; j++){
+            int i=0;
+            boolean algunSoldadoSeIntentoMover = false;
+            while(!algunSoldadoSeIntentoMover && i < 3){
+                Casillero casilleroBatallon = batallon.get(i);
+                if (!casilleroBatallon.getAdyacente(orientacion).estaOcupado()) {
+                    try {
+                        casilleroBatallon.intentarMoverse(orientacion);
+                    } catch (CasilleroEstaOcupadoException e ) {
+                        System.out.println("Un soldado no se pudo mover");
+                    }
+                    algunSoldadoSeIntentoMover = true;
+                }
+                i++;
+            }
+        }
+  */
         for(Casillero casilleroBatallon : batallon) {
             bufferBatallon.add(casilleroBatallon.getUnidad());
             casilleroBatallon.quitarUnidad();
@@ -42,9 +72,10 @@ public class SoldadoEnBatallon implements EstadoBatallon {
         }
     }
 
+
     @Override
-    public boolean perteneceABatallon() {
-        return true;
+    public boolean estaSolo() {
+        return false;
     }
 
 

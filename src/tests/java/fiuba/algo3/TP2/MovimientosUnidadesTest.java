@@ -525,7 +525,9 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",2,6);
         jugadorAliado.comprarUnidad("soldado",2,7);
 
+        tablero.imprimirTablero();
         jugadorAliado.moverUnidad(2,5,0);
+        tablero.imprimirTablero();
 
 
         Assertions.assertFalse(tablero.estaOcupado(2,5));
@@ -1037,6 +1039,7 @@ public class MovimientosUnidadesTest {
     /* la idea de este test que es los batallones no intercambien soldados
      * pero no se me ocurre como hacer que no pase
      *
+     * */
     @Test
     public void testUnBatallonAliadoMantieneSusSoldadosAlPasarPorOtrosSoldadosAliados() {
 
@@ -1058,5 +1061,4 @@ public class MovimientosUnidadesTest {
 
 
     }
-    */
 }

@@ -108,7 +108,7 @@ public class Casillero{
     public boolean estaOcupado() {
     	return estado.estaOcupado();
     }
-    
+
     public void agregarCasillerosAlBatallon(List<Casillero> batallon, int i) {
     	
     	Casillero casilleroAdyacente;
@@ -151,4 +151,7 @@ public class Casillero{
         return casilleros;
     }
 
+    public void unirABatallon(ArrayList<Casillero> batallon) {
+        unidad.unirABatallon(batallon);
+    }
 }

@@ -16,16 +16,23 @@ public class Soldado extends Unidad{
     public Soldado(){
         vida = 100;
         costo = 1;
-        costoCuerpoACuerpo = 10;
-        costoADistancia = 0;
-        estadoAlianzas = new EstadoAliado();
+        danioCuerpoACuerpo = 10;
+        danioADistancia = 0;
         estadoBatallon = new SoldadoSolo();
+        estadoAlianzas = new EstadoAliado();
         simbolo = "S";
     }
     
     @Override
     public Unidad copiar() {
     	return new Soldado();
+    }
+
+    @Override
+    public void unirABatallon(ArrayList<Casillero> batallon) {
+
+        estadoBatallon = new SoldadoEnBatallon(batallon, 1);
+
     }
 
     @Override
@@ -43,21 +50,26 @@ public class Soldado extends Unidad{
 
         estadoAlianzas.puedeActuar();
 
+        ArrayList<Casillero> batallon = conformarBatallon(casilleroInicial);
+
+        if (batallon.size() == 3) {
+            estadoBatallon = new SoldadoEnBatallon(batallon);
+        } else {
+            estadoBatallon = new SoldadoSolo(casilleroInicial);
+        }
+
+        estadoBatallon.moveteA(casilleroInicial, orientacion);
+
+    }
+
+    private ArrayList<Casillero> conformarBatallon(Casillero casilleroInicial) {
+
         ArrayList<Casillero> batallon = new ArrayList<>();
 
         batallon.add(casilleroInicial);
         casilleroInicial.agregarCasillerosAlBatallon(batallon,1);
 
-        if(batallon.size() > 2){
-            estadoBatallon = new SoldadoEnBatallon();
-        }
-        else{
-            estadoBatallon = new SoldadoSolo();
-        }
-
-        estadoBatallon.moveteA(casilleroInicial, orientacion, batallon);
-
-
+        return batallon;
     }
 
     @Override
@@ -65,7 +77,7 @@ public class Soldado extends Unidad{
         estadoAlianzas.puedeActuar();
         this.dentroRango(distancia);
         Unidad defensa = unidadDefensa.getUnidad();
-        int costo = unidadDefensa.calcularCostoAtaque(costoCuerpoACuerpo);
+        int costo = unidadDefensa.calcularCostoAtaque(danioCuerpoACuerpo);
         int costo_total = defensa.calcularCostoUnidad(costo);
         defensa.perderVida(costo_total);
         return defensa.getPuntosDeVida();
@@ -87,10 +99,7 @@ public class Soldado extends Unidad{
     @Override
     public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {
 
-        /*no funciona pq excluye a los mismos soldados del batallon*/
-        //if(estadoBatallon.perteneceABatallon()){
-            estadoAlianzas.agregarCasilleroAlBatallon(batallon, casillero);
-        //}
+        estadoAlianzas.agregarCasilleroAlBatallon(batallon, casillero);
     }
 
 }

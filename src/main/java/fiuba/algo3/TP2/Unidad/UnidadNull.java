@@ -40,6 +40,11 @@ public class UnidadNull extends Unidad{
     }
 
     @Override
+    public void unirABatallon(ArrayList<Casillero> batallon) {
+        throw new NoHayUnidadEnCasilleroException();
+    }
+
+    @Override
     public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa){
         throw new NoHayUnidadEnCasilleroException();
     }

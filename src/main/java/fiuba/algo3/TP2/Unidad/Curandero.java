@@ -13,8 +13,8 @@ public class Curandero extends Unidad{
     public Curandero(){
         vida = 75;
         costo = 2;
-        costoADistancia = 0;
-        costoCuerpoACuerpo = -15;
+        danioADistancia = 0;
+        danioCuerpoACuerpo = -15;
         estadoAlianzas = new EstadoAliado();
         simbolo = "C";
     }
@@ -22,6 +22,11 @@ public class Curandero extends Unidad{
     @Override
     public Unidad copiar() {
     	return new Curandero();
+    }
+
+    @Override
+    public void unirABatallon(ArrayList<Casillero> batallon) {
+
     }
 
     @Override
@@ -46,7 +51,7 @@ public class Curandero extends Unidad{
         estadoAlianzas.puedeActuar();
         this.dentroRango(distancia);
         Unidad defensa = unidadDefensa.getUnidad();
-        int costoCuracion = defensa.calcularCostoCuracion(costoCuerpoACuerpo);
+        int costoCuracion = defensa.calcularCostoCuracion(danioCuerpoACuerpo);
 
         defensa.perderVida(costoCuracion);
         return defensa.getPuntosDeVida();

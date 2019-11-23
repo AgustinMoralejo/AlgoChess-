@@ -2,21 +2,29 @@ package fiuba.algo3.TP2.Unidad;
 
 import fiuba.algo3.TP2.Tablero.Casillero;
 
-import java.util.ArrayList;
-
 public class SoldadoSolo implements EstadoBatallon {
 
-    @Override
-    public void moveteA(Casillero zonaInicial, int orientacion, ArrayList<Casillero> batallon) {
+    Casillero casilleroInicial;
 
-        Casillero zonaFinal = zonaInicial.getAdyacente(orientacion);
-        zonaFinal.recibirUnidad(zonaInicial.getUnidad(), zonaInicial);
+    public SoldadoSolo(){
+    }
+
+
+    public SoldadoSolo(Casillero casilleroInicial){
+        this.casilleroInicial = casilleroInicial;
+    }
+
+    @Override
+    public void moveteA(Casillero zonaInicial, int orientacion) {
+
+        Casillero zonaFinal = casilleroInicial.getAdyacente(orientacion);
+        zonaFinal.recibirUnidad(casilleroInicial.getUnidad(), casilleroInicial);
 
     }
 
     @Override
-    public boolean perteneceABatallon() {
-        return false;
+    public boolean estaSolo() {
+        return true;
     }
 
 

@@ -15,8 +15,8 @@ public class Catapulta extends Unidad{
     public Catapulta(){
         vida = 50;
         costo = 5;
-        costoADistancia = 20;
-        costoCuerpoACuerpo = 0;
+        danioADistancia = 20;
+        danioCuerpoACuerpo = 0;
         estadoAlianzas = new EstadoAliado();
         simbolo = "CT";
     }
@@ -25,6 +25,12 @@ public class Catapulta extends Unidad{
     public Unidad copiar() {
 
         return new Catapulta();
+    }
+
+
+    @Override
+    public void unirABatallon(ArrayList<Casillero> batallon) {
+
     }
 
     @Override
@@ -55,7 +61,7 @@ public class Catapulta extends Unidad{
         estadoAlianzas.puedeActuar();
         this.dentroRango(distancia);
         Unidad defensa = casilleroDefensa.getUnidad();
-        int costo = casilleroDefensa.calcularCostoAtaque(costoADistancia);
+        int costo = casilleroDefensa.calcularCostoAtaque(danioADistancia);
         int costoTotal = defensa.calcularCostoUnidad(costo);
 
         ArrayList<Unidad> unidadesAtacadas = new ArrayList<Unidad>();

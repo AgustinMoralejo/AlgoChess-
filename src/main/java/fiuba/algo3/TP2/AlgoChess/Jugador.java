@@ -15,14 +15,11 @@ public class Jugador {
     protected String nombre;
     protected int puntos;
 
-    /*Asi el jugador puede ver el estado de sus unidades sin tener que buscarlas,
-    al colocar una unidad coloca en el casillero el puntero a la unidad presente en esta lista*/
     protected List<Unidad> unidades;
 
     /*El cuartal deberia ser una sola instancia para todos los jugadores, aca estoy duplicando por cada jugador? */
     protected Cuartel cuartel = new Cuartel();
     protected Tablero tablero;
-    //protected int[][] movimientosPosible = Movimiento.OFFSET_COORDENADAS_MOVIMIENTO;
 
     public Jugador(String unNombre) {
 

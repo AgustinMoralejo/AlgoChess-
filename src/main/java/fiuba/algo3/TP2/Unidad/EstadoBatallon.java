@@ -6,8 +6,7 @@ import java.util.ArrayList;
 
 public interface EstadoBatallon {
 
-    void moveteA(Casillero zonaInicial, int orientacion, ArrayList<Casillero> batallon);
+    void moveteA(Casillero zonaInicial, int orientacion);
 
-    boolean perteneceABatallon();
-
+    boolean estaSolo();
 }

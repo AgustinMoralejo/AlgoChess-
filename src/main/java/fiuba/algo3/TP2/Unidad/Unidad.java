@@ -9,8 +9,8 @@ public abstract class Unidad {
 
     protected int vida;
     protected int costo;
-    protected int costoCuerpoACuerpo;
-    protected int costoADistancia;
+    protected int danioCuerpoACuerpo;
+    protected int danioADistancia;
     protected EstadoAlianzas estadoAlianzas;
     protected String simbolo;
 
@@ -46,4 +46,7 @@ public abstract class Unidad {
     protected abstract void dentroRango(int distancia);
     public abstract Unidad copiar();
 
-}
+    public abstract void unirABatallon(ArrayList<Casillero> batallon);
+
+
+    }

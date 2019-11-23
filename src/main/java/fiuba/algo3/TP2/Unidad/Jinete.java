@@ -15,8 +15,8 @@ public class Jinete extends Unidad{
     public Jinete(){
         vida = 100;
         costo = 3;
-        costoCuerpoACuerpo = 5;
-        costoADistancia = 15;
+        danioCuerpoACuerpo = 5;
+        danioADistancia = 15;
         estadoAlianzas = new EstadoAliado();
         simbolo = "J";
     }
@@ -24,6 +24,12 @@ public class Jinete extends Unidad{
     @Override
     public Unidad copiar() {
     	return new Jinete();
+    }
+
+
+    @Override
+    public void unirABatallon(ArrayList<Casillero> batallon) {
+
     }
 
     @Override
@@ -54,7 +60,7 @@ public class Jinete extends Unidad{
     		arma = unidad.seleccionarArmasJinete(arma);
 
     	}
-    	int costoArma = arma.atacar(distancia, costoCuerpoACuerpo, costoADistancia);
+    	int costoArma = arma.atacar(distancia, danioCuerpoACuerpo, danioADistancia);
     	int costoZona = unidadDefensa.calcularCostoAtaque(costoArma);
     	Unidad defensa = unidadDefensa.getUnidad();
     	int costoTotal = defensa.calcularCostoUnidad(costoZona);
