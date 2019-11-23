@@ -1,12 +1,12 @@
 package fiuba.algo3.TP2;
 
-import fiuba.algo3.TP2.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
-import fiuba.algo3.TP2.Excepciones.ObjetivoFueraDeRangoException;
-import fiuba.algo3.TP2.Tablero.Casillero;
-import fiuba.algo3.TP2.Unidad.Catapulta;
-import fiuba.algo3.TP2.Unidad.Curandero;
-import fiuba.algo3.TP2.Unidad.Jinete;
-import fiuba.algo3.TP2.Unidad.Soldado;
+import fiuba.algo3.TP2.Modelo.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
+import fiuba.algo3.TP2.Modelo.Excepciones.ObjetivoFueraDeRangoException;
+import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
+import fiuba.algo3.TP2.Modelo.Unidad.Catapulta;
+import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
+import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
+import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 
 import java.util.ArrayList;
 

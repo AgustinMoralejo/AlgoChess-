@@ -1,13 +1,13 @@
 package fiuba.algo3.TP2;
 
-import fiuba.algo3.TP2.Excepciones.NoEstanDadasLasCondicionesDeAtaqueException;
-import fiuba.algo3.TP2.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
-import fiuba.algo3.TP2.Excepciones.ObjetivoFueraDeRangoException;
+import fiuba.algo3.TP2.Modelo.Excepciones.NoEstanDadasLasCondicionesDeAtaqueException;
+import fiuba.algo3.TP2.Modelo.Excepciones.NoSePuedeAtacarAUnaUnidadAliadaException;
+import fiuba.algo3.TP2.Modelo.Excepciones.ObjetivoFueraDeRangoException;
 
 import java.util.ArrayList;
 
-import fiuba.algo3.TP2.Tablero.Casillero;
-import fiuba.algo3.TP2.Unidad.*;
+import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
+import fiuba.algo3.TP2.Modelo.Unidad.*;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

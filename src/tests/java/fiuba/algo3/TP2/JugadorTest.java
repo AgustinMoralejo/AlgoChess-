@@ -1,9 +1,9 @@
 package fiuba.algo3.TP2;
 
-import fiuba.algo3.TP2.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
-import fiuba.algo3.TP2.Excepciones.PuntosInsuficientesException;
-import fiuba.algo3.TP2.Tablero.Tablero;
+import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
+import fiuba.algo3.TP2.Modelo.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
+import fiuba.algo3.TP2.Modelo.Excepciones.PuntosInsuficientesException;
+import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 

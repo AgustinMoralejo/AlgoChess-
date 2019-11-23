@@ -1,11 +1,11 @@
 package fiuba.algo3.TP2;
 
-import fiuba.algo3.TP2.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Excepciones.*;
-import fiuba.algo3.TP2.Tablero.Casillero;
-import fiuba.algo3.TP2.Tablero.Tablero;
-import fiuba.algo3.TP2.Unidad.Curandero;
-import fiuba.algo3.TP2.Unidad.Soldado;
+import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
+import fiuba.algo3.TP2.Modelo.Excepciones.*;
+import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
+import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
+import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
+import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import java.util.ArrayList;

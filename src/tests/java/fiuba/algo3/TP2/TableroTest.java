@@ -1,13 +1,12 @@
 package fiuba.algo3.TP2;
 
-import fiuba.algo3.TP2.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Excepciones.CasilleroEstaOcupadoException;
-import fiuba.algo3.TP2.Excepciones.NoHayUnidadEnCasilleroException;
-import fiuba.algo3.TP2.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
-import fiuba.algo3.TP2.Tablero.Tablero;
-import fiuba.algo3.TP2.Unidad.Jinete;
-import fiuba.algo3.TP2.Unidad.Soldado;
-import fiuba.algo3.TP2.Unidad.Unidad;
+import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
+import fiuba.algo3.TP2.Modelo.Excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.TP2.Modelo.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
+import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
+import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
+import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
+import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
