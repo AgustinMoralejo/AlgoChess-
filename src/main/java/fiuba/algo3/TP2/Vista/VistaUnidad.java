@@ -49,6 +49,7 @@ public class VistaUnidad extends StackPane {
             mouseY = e.getSceneY();
         });
 
+
         setOnMouseDragged(e -> {
             relocate(e.getSceneX() - mouseX + columnaInicial, e.getSceneY() - mouseY + filaInicial);
         });

@@ -13,12 +13,15 @@ public class VistaTablero extends Group {
     public static final int ANCHO_CASILLERO = 32;
     public static final int ALTO_CASILLERO = 32;
 
+    /*
     private GridPane table;
     private VistaCasillero[][] panes;
-
+    */
 
     private Group casilleroGroup = new Group();
-    private Group unidadesGroup = new Group();
+    private Group unidadGroup = new Group();
+    private double mouseX;
+    private double mouseY;
 
     public VistaTablero(Tablero tablero) {
 
@@ -27,7 +30,7 @@ public class VistaTablero extends Group {
 
         Pane root = new Pane();
         root.setPrefSize(ancho, alto);
-        root.getChildren().addAll(casilleroGroup, unidadesGroup);
+        root.getChildren().addAll(casilleroGroup, unidadGroup);
 
         /*Es una version del tablero y de los casilleros pero solo para vista*/
         /*
@@ -41,17 +44,20 @@ public class VistaTablero extends Group {
             for (int j = 0; j < tablero.getFilas(); j++) {
                 VistaCasillero vistaCasillero = new VistaCasillero((i < 10), i, j);
                 casilleroGroup.getChildren().add(vistaCasillero);
+                if(tablero.estaOcupado(i,j)){
+                    VistaUnidad vistaUnidad = new VistaUnidad(true,i,j);
+                    unidadGroup.getChildren().add(vistaUnidad);
+                }
 
                 if (i < 1) {
                     VistaUnidad vistaUnidad = new VistaUnidad(true,i,j);
-                    unidadesGroup.getChildren().add(vistaUnidad);
+                    unidadGroup.getChildren().add(vistaUnidad);
                 }
 
                 if (i > 18) {
                     VistaUnidad vistaUnidad = new VistaUnidad(false,i,j);
-                    unidadesGroup.getChildren().add(vistaUnidad);
+                    unidadGroup.getChildren().add(vistaUnidad);
                 }
-
                 //table.add(v, i, j);
             }
         }
@@ -67,7 +73,7 @@ public class VistaTablero extends Group {
         table.setBackground(bi);
         */
 
-        this.addView(root);
+        this.agregarVista(root);
 
     }
 
@@ -85,8 +91,16 @@ public class VistaTablero extends Group {
         panes[x][y].getChildren().add(0, view);
     }*/
 
-    public void addView(Node view) {
+    public void agregarVista(Node view) {
         this.getChildren().add(view);
+    }
+
+    public void setMouseX(double mouseX) {
+        this.mouseX = mouseX;
+    }
+
+    public void setMouseY(double mouseY) {
+        this.mouseY = mouseY;
     }
 
 /**
