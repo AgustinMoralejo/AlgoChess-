@@ -23,7 +23,7 @@ public class ControladorMouseSoltado implements EventHandler<MouseEvent> {
         int filaDestino = convertir(vistaUnidad.getLayoutY());
         int columnaDestino = convertir(vistaUnidad.getLayoutX());
 
-        vistaUnidad.move(filaDestino, columnaDestino);
+        vistaUnidad.moverVista(filaDestino, columnaDestino);
 
 
     }

@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Vista;
 
+import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import javafx.scene.Group;
 import javafx.scene.Node;
@@ -42,23 +43,19 @@ public class VistaTablero extends Group {
 
         for (int i = 0; i < tablero.getColumnas(); i++) {
             for (int j = 0; j < tablero.getFilas(); j++) {
-                VistaCasillero vistaCasillero = new VistaCasillero((i < 10), i, j);
+
+                VistaUnidad vistaUnidad = new VistaUnidad(true,
+                        tablero.getUnidad(i, j));
+
+                unidadGroup.getChildren().add(vistaUnidad);
+
+                VistaCasillero vistaCasillero =
+                        new VistaCasillero((i < 10), tablero.getCasillero(i,j),
+                                this, vistaUnidad );
+
                 casilleroGroup.getChildren().add(vistaCasillero);
-                if(tablero.estaOcupado(i,j)){
-                    VistaUnidad vistaUnidad = new VistaUnidad(true,i,j);
-                    unidadGroup.getChildren().add(vistaUnidad);
-                }
 
-                if (i < 1) {
-                    VistaUnidad vistaUnidad = new VistaUnidad(true,i,j);
-                    unidadGroup.getChildren().add(vistaUnidad);
-                }
 
-                if (i > 18) {
-                    VistaUnidad vistaUnidad = new VistaUnidad(false,i,j);
-                    unidadGroup.getChildren().add(vistaUnidad);
-                }
-                //table.add(v, i, j);
             }
         }
 
@@ -95,18 +92,8 @@ public class VistaTablero extends Group {
         this.getChildren().add(view);
     }
 
-    public void setMouseX(double mouseX) {
-        this.mouseX = mouseX;
-    }
-
-    public void setMouseY(double mouseY) {
-        this.mouseY = mouseY;
-    }
-
-/**
-    public void updateView(Node view) {
+    public void actualizarVista(Node view) {
         getChildren().remove(view);
         getChildren().add(view);
     }
-    */
 }
