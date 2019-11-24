@@ -10,22 +10,24 @@ public class VistaTablero extends Group {
 
     public double ancho;
     public double alto;
-    private double anchoCasillero = 64;
-    private double altoCasillero = 64;
+    public static final int ANCHO_CASILLERO = 32;
+    public static final int ALTO_CASILLERO = 32;
 
     private GridPane table;
     private VistaCasillero[][] panes;
 
+
     private Group casilleroGroup = new Group();
+    private Group unidadesGroup = new Group();
 
     public VistaTablero(Tablero tablero) {
 
-        ancho = anchoCasillero * tablero.getColumnas();
-        alto = altoCasillero * tablero.getFilas();
+        ancho = ANCHO_CASILLERO * tablero.getColumnas();
+        alto = ALTO_CASILLERO * tablero.getFilas();
 
         Pane root = new Pane();
         root.setPrefSize(ancho, alto);
-        root.getChildren().addAll(casilleroGroup);
+        root.getChildren().addAll(casilleroGroup, unidadesGroup);
 
         /*Es una version del tablero y de los casilleros pero solo para vista*/
         /*
@@ -39,6 +41,17 @@ public class VistaTablero extends Group {
             for (int j = 0; j < tablero.getFilas(); j++) {
                 VistaCasillero vistaCasillero = new VistaCasillero((i < 10), i, j);
                 casilleroGroup.getChildren().add(vistaCasillero);
+
+                if (i < 1) {
+                    VistaUnidad vistaUnidad = new VistaUnidad(true,i,j);
+                    unidadesGroup.getChildren().add(vistaUnidad);
+                }
+
+                if (i > 18) {
+                    VistaUnidad vistaUnidad = new VistaUnidad(false,i,j);
+                    unidadesGroup.getChildren().add(vistaUnidad);
+                }
+
                 //table.add(v, i, j);
             }
         }
@@ -54,7 +67,7 @@ public class VistaTablero extends Group {
         table.setBackground(bi);
         */
 
-       // this.addView(table);
+        this.addView(root);
 
     }
 
@@ -70,12 +83,13 @@ public class VistaTablero extends Group {
             }
         }
         panes[x][y].getChildren().add(0, view);
-    }
+    }*/
 
     public void addView(Node view) {
         this.getChildren().add(view);
     }
 
+/**
     public void updateView(Node view) {
         getChildren().remove(view);
         getChildren().add(view);
