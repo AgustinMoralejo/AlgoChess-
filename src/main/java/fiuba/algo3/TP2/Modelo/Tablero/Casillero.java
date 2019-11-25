@@ -3,6 +3,7 @@ package fiuba.algo3.TP2.Modelo.Tablero;
 import fiuba.algo3.TP2.Modelo.AlgoChess.EstadoAliado;
 import fiuba.algo3.TP2.Modelo.AlgoChess.EstadoAlianzas;
 import fiuba.algo3.TP2.Modelo.AlgoChess.EstadoEnemigo;
+import fiuba.algo3.TP2.Modelo.Subject;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import fiuba.algo3.TP2.Modelo.Unidad.UnidadNull;
 
@@ -12,7 +13,7 @@ import java.util.ArrayList;
 import static java.lang.Math.abs;
 import static java.lang.Math.max;
 
-public class Casillero{
+public class Casillero extends Subject {
 
     private Unidad unidad;
     private EstadoCasillero estado;
@@ -25,7 +26,7 @@ public class Casillero{
     public Casillero(int fil, int col){
         fila = fil;
         columna = col;
-        this.unidad = new UnidadNull();
+        this.unidad = new UnidadNull(fil, col);
         this.estado = new EstadoCasilleroVacio();
         this.estadoAlianzas = new EstadoAliado();
         this.adyacentes = new ArrayList<Casillero>();
@@ -36,6 +37,9 @@ public class Casillero{
     	estado.puedeColocar();
     	unidad = unaUnidad;
     	estado = new EstadoCasilleroOcupado();
+        //notificarObservers();
+        unidad.setPosicion(fila,columna);
+
     }
 
     public void recibirUnidad(Unidad unaUnidad, Casillero CasilleroAnterior){
@@ -50,10 +54,12 @@ public class Casillero{
     public void ocuparUnidad(Unidad unaUnidad){
         unidad = unaUnidad;
         estado = new EstadoCasilleroOcupado();
+        //notificarObservers();
+        unidad.setPosicion(fila,columna);
     }
 
     public void quitarUnidad(){
-        unidad = new UnidadNull();
+        unidad = new UnidadNull(fila,columna);
         estado = new EstadoCasilleroVacio();
     }
 

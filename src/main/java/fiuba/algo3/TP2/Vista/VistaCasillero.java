@@ -20,8 +20,10 @@ public class VistaCasillero extends Rectangle implements Observer {
         this.vistaTablero = vistaTablero;
         this.vistaUnidad = vistaUnidad;
 
+        casillero.agregarObserver(this);
+
         setStroke(Color.BLACK);
-        setStrokeWidth(ANCHO_CASILLERO*0.05);
+        setStrokeWidth(ANCHO_CASILLERO * 0.05);
 
         setWidth(ANCHO_CASILLERO);
         setHeight(VistaTablero.ALTO_CASILLERO);
@@ -31,13 +33,16 @@ public class VistaCasillero extends Rectangle implements Observer {
         setFill(alianza ? javafx.scene.paint.Color.valueOf("#feb")
                 : Color.valueOf("#582"));
 
-        this.vistaUnidad.moverVista(casillero.getFila(), casillero.getColumna());
+     //   this.vistaUnidad.moverVista(casillero.getFila(), casillero.getColumna());
     }
 
 
     @Override
     public void actualizar() {
-       vistaUnidad.moverVista(casillero.getFila(), casillero.getColumna());
+        //problema es que la vistaUnidad es la inicial y en nigun momento cambia
+        //si le asigno al casillero la vistaUnidad correspondiente el resto lo hace solo
+       //pero ir re asignando vistas no parece logico
+     //   vistaUnidad.moverVista(casillero.getFila(), casillero.getColumna());
     }
 
 }

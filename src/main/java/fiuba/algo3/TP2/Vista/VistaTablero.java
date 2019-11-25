@@ -2,6 +2,7 @@ package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
+import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.layout.*;
@@ -44,14 +45,22 @@ public class VistaTablero extends Group {
         for (int i = 0; i < tablero.getColumnas(); i++) {
             for (int j = 0; j < tablero.getFilas(); j++) {
 
-                VistaUnidad vistaUnidad = new VistaUnidad(true,
-                        tablero.getUnidad(i, j));
+                VistaUnidad vistaUnidad;
+
+                if(tablero.estaOcupado(i,j)){
+                      vistaUnidad = new VistaSoldado(true, tablero.getUnidad(i, j));
+
+                }
+                else{
+                      vistaUnidad = new VistaUnidadNull(true, tablero.getUnidad(i, j));
+
+                }
 
                 unidadGroup.getChildren().add(vistaUnidad);
 
                 VistaCasillero vistaCasillero =
                         new VistaCasillero((i < 10), tablero.getCasillero(i,j),
-                                this, vistaUnidad );
+                                this, vistaUnidad);
 
                 casilleroGroup.getChildren().add(vistaCasillero);
 

@@ -27,13 +27,21 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
         double mouseX = mouseEvent.getSceneX();
         double mouseY = mouseEvent.getSceneY();
 
-        /*
-        tablero.moverUnidad(mouseY, mouseX, 0 );
-        */
+        int fila = convertir(mouseX);
+        int columna = convertir(mouseY);
+
+        tablero.moverUnidad(fila, columna, 0 );
+
         /*
         vistaTablero.setMouseX(mouseX);
         vistaTablero.setMouseY(mouseY);
         */
 
     }
+
+    private int convertir(double posicionImagen){
+        return (int)(posicionImagen + VistaTablero.ALTO_CASILLERO / 2)
+                / VistaTablero.ALTO_CASILLERO;
+    }
+
 }

@@ -27,19 +27,22 @@ public class Main extends Application {
 
         Tablero tablero = new Tablero();
 
+        //
         Soldado unSoldado = new Soldado();
         tablero.colocarUnidad(unSoldado,5,5);
+        tablero.moverUnidad(5,5,0);
+        //
 
         vistaTablero = new VistaTablero(tablero);
 
         VBox vbox = new VBox();
         vbox.getChildren().add(vistaTablero);
 
-        /*
+
         vbox.setOnMousePressed(new ControladorMousePresionado(tablero, vistaTablero));
-        vbox.setOnMouseDragged(new ControladorMouseArrastrado(tablero));
-        vbox.setOnMouseReleased(new ControladorMouseSoltado(tablero));
-        */
+        //vbox.setOnMouseDragged(new ControladorMouseArrastrado(tablero));
+        //vbox.setOnMouseReleased(new ControladorMouseSoltado(tablero));
+
 
         Scene theScene = new Scene(vbox);
         theStage.setScene(theScene);

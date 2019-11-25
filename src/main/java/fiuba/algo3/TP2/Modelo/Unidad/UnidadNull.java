@@ -16,6 +16,11 @@ public class UnidadNull extends Unidad{
     	estadoAlianzas = new EstadoAliado();
     }
 
+    public UnidadNull(int fil, int col) {
+        estadoAlianzas = new EstadoAliado();
+        setPosicion(fil,col);
+    }
+
     @Override
     public String getSimbolo(){
       return "-";

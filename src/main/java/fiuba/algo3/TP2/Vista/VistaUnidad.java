@@ -9,7 +9,7 @@ import javafx.scene.shape.Ellipse;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
-public class VistaUnidad extends StackPane implements Observer {
+public abstract class VistaUnidad extends StackPane implements Observer {
 
     private double mouseY;
     private double mouseX;
@@ -17,22 +17,12 @@ public class VistaUnidad extends StackPane implements Observer {
     private double columnaInicial;
     private double filaInicial;
 
-
-    public VistaUnidad(boolean esRojo, Unidad unidad) {
-
-        this.unidad = unidad;
-
-        dibujar(esRojo);
-
-
-    }
-
+    /*
     public VistaUnidad(boolean esRojo, int fila, int columna) {
 
 
         dibujar(esRojo);
 
-        /**Esto debe ser parte del controlador*/
         setOnMousePressed(e -> {
             mouseX = e.getSceneX();
             mouseY = e.getSceneY();
@@ -43,32 +33,13 @@ public class VistaUnidad extends StackPane implements Observer {
             relocate(e.getSceneX() - mouseX + columnaInicial, e.getSceneY() - mouseY + filaInicial);
         });
     }
+    */
 
-    private void dibujar(boolean esRojo) {
+    protected abstract void dibujar(boolean esRojo);
 
-        Ellipse fondo = new Ellipse(ALTO_CASILLERO * 0.3125, ALTO_CASILLERO * 0.26);
-        fondo.setFill(Color.BLACK);
+    public abstract void moverVista(int filaDestino, int columnaDestino);
 
-        fondo.setStroke(Color.BLACK);
-        fondo.setStrokeWidth(ALTO_CASILLERO * 0.03);
-
-        fondo.setTranslateX((ALTO_CASILLERO - ALTO_CASILLERO * 0.3125 * 2) / 2);
-        fondo.setTranslateY((ALTO_CASILLERO - ALTO_CASILLERO * 0.26 * 2) / 2 + ALTO_CASILLERO * 0.07);
-
-        Ellipse elipse = new Ellipse(ALTO_CASILLERO * 0.3125, ALTO_CASILLERO * 0.26);
-        elipse.setFill(esRojo
-                ? Color.valueOf("#c40003") : Color.valueOf("#fff9f4"));
-
-        elipse.setStroke(Color.BLACK);
-        elipse.setStrokeWidth(ALTO_CASILLERO * 0.03);
-
-        elipse.setTranslateX((ALTO_CASILLERO - ALTO_CASILLERO * 0.3125 * 2) / 2);
-        elipse.setTranslateY((ALTO_CASILLERO - ALTO_CASILLERO * 0.26 * 2) / 2);
-
-        getChildren().addAll(fondo, elipse);
-
-    }
-
+    /*
     public void moverVista(int fila, int columna) {
         columnaInicial = columna * ALTO_CASILLERO;
         filaInicial = fila * ALTO_CASILLERO;
@@ -84,4 +55,6 @@ public class VistaUnidad extends StackPane implements Observer {
     public void actualizar() {
 
     }
+    */
+
 }
