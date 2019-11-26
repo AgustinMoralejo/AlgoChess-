@@ -853,13 +853,13 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",6,6);
         jugadorAliado.comprarUnidad("catapulta", 5,7);
 
-        tablero.imprimirTablero();
+     //   tablero.imprimirTablero();
         jugadorAliado.moverUnidad(4,6,2);
-        tablero.imprimirTablero();
+      //  tablero.imprimirTablero();
         jugadorAliado.moverUnidad(4,7,2);
-        tablero.imprimirTablero();
+      //  tablero.imprimirTablero();
         jugadorAliado.moverUnidad(4,8,2);
-        tablero.imprimirTablero();
+       // tablero.imprimirTablero();
 
 
         Assertions.assertTrue(tablero.estaOcupado(4,9));
@@ -880,7 +880,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",0,1);
         jugadorAliado.comprarUnidad("soldado",0,2);
 
-        tablero.imprimirTablero();
+   //     tablero.imprimirTablero();
         jugadorAliado.moverUnidad(0,0,2);
         jugadorAliado.moverUnidad(0,2,2);
         jugadorAliado.moverUnidad(0,2,2);
@@ -940,13 +940,13 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
 
-        tablero.imprimirTablero();
+ //       tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,5,4);
-        tablero.imprimirTablero();
+ //       tablero.imprimirTablero();
         jugadorAliado.moverUnidad(8,6,4);
-        tablero.imprimirTablero();
+ //       tablero.imprimirTablero();
         jugadorAliado.moverUnidad(9,7,4);
-        tablero.imprimirTablero();
+//        tablero.imprimirTablero();
 
         Assertions.assertTrue(tablero.estaOcupado(10,7));
         Assertions.assertTrue(tablero.estaOcupado(9,6));
@@ -985,9 +985,9 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("curandero", 8,6);
         jugadorAliado.comprarUnidad("jinete", 8,5);
-        tablero.imprimirTablero();
+  //      tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,7,4);
-        tablero.imprimirTablero();
+//        tablero.imprimirTablero();
 
         Assertions.assertTrue(tablero.estaOcupado(8,7));
 
@@ -1005,9 +1005,9 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
 
-        tablero.imprimirTablero();
+    //    tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,7,4);
-        tablero.imprimirTablero();
+     //   tablero.imprimirTablero();
 
         Assertions.assertTrue(tablero.estaOcupado(8,7));
         Assertions.assertTrue(tablero.estaOcupado(8,6));

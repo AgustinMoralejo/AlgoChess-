@@ -7,6 +7,8 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
+
+
 import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
 public class VistaUnidadNull extends VistaUnidad {
