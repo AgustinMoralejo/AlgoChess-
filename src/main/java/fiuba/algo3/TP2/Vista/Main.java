@@ -28,9 +28,12 @@ public class Main extends Application {
         Tablero tablero = new Tablero();
 
         //
-        Soldado unSoldado = new Soldado();
-        tablero.colocarUnidad(unSoldado,5,5);
-        tablero.moverUnidad(5,5,0);
+        Soldado soldado1 = new Soldado();
+        Soldado soldado2 = new Soldado();
+        Soldado soldado3 = new Soldado();
+        tablero.colocarUnidad(soldado3,9,7);
+        tablero.colocarUnidad(soldado1,7,8);
+        tablero.colocarUnidad(soldado2,7,9);
         //
 
         vistaTablero = new VistaTablero(tablero);

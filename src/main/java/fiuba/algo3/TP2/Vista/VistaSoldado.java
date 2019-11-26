@@ -56,9 +56,6 @@ public class VistaSoldado extends VistaUnidad {
 
     @Override
     public void moverVista(int fila, int columna) {
-        columnaInicial = columna * ALTO_CASILLERO;
-        filaInicial = fila * ALTO_CASILLERO;
-        relocate(columnaInicial, filaInicial);
     }
 
     public void abortMove() {

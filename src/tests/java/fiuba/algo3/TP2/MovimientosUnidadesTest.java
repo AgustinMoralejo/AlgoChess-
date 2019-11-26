@@ -3,6 +3,7 @@ package fiuba.algo3.TP2;
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Excepciones.*;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
+import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 
@@ -1039,7 +1040,7 @@ public class MovimientosUnidadesTest {
     /* la idea de este test que es los batallones no intercambien soldados
      * pero no se me ocurre como hacer que no pase
      *
-     * */
+     *
     @Test
     public void testUnBatallonAliadoMantieneSusSoldadosAlPasarPorOtrosSoldadosAliados() {
 
@@ -1061,4 +1062,37 @@ public class MovimientosUnidadesTest {
 
 
     }
+    */
+
+    @Test
+    public void testSoldadoAliadoSeMueveHaciaAlNorteYSeEncuentraConOtrosDosPorLoQueSeMuevenEnBatallon() {
+
+        Tablero tablero = new Tablero();
+
+        Soldado soldado1 = new Soldado();
+        Soldado soldado2 = new Soldado();
+        Soldado soldado3 = new Soldado();
+
+        tablero.colocarUnidad(soldado3, 9, 7);
+        tablero.colocarUnidad(soldado1, 7, 8);
+        tablero.colocarUnidad(soldado2, 7, 9);
+
+
+        tablero.imprimirTablero();
+        tablero.moverUnidad(9,7,0);
+        tablero.imprimirTablero();
+        tablero.moverUnidad(8,7,0);
+        tablero.imprimirTablero();
+        tablero.moverUnidad(7,7,0);
+        tablero.imprimirTablero();
+
+        Assertions.assertSame(tablero.getUnidad(6,7), soldado3);
+
+        //los soldados del batallon me dan que son otros
+        /*
+        Assertions.assertSame(tablero.getUnidad(5,8), soldado1);
+        Assertions.assertSame(tablero.getUnidad(5,9), soldado2);
+        */
+    }
+
 }

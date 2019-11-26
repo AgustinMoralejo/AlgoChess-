@@ -20,7 +20,6 @@ public class VistaUnidadNull extends VistaUnidad {
     private double filaInicial;
 
 
-
     public VistaUnidadNull(boolean esRojo, Unidad unidad) {
 
         this.unidad = unidad;
@@ -45,9 +44,6 @@ public class VistaUnidadNull extends VistaUnidad {
     }
 
     public void moverVista(int fila, int columna) {
-        columnaInicial = columna * ALTO_CASILLERO;
-        filaInicial = fila * ALTO_CASILLERO;
-        relocate(columnaInicial, filaInicial);
     }
 
     public void abortMove() {
