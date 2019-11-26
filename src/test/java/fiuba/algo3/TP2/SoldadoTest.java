@@ -11,7 +11,7 @@ import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import java.util.ArrayList;
 
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class SoldadoTest {
 

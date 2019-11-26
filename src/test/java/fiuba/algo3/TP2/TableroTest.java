@@ -8,7 +8,7 @@ import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 
 public class TableroTest {

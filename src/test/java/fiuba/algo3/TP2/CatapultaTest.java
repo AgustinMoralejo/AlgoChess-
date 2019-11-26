@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.*;
 import org.junit.jupiter.api.Assertions;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 public class CatapultaTest {
 
