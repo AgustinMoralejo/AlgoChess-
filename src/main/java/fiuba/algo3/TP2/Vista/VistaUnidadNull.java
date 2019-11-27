@@ -3,7 +3,6 @@ package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Modelo.Observer;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
-import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Ellipse;
 
