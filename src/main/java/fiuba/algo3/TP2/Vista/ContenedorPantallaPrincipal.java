@@ -6,6 +6,7 @@ import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 import javafx.scene.paint.Color;
@@ -31,6 +32,11 @@ public class ContenedorPantallaPrincipal extends VBox {
         this.setBackground(new Background(imagenDeFondo));
 
         Button botonEntrar = new Button();
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setColor(Color.BLACK);
+
+        botonEntrar.setEffect(dropShadow);
         botonEntrar.setText("Comenzar");
 
         Label etiqueta = new Label();
