@@ -1,9 +1,12 @@
 package fiuba.algo3.TP2.Modelo.Tablero;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.Movimiento;
+import fiuba.algo3.TP2.Modelo.Excepciones.UnidadSoloSePuedeMoverUnCasilleroException;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 
 import java.util.ArrayList;
+
+import static java.lang.Math.abs;
 
 public class Tablero{
 
@@ -152,7 +155,56 @@ public class Tablero{
     public Unidad getUnidad(int fila, int columna){
         return tablero[fila][columna].getUnidad();
     }
-    
 
 
+    public int darOrientacion(int[] posUnidad, int[] destino) {
+
+        int orientacion = -9;
+
+        int difFil = destino[0] - posUnidad[0] ;
+        int difCol = destino[1] - posUnidad[1] ;
+
+
+        System.out.println("diferencias, fil:"+ difFil +"col:" + difCol);
+
+            if(abs(difFil) > 1 || abs(difCol) > 1 || (difCol == 0 && difFil==0)){
+
+                throw new UnidadSoloSePuedeMoverUnCasilleroException();
+            }
+
+        //si, no estoy muy orgullos pero fue lo mejor que se me ocurrio
+        String sentido = "" + difFil + "," + difCol + "";
+
+
+        System.out.println("sentido: "+ sentido);
+
+
+
+
+        switch (sentido) {
+            case "-1,0": orientacion = 0;
+                break;
+            case "-1,1": orientacion=1;
+                break;
+            case "0,1": orientacion=2;
+                break;
+            case "1,1": orientacion=3;
+                break;
+            case "1,0": orientacion=4;
+                break;
+            case "1,-1": orientacion=5;
+            break;
+            case "0,-1": orientacion=6;
+                break;
+            case "-1,-1": orientacion=7;
+                break;
+
+        }
+
+
+        System.out.println("orientacion: "+ orientacion);
+
+
+        return orientacion;
+    }
 }

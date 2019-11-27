@@ -3,7 +3,7 @@ package fiuba.algo3.TP2.Modelo.AlgoChess;
 public class Movimiento {
 
     /*En un principio no quiero que sea static, pero por ahora lo dejo asi, probablemente
-    termine siendo solo del Jugador o la Unidad*/
+    termine siendo solo del tablero*/
 
     public static final int[][] OFFSET_COORDENADAS_MOVIMIENTO = {
             {-1,0}, /*Norte*/

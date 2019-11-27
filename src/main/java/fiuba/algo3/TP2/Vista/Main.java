@@ -33,8 +33,8 @@ public class Main extends Application {
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
         tablero.colocarUnidad(soldado3,9,7);
-        tablero.colocarUnidad(soldado1,7,8);
-        tablero.colocarUnidad(soldado2,7,9);
+        tablero.colocarUnidad(soldado1,5,8);
+        tablero.colocarUnidad(soldado2,3,9);
         //
 
         vistaTablero = new VistaTablero(tablero);
