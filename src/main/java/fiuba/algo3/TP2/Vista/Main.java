@@ -10,6 +10,7 @@ import javafx.application.Application;
 import javafx.scene.Group;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
 
 public class Main extends Application {
@@ -41,19 +42,24 @@ public class Main extends Application {
         VBox vbox = new VBox();
         vbox.getChildren().add(vistaTablero);
 
+        ContenedorPantallaPrincipal contenedorPrincipal = new ContenedorPantallaPrincipal(theStage, vbox);
+        Scene escenaComienzo = new Scene(contenedorPrincipal, 640, 480);
+
+
 
         vbox.setOnMousePressed(new ControladorMousePresionado(tablero, vistaTablero));
         //vbox.setOnMouseDragged(new ControladorMouseArrastrado(tablero));
         //vbox.setOnMouseReleased(new ControladorMouseSoltado(tablero));
 
 
-        Scene theScene = new Scene(vbox);
-        theStage.setScene(theScene);
+        theStage.setScene(escenaComienzo);
         theStage.show();
 
     }
 
     /*TODO: todavia no estoy trabajando con el modelo,
        solo con las vistas*/
+
+
 
 }
