@@ -41,13 +41,12 @@ public class VistaUnidad extends StackPane implements Observer {
         if(casillero.estaOcupado()) {
             this.imagenUnidad = new ImageView();
             this.establecerUnidad(this.getNombreUnidad(casillero));
-            imagenUnidad.setFitHeight(30);
-            imagenUnidad.setFitWidth(30);
+            imagenUnidad.setFitHeight(32);
+            imagenUnidad.setFitWidth(32);
             getChildren().add(imagenUnidad);
             this.actualizar();
         }
     }
-
 
     private String getNombreUnidad(Casillero casillero) {
 
