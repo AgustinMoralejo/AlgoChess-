@@ -43,10 +43,16 @@ public class Main extends Application {
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
+        Jinete jinete = new Jinete();
+        Curandero curandero = new Curandero();
+        Catapulta catapulta = new Catapulta();
 
         tablero.colocarUnidad(soldado1,7,7);
         tablero.colocarUnidad(soldado3,9,7);
         tablero.colocarUnidad(soldado2,3,9);
+        tablero.colocarUnidad(jinete, 8,10);
+        tablero.colocarUnidad(curandero, 5,8);
+        tablero.colocarUnidad(catapulta, 2,6);
         //
 
         vistaTablero = new VistaTablero(tablero);
