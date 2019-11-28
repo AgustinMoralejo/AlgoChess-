@@ -30,7 +30,7 @@ public class VistaCasillero extends Rectangle implements Observer {
         relocate(casillero.getColumna() * ANCHO_CASILLERO,
                 casillero.getFila() * VistaTablero.ALTO_CASILLERO);
 
-        setFill(alianza ? javafx.scene.paint.Color.valueOf("#feb")
+        setFill(alianza ? Color.valueOf("#feb")
                 : Color.valueOf("#582"));
 
      //   this.vistaUnidad.moverVista(casillero.getFila(), casillero.getColumna());

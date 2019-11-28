@@ -6,8 +6,8 @@ import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
+import org.junit.Test;
 import org.junit.jupiter.api.Assertions;
-import org.testng.annotations.Test;
 import java.util.ArrayList;
 
 public class AtaquesTest {
