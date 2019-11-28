@@ -47,7 +47,7 @@ public class VistaTablero extends Group {
 
                 VistaUnidad vistaUnidad;
 
-                vistaUnidad = new VistaUnidad(this, tablero.getCasillero(i,j));
+                vistaUnidad = new VistaUnidad(tablero.getCasillero(i,j));
 
                 unidadGroup.getChildren().add(vistaUnidad);
 
@@ -56,8 +56,6 @@ public class VistaTablero extends Group {
                                 this, vistaUnidad);
 
                 casilleroGroup.getChildren().add(vistaCasillero);
-
-
             }
         }
 

@@ -18,7 +18,6 @@ public class VistaUnidad extends StackPane implements Observer {
     private Unidad unidad;
     private double columnaInicial;
     private double filaInicial;
-    private VistaTablero stage;
     ImageView imagenUnidad;
 
     private static final Image CATAPULTAAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaAzul.jpg");
@@ -36,7 +35,7 @@ public class VistaUnidad extends StackPane implements Observer {
 
     //Image image = new Image("file:" + getNombreUnidad(casillero) + ".png",ancho,alto,false,false);
 
-    public VistaUnidad(VistaTablero stage, Casillero casillero) {
+    public VistaUnidad(Casillero casillero) {
         this.unidad = casillero.getUnidad();
         if(casillero.estaOcupado()) {
             this.imagenUnidad = new ImageView();
@@ -44,36 +43,31 @@ public class VistaUnidad extends StackPane implements Observer {
             imagenUnidad.setFitHeight(32);
             imagenUnidad.setFitWidth(32);
             getChildren().add(imagenUnidad);
+            unidad.agregarObserver(this);
             this.actualizar();
         }
     }
 
     private String getNombreUnidad(Casillero casillero) {
 
-        if (casillero.getFila() < 10) {
-            if (unidad.getSimbolo().equals("J")) {
-                return "jinete azul";
-            } else if (unidad.getSimbolo().equals("S")) {
-                return "soldado azul";
-            } else if (unidad.getSimbolo().equals("CT")) {
-                return "catapulta azul";
-            } else if (unidad.getSimbolo().equals("C")) {
-                return "curandero azul";
-            } else {
-                return "vacio";
-            }
+        if (unidad.getSimbolo().equals("J") && unidad.esAliado()) {
+            return "jinete azul";
+        } else if (unidad.getSimbolo().equals("S") && unidad.esAliado()) {
+            return "soldado azul";
+        } else if (unidad.getSimbolo().equals("CT") && unidad.esAliado()) {
+            return "catapulta azul";
+        } else if (unidad.getSimbolo().equals("C") && unidad.esAliado()) {
+            return "curandero azul";
+        }else if (unidad.getSimbolo().equals("J")) {
+            return "jinete rojo";
+        } else if (unidad.getSimbolo().equals("S")) {
+            return "soldado rojo";
+        } else if (unidad.getSimbolo().equals("CT")) {
+            return "catapulta roja";
+        } else if (unidad.getSimbolo().equals("C")) {
+            return "curandero rojo";
         } else {
-            if (unidad.getSimbolo().equals("J")) {
-                return "jinete rojo";
-            } else if (unidad.getSimbolo().equals("S")) {
-                return "soldado rojo";
-            } else if (unidad.getSimbolo().equals("CT")) {
-                return "catapulta roja";
-            } else if (unidad.getSimbolo().equals("C")) {
-                return "curandero rojo";
-            } else {
-                return "vacio";
-            }
+            return "vacio";
         }
     }
 
