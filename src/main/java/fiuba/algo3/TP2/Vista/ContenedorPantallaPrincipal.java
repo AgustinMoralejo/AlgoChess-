@@ -1,9 +1,8 @@
 package fiuba.algo3.TP2.Vista;
 
-import fiuba.algo3.TP2.Vista.Eventos.BotonEntrarEventHandler;
+import fiuba.algo3.TP2.Controlador.BotonEntrarEventHandler;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;

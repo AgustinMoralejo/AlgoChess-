@@ -16,6 +16,6 @@ public interface EstadoAlianzas{
     public abstract Arma seleccionarArmaOtraUnidad(Arma armaAnterior);
     public abstract Arma seleccionarArmaNull(Arma armaAnterior);
     public abstract void agregarCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero);
-    
+    boolean esAliado();
     
 }

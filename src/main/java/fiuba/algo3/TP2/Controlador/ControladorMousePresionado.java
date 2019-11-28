@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Controlador;
 
+import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Excepciones.UnidadSoloSePuedeMoverUnCasilleroException;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Vista.VistaTablero;
@@ -13,7 +14,7 @@ import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
 public class ControladorMousePresionado implements EventHandler<MouseEvent> {
 
-    private Tablero tablero;
+    private Jugador jugador;
 
     private VistaTablero vistaTablero;
 
@@ -23,8 +24,8 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
     private int[] posUnidad=new int[2];
     private int[] destino=new int[2];
 
-    public ControladorMousePresionado(Tablero tablero, VistaTablero vistaTablero) {
-        this.tablero = tablero;
+    public ControladorMousePresionado(Jugador jugador, VistaTablero vistaTablero) {
+        this.jugador = jugador;
         this.vistaTablero = vistaTablero;
     }
 
@@ -53,8 +54,8 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
 
 
         }
+        //si es el segundo click, es para moverse o atacar
         else{
-
             mouseX = mouseEvent.getSceneX();
             mouseY = mouseEvent.getSceneY();
 
@@ -67,18 +68,31 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
             destino[0] = fila;
             destino[1] = columna;
 
-            int or = -2;
 
-            try{
-                or = tablero.darOrientacion(posUnidad, destino);
-            }catch (UnidadSoloSePuedeMoverUnCasilleroException e){
-                System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");
+            //si esta para moverse
+            if(!jugador.estaEnModoOfensivo()){
+
+                int or = -9;
+
+                try{
+                    or = jugador.darOrientacion(posUnidad, destino);
+                }catch (UnidadSoloSePuedeMoverUnCasilleroException e){
+                    this.primerClick = true;
+                    System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");
+                }
+
+                jugador.moverUnidad(posUnidad[0], posUnidad[1], or);
+
+                this.primerClick = true;
+
+
             }
+            //si esta para atacar otra unidad, el destino es la unidad a atacar
+            else if (jugador.estaEnModoOfensivo()){
 
-            tablero.moverUnidad(posUnidad[0], posUnidad[1], or);
+                jugador.atacar(posUnidad[0],posUnidad[1],destino[0],destino[1]);
 
-            this.primerClick = true;
-
+            }
 
         }
 

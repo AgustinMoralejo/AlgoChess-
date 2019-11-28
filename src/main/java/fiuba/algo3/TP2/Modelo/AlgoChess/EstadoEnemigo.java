@@ -59,4 +59,10 @@ public class EstadoEnemigo implements EstadoAlianzas{
     @Override
     public void agregarCasilleroAlBatallon(List<Casillero>batallon, Casillero casillero) {}
 
+    //vista
+    @Override
+    public boolean esAliado() {
+        return false;
+    }
+
 }

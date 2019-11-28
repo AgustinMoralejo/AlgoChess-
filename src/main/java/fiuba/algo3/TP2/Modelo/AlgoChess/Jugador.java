@@ -15,6 +15,8 @@ public class Jugador {
     protected String nombre;
     protected int puntos;
 
+    private boolean modoOfensivo = false;
+
     protected List<Unidad> unidades;
 
     /*El cuartal deberia ser una sola instancia para todos los jugadores, aca estoy duplicando por cada jugador? */
@@ -97,4 +99,16 @@ public class Jugador {
         return ((unidadesRestantesVivas()<=0)&&(puntos<=0));
     }
 
+    //para los handlers
+    public void cambiarModoAtaqueOMovimiento() {
+        modoOfensivo = !modoOfensivo;
+    }
+
+    public int darOrientacion(int[] posUnidad, int[] destino) {
+        return tablero.darOrientacion(posUnidad, destino);
+    }
+
+    public boolean estaEnModoOfensivo() {
+        return modoOfensivo;
+    }
 }

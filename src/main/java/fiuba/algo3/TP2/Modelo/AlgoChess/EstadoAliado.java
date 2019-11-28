@@ -57,4 +57,9 @@ public class EstadoAliado implements EstadoAlianzas{
     	batallon.add(casillero);
     }
 
+    @Override
+    public boolean esAliado() {
+        return true;
+    }
+
 }

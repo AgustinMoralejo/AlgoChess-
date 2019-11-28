@@ -21,7 +21,7 @@ public class VistaSoldado extends VistaUnidad {
     public VistaSoldado(boolean esRojo, Unidad unidad) {
 
         this.unidad = unidad;
-        dibujar(esRojo);
+        dibujar(unidad.esAliado());
 
         unidad.agregarObserver(this);
         actualizar();
@@ -29,7 +29,7 @@ public class VistaSoldado extends VistaUnidad {
     }
 
     @Override
-    protected void dibujar(boolean esRojo) {
+    protected void dibujar(boolean esAliado) {
 
         Ellipse fondo = new Ellipse(ALTO_CASILLERO * 0.3125, ALTO_CASILLERO * 0.26);
         fondo.setFill(Color.BLACK);
@@ -41,8 +41,8 @@ public class VistaSoldado extends VistaUnidad {
         fondo.setTranslateY((ALTO_CASILLERO - ALTO_CASILLERO * 0.26 * 2) / 2 + ALTO_CASILLERO * 0.07);
 
         Ellipse elipse = new Ellipse(ALTO_CASILLERO * 0.3125, ALTO_CASILLERO * 0.26);
-        elipse.setFill(esRojo
-                ? Color.valueOf("#c40003") : Color.valueOf("#fff9f4"));
+        elipse.setFill(esAliado
+                ? Color.BLUE : Color.RED);
 
         elipse.setStroke(Color.BLACK);
         elipse.setStrokeWidth(ALTO_CASILLERO * 0.03);

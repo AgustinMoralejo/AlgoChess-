@@ -67,4 +67,9 @@ public abstract class Unidad extends Subject {
     public int getColumna() {
         return columna;
     }
+
+    //vista
+    public boolean esAliado() {
+        return estadoAlianzas.esAliado();
+    }
 }
