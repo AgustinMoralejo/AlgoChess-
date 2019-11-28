@@ -70,7 +70,11 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
 
 
             //si esta para moverse
+            // si ya se que el controlador no deberia saber como funciona el modelo
             if(!jugador.estaEnModoOfensivo()){
+
+                this.primerClick = true;
+
 
                 int or = -9;
 
@@ -83,14 +87,15 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
 
                 jugador.moverUnidad(posUnidad[0], posUnidad[1], or);
 
-                this.primerClick = true;
-
 
             }
             //si esta para atacar otra unidad, el destino es la unidad a atacar
-            else if (jugador.estaEnModoOfensivo()){
+            else {
+
+                this.primerClick = true;
 
                 jugador.atacar(posUnidad[0],posUnidad[1],destino[0],destino[1]);
+                System.out.println("¡ Has atacado !");
 
             }
 

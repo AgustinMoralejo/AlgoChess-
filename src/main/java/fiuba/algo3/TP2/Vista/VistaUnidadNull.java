@@ -42,13 +42,6 @@ public class VistaUnidadNull extends VistaUnidad {
 
     }
 
-    public void moverVista(int fila, int columna) {
-    }
-
-    public void abortMove() {
-
-    }
-
 
     @Override
     public void actualizar() {

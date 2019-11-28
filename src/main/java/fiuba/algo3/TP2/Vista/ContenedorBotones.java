@@ -1,12 +1,9 @@
 package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
-import fiuba.algo3.TP2.Vista.BotonUnidadModoAtaque;
-import javafx.scene.Node;
-import javafx.scene.control.Button;
+import javafx.scene.layout.HBox;
 
-public class ContenedorBotones extends Button {
+public class ContenedorBotones extends HBox {
 
     public ContenedorBotones(Jugador jugador) {
         super();

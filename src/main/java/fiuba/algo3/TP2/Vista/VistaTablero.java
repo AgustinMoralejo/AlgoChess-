@@ -83,14 +83,13 @@ public class VistaTablero extends Group {
 
     }
 
-    /**
+    /*
     public void addViewOnMap(Node view, int x, int y) {
         for (int i = 0; i < ancho; i++) {
             for (int j = 0; j < alto; j++) {
                 try {
                     panes[i][j].getChildren().remove(view);
                 } catch (Exception e) {
-                    //TODO: handle exception
                 }
             }
         }

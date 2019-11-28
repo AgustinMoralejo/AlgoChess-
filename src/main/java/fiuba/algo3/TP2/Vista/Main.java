@@ -63,8 +63,7 @@ public class Main extends Application {
 
     }
 
-    /*TODO: todavia no estoy trabajando con el modelo,
-       solo con las vistas*/
+    /*TODO: El juego, los jugadores */
 
 
 

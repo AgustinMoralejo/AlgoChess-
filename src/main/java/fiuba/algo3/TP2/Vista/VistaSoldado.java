@@ -11,8 +11,6 @@ import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
 public class VistaSoldado extends VistaUnidad {
 
-    private double mouseY;
-    private double mouseX;
     private Unidad unidad;
     private double columnaInicial;
     private double filaInicial;
@@ -52,14 +50,6 @@ public class VistaSoldado extends VistaUnidad {
 
         getChildren().addAll(fondo, elipse);
 
-    }
-
-    @Override
-    public void moverVista(int fila, int columna) {
-    }
-
-    public void abortMove() {
-        relocate(columnaInicial, filaInicial);
     }
 
 

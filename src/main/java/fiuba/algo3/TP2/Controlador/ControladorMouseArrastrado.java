@@ -20,11 +20,6 @@ public class ControladorMouseArrastrado implements EventHandler<MouseEvent> {
     @Override
     public void handle(MouseEvent mouseEvent) {
 
-        VistaUnidad vistaUnidad;
-/*
-        vistaUnidad.relocate(mouseEvent.getSceneX() - mouseX + oldX,
-                mouseEvent.getSceneY() - mouseY + oldY);
-*/
     }
 
 }

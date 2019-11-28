@@ -5,11 +5,12 @@ import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import javafx.scene.control.Button;
 
 public class BotonUnidadModoAtaque extends Button {
+
     public BotonUnidadModoAtaque(Jugador jugador) {
 
         super();
         this.setText("Modo Ataque");
-        this.setMinHeight(20);
+        this.setMinHeight(30);
         this.setOnAction(new ControladorModoAtaque(jugador));
 
     }

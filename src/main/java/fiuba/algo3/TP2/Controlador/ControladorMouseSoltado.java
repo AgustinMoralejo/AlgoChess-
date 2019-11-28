@@ -17,30 +17,8 @@ public class ControladorMouseSoltado implements EventHandler<MouseEvent> {
 
     @Override
     public void handle(MouseEvent mouseEvent) {
-
-        VistaUnidad vistaUnidad = null;
-
-        int filaDestino = convertir(vistaUnidad.getLayoutY());
-        int columnaDestino = convertir(vistaUnidad.getLayoutX());
-
-        vistaUnidad.moverVista(filaDestino, columnaDestino);
-
-
     }
 
-    private int convertir(double pixel){
-        return (int)(pixel + VistaTablero.ALTO_CASILLERO / 2)
-                / VistaTablero.ALTO_CASILLERO;
-    }
 }
 
 
-    /*
-    if (columnaDestino < 0 || filaDestino < 0 ||
-            columnaDestino >= tablero.getColumnas()  ||
-            filaDestino >= tablero.getFilas()) {
-        //resultado = new MoveResult(MoveType.NONE);
-    } else {
-        //result = tryMove(piece, newX, newY);
-    }
-    */
