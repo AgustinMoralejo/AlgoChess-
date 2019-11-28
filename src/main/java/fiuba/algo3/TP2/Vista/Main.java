@@ -56,7 +56,7 @@ public class Main extends Application {
         Scene escenaComienzo = new Scene(contenedorPrincipal, 640, 480);
 
         vbox.setOnMousePressed(new ControladorMousePresionado(jugador, vistaTablero));
-        vbox.getChildren().add(new ContenedorBotones(jugador));
+        vbox.getChildren().add(new ContenedorBotones(jugador, tablero));
 
         theStage.setScene(escenaComienzo);
         theStage.show();
