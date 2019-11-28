@@ -13,47 +13,110 @@ import javafx.scene.shape.Ellipse;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
-public abstract class VistaUnidad extends StackPane implements Observer {
+public class VistaUnidad extends StackPane implements Observer {
 
     private Unidad unidad;
     private double columnaInicial;
     private double filaInicial;
+    private VistaTablero stage;
+    ImageView imagenUnidad;
+
+    private static final Image CATAPULTAAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaAzul.jpg");
+    private static final Image CATAPULTAROJA = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapulaRoja.jpg");
+    private static final Image CURANDEROAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoAzul.jpg");
+    private static final Image CURANDEROROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoRojo.jpg");
+    private static final Image JINETEAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteAzul.jpg");
+    private static final Image JINETEROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteRojo.jpg");
+    private static final Image SOLDADOAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/SoldadoAzul.jpg");
+    private static final Image SOLDADOROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/SoldadoRojo.jpg");
 
 
     /*TODO: No deberia haber una vista por unidad ya que la unica diferencia es como se dibuja
-    *  asi que vistaUnidad no deberia ser abstracta y deberia ser solo una*/
+     *  asi que vistaUnidad no deberia ser abstracta y deberia ser solo una*/
 
     //Image image = new Image("file:" + getNombreUnidad(casillero) + ".png",ancho,alto,false,false);
 
-
-
-
-
-    private String getNombreUnidad( Casillero casillero){
-
-        int fila = casillero.getFila();
-        int columna = casillero.getColumna();
-
-        Casillero casilleroJinete = new Casillero(fila, columna);
-        casilleroJinete.ocuparUnidad(new Jinete());
-        Casillero casilleroSoldado = new Casillero(fila, columna);
-        casilleroSoldado.ocuparUnidad(new Soldado());
-        Casillero casilleroCatapulta = new Casillero(fila, columna);
-        casilleroCatapulta.ocuparUnidad(new Catapulta());
-        Casillero casilleroCurandero = new Casillero(fila, columna);
-        casilleroCurandero.ocuparUnidad(new Curandero());
-
-        if(casillero.equals(casilleroJinete)){ return "jinete";}
-        else if(casillero.equals(casilleroSoldado)){ return "soldado";}
-        else if(casillero.equals(casilleroCatapulta)){ return "catapulta";}
-        else if(casillero.equals(casilleroCurandero)){ return "curandero";}
-        else { return "vacio";}
-
+    public VistaUnidad(VistaTablero stage, Casillero casillero) {
+        this.unidad = casillero.getUnidad();
+        if(casillero.estaOcupado()) {
+            this.imagenUnidad = new ImageView();
+            this.establecerUnidad(this.getNombreUnidad(casillero));
+            imagenUnidad.setFitHeight(30);
+            imagenUnidad.setFitWidth(30);
+            getChildren().add(imagenUnidad);
+            this.actualizar();
+        }
     }
 
 
+    private String getNombreUnidad(Casillero casillero) {
 
-    protected abstract void dibujar(boolean esRojo);
+        if (casillero.getFila() < 10) {
+            if (unidad.getSimbolo().equals("J")) {
+                return "jinete azul";
+            } else if (unidad.getSimbolo().equals("S")) {
+                return "soldado azul";
+            } else if (unidad.getSimbolo().equals("CT")) {
+                return "catapulta azul";
+            } else if (unidad.getSimbolo().equals("C")) {
+                return "curandero azul";
+            } else {
+                return "vacio";
+            }
+        } else {
+            if (unidad.getSimbolo().equals("J")) {
+                return "jinete rojo";
+            } else if (unidad.getSimbolo().equals("S")) {
+                return "soldado rojo";
+            } else if (unidad.getSimbolo().equals("CT")) {
+                return "catapulta roja";
+            } else if (unidad.getSimbolo().equals("C")) {
+                return "curandero rojo";
+            } else {
+                return "vacio";
+            }
+        }
+    }
+
+    public void establecerUnidad(String nombreUnidad) {
+        switch (nombreUnidad) {
+            case "jinete azul":
+                this.imagenUnidad.setImage(JINETEAZUL);
+                break;
+            case "jinete rojo":
+                this.imagenUnidad.setImage(JINETEROJO);
+                break;
+            case "soldado azul":
+                this.imagenUnidad.setImage(SOLDADOAZUL);
+                break;
+            case "soldado rojo":
+                this.imagenUnidad.setImage(SOLDADOROJO);
+                break;
+            case "catapulta azul":
+                this.imagenUnidad.setImage(CATAPULTAAZUL);
+                break;
+            case "catapulta roja":
+                this.imagenUnidad.setImage(CATAPULTAROJA);
+                break;
+            case "curandero azul":
+                this.imagenUnidad.setImage(CURANDEROAZUL);
+                break;
+            case "curandero rojo":
+                this.imagenUnidad.setImage(CURANDEROROJO);
+                break;
+            case "vacio":
+                //this.dibujar();
+                break;
+        }
+    }
+
+    @Override
+    public void actualizar() {
+        columnaInicial = unidad.getColumna() * ALTO_CASILLERO;
+        filaInicial = unidad.getFila() * ALTO_CASILLERO;
+        relocate(columnaInicial, filaInicial);
+    }
+}
 
 
 /*
@@ -63,6 +126,7 @@ public abstract class VistaUnidad extends StackPane implements Observer {
         relocate(columnaInicial, filaInicial);
 
     }
-    */
+
 
 }
+*/

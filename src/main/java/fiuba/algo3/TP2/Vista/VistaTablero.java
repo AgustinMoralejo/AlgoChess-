@@ -47,14 +47,7 @@ public class VistaTablero extends Group {
 
                 VistaUnidad vistaUnidad;
 
-                if(tablero.estaOcupado(i,j)){
-                      vistaUnidad = new VistaSoldado(true, tablero.getUnidad(i, j));
-
-                }
-                else{
-                      vistaUnidad = new VistaUnidadNull(true, tablero.getUnidad(i, j));
-
-                }
+                vistaUnidad = new VistaUnidad(this, tablero.getCasillero(i,j));
 
                 unidadGroup.getChildren().add(vistaUnidad);
 

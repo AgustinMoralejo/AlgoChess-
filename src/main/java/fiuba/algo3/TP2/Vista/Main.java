@@ -4,8 +4,10 @@ import fiuba.algo3.TP2.Controlador.ControladorMouseArrastrado;
 import fiuba.algo3.TP2.Controlador.ControladorMousePresionado;
 import fiuba.algo3.TP2.Controlador.ControladorMouseSoltado;
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
+import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 
+import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import javafx.application.Application;
 import javafx.scene.Group;
@@ -13,6 +15,8 @@ import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -28,6 +32,7 @@ public class Main extends Application {
         theStage.setTitle("AlgoChess");
 
         Tablero tablero = new Tablero();
+
         Jugador jugador = new Jugador("agus", tablero);
         Jugador jugador2 = new Jugador("enemigo", tablero);
 
@@ -36,15 +41,16 @@ public class Main extends Application {
         Soldado soldado1 = new Soldado();
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
+        Jinete jinete = new Jinete();
 
         Soldado soldadoEnemigo1 = new Soldado();
         soldadoEnemigo1.cambiarEstadoAlianzas();
 
         tablero.colocarUnidad(soldadoEnemigo1,7,7);
-
         tablero.colocarUnidad(soldado3,9,7);
         tablero.colocarUnidad(soldado1,5,8);
         tablero.colocarUnidad(soldado2,3,9);
+        tablero.colocarUnidad(jinete, 1,1);
         //
 
         vistaTablero = new VistaTablero(tablero);
@@ -54,7 +60,6 @@ public class Main extends Application {
 
         ContenedorPantallaPrincipal contenedorPrincipal = new ContenedorPantallaPrincipal(theStage, vbox);
         Scene escenaComienzo = new Scene(contenedorPrincipal, 640, 480);
-
         vbox.setOnMousePressed(new ControladorMousePresionado(jugador, vistaTablero));
         vbox.getChildren().add(new ContenedorBotones(jugador, tablero));
 
