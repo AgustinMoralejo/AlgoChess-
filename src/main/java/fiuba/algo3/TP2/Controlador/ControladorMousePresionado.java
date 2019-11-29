@@ -80,12 +80,13 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
 
                 try{
                     or = jugador.darOrientacion(posUnidad, destino);
+                    jugador.moverUnidad(posUnidad[0], posUnidad[1], or);
                 }catch (UnidadSoloSePuedeMoverUnCasilleroException e){
                     this.primerClick = true;
                     System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");
                 }
 
-                jugador.moverUnidad(posUnidad[0], posUnidad[1], or);
+
 
 
             }

@@ -47,6 +47,18 @@ public class Main extends Application {
         Curandero curandero = new Curandero();
         Catapulta catapulta = new Catapulta();
 
+        Soldado soldadoRojo = new Soldado();
+        soldadoRojo.cambiarEstadoAlianzas();
+        Jinete jineteRojo = new Jinete();
+        jineteRojo.cambiarEstadoAlianzas();
+        Curandero curanderoRojo = new Curandero();
+        curanderoRojo.cambiarEstadoAlianzas();
+
+        tablero.colocarUnidad(soldadoRojo,2,7);
+        tablero.colocarUnidad(jineteRojo,3,7);
+        tablero.colocarUnidad(curanderoRojo,4,4);
+
+        //
         tablero.colocarUnidad(soldado1,7,7);
         tablero.colocarUnidad(soldado3,9,7);
         tablero.colocarUnidad(soldado2,3,9);
