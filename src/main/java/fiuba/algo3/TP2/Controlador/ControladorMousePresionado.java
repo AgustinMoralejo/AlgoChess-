@@ -2,13 +2,10 @@ package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Excepciones.UnidadSoloSePuedeMoverUnCasilleroException;
-import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Vista.VistaTablero;
-import fiuba.algo3.TP2.Vista.VistaUnidad;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
 
-import static fiuba.algo3.TP2.Modelo.AlgoChess.Movimiento.OFFSET_COORDENADAS_MOVIMIENTO;
 import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
 
@@ -70,17 +67,12 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
 
 
             //si esta para moverse
-            // si ya se que el controlador no deberia saber como funciona el modelo
             if(!jugador.estaEnModoOfensivo()){
 
                 this.primerClick = true;
 
-
-                int or = -9;
-
                 try{
-                    or = jugador.darOrientacion(posUnidad, destino);
-                    jugador.moverUnidad(posUnidad[0], posUnidad[1], or);
+                    jugador.realizarAccion(posUnidad, destino);
                 }catch (UnidadSoloSePuedeMoverUnCasilleroException e){
                     this.primerClick = true;
                     System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");

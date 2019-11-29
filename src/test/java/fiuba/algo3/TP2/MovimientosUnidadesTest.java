@@ -1095,4 +1095,26 @@ public class MovimientosUnidadesTest {
         */
     }
 
+    @Test
+    public void testJugadorEnModoPasivoHaceQueElSoldadoSeMueva() {
+
+        Tablero tablero = new Tablero();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
+
+        jugadorAliado.comprarUnidad("soldado",7,7);
+
+        int[] posUnidad = new int [2];
+        int[] destino = new int [2];
+        posUnidad[0] = 7;
+        posUnidad[1] = 7;
+        destino[0] = 8;
+        destino[1] = 8;
+
+        jugadorAliado.realizarAccion(posUnidad,destino);
+
+        Assertions.assertTrue(tablero.estaOcupado(8,8));
+
+    }
+
+
 }

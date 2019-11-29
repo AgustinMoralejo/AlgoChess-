@@ -10,10 +10,11 @@ import static java.lang.Math.abs;
 
 public class Tablero{
 
-    private Casillero tablero[][];
+    private Casillero[][] tablero;
 
     private static final int FILAS = 20;
     private static final int COLUMNAS = 20;
+    private boolean primerClick;
 
     public Tablero(){
         int i,j;
@@ -26,6 +27,7 @@ public class Tablero{
         }
         this.iniciarEstado();
         this.agregarTodosAdyacentes();
+        setPrimerClickTrue();
     }
 
     public void iniciarEstado(){
@@ -156,6 +158,7 @@ public class Tablero{
         return tablero[fila][columna].getUnidad();
     }
 
+    //vista
 
     public int darOrientacion(int[] posUnidad, int[] destino) {
 
@@ -206,5 +209,31 @@ public class Tablero{
 
 
         return orientacion;
+    }
+
+    public void moverUnidad(Casillero primerCasilleroSeleccionado, Casillero segundoCasilleroSeleccionado) {
+
+        int[] posUnidad = new int[2];
+        int[] destino = new int[2];
+        posUnidad[0] = primerCasilleroSeleccionado.getFila();
+        posUnidad[1] = primerCasilleroSeleccionado.getColumna();
+        destino[0] = segundoCasilleroSeleccionado.getFila();
+        destino[1] = segundoCasilleroSeleccionado.getColumna();
+
+        int orientacion = this.darOrientacion(posUnidad, destino);
+
+        this.moverUnidad(posUnidad[0], posUnidad[1], orientacion);
+    }
+
+    public void setPrimerClickFalse() {
+        primerClick = false;
+    }
+
+    public boolean esPrimerClick() {
+        return primerClick;
+    }
+
+    public void setPrimerClickTrue() {
+        primerClick = true;
     }
 }

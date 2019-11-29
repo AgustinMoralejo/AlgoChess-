@@ -22,12 +22,14 @@ public class Jugador {
     /*El cuartal deberia ser una sola instancia para todos los jugadores, aca estoy duplicando por cada jugador? */
     protected Cuartel cuartel = new Cuartel();
     protected Tablero tablero;
+    private EstadoAccion estadoAccion;
 
     public Jugador(String unNombre) {
 
         nombre = unNombre;
         puntos = 20;
         unidades =  new ArrayList<>();
+        this.estadoAccion = new EstadoPasivo();
     }
 
     public Jugador(String unNombre, Tablero tableroDelJuego) {
@@ -36,6 +38,8 @@ public class Jugador {
         puntos = 20;
         unidades =  new ArrayList<>();
         tablero = tableroDelJuego;
+        this.estadoAccion = new EstadoPasivo();
+
     }
 
     public String getNombre() {
@@ -74,8 +78,18 @@ public class Jugador {
     }
 
     public void moverUnidad(int fila, int columna, int orientacion){
+
         tablero.moverUnidad(fila, columna, orientacion);
     }
+
+
+    public void moverUnidad(int[] posUnidad, int[] destino){
+
+        int orientacion = this.darOrientacion(posUnidad, destino);
+        tablero.moverUnidad(posUnidad[0], posUnidad[1], orientacion);
+
+    }
+
 
     public void pagar(int costo){
 
@@ -104,11 +118,15 @@ public class Jugador {
         modoOfensivo = !modoOfensivo;
     }
 
-    public int darOrientacion(int[] posUnidad, int[] destino) {
+    private int darOrientacion(int[] posUnidad, int[] destino) {
         return tablero.darOrientacion(posUnidad, destino);
     }
 
     public boolean estaEnModoOfensivo() {
         return modoOfensivo;
+    }
+
+    public void realizarAccion(int[] posUnidad, int[] destino) {
+        estadoAccion.realizarAccion(posUnidad, destino, this);
     }
 }

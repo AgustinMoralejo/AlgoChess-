@@ -4,6 +4,7 @@ import fiuba.algo3.TP2.Modelo.Observer;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Unidad.*;
 import javafx.geometry.Insets;
+import javafx.scene.Group;
 import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
@@ -13,12 +14,13 @@ import javafx.scene.shape.Ellipse;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
-public class VistaUnidad extends StackPane implements Observer {
+public class VistaUnidad extends Group implements Observer {
 
     private Unidad unidad;
     private double columnaInicial;
     private double filaInicial;
     ImageView imagenUnidad;
+    private VistaTablero vistaTablero;
 
     private static final Image CATAPULTAAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaAzul.jpg");
     private static final Image CATAPULTAROJA = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapulaRoja.jpg");
@@ -46,6 +48,24 @@ public class VistaUnidad extends StackPane implements Observer {
             unidad.agregarObserver(this);
             this.actualizar();
         }
+    }
+
+    public VistaUnidad(Unidad unidad, VistaTablero vistaTablero) {
+        this.vistaTablero = vistaTablero;
+        this.unidad = unidad;
+        this.imagenUnidad = new ImageView();
+
+        this.establecerUnidad(this.getNombreUnidad(null));
+        imagenUnidad.setFitHeight(32);
+        imagenUnidad.setFitWidth(32);
+        getChildren().add(imagenUnidad);
+        unidad.agregarObserver(this);
+
+        actualizar();
+        imagenUnidad.setTranslateX(0);
+        imagenUnidad.setTranslateY(0);
+        vistaTablero.actualizarVista(imagenUnidad);
+
     }
 
     private String getNombreUnidad(Casillero casillero) {
@@ -109,17 +129,13 @@ public class VistaUnidad extends StackPane implements Observer {
         filaInicial = unidad.getFila() * ALTO_CASILLERO;
         relocate(columnaInicial, filaInicial);
     }
-}
-
 
 /*
+    @Override
     public void actualizar() {
-        columnaInicial = unidad.getColumna() * ALTO_CASILLERO;
-        filaInicial = unidad.getFila() * ALTO_CASILLERO;
-        relocate(columnaInicial, filaInicial);
+        this.vistaTablero.addViewOnMap(imagenUnidad, unidad.getColumna(),unidad.getFila());
 
     }
-
+*/
 
 }
-*/

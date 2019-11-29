@@ -24,6 +24,9 @@ public class Main extends Application {
 
     private VistaTablero vistaTablero;
 
+    private VistaUnidad soldView;
+
+
     public static void main(String[] args) {
         launch(args);
     }
@@ -36,11 +39,11 @@ public class Main extends Application {
         Tablero tablero = new Tablero();
 
         Jugador jugador = new Jugador("agus", tablero);
-        Jugador jugador2 = new Jugador("enemigo", tablero);
 
         //
         //por defecto las unidades son aliadas
         Soldado soldado1 = new Soldado();
+
         Soldado soldado2 = new Soldado();
         Soldado soldado3 = new Soldado();
         Jinete jinete = new Jinete();
@@ -71,6 +74,9 @@ public class Main extends Application {
 
         VBox vbox = new VBox();
         vbox.getChildren().add(vistaTablero);
+
+        //soldView = new VistaUnidad(soldado1, vistaTablero);
+
 
         ContenedorPantallaPrincipal contenedorPrincipal = new ContenedorPantallaPrincipal(theStage, vbox);
         Scene escenaComienzo = new Scene(contenedorPrincipal, 640, 480);

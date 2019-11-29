@@ -2,8 +2,10 @@ package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Modelo.Observer;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
+import javafx.scene.control.Button;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
+import javafx.scene.transform.Translate;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ANCHO_CASILLERO;
 
@@ -33,16 +35,12 @@ public class VistaCasillero extends Rectangle implements Observer {
         setFill(alianza ? javafx.scene.paint.Color.valueOf("#feb")
                        : Color.valueOf("#582"));
 
-     //   this.vistaUnidad.moverVista(casillero.getFila(), casillero.getColumna());
     }
 
 
     @Override
     public void actualizar() {
-        //problema es que la vistaUnidad es la inicial y en nigun momento cambia
-        //si le asigno al casillero la vistaUnidad correspondiente el resto lo hace solo
-       //pero ir re asignando vistas no parece logico
-     //   vistaUnidad.moverVista(casillero.getFila(), casillero.getColumna());
+
     }
 
 }
