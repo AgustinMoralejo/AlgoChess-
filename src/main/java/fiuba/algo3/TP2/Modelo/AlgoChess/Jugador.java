@@ -114,19 +114,24 @@ public class Jugador {
     }
 
     //para los handlers
-    public void cambiarModoAtaqueOMovimiento() {
-        modoOfensivo = !modoOfensivo;
+    public void cambiarAModoPasivo() {
+        estadoAccion = new EstadoPasivo();
+    }
+
+    public void cambiarAModoOfensivo() {
+        estadoAccion = new EstadoOfensivo();
     }
 
     private int darOrientacion(int[] posUnidad, int[] destino) {
         return tablero.darOrientacion(posUnidad, destino);
     }
 
-    public boolean estaEnModoOfensivo() {
+    public boolean getModo() {
         return modoOfensivo;
     }
 
     public void realizarAccion(int[] posUnidad, int[] destino) {
         estadoAccion.realizarAccion(posUnidad, destino, this);
     }
+
 }

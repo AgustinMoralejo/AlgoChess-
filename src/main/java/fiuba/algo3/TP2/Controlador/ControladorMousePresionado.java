@@ -65,32 +65,17 @@ public class ControladorMousePresionado implements EventHandler<MouseEvent> {
             destino[0] = fila;
             destino[1] = columna;
 
+            this.primerClick = true;
 
-            //si esta para moverse
-            if(!jugador.estaEnModoOfensivo()){
-
+            try{
+                jugador.realizarAccion(posUnidad, destino);
+                System.out.println("Accion realizada");
+            } catch (UnidadSoloSePuedeMoverUnCasilleroException e){
                 this.primerClick = true;
-
-                try{
-                    jugador.realizarAccion(posUnidad, destino);
-                }catch (UnidadSoloSePuedeMoverUnCasilleroException e){
-                    this.primerClick = true;
-                    System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");
-                }
-
-
-
-
+                System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");
             }
-            //si esta para atacar otra unidad, el destino es la unidad a atacar
-            else {
 
-                this.primerClick = true;
 
-                jugador.atacar(posUnidad[0],posUnidad[1],destino[0],destino[1]);
-                System.out.println("¡ Has atacado !");
-
-            }
 
         }
 

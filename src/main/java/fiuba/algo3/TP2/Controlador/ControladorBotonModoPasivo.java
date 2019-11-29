@@ -4,19 +4,20 @@ import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 
-public class ControladorModoAtaque implements EventHandler<ActionEvent> {
+public class ControladorBotonModoPasivo implements EventHandler<ActionEvent> {
 
     private Jugador jugador;
 
-    public ControladorModoAtaque(Jugador jugador) {
+    public ControladorBotonModoPasivo(Jugador jugador) {
         this.jugador = jugador;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        jugador.cambiarModoAtaqueOMovimiento();
-        System.out.println("Modo Ofensivo: "+ jugador.estaEnModoOfensivo());
+        jugador.cambiarAModoPasivo();
+        System.out.println("Modo Pasivo" );
 
     }
+
 }

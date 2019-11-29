@@ -128,6 +128,7 @@ public class VistaUnidad extends Group implements Observer {
         columnaInicial = unidad.getColumna() * ALTO_CASILLERO;
         filaInicial = unidad.getFila() * ALTO_CASILLERO;
         relocate(columnaInicial, filaInicial);
+
     }
 
 /*

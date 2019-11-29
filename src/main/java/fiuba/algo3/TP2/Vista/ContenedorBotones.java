@@ -9,7 +9,8 @@ public class ContenedorBotones extends HBox {
     public ContenedorBotones(Jugador jugador, Tablero tablero) {
         super();
         this.setHeight(20);
-        this.getChildren().add(new BotonUnidadModoAtaque(jugador));
+        this.getChildren().add(new BotonModoAtaque(jugador));
+        this.getChildren().add(new BotonModoPasivo(jugador));
         this.getChildren().add(new BotonCambiarTurno(tablero));
 
     }
