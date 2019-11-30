@@ -1,10 +1,7 @@
 package fiuba.algo3.TP2.Vista;
 
-import fiuba.algo3.TP2.Controlador.ControladorMouseArrastrado;
-import fiuba.algo3.TP2.Controlador.ControladorMousePresionado;
-import fiuba.algo3.TP2.Controlador.ControladorMouseSoltado;
+import fiuba.algo3.TP2.Controlador.BotonEntrarEventHandler;
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 
 import fiuba.algo3.TP2.Modelo.Unidad.Catapulta;
@@ -12,13 +9,18 @@ import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
 import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import javafx.application.Application;
-import javafx.scene.Group;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
-import javafx.scene.layout.VBox;
+import javafx.scene.control.Button;
+import javafx.scene.control.Label;
+import javafx.scene.effect.DropShadow;
+import javafx.scene.image.Image;
+import javafx.scene.layout.*;
+import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
-
-import java.util.ArrayList;
 
 public class Main extends Application {
 
@@ -36,54 +38,37 @@ public class Main extends Application {
 
         theStage.setTitle("AlgoChess");
 
-        Tablero tablero = new Tablero();
-
-        Jugador jugador = new Jugador("agus", tablero);
-
-        //
-        //por defecto las unidades son aliadas
-        Soldado soldado1 = new Soldado();
-
-        Soldado soldado2 = new Soldado();
-        Soldado soldado3 = new Soldado();
-        Jinete jinete = new Jinete();
-        Curandero curandero = new Curandero();
-        Catapulta catapulta = new Catapulta();
-
-        Soldado soldadoRojo = new Soldado();
-        soldadoRojo.cambiarEstadoAlianzas();
-        Jinete jineteRojo = new Jinete();
-        jineteRojo.cambiarEstadoAlianzas();
-        Curandero curanderoRojo = new Curandero();
-        curanderoRojo.cambiarEstadoAlianzas();
-
-        tablero.colocarUnidad(soldadoRojo,2,7);
-        tablero.colocarUnidad(jineteRojo,3,7);
-        tablero.colocarUnidad(curanderoRojo,4,4);
-
-        //
-        tablero.colocarUnidad(soldado1,7,7);
-        tablero.colocarUnidad(soldado3,9,7);
-        tablero.colocarUnidad(soldado2,3,9);
-        tablero.colocarUnidad(jinete, 8,10);
-        tablero.colocarUnidad(curandero, 5,8);
-        tablero.colocarUnidad(catapulta, 2,6);
-        //
-
-        vistaTablero = new VistaTablero(tablero);
-
         VBox vbox = new VBox();
-        vbox.getChildren().add(vistaTablero);
 
-        //soldView = new VistaUnidad(soldado1, vistaTablero);
+        vbox.setAlignment(Pos.CENTER);
+        vbox.setSpacing(20);
+        vbox.setPadding(new Insets(25));
+        Image imagen = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/algoChess.jpg");
+        BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
+        vbox.setBackground(new Background(imagenDeFondo));
+
+        Button botonEntrar = new Button();
+
+        DropShadow dropShadow = new DropShadow();
+        dropShadow.setColor(Color.BLACK);
+
+        botonEntrar.setEffect(dropShadow);
+        botonEntrar.setText("Comenzar");
+
+        Label etiqueta = new Label();
+        etiqueta.setFont(Font.font("Tw Cen MT Condensed", FontWeight.BOLD, 50));
+
+        etiqueta.setText("A L G O  C H E S S");
+        etiqueta.setTextFill(Color.web("#888888"));
 
 
-        ContenedorPantallaPrincipal contenedorPrincipal = new ContenedorPantallaPrincipal(theStage, vbox);
-        Scene escenaComienzo = new Scene(contenedorPrincipal, 640, 480);
-        vbox.setOnMousePressed(new ControladorMousePresionado(jugador, vistaTablero));
-        vbox.getChildren().add(new ContenedorBotones(jugador, tablero));
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(theStage);
+        botonEntrar.setOnAction(botonEntrarHandler);
 
-        theStage.setScene(escenaComienzo);
+        vbox.getChildren().addAll(etiqueta, botonEntrar);
+
+        Scene theScene = new Scene(vbox);
+        theStage.setScene(theScene);
         theStage.show();
 
     }

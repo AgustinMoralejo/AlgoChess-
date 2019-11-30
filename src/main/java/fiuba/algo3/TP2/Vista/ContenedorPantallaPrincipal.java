@@ -44,7 +44,7 @@ public class ContenedorPantallaPrincipal extends VBox {
         etiqueta.setText("A L G O  C H E S S");
         etiqueta.setTextFill(Color.web("#888888"));
 
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage, vbox);
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(stage);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         this.getChildren().addAll(etiqueta, botonEntrar);

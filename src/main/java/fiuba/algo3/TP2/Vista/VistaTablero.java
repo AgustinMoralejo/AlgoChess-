@@ -57,18 +57,26 @@ public class VistaTablero extends Group {
         }
 
          */
+
         for (int i = 0; i < tablero.getColumnas(); i++) {
             for (int j = 0; j < tablero.getFilas(); j++) {
 
                 VistaUnidad vistaUnidad;
 
                 vistaUnidad = new VistaUnidad(tablero.getCasillero(i,j));
+                vistaUnidad.setMouseTransparent(true);
 
                 unidadGroup.getChildren().add(vistaUnidad);
 
+                Ventana vistaCasillero =
+                        new Ventana((i < 10), tablero.getCasillero(i,j),
+                                tablero);
+
+                /*
                 VistaCasillero vistaCasillero =
                         new VistaCasillero((i < 10), tablero.getCasillero(i,j),
                                 this, vistaUnidad);
+                */
 
                 casilleroGroup.getChildren().add(vistaCasillero);
             }

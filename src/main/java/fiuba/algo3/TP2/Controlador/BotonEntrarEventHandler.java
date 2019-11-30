@@ -1,5 +1,10 @@
 package fiuba.algo3.TP2.Controlador;
 
+import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
+import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
+import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
+import fiuba.algo3.TP2.Vista.ContenedorBotones;
+import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -8,19 +13,46 @@ import javafx.stage.Stage;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
-    Stage stage;
-    Scene proximaEscena;
+    Stage theStage;
 
-    public BotonEntrarEventHandler(Stage stage, VBox vbox) {
-        this.stage = stage;
-        Scene scene = new Scene(vbox);
-        this.proximaEscena = scene;
+    public BotonEntrarEventHandler(Stage theStage) {
+        this.theStage = theStage;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        stage.setScene(proximaEscena);
-        stage.setFullScreenExitHint("");
-        stage.setFullScreen(true);
+
+        AlgoChess algoChess = new AlgoChess("juan","pedro");
+
+        ControladorJuego controladorJuego = new ControladorJuego();
+
+        controladorJuego.setJuego(algoChess);
+
+        controladorJuego.asignarVistasACasilleros();
+
+        /**No debe ir aca, es para que ande*/
+        Tablero tablero = algoChess.getTablero();
+        Jugador jugadorAzul = algoChess.getJugadorAzul();
+        /**No debe ir aca, es para que ande*/
+
+        VistaTablero vistaTablero = new VistaTablero(tablero);
+
+        VBox vbox = new VBox();
+        vbox.getChildren().add(vistaTablero);
+
+        vbox.getChildren().add(new ContenedorBotones(jugadorAzul, tablero));
+
+        Scene escenaPartida = new Scene(vbox);
+        theStage.setScene(escenaPartida);
+
+
+        /*
+        theStage.setFullScreenExitHint("");
+        theStage.setFullScreen(true);
+        */
+
+
+
     }
+
 }

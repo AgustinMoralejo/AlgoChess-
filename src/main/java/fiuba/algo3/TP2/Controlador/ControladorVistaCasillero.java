@@ -7,13 +7,14 @@ import fiuba.algo3.TP2.Vista.Ventana;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.event.EventHandler;
 import javafx.scene.input.MouseEvent;
+import javafx.scene.paint.Color;
 
 public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
     private Ventana ventana;
     private Tablero tablero;
-    private Casillero primerCasilleroSeleccionado;
-    private Casillero segundoCasilleroSeleccionado;
+    private static Casillero primerCasilleroSeleccionado;
+    private static Casillero segundoCasilleroSeleccionado;
 
 
     public ControladorVistaCasillero(Ventana ventana, Tablero tablero) {
@@ -26,6 +27,8 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
         if (tablero.esPrimerClick()) {
 
+            ventana.resaltar(Color.GREEN);
+
             System.out.println("primer click");
 
             primerCasilleroSeleccionado = ventana.getCasillero();
@@ -37,24 +40,21 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
         } else {
 
+            ventana.desResaltar();
 
             System.out.println("segundo click");
 
             segundoCasilleroSeleccionado = ventana.getCasillero();
-            //si esta para moverse
-            // si ya se que el controlador no deberia saber como funciona el modelo
 
             System.out.println("has clickeado la ventana: " +
                     segundoCasilleroSeleccionado.getFila() + " , " + segundoCasilleroSeleccionado.getColumna());
 
             tablero.setPrimerClickTrue();
-/*
             try {
                 tablero.moverUnidad(primerCasilleroSeleccionado, segundoCasilleroSeleccionado);
             } catch (UnidadSoloSePuedeMoverUnCasilleroException e) {
                 System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");
             }
-*/
 
         }
 

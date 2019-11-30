@@ -10,17 +10,18 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Text;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ANCHO_CASILLERO;
 
 public class Ventana extends StackPane implements Observer {
 
-    private Jugador jugador;
     private Rectangle rec;
     private Casillero casillero;
     private Tablero tablero;
-    private VistaTablero vistaTablero;
     private boolean resaltado;
+
+    private Text textoPosicion;
 
 
     public Ventana(boolean alianza, Casillero casillero,
@@ -33,6 +34,10 @@ public class Ventana extends StackPane implements Observer {
         this.rec = new Rectangle();
 
         casillero.agregarObserver(this);
+
+
+        textoPosicion = new Text("(" + casillero.getFila() + "," + casillero.getColumna() + ")");
+
 
         rec.setStroke(Color.BLACK);
         rec.setStrokeWidth(ANCHO_CASILLERO * 0.05);
@@ -50,6 +55,10 @@ public class Ventana extends StackPane implements Observer {
         ControladorVistaCasillero controlador = new ControladorVistaCasillero(this, tablero);
 
         this.setOnMouseClicked(controlador);
+
+        this.setOnMouseEntered(event -> textoPosicion.setVisible(true));
+
+        this.setOnMouseExited(event -> textoPosicion.setVisible(false));
 
 
     }
