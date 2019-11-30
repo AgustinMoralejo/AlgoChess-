@@ -9,6 +9,8 @@ import javafx.scene.transform.Translate;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ANCHO_CASILLERO;
 
+//NO USAR; FUE REEMPLAZADO POR VENTANA
+// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 public class VistaCasillero extends Rectangle implements Observer {
 
     private Casillero casillero;

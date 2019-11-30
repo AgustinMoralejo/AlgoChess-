@@ -24,10 +24,6 @@ import javafx.stage.Stage;
 
 public class Main extends Application {
 
-    private VistaTablero vistaTablero;
-
-    private VistaUnidad soldView;
-
 
     public static void main(String[] args) {
         launch(args);

@@ -162,27 +162,18 @@ public class Tablero{
 
     public int darOrientacion(int[] posUnidad, int[] destino) {
 
-        int orientacion = -9;
+        int orientacion = -1;
 
         int difFil = destino[0] - posUnidad[0] ;
         int difCol = destino[1] - posUnidad[1] ;
 
+        if (abs(difFil) > 1 || abs(difCol) > 1 || (difCol == 0 && difFil == 0)) {
 
-        System.out.println("diferencias, fil:"+ difFil +"col:" + difCol);
-
-            if(abs(difFil) > 1 || abs(difCol) > 1 || (difCol == 0 && difFil==0)){
-
-                throw new UnidadSoloSePuedeMoverUnCasilleroException();
-            }
+            throw new UnidadSoloSePuedeMoverUnCasilleroException();
+        }
 
         //si, no estoy muy orgullos pero fue lo mejor que se me ocurrio
         String sentido = "" + difFil + "," + difCol + "";
-
-
-        System.out.println("sentido: "+ sentido);
-
-
-
 
         switch (sentido) {
             case "-1,0": orientacion = 0;
@@ -204,25 +195,15 @@ public class Tablero{
 
         }
 
-
-        System.out.println("orientacion: "+ orientacion);
-
-
         return orientacion;
     }
 
-    public void moverUnidad(Casillero primerCasilleroSeleccionado, Casillero segundoCasilleroSeleccionado) {
 
-        int[] posUnidad = new int[2];
-        int[] destino = new int[2];
-        posUnidad[0] = primerCasilleroSeleccionado.getFila();
-        posUnidad[1] = primerCasilleroSeleccionado.getColumna();
-        destino[0] = segundoCasilleroSeleccionado.getFila();
-        destino[1] = segundoCasilleroSeleccionado.getColumna();
+    public void moverUnidad(int[] posUnidad, int[] destino){
 
-        int orientacion = this.darOrientacion(posUnidad, destino);
-
+        int orientacion = darOrientacion(posUnidad, destino);
         this.moverUnidad(posUnidad[0], posUnidad[1], orientacion);
+
     }
 
     public void setPrimerClickFalse() {

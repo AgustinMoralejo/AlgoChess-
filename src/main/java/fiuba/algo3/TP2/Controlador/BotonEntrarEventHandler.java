@@ -28,13 +28,12 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         controladorJuego.setJuego(algoChess);
 
-        controladorJuego.asignarVistasACasilleros();
-
         /**No debe ir aca, es para que ande*/
         Tablero tablero = algoChess.getTablero();
         Jugador jugadorAzul = algoChess.getJugadorAzul();
         /**No debe ir aca, es para que ande*/
 
+        /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
         VistaTablero vistaTablero = new VistaTablero(tablero);
 
         VBox vbox = new VBox();
@@ -42,9 +41,14 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         vbox.getChildren().add(new ContenedorBotones(jugadorAzul, tablero));
 
+        controladorJuego.asignarVistasACasilleros(vistaTablero);
+        /***/
+
+
         Scene escenaPartida = new Scene(vbox);
         theStage.setScene(escenaPartida);
 
+        controladorJuego.setInicioParaPruebas();
 
         /*
         theStage.setFullScreenExitHint("");

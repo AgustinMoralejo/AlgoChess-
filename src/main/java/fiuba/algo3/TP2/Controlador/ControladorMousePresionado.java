@@ -8,7 +8,7 @@ import javafx.scene.input.MouseEvent;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
-
+//SE VA A BORRAR YA QUE ES REEMPLAZADO POR EL CONTROLADOR DE LOS CASILLEROS Y EL CONTROLADOR DEL MOUSE
 public class ControladorMousePresionado implements EventHandler<MouseEvent> {
 
     private Jugador jugador;

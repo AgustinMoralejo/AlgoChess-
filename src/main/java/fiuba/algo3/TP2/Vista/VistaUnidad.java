@@ -50,8 +50,7 @@ public class VistaUnidad extends Group implements Observer {
         }
     }
 
-    public VistaUnidad(Unidad unidad, VistaTablero vistaTablero) {
-        this.vistaTablero = vistaTablero;
+    public VistaUnidad(Unidad unidad) {
         this.unidad = unidad;
         this.imagenUnidad = new ImageView();
 
@@ -60,11 +59,7 @@ public class VistaUnidad extends Group implements Observer {
         imagenUnidad.setFitWidth(32);
         getChildren().add(imagenUnidad);
         unidad.agregarObserver(this);
-
         actualizar();
-        imagenUnidad.setTranslateX(0);
-        imagenUnidad.setTranslateY(0);
-        vistaTablero.actualizarVista(imagenUnidad);
 
     }
 

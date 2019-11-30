@@ -3,6 +3,7 @@ package fiuba.algo3.TP2.Vista;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
+import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
@@ -16,7 +17,7 @@ public class VistaTablero extends Group {
     public double alto;
     public static final int ANCHO_CASILLERO = 32;
     public static final int ALTO_CASILLERO = 32;
-
+    private Tablero tablero;
 
     /*
     private GridPane table;
@@ -28,6 +29,7 @@ public class VistaTablero extends Group {
 
     public VistaTablero(Tablero tablero) {
 
+        this.tablero = tablero;
         ancho = ANCHO_CASILLERO * tablero.getColumnas();
         alto = ALTO_CASILLERO * tablero.getFilas();
 
@@ -110,6 +112,15 @@ public class VistaTablero extends Group {
 */
     public void agregarVista(Node view) {
         this.getChildren().add(view);
+    }
+
+    public void agregarVistaUnidad(Unidad unidad){
+
+        VistaUnidad vistaUnidad = new VistaUnidad(unidad);
+        vistaUnidad.setMouseTransparent(true);
+
+        unidadGroup.getChildren().add(vistaUnidad);
+
     }
 
     public void actualizarVista(Node view) {

@@ -11,47 +11,45 @@ import javafx.scene.paint.Color;
 
 public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
+    private final ControladorMouse mouse;
     private Ventana ventana;
     private Tablero tablero;
-    private static Casillero primerCasilleroSeleccionado;
-    private static Casillero segundoCasilleroSeleccionado;
 
 
     public ControladorVistaCasillero(Ventana ventana, Tablero tablero) {
         this.ventana = ventana;
         this.tablero = tablero;
+        this.mouse = ControladorMouse.getInstancia();
     }
 
     @Override
     public void handle(MouseEvent mouseEvent) {
 
-        if (tablero.esPrimerClick()) {
+        int fila, columna;
 
-            ventana.resaltar(Color.GREEN);
+        if (mouse.esPrimerClick()) {
 
-            System.out.println("primer click");
+            fila = ventana.getCasillero().getFila();
+            columna = ventana.getCasillero().getColumna();
 
-            primerCasilleroSeleccionado = ventana.getCasillero();
+            mouse.guardarPrimerClick(fila,columna);
 
-            System.out.println("has clickeado la ventana: " +
-                    primerCasilleroSeleccionado.getFila() + " , " + primerCasilleroSeleccionado.getColumna());
+            System.out.println("has clickeado el casillero: " + fila + " , " + columna);
 
-            tablero.setPrimerClickFalse();
 
         } else {
 
-            ventana.desResaltar();
+            fila = ventana.getCasillero().getFila();
+            columna = ventana.getCasillero().getColumna();
 
-            System.out.println("segundo click");
+            mouse.guardarSegundoClick(fila,columna);
 
-            segundoCasilleroSeleccionado = ventana.getCasillero();
-
-            System.out.println("has clickeado la ventana: " +
-                    segundoCasilleroSeleccionado.getFila() + " , " + segundoCasilleroSeleccionado.getColumna());
+            System.out.println("has clickeado el casillero: " + fila + " , " + columna);
 
             tablero.setPrimerClickTrue();
+
             try {
-                tablero.moverUnidad(primerCasilleroSeleccionado, segundoCasilleroSeleccionado);
+                tablero.moverUnidad(mouse.getPrimerClick(), mouse.getSegundoClick());
             } catch (UnidadSoloSePuedeMoverUnCasilleroException e) {
                 System.out.println("¡¡¡ La unidad se puede mover solo un casillero a la vez !!!");
             }
