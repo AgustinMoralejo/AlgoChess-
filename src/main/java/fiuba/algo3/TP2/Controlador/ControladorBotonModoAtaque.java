@@ -6,16 +6,16 @@ import javafx.event.EventHandler;
 
 public class ControladorBotonModoAtaque implements EventHandler<ActionEvent> {
 
-    private Jugador jugador;
+    private ControladorJuego controladorJuego;
 
-    public ControladorBotonModoAtaque(Jugador jugador) {
-        this.jugador = jugador;
+    public ControladorBotonModoAtaque(ControladorJuego controladorJuego) {
+        this.controladorJuego = controladorJuego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        jugador.cambiarAModoOfensivo();
+        controladorJuego.cambiarAModoOfensivo();
         System.out.println("Modo Ofensivo");
 
     }

@@ -3,9 +3,6 @@ package fiuba.algo3.TP2.Controlador;
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
-import fiuba.algo3.TP2.Modelo.Unidad.Catapulta;
-import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
-import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 
@@ -33,11 +30,15 @@ public class ControladorJuego {
         Soldado soldadoAzul = new Soldado();
         Soldado soldadoRojo = new Soldado();
 
-        vistaTablero.agregarVistaUnidad(soldadoAzul);
-        vistaTablero.agregarVistaUnidad(soldadoRojo);
+        vistaTablero.agregarVistaUnidad(soldadoAzul, true);
 
         tablero.colocarUnidad(soldadoAzul,7,7);
-        tablero.colocarUnidad(soldadoRojo,2,7);
+
+        juego.terminarTurnoYVerSiHayGanador();
+
+        vistaTablero.agregarVistaUnidad(soldadoRojo, false);
+
+        tablero.colocarUnidad(soldadoRojo,11,7);
 
     }
 
@@ -47,9 +48,32 @@ public class ControladorJuego {
 
     public void realizarAccion(int[] primerClick, int[] segundoClick) {
 
-        Jugador jugadorActual = juego.getJugadorActual();
+        Jugador jugadorActual = getJugadorActual();
+        jugadorActual.realizarAccion(primerClick, segundoClick);
 
-        jugadorActual.moverUnidad(primerClick, segundoClick);
+    }
+
+    private Jugador getJugadorActual() {
+        return juego.getJugadorActual();
+    }
+
+    public void cambiarAModoOfensivo() {
+
+        Jugador jugadorActual = getJugadorActual();
+        jugadorActual.cambiarAModoOfensivo();
+
+    }
+
+    public void cambiarAModoPasivo() {
+
+        Jugador jugadorActual = getJugadorActual();
+        jugadorActual.cambiarAModoPasivo();
+
+    }
+
+    public void terminarTurno() {
+
+        juego.terminarTurnoYVerSiHayGanador();
 
     }
 }

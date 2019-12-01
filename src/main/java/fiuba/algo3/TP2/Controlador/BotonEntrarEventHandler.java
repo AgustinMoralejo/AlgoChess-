@@ -39,7 +39,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         VBox vbox = new VBox();
         vbox.getChildren().add(vistaTablero);
 
-        vbox.getChildren().add(new ContenedorBotones(jugadorAzul, tablero));
+        vbox.getChildren().add(new ContenedorBotones(controladorJuego));
 
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         /***/

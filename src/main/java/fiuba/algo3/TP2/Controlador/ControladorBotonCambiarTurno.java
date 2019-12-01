@@ -7,15 +7,15 @@ import javafx.event.EventHandler;
 public class ControladorBotonCambiarTurno implements EventHandler<ActionEvent> {
 
 
-    private Tablero tablero;
+    private ControladorJuego controladorJuego;
 
-    public ControladorBotonCambiarTurno(Tablero tablero){
-        this.tablero = tablero;
+    public ControladorBotonCambiarTurno(ControladorJuego controladorJuego){
+        this.controladorJuego = controladorJuego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
-        tablero.cambiarEstado();
+        controladorJuego.terminarTurno();
         System.out.println("Paso de turno");
 
     }

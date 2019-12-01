@@ -13,6 +13,7 @@ import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+//BORRAR; SE PUSO EN EL MAIN DIRECTAMENTE
 public class ContenedorPantallaPrincipal extends VBox {
 
     Stage stage;

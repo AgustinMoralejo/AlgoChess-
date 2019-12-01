@@ -20,7 +20,6 @@ public class VistaUnidad extends Group implements Observer {
     private double columnaInicial;
     private double filaInicial;
     ImageView imagenUnidad;
-    private VistaTablero vistaTablero;
 
     private static final Image CATAPULTAAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaAzul.jpg");
     private static final Image CATAPULTAROJA = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapulaRoja.jpg");
@@ -32,29 +31,14 @@ public class VistaUnidad extends Group implements Observer {
     private static final Image SOLDADOROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/SoldadoRojo.jpg");
 
 
-    /*TODO: No deberia haber una vista por unidad ya que la unica diferencia es como se dibuja
-     *  asi que vistaUnidad no deberia ser abstracta y deberia ser solo una*/
-
     //Image image = new Image("file:" + getNombreUnidad(casillero) + ".png",ancho,alto,false,false);
 
-    public VistaUnidad(Casillero casillero) {
-        this.unidad = casillero.getUnidad();
-        if(casillero.estaOcupado()) {
-            this.imagenUnidad = new ImageView();
-            this.establecerUnidad(this.getNombreUnidad(casillero));
-            imagenUnidad.setFitHeight(32);
-            imagenUnidad.setFitWidth(32);
-            getChildren().add(imagenUnidad);
-            unidad.agregarObserver(this);
-            this.actualizar();
-        }
-    }
 
-    public VistaUnidad(Unidad unidad) {
+    public VistaUnidad(Unidad unidad, boolean esAzul) {
         this.unidad = unidad;
         this.imagenUnidad = new ImageView();
 
-        this.establecerUnidad(this.getNombreUnidad(null));
+        this.establecerUnidad(this.getNombreUnidad(esAzul));
         imagenUnidad.setFitHeight(32);
         imagenUnidad.setFitWidth(32);
         getChildren().add(imagenUnidad);
@@ -63,15 +47,15 @@ public class VistaUnidad extends Group implements Observer {
 
     }
 
-    private String getNombreUnidad(Casillero casillero) {
+    private String getNombreUnidad(boolean esAzul) {
 
-        if (unidad.getSimbolo().equals("J") && unidad.esAliado()) {
+        if (unidad.getSimbolo().equals("J") && esAzul) {
             return "jinete azul";
-        } else if (unidad.getSimbolo().equals("S") && unidad.esAliado()) {
+        } else if (unidad.getSimbolo().equals("S") && esAzul) {
             return "soldado azul";
-        } else if (unidad.getSimbolo().equals("CT") && unidad.esAliado()) {
+        } else if (unidad.getSimbolo().equals("CT") && esAzul) {
             return "catapulta azul";
-        } else if (unidad.getSimbolo().equals("C") && unidad.esAliado()) {
+        } else if (unidad.getSimbolo().equals("C") && esAzul) {
             return "curandero azul";
         }else if (unidad.getSimbolo().equals("J")) {
             return "jinete rojo";

@@ -117,9 +117,9 @@ public class VistaTablero extends Group {
         this.getChildren().add(view);
     }
 
-    public void agregarVistaUnidad(Unidad unidad){
+    public void agregarVistaUnidad(Unidad unidad, boolean esAzul){
 
-        VistaUnidad vistaUnidad = new VistaUnidad(unidad);
+        VistaUnidad vistaUnidad = new VistaUnidad(unidad, esAzul);
         vistaUnidad.setMouseTransparent(true);
 
         unidadGroup.getChildren().add(vistaUnidad);

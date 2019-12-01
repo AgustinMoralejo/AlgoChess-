@@ -15,8 +15,8 @@ public class AlgoChess {
 
         indiceJugadorActual = 0;
 
-        Jugador jugadorAzul = new Jugador(nombreJugadorAzul);
-        Jugador jugadorRojo = new Jugador(nombreJugadorRojo);
+        Jugador jugadorAzul = new Jugador(nombreJugadorAzul,tablero);
+        Jugador jugadorRojo = new Jugador(nombreJugadorRojo,tablero);
 
         jugadores[0] = jugadorAzul;
         jugadores[1] = jugadorRojo;
@@ -44,6 +44,8 @@ public class AlgoChess {
         if(indiceJugadorActual >= 2){
             indiceJugadorActual = 0;
         }
+
+        System.out.println("Jugador Actual: " + indiceJugadorActual);
 
         tablero.cambiarEstado();
     }

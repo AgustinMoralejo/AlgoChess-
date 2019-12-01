@@ -6,16 +6,16 @@ import javafx.event.EventHandler;
 
 public class ControladorBotonModoPasivo implements EventHandler<ActionEvent> {
 
-    private Jugador jugador;
+    private ControladorJuego controladorJuego;
 
-    public ControladorBotonModoPasivo(Jugador jugador) {
-        this.jugador = jugador;
+    public ControladorBotonModoPasivo(ControladorJuego controladorJuego) {
+        this.controladorJuego = controladorJuego;
     }
 
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        jugador.cambiarAModoPasivo();
+        controladorJuego.cambiarAModoPasivo();
         System.out.println("Modo Pasivo" );
 
     }
