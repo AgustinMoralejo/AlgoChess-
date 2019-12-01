@@ -64,6 +64,15 @@ public class Jugador {
         unidades.add(unidadComprada);
     }
 
+    //vista
+    public Unidad comprarUnidad(String nombreUnidad, int fila, int columna, int overload){
+        Unidad unidadComprada = cuartel.getUnidad(nombreUnidad, this);
+        tablero.colocarUnidad(unidadComprada, fila, columna);
+        unidades.add(unidadComprada);
+
+        return  unidadComprada;
+    }
+
     public void atacar(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo){
         Casillero zonaAliada = tablero.getCasillero(filaAliada, columnaAliado);
         Casillero zonaEnemiga = tablero.getCasillero(filaEnemigo, columnaEnemigo);

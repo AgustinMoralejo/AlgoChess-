@@ -28,10 +28,9 @@ public class AlgoChess {
         return tablero;
     }
 
-    public Jugador getJugadorAzul() {
-        return jugadores[0];
+    public int getIndiceJugadorActual(){
+        return indiceJugadorActual;
     }
-
 
     public Jugador getJugadorActual() {
         return jugadores[indiceJugadorActual];

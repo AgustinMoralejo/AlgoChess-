@@ -4,6 +4,7 @@ import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
+import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 
 public class ControladorJuego {
@@ -11,12 +12,15 @@ public class ControladorJuego {
     private AlgoChess juego;
     private Tablero tablero;
     private VistaTablero vistaTablero;
+    private boolean estaColocandoUnaUnidad;
+    private String nombreUnidadAColocar;
 
     public void setJuego(AlgoChess juego) {
 
         this.juego = juego;
         this.tablero = juego.getTablero();
-
+        estaColocandoUnaUnidad = false;
+        nombreUnidadAColocar = "";
     }
 
     public void asignarVistasACasilleros(VistaTablero vistaTablero) {
@@ -75,5 +79,30 @@ public class ControladorJuego {
 
         juego.terminarTurnoYVerSiHayGanador();
 
+    }
+
+    public void modoColocarUnidad(String nombreUnidadAColocar) {
+        this.estaColocandoUnaUnidad = true;
+        this.nombreUnidadAColocar = nombreUnidadAColocar;
+    }
+
+    public void modoDefault() {
+        this.estaColocandoUnaUnidad = false;
+    }
+
+
+    public boolean estaColocandoUnaUnidad() {
+        return estaColocandoUnaUnidad;
+    }
+
+    public void comprarUnidad(int fila, int columna) {
+        Jugador jugadorActual = getJugadorActual();
+        Unidad unidad = jugadorActual.comprarUnidad(nombreUnidadAColocar,fila,columna,1);
+
+        //si es 0 significa que es el jugador azul
+        vistaTablero.agregarVistaUnidad(unidad, juego.getIndiceJugadorActual() == 0);
+
+        estaColocandoUnaUnidad = false;
+        nombreUnidadAColocar = "";
     }
 }

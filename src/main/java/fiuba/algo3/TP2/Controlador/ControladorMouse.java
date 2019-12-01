@@ -31,6 +31,10 @@ public class ControladorMouse {
 
     }
 
+    public void setPrimerClickTrue(){
+        esPrimerClick = true;
+    }
+
     public boolean esPrimerClick(){
         return esPrimerClick;
     }

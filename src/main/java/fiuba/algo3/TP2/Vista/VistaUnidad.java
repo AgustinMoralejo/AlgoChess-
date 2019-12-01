@@ -22,12 +22,12 @@ public class VistaUnidad extends Group implements Observer {
     ImageView imagenUnidad;
 
     private static final Image CATAPULTAAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaAzul.jpg");
-    private static final Image CATAPULTAROJA = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapulaRoja.jpg");
+    private static final Image CATAPULTAROJA = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaRoja.jpg");
     private static final Image CURANDEROAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoAzul.jpg");
     private static final Image CURANDEROROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoRojo.jpg");
     private static final Image JINETEAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteAzul.jpg");
     private static final Image JINETEROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteRojo.jpg");
-    private static final Image SOLDADOAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/SoldadoAzul.jpg");
+    private static final Image SOLDADOAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/soldadoAzul.jpg");
     private static final Image SOLDADOROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/SoldadoRojo.jpg");
 
 
