@@ -34,7 +34,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         /**No debe ir aca, es para que ande*/
 
         /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
-        VistaTablero vistaTablero = new VistaTablero(tablero);
+        VistaTablero vistaTablero = new VistaTablero(controladorJuego);
 
         VBox vbox = new VBox();
         vbox.getChildren().add(vistaTablero);
@@ -43,7 +43,6 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         /***/
-
 
         Scene escenaPartida = new Scene(vbox);
         theStage.setScene(escenaPartida);

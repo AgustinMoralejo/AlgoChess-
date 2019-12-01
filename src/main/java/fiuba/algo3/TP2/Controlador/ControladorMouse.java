@@ -14,7 +14,7 @@ public class ControladorMouse {
         return mouse;
     }
 
-    public void guardarPrimerClick(int fila, int columna){
+    public void setPrimerClick(int fila, int columna){
 
         System.out.println("primer click");
         this.primerClick[0] = fila;
@@ -22,7 +22,7 @@ public class ControladorMouse {
         esPrimerClick = false;
     }
 
-    public void guardarSegundoClick(int fila, int columna){
+    public void setSegundoClick(int fila, int columna){
 
         System.out.println("segundo click");
         this.segundoClick[0] = fila;

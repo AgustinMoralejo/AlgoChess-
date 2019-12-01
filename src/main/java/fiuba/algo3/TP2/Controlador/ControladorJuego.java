@@ -1,6 +1,7 @@
 package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
+import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Catapulta;
 import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
@@ -37,6 +38,18 @@ public class ControladorJuego {
 
         tablero.colocarUnidad(soldadoAzul,7,7);
         tablero.colocarUnidad(soldadoRojo,2,7);
+
+    }
+
+    public Tablero getTablero() {
+        return tablero;
+    }
+
+    public void realizarAccion(int[] primerClick, int[] segundoClick) {
+
+        Jugador jugadorActual = juego.getJugadorActual();
+
+        jugadorActual.moverUnidad(primerClick, segundoClick);
 
     }
 }

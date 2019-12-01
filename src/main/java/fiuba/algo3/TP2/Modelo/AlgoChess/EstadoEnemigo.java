@@ -12,7 +12,7 @@ public class EstadoEnemigo implements EstadoAlianzas{
 	public EstadoEnemigo() {}
 	
 	@Override
-	public void comprarUnidad() {
+	public void setUnidad() {
 		throw new NoSePuedeColocarUnidadEnSectorEnemigoException();
 	}
 	

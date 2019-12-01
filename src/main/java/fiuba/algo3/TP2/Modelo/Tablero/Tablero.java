@@ -14,7 +14,6 @@ public class Tablero{
 
     private static final int FILAS = 20;
     private static final int COLUMNAS = 20;
-    private boolean primerClick;
 
     public Tablero(){
         int i,j;
@@ -27,7 +26,6 @@ public class Tablero{
         }
         this.iniciarEstado();
         this.agregarTodosAdyacentes();
-        setPrimerClickTrue();
     }
 
     public void iniciarEstado(){
@@ -120,7 +118,7 @@ public class Tablero{
     
     public void colocarUnidad(Unidad unaUnidad, int fila, int columna){
         Casillero casillero = tablero[fila][columna];
-        casillero.comprarUnidad(unaUnidad);
+        casillero.setUnidad(unaUnidad);
     }
 
     public Casillero getCasillero(int fila, int columna){
@@ -206,15 +204,4 @@ public class Tablero{
 
     }
 
-    public void setPrimerClickFalse() {
-        primerClick = false;
-    }
-
-    public boolean esPrimerClick() {
-        return primerClick;
-    }
-
-    public void setPrimerClickTrue() {
-        primerClick = true;
-    }
 }

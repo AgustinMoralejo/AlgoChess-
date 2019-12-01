@@ -122,6 +122,28 @@ public class JugadorTest {
 
     }
 
+    //vista
+    @Test
+    public void testTantoJugadorAzulComoRojoPuedenMoverLasMismasUnidadesSiempreYCuandoNoSeCambieDeEstado() {
+
+        Tablero tablero = new Tablero();
+        Jugador azul = new Jugador("agus", tablero);
+        Jugador rojo = new Jugador("lego", tablero);
+
+        azul.comprarUnidad("soldado", 9, 3);
+
+        tablero.cambiarEstado();
+
+        rojo.comprarUnidad("soldado", 10,3);
+
+        tablero.cambiarEstado();
+
+        rojo.atacar(9,3,10,3);
+
+
+
+    }
+
 
 
 }

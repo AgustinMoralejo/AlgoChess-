@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Vista;
 
+import fiuba.algo3.TP2.Controlador.ControladorJuego;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
@@ -27,9 +28,9 @@ public class VistaTablero extends Group {
     private Group casilleroGroup = new Group();
     private Group unidadGroup = new Group();
 
-    public VistaTablero(Tablero tablero) {
+    public VistaTablero(ControladorJuego controladorJuego) {
 
-        this.tablero = tablero;
+        this.tablero = controladorJuego.getTablero();
         ancho = ANCHO_CASILLERO * tablero.getColumnas();
         alto = ALTO_CASILLERO * tablero.getFilas();
 
@@ -63,16 +64,18 @@ public class VistaTablero extends Group {
         for (int i = 0; i < tablero.getColumnas(); i++) {
             for (int j = 0; j < tablero.getFilas(); j++) {
 
+                /*
                 VistaUnidad vistaUnidad;
 
                 vistaUnidad = new VistaUnidad(tablero.getCasillero(i,j));
                 vistaUnidad.setMouseTransparent(true);
 
                 unidadGroup.getChildren().add(vistaUnidad);
+                */
 
                 Ventana vistaCasillero =
                         new Ventana((i < 10), tablero.getCasillero(i,j),
-                                tablero);
+                                controladorJuego);
 
                 /*
                 VistaCasillero vistaCasillero =

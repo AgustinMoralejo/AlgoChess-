@@ -11,7 +11,7 @@ public interface EstadoAlianzas{
     public abstract int calcularCostoUnidad(int costo);
     public abstract int calcularCostoCuracion(int costo);
     public abstract void puedeActuar();
-    public abstract void comprarUnidad();
+    public abstract void setUnidad();
     public abstract Arma seleccionarArmaSoldado(Arma armaAnterior);
     public abstract Arma seleccionarArmaOtraUnidad(Arma armaAnterior);
     public abstract Arma seleccionarArmaNull(Arma armaAnterior);

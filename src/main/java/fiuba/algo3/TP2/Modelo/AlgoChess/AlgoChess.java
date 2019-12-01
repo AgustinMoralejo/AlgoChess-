@@ -5,14 +5,22 @@ import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 public class AlgoChess {
 
     private Tablero tablero;
-    private Jugador jugadorAzul;
-    private Jugador jugadorRojo;
+    private Jugador[] jugadores;
+    private int indiceJugadorActual;
 
     public AlgoChess(String nombreJugadorAzul, String nombreJugadorRojo){
 
+        jugadores = new Jugador[2];
         tablero = new Tablero();
-        jugadorAzul = new Jugador(nombreJugadorAzul);
-        jugadorRojo = new Jugador(nombreJugadorRojo);
+
+        indiceJugadorActual = 0;
+
+        Jugador jugadorAzul = new Jugador(nombreJugadorAzul);
+        Jugador jugadorRojo = new Jugador(nombreJugadorRojo);
+
+        jugadores[0] = jugadorAzul;
+        jugadores[1] = jugadorRojo;
+
     }
 
 
@@ -21,6 +29,22 @@ public class AlgoChess {
     }
 
     public Jugador getJugadorAzul() {
-        return jugadorAzul;
+        return jugadores[0];
+    }
+
+
+    public Jugador getJugadorActual() {
+        return jugadores[indiceJugadorActual];
+    }
+
+    public void terminarTurnoYVerSiHayGanador(){
+
+        indiceJugadorActual++;
+
+        if(indiceJugadorActual >= 2){
+            indiceJugadorActual = 0;
+        }
+
+        tablero.cambiarEstado();
     }
 }

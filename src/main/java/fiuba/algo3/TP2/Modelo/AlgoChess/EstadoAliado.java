@@ -10,7 +10,7 @@ public class EstadoAliado implements EstadoAlianzas{
 	public EstadoAliado() {}
 	
 	@Override
-	public void comprarUnidad() {}
+	public void setUnidad() {}
     
 	@Override
     public EstadoEnemigo cambiarEstadoAlianzas(){

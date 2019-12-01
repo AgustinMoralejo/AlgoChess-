@@ -32,8 +32,8 @@ public class Casillero extends Subject {
         this.adyacentes = new ArrayList<Casillero>();
     }
     
-    public void comprarUnidad(Unidad unaUnidad) {
-    	estadoAlianzas.comprarUnidad();
+    public void setUnidad(Unidad unaUnidad) {
+    	estadoAlianzas.setUnidad();
     	estado.puedeColocar();
     	unidad = unaUnidad;
     	estado = new EstadoCasilleroOcupado();

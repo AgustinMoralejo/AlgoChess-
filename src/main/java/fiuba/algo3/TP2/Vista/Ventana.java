@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Vista;
 
+import fiuba.algo3.TP2.Controlador.ControladorJuego;
 import fiuba.algo3.TP2.Controlador.ControladorVistaCasillero;
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Observer;
@@ -10,8 +11,11 @@ import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
+import javafx.scene.text.Font;
+import javafx.scene.text.FontWeight;
 import javafx.scene.text.Text;
 
+import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 import static fiuba.algo3.TP2.Vista.VistaTablero.ANCHO_CASILLERO;
 
 public class Ventana extends StackPane implements Observer {
@@ -25,9 +29,8 @@ public class Ventana extends StackPane implements Observer {
 
 
     public Ventana(boolean alianza, Casillero casillero,
-                   Tablero tablero) {
+                   ControladorJuego controladorJuego) {
 
-        this.tablero = tablero;
         resaltado = false;
         this.casillero = casillero;
 
@@ -35,9 +38,11 @@ public class Ventana extends StackPane implements Observer {
 
         casillero.agregarObserver(this);
 
-
         textoPosicion = new Text("(" + casillero.getFila() + "," + casillero.getColumna() + ")");
 
+        textoPosicion.setFont(Font.font("Liberation Serif", FontWeight.EXTRA_BOLD, (float) ALTO_CASILLERO / 5.0));
+        textoPosicion.setFill(Color.BLACK);
+        textoPosicion.setVisible(false);
 
         rec.setStroke(Color.BLACK);
         rec.setStrokeWidth(ANCHO_CASILLERO * 0.05);
@@ -47,12 +52,12 @@ public class Ventana extends StackPane implements Observer {
         relocate(casillero.getColumna() * ANCHO_CASILLERO,
                 casillero.getFila() * VistaTablero.ALTO_CASILLERO);
 
-        rec.setFill(alianza ? javafx.scene.paint.Color.valueOf("#feb")
-                : Color.valueOf("#582"));
+        rec.setFill(alianza ? Color.BLUE
+                : Color.RED);
 
         getChildren().add(rec);
 
-        ControladorVistaCasillero controlador = new ControladorVistaCasillero(this, tablero);
+        ControladorVistaCasillero controlador = new ControladorVistaCasillero(this, controladorJuego);
 
         this.setOnMouseClicked(controlador);
 
