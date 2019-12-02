@@ -59,13 +59,14 @@ public class Jugador extends Subject {
         Unidad unidadComprada;
         unidadComprada = cuartel.getUnidad(nombreUnidad, this);
         unidades.add(unidadComprada);
-
+        this.pagar(unidadComprada.getCosto());
     }
 
     public void comprarUnidad(String nombreUnidad, int fila, int columna){
         Unidad unidadComprada = cuartel.getUnidad(nombreUnidad, this);
         tablero.colocarUnidad(unidadComprada, fila, columna);
         unidades.add(unidadComprada);
+        this.pagar(unidadComprada.getCosto());
     }
 
     //vista
