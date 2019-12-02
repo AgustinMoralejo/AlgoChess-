@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Vista;
 
+import fiuba.algo3.TP2.Controlador.ControladorBotonActualizar;
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
 import fiuba.algo3.TP2.Modelo.Observer;
 import javafx.geometry.HPos;
@@ -15,7 +16,7 @@ import javafx.scene.layout.RowConstraints;
 
 public class BarraDeEstadoJuego extends HBox implements Observer {
 
-    private Button resetButton;
+    private Button botonActualizar;
     public Label alertaJugadorAzul;
     public Label alertaJugadorRojo;
     public Label whitePlayerTimer;
@@ -27,7 +28,7 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
 
     public BarraDeEstadoJuego(AlgoChess juego) {
         barraDeEstado = new GridPane();
-        resetButton = new Button("Reset");
+        botonActualizar = new Button("Actualizar");
         alertaJugadorAzul = new Label("Turno jugador Azul");
         alertaJugadorRojo = new Label("");
         whitePlayerTimer = new Label("dummy text");
@@ -54,7 +55,7 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         barraDeEstado.getRowConstraints().add(new RowConstraints(70 / 2));
         barraDeEstado.getRowConstraints().add(new RowConstraints(70 / 2));
 
-        barraDeEstado.addRow(0, alertaJugadorAzul, resetButton, alertaJugadorRojo);
+        barraDeEstado.addRow(0, alertaJugadorAzul, botonActualizar, alertaJugadorRojo);
         barraDeEstado.addRow(1, whitePlayerTimer, winner, blackPlayerTimer);
 
         for (Node n : barraDeEstado.getChildren()) {
@@ -73,6 +74,8 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         barraDeEstado.setSnapToPixel(false);
         getChildren().add(barraDeEstado);
 
+        //ControladorBotonActualizar controladorBotonActualizar = new ControladorBotonActualizar(juego);
+        //botonActualizar.setOnAction(controladorBotonActualizar);
 
     }
 

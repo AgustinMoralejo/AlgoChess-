@@ -59,8 +59,8 @@ public class SoldadoEnBatallon implements EstadoBatallon {
             casilleroBatallon.quitarUnidad();
         }
 
+        int i=0;
         for(Casillero casilleroBatallon: batallon){
-            int i=0;
             Unidad unidadDelBatallon = bufferBatallon.get(i);
             try {
                 casilleroBatallon.moverUnidadBatallon(unidadDelBatallon, orientacion);

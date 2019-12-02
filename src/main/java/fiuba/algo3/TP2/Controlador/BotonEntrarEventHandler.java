@@ -41,7 +41,6 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         BarraDeEstadoJuego barraEstado = new BarraDeEstadoJuego(juego);
         vbox.getChildren().addAll(barraEstado, vistaTablero);
 
-
         ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
         //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
         contenedorPrincipal.getChildren().addAll(vbox,contenedorBotones);//vbox.getChildren().add(contenedorBotones);
@@ -50,9 +49,8 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         /***/
 
-
-        Scene escenaPartida = new Scene(contenedorPrincipal);
-        theStage.setScene(escenaPartida);
+        Scene escenaInicial = new Scene(contenedorPrincipal);
+        theStage.setScene(escenaInicial);
 
         controladorJuego.setInicioParaPruebas();
 

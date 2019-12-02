@@ -109,8 +109,6 @@ public class Tablero{
 
     public void moverUnidad(int fila, int columna, int orientacion){
 
-        /*Como los casillero ya saben cuales son adyacentes podemos delegar la responsabilidad al casillero*/
-
         Casillero casilleroInicial = tablero[fila][columna];
         casilleroInicial.moverUnidad(orientacion);
 

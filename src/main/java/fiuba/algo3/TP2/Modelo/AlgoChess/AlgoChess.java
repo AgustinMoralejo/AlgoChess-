@@ -52,4 +52,5 @@ public class AlgoChess extends Subject {
 
         tablero.cambiarEstado();
     }
+
 }

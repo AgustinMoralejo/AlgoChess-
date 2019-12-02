@@ -1026,9 +1026,13 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",8,4);
         jugadorAliado.comprarUnidad("soldado",9,4);
 
+        tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,7,6);
+        tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,6,6);
+        tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,5,6);
+        tablero.imprimirTablero();
 
         Assertions.assertTrue(tablero.estaOcupado(7,4));
         Assertions.assertTrue(tablero.estaOcupado(8,3));
@@ -1077,24 +1081,18 @@ public class MovimientosUnidadesTest {
         tablero.colocarUnidad(soldado1, 7, 8);
         tablero.colocarUnidad(soldado2, 7, 9);
 
-
-        //tablero.imprimirTablero();
         tablero.moverUnidad(9,7,0);
-        //tablero.imprimirTablero();
         tablero.moverUnidad(8,7,0);
-        //tablero.imprimirTablero();
         tablero.moverUnidad(7,7,0);
-        //tablero.imprimirTablero();
 
         Assertions.assertSame(tablero.getUnidad(6,7), soldado3);
-
-        //los soldados del batallon me dan que son otros
-        /*
         Assertions.assertSame(tablero.getUnidad(5,8), soldado1);
         Assertions.assertSame(tablero.getUnidad(5,9), soldado2);
-        */
+
     }
 
+
+    //vista
     @Test
     public void testJugadorEnModoPasivoHaceQueElSoldadoSeMueva() {
 

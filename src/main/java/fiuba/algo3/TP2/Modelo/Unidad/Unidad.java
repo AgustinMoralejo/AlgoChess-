@@ -72,4 +72,5 @@ public abstract class Unidad extends Subject {
     public boolean esAliado() {
         return estadoAlianzas.esAliado();
     }
+
 }

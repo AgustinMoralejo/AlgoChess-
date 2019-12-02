@@ -119,7 +119,7 @@ public class Jugador {
     }
 
     public boolean perdio(){
-        return ((unidadesRestantesVivas()<=0)&&(puntos<=0));
+        return ((unidadesRestantesVivas()<=0));
     }
 
     //para los handlers
