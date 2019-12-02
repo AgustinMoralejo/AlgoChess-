@@ -1,16 +1,20 @@
 package fiuba.algo3.TP2.Modelo.AlgoChess;
 
+import fiuba.algo3.TP2.Modelo.Excepciones.CasilleroEstaOcupadoException;
+import fiuba.algo3.TP2.Modelo.Excepciones.NoSePuedeColocarUnidadEnSectorEnemigoException;
 import fiuba.algo3.TP2.Modelo.Excepciones.PuntosInsuficientesException;
 
+import fiuba.algo3.TP2.Modelo.Subject;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Cuartel;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
+import fiuba.algo3.TP2.Modelo.Unidad.UnidadNull;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Jugador {
+public class Jugador extends Subject {
 
     protected String nombre;
     protected int puntos;
@@ -66,12 +70,21 @@ public class Jugador {
 
     //vista
     public Unidad comprarUnidad(String nombreUnidad, int fila, int columna, int overload){
+
         Unidad unidadComprada = cuartel.getUnidad(nombreUnidad, this);
         tablero.colocarUnidad(unidadComprada, fila, columna);
         unidades.add(unidadComprada);
+        this.pagar(unidadComprada.getCosto());
+        notificarObservers();
 
-        return  unidadComprada;
+        return unidadComprada;
+
     }
+
+    private void sumarPuntos(int valor) {
+        puntos += valor;
+    }
+
 
     public void atacar(int filaAliada, int columnaAliado, int filaEnemigo, int columnaEnemigo){
         Casillero zonaAliada = tablero.getCasillero(filaAliada, columnaAliado);
@@ -99,12 +112,13 @@ public class Jugador {
 
     }
 
-
-    public void pagar(int costo){
-
+    public void puedePagar(int costo) {
         if( costo > puntos){
             throw new PuntosInsuficientesException();
         }
+    }
+
+    public void pagar(int costo){
         puntos -= costo;
     }
 

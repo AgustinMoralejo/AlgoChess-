@@ -53,4 +53,7 @@ public class AlgoChess extends Subject {
         tablero.cambiarEstado();
     }
 
+    public Jugador getJugador(int indice) {
+        return jugadores[indice];
+    }
 }

@@ -89,6 +89,8 @@ public class ControladorJuego {
 
     public void modoDefault() {
         this.estaColocandoUnaUnidad = false;
+        this.nombreUnidadAColocar = "";
+
     }
 
 
@@ -97,6 +99,7 @@ public class ControladorJuego {
     }
 
     public void comprarUnidad(int fila, int columna) {
+
         Jugador jugadorActual = getJugadorActual();
         Unidad unidad = jugadorActual.comprarUnidad(nombreUnidadAColocar,fila,columna,1);
 

@@ -1,6 +1,5 @@
 package fiuba.algo3.TP2.Vista;
 
-import fiuba.algo3.TP2.Controlador.ControladorBotonActualizar;
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
 import fiuba.algo3.TP2.Modelo.Observer;
 import javafx.geometry.HPos;
@@ -19,8 +18,8 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
     private Button botonActualizar;
     public Label alertaJugadorAzul;
     public Label alertaJugadorRojo;
-    public Label whitePlayerTimer;
-    public Label blackPlayerTimer;
+    public Label puntosJugadorAzul;
+    public Label puntosJugadorRojo;
     public Label winner;
     private GridPane barraDeEstado;
 
@@ -31,12 +30,13 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         botonActualizar = new Button("Actualizar");
         alertaJugadorAzul = new Label("Turno jugador Azul");
         alertaJugadorRojo = new Label("");
-        whitePlayerTimer = new Label("dummy text");
-        blackPlayerTimer = new Label("dummy text");
+        puntosJugadorAzul = new LabelPuntosJugador(juego.getJugador(0));
+        puntosJugadorRojo = new LabelPuntosJugador(juego.getJugador(1));
         winner = new Label("");
         this.juego = juego;
 
         juego.agregarObserver(this);
+
 //	    statusBarGp.setGridLinesVisible(true);
 
         ColumnConstraints columna = new ColumnConstraints();
@@ -52,11 +52,11 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         barraDeEstado.getColumnConstraints().add(columna);
 
         barraDeEstado.setPrefSize(640, 60);
-        barraDeEstado.getRowConstraints().add(new RowConstraints(70 / 2));
-        barraDeEstado.getRowConstraints().add(new RowConstraints(70 / 2));
+        barraDeEstado.getRowConstraints().add(new RowConstraints(70.0 / 2));
+        barraDeEstado.getRowConstraints().add(new RowConstraints(70.0 / 2));
 
         barraDeEstado.addRow(0, alertaJugadorAzul, botonActualizar, alertaJugadorRojo);
-        barraDeEstado.addRow(1, whitePlayerTimer, winner, blackPlayerTimer);
+        barraDeEstado.addRow(1, puntosJugadorAzul, winner, puntosJugadorRojo);
 
         for (Node n : barraDeEstado.getChildren()) {
             GridPane.setHalignment(n, HPos.CENTER);
