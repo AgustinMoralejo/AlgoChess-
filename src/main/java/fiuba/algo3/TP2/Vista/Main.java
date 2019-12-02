@@ -1,13 +1,6 @@
 package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Controlador.BotonEntrarEventHandler;
-import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
-
-import fiuba.algo3.TP2.Modelo.Unidad.Catapulta;
-import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
-import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
-import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;
@@ -17,21 +10,29 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
 
+import java.io.File;
+
+
 public class Main extends Application {
 
-
-    public static void main(String[] args) {
+    public static
+    void main(String[] args) {
         launch(args);
     }
+    Boolean sonidoActivado;
 
     @Override
-    public void start(Stage theStage) throws Exception {
+    public
+    void start(Stage theStage) throws Exception {
 
+        sonidoActivado = true;
         theStage.setTitle("AlgoChess");
 
         VBox vbox = new VBox();
@@ -60,7 +61,31 @@ public class Main extends Application {
         BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(theStage);
         botonEntrar.setOnAction(botonEntrarHandler);
 
-        vbox.getChildren().addAll(etiqueta, botonEntrar);
+/*
+        SONIDO
+
+        Media soundtrack = new Media(new File().toURI().toString());
+        MediaPlayer musica = new MediaPlayer(soundtrack);
+        soundtrackPlayer.setAutoPlay(true);
+        soundtrackPlayer.setVolume(0.1);
+*/
+        SoundButton botonMusica = new SoundButton();
+        Button buttonMusica = (botonMusica).getVisual();
+
+        buttonMusica.setOnAction(e -> {
+            if (botonMusica.prendido()) {
+                botonMusica.apagar();
+                //musica.stop();
+            }
+            else{
+                botonMusica.prender();
+                //musica.play();
+            }
+        });
+
+
+
+        vbox.getChildren().addAll(etiqueta, botonEntrar, buttonMusica);
 
         Scene theScene = new Scene(vbox);
         theStage.setScene(theScene);
@@ -68,8 +93,9 @@ public class Main extends Application {
 
     }
 
-    /*TODO: El juego, los jugadores */
 
 
+        /*TODO: El juego, los jugadores */
 
-}
+    }
+

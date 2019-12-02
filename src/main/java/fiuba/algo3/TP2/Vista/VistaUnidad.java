@@ -2,16 +2,10 @@ package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Controlador.ControladorVistaUnidad;
 import fiuba.algo3.TP2.Modelo.Observer;
-import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Unidad.*;
-import javafx.geometry.Insets;
 import javafx.scene.Group;
-import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.image.ImageView;
-import javafx.scene.layout.StackPane;
-import javafx.scene.paint.Color;
-import javafx.scene.shape.Ellipse;
 
 import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
@@ -22,14 +16,14 @@ public class VistaUnidad extends Group implements Observer {
     private double filaInicial;
     ImageView imagenUnidad;
 
-    private static final Image CATAPULTAAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaAzul.jpg");
-    private static final Image CATAPULTAROJA = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaRoja.jpg");
-    private static final Image CURANDEROAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoAzul.jpg");
-    private static final Image CURANDEROROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoRojo.jpg");
-    private static final Image JINETEAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteAzul.jpg");
-    private static final Image JINETEROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteRojo.jpg");
-    private static final Image SOLDADOAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/soldadoAzul.jpg");
-    private static final Image SOLDADOROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/SoldadoRojo.jpg");
+    private static final Image CATAPULTAAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaAzul.png");
+    private static final Image CATAPULTAROJA = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/catapultaRoja.png");
+    private static final Image CURANDEROAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoAzul.png");
+    private static final Image CURANDEROROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/curanderoRojo.png");
+    private static final Image JINETEAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteAzul.png");
+    private static final Image JINETEROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/jineteRojo.png");
+    private static final Image SOLDADOAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/soldadoAzul.png");
+    private static final Image SOLDADOROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/soldadoRojo.png");
 
 
     //Image image = new Image("file:" + getNombreUnidad(casillero) + ".png",ancho,alto,false,false);
