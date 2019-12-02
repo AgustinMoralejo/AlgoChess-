@@ -12,7 +12,7 @@ public class BotonComprarUnidad extends Button {
     public BotonComprarUnidad(ControladorJuego controladorJuego, String nombreUnidad) {
 
         super();
-        Image imagenUnidad = new Image ("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/" + nombreUnidad + "Azul.jpg");
+        Image imagenUnidad = new Image ("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/" + nombreUnidad + "Azul.png");
         ImageView unidadV = new ImageView(imagenUnidad);
         unidadV.setFitHeight(32);
         unidadV.setFitWidth(32);
