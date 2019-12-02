@@ -1,5 +1,7 @@
 package fiuba.algo3.TP2.Vista;
 
+import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
+import fiuba.algo3.TP2.Modelo.Observer;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
@@ -11,7 +13,7 @@ import javafx.scene.layout.GridPane;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.RowConstraints;
 
-public class BarraDeEstadoJuego extends HBox {
+public class BarraDeEstadoJuego extends HBox implements Observer {
 
     private Button resetButton;
     public Label alertaJugadorAzul;
@@ -21,16 +23,19 @@ public class BarraDeEstadoJuego extends HBox {
     public Label winner;
     private GridPane barraDeEstado;
 
+    private AlgoChess juego;
 
-    public BarraDeEstadoJuego() {
+    public BarraDeEstadoJuego(AlgoChess juego) {
         barraDeEstado = new GridPane();
         resetButton = new Button("Reset");
-        alertaJugadorAzul = new Label("dummy text");
-        alertaJugadorRojo = new Label("dummy text");
+        alertaJugadorAzul = new Label("Turno jugador Azul");
+        alertaJugadorRojo = new Label("");
         whitePlayerTimer = new Label("dummy text");
         blackPlayerTimer = new Label("dummy text");
         winner = new Label("");
+        this.juego = juego;
 
+        juego.agregarObserver(this);
 //	    statusBarGp.setGridLinesVisible(true);
 
         ColumnConstraints columna = new ColumnConstraints();
@@ -68,6 +73,19 @@ public class BarraDeEstadoJuego extends HBox {
         barraDeEstado.setSnapToPixel(false);
         getChildren().add(barraDeEstado);
 
+
+    }
+
+    @Override
+    public void actualizar() {
+        int indice = juego.getIndiceJugadorActual();
+        if (indice == 0) {
+            alertaJugadorAzul.setText("Turno jugador Azul");
+            alertaJugadorRojo.setText("");
+        } else {
+            alertaJugadorAzul.setText("");
+            alertaJugadorRojo.setText("Turno jugador Rojo");
+        }
 
     }
 }
