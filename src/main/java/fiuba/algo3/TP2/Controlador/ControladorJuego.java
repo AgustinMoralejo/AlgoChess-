@@ -5,6 +5,7 @@ import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
+import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 
 public class ControladorJuego {
@@ -104,6 +105,10 @@ public class ControladorJuego {
 
         estaColocandoUnaUnidad = false;
         nombreUnidadAColocar = "";
+    }
+
+    public void setVistaUnidadesOpaco() {
+        vistaTablero.setVistaUnidadesOpaco();
     }
 
     public VistaTablero getVistaTablero(){

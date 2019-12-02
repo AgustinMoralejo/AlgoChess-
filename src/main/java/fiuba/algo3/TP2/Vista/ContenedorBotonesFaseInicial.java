@@ -23,7 +23,7 @@ public class ContenedorBotonesFaseInicial extends HBox {
 
         etiqueta = new Label();
 
-        this.etiqueta.setText("HBOX Comprar Unidades");
+        this.etiqueta.setText("VBOX Comprar Unidades");
         this.etiqueta.setTextFill(Color.web("#336600"));
 
         BotonComprarUnidad botonComprarSoldado = new BotonComprarUnidad(controladorJuego, "soldado");
@@ -31,15 +31,19 @@ public class ContenedorBotonesFaseInicial extends HBox {
         BotonComprarUnidad botonComprarCurandero = new BotonComprarUnidad(controladorJuego, "curandero");
         BotonComprarUnidad botonComprarCatapulta = new BotonComprarUnidad(controladorJuego, "catapulta");
 
-        VBox contenedorPrincipal = new VBox(etiqueta, botonComprarSoldado, botonComprarJinete,
+        BotonCambiarTurno botonCambiarTurno = new BotonCambiarTurno(controladorJuego);
+        BotonModoInspeccion botonModoInspeccion = new BotonModoInspeccion(controladorJuego);
+
+        VBox vBoxIzq = new VBox(etiqueta, botonComprarSoldado, botonComprarJinete,
                 botonComprarCurandero, botonComprarCatapulta);
-        //contenedorPrincipal.setSpacing(20); //separacion entre VBOX
+        vBoxIzq.setSpacing(10); //separacion entre VBOX
         //contenedorPrincipal.setPadding(new Insets(20)); //separacion bordes
 
-        this.getChildren().add(contenedorPrincipal);
-        this.getChildren().addAll(new BotonCambiarTurno(controladorJuego), new BotonComenzarJuego(controladorJuego, stage));
+        VBox vBoxDer = new VBox(new Label("VBOX opciones"), botonCambiarTurno, botonModoInspeccion, new BotonComenzarJuego(controladorJuego, stage));
+        vBoxDer.setSpacing(10); //separacion entre VBOX
 
-
+        this.getChildren().add(vBoxIzq);
+        this.getChildren().add(vBoxDer);
 
     }
 }

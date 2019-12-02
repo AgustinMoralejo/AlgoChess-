@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Vista;
 
+import fiuba.algo3.TP2.Controlador.ControladorVistaUnidad;
 import fiuba.algo3.TP2.Modelo.Observer;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Unidad.*;
@@ -44,6 +45,11 @@ public class VistaUnidad extends Group implements Observer {
         getChildren().add(imagenUnidad);
         unidad.agregarObserver(this);
         actualizar();
+
+        ControladorVistaUnidad controlador = new ControladorVistaUnidad(unidad);
+
+        this.setOnMouseClicked(controlador);
+
 
     }
 
@@ -109,13 +115,5 @@ public class VistaUnidad extends Group implements Observer {
         relocate(columnaInicial, filaInicial);
 
     }
-
-/*
-    @Override
-    public void actualizar() {
-        this.vistaTablero.addViewOnMap(imagenUnidad, unidad.getColumna(),unidad.getFila());
-
-    }
-*/
 
 }

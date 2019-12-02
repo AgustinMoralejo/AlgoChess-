@@ -26,32 +26,32 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
 
-        AlgoChess algoChess = new AlgoChess("juan","pedro");
+        AlgoChess juego = new AlgoChess("juan","pedro");
 
         ControladorJuego controladorJuego = new ControladorJuego();
 
-        controladorJuego.setJuego(algoChess);
+        controladorJuego.setJuego(juego);
 
         /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
         VistaTablero vistaTablero = new VistaTablero(controladorJuego);
 
-        HBox contenederoPrincipal = new HBox();
+        HBox contenedorPrincipal = new HBox();
 
         VBox vbox = new VBox();
-        BarraDeEstadoJuego barraEstado = new BarraDeEstadoJuego();
+        BarraDeEstadoJuego barraEstado = new BarraDeEstadoJuego(juego);
         vbox.getChildren().addAll(barraEstado, vistaTablero);
 
 
         ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
         //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
-        contenederoPrincipal.getChildren().addAll(vbox,contenedorBotones);//vbox.getChildren().add(contenedorBotones);
+        contenedorPrincipal.getChildren().addAll(vbox,contenedorBotones);//vbox.getChildren().add(contenedorBotones);
         //vbox.getChildren().remove(contenedorBotones);
 
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         /***/
 
 
-        Scene escenaPartida = new Scene(contenederoPrincipal);
+        Scene escenaPartida = new Scene(contenedorPrincipal);
         theStage.setScene(escenaPartida);
 
         controladorJuego.setInicioParaPruebas();

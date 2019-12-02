@@ -5,9 +5,12 @@ import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
+import javafx.geometry.HPos;
+import javafx.geometry.VPos;
 import javafx.scene.Group;
 import javafx.scene.Node;
 import javafx.scene.control.CheckBox;
+import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
@@ -129,5 +132,13 @@ public class VistaTablero extends Group {
     public void actualizarVista(Node view) {
         getChildren().remove(view);
         getChildren().add(view);
+    }
+
+    public void setVistaUnidadesOpaco() {
+
+        for (Node nodo : unidadGroup.getChildren()) {
+            nodo.setMouseTransparent(false);
+        }
+
     }
 }

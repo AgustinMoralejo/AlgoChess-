@@ -1,8 +1,9 @@
 package fiuba.algo3.TP2.Modelo.AlgoChess;
 
+import fiuba.algo3.TP2.Modelo.Subject;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 
-public class AlgoChess {
+public class AlgoChess extends Subject {
 
     private Tablero tablero;
     private Jugador[] jugadores;
@@ -45,6 +46,9 @@ public class AlgoChess {
         }
 
         System.out.println("Jugador Actual: " + indiceJugadorActual);
+
+        //barra de estado
+        notificarObservers();
 
         tablero.cambiarEstado();
     }
