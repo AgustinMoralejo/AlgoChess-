@@ -17,10 +17,14 @@ import javafx.scene.control.Label;
 import javafx.scene.effect.DropShadow;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.scene.paint.Color;
 import javafx.scene.text.Font;
 import javafx.scene.text.FontWeight;
 import javafx.stage.Stage;
+
+import java.nio.file.Paths;
 
 public class Main extends Application {
 
@@ -34,11 +38,16 @@ public class Main extends Application {
 
         theStage.setTitle("AlgoChess");
 
-        VBox vbox = new VBox();
+        Media media = new Media(Paths.get("src/main/java/fiuba/algo3/TP2/Vista/Recursos/Musica/ageofkingsmenu.wav").toUri().toString());
+        MediaPlayer musicaMenu = new MediaPlayer(media);
+        musicaMenu.setVolume(0.3);
+        musicaMenu.play();
 
+        VBox vbox = new VBox();
         vbox.setAlignment(Pos.CENTER);
         vbox.setSpacing(20);
         vbox.setPadding(new Insets(25));
+
         Image imagen = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/algoChess.jpg");
         BackgroundImage imagenDeFondo = new BackgroundImage(imagen, BackgroundRepeat.REPEAT, BackgroundRepeat.REPEAT, BackgroundPosition.DEFAULT, BackgroundSize.DEFAULT);
         vbox.setBackground(new Background(imagenDeFondo));
