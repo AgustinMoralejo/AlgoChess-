@@ -24,8 +24,8 @@ public class ControladorBotonComenzarJuego implements EventHandler<ActionEvent> 
         vbox.getChildren().add(vistaTablero);
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
-        stage.setFullScreenExitHint("");
-        stage.setFullScreen(true);
+        //stage.setFullScreenExitHint("");
+        //stage.setFullScreen(true);
         System.out.println("Comienzo de juego");
     }
 }
