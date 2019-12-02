@@ -110,4 +110,8 @@ public class ControladorJuego {
     public void setVistaUnidadesOpaco() {
         vistaTablero.setVistaUnidadesOpaco();
     }
+
+    public VistaTablero getVistaTablero(){
+        return this.vistaTablero;
+    }
 }
