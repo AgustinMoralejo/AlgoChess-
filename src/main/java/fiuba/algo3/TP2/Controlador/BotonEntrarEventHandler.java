@@ -10,6 +10,7 @@ import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 import javafx.stage.Stage;
@@ -41,13 +42,14 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         vbox.getChildren().addAll(barraEstado, vistaTablero);
 
 
-        ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego);
+        ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
         //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
         contenederoPrincipal.getChildren().addAll(vbox,contenedorBotones);//vbox.getChildren().add(contenedorBotones);
         //vbox.getChildren().remove(contenedorBotones);
 
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         /***/
+
 
         Scene escenaPartida = new Scene(contenederoPrincipal);
         theStage.setScene(escenaPartida);

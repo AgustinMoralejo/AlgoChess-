@@ -105,4 +105,8 @@ public class ControladorJuego {
         estaColocandoUnaUnidad = false;
         nombreUnidadAColocar = "";
     }
+
+    public VistaTablero getVistaTablero(){
+        return this.vistaTablero;
+    }
 }
