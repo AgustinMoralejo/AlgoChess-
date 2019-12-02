@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Controlador;
 
+import fiuba.algo3.TP2.Vista.ContenedorBotones;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -21,7 +22,8 @@ public class ControladorBotonComenzarJuego implements EventHandler<ActionEvent> 
     public void handle(ActionEvent event) {
         VistaTablero vistaTablero = controladorJuego.getVistaTablero();
         VBox vbox = new VBox();
-        vbox.getChildren().add(vistaTablero);
+        ContenedorBotones contenedorBotones = new ContenedorBotones(this.controladorJuego);
+        vbox.getChildren().addAll(contenedorBotones, vistaTablero);
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
         //stage.setFullScreenExitHint("");
