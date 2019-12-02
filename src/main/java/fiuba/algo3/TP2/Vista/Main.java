@@ -64,7 +64,7 @@ public class Main extends Application {
 /*
         SONIDO
 
-        Media soundtrack = new Media(new File().toURI().toString());
+        Media soundtrack = new Media(new File("media/menu/menuSoundTrack.mp3").toURI().toString());
         MediaPlayer musica = new MediaPlayer(soundtrack);
         soundtrackPlayer.setAutoPlay(true);
         soundtrackPlayer.setVolume(0.1);
