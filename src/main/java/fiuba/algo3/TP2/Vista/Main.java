@@ -66,7 +66,7 @@ public class Main extends Application {
         etiqueta.setText("A L G O  C H E S S");
         etiqueta.setTextFill(Color.web("#888888"));
 
-        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(theStage);
+        BotonEntrarEventHandler botonEntrarHandler = new BotonEntrarEventHandler(theStage, musicaMenu);
         botonEntrar.setOnAction(botonEntrarHandler);
 
         vbox.getChildren().addAll(etiqueta, botonEntrar);

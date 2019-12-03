@@ -1,26 +1,28 @@
 package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
-import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
-import fiuba.algo3.TP2.Vista.ContenedorBotones;
 import fiuba.algo3.TP2.Vista.ContenedorBotonesFaseInicial;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
-import javafx.scene.control.Button;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+
+import java.nio.file.Paths;
 
 public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
+    private MediaPlayer musicaDeFondo;
     Stage theStage;
 
-    public BotonEntrarEventHandler(Stage theStage) {
+    public BotonEntrarEventHandler(Stage theStage, MediaPlayer musicaMenu) {
         this.theStage = theStage;
+        this.musicaDeFondo = musicaMenu;
     }
 
     @Override
@@ -48,6 +50,13 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         /***/
+
+        musicaDeFondo.stop();
+
+        Media media = new Media(Paths.get("media/ambiente/1.05MachinadelDiablo.wav").toUri().toString());
+        musicaDeFondo = new MediaPlayer(media);
+        musicaDeFondo.setVolume(0.3);
+        musicaDeFondo.play();
 
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);
