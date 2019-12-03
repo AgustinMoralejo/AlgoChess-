@@ -1,10 +1,7 @@
 package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
-import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
-import fiuba.algo3.TP2.Vista.ContenedorBotonesFaseInicial;
-import fiuba.algo3.TP2.Vista.MensajesDelJuego;
-import fiuba.algo3.TP2.Vista.VistaTablero;
+import fiuba.algo3.TP2.Vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -50,8 +47,9 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         HBox contenedorPrincipal = new HBox();
 
         VBox vbox = new VBox();
+        BarraDeMenu menuBar = new BarraDeMenu(theStage);
         BarraDeEstadoJuego barraEstado = new BarraDeEstadoJuego(juego);
-        vbox.getChildren().addAll(barraEstado, vistaTablero);
+        vbox.getChildren().addAll(menuBar, barraEstado, vistaTablero);
 
         MensajesDelJuego mensajesDelJuego = new MensajesDelJuego();
         ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
