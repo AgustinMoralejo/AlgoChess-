@@ -1,6 +1,7 @@
 package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
+import fiuba.algo3.TP2.Vista.BarraDeMenu;
 import fiuba.algo3.TP2.Vista.ContenedorBotones;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.event.ActionEvent;
@@ -25,7 +26,8 @@ public class ControladorBotonComenzarJuego implements EventHandler<ActionEvent> 
         VBox vbox = new VBox();
         ContenedorBotones contenedorBotones = new ContenedorBotones(this.controladorJuego);
         BarraDeEstadoJuego barraDeEstadoJuego = new BarraDeEstadoJuego(this.controladorJuego.getJuego());
-        vbox.getChildren().addAll(barraDeEstadoJuego, contenedorBotones, vistaTablero);
+        BarraDeMenu menuBar = new BarraDeMenu(stage);
+        vbox.getChildren().addAll(menuBar, barraDeEstadoJuego, contenedorBotones, vistaTablero);
         Scene scene = new Scene(vbox);
         stage.setScene(scene);
         //stage.setFullScreenExitHint("");
