@@ -55,7 +55,7 @@ public class Main extends Application {
         Button botonEntrar = new Button();
 
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.BLACK);
+        dropShadow.setColor(Color.DARKVIOLET);
 
         botonEntrar.setEffect(dropShadow);
         botonEntrar.setText("Comenzar");
