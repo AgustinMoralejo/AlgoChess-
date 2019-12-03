@@ -61,20 +61,18 @@ public class Ventana extends StackPane implements Observer {
 
         this.setOnMouseClicked(controlador);
 
-        this.setOnMouseEntered(event -> textoPosicion.setVisible(true));
+//        this.setOnMouseEntered(event -> textoPosicion.setVisible(true));
 
-        this.setOnMouseExited(event -> textoPosicion.setVisible(false));
+  //      this.setOnMouseExited(event -> textoPosicion.setVisible(false));
 
 
     }
 
 
-    public void resaltar(Color color) {
+    public void resaltar() {
         rec.setStrokeType(StrokeType.INSIDE);
         rec.setStrokeWidth(ANCHO_CASILLERO * 0.05);
-        rec.setStroke(color);
-        if (color == Color.GREEN)
-            this.resaltado = true;
+        rec.setStroke(Color.GREEN);
     }
 
     public void desResaltar() {

@@ -90,8 +90,9 @@ public class ControladorJuego {
     public void modoDefault() {
         this.estaColocandoUnaUnidad = false;
         this.nombreUnidadAColocar = "";
-
+        vistaTablero.desResaltarCasilleros();
     }
+
 
 
     public boolean estaColocandoUnaUnidad() {

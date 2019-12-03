@@ -24,20 +24,23 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
         int fila = ventana.getCasillero().getFila();
         int columna = ventana.getCasillero().getColumna();
 
+        //ventana.resaltar();
+
         if(controladorJuego.estaColocandoUnaUnidad()){
 
             try {
                 controladorJuego.comprarUnidad(fila,columna);
             } catch (NoSePuedeColocarUnidadEnSectorEnemigoException e) {
                 System.out.println("¡NoSePuedeColocarUnidadEnSectorEnemigoException !");
-                System.out.println("Seleccione nuevamente un casillero que este en sector aliado");
+//                System.out.println("Seleccione nuevamente un casillero que este en sector aliado");
             } catch (CasilleroEstaOcupadoException e) {
                 System.out.println("¡CasilleroEstaOcupadoException !");
-                System.out.println("¡Seleccione nuevamente un casillero que no este ocupado!");
+  //              System.out.println("¡Seleccione nuevamente un casillero que no este ocupado!");
             } catch (PuntosInsuficientesException e) {
                 System.out.println("¡PuntosInsuficientesException!");
-                controladorJuego.modoDefault();
             }
+
+            controladorJuego.modoDefault();
 
         }
 
