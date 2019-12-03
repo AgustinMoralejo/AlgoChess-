@@ -17,8 +17,8 @@ public class SoundButton {
     public SoundButton(){
         this.boton = new Button();
         this.encendido = true;
-
-        boton.setGraphic(new ImageView(MUSICAON));
+        boton.setText("SOUND: ON");
+//        boton.setGraphic(new ImageView(MUSICAON));
     }
 
     public Button getVisual(){
@@ -27,12 +27,14 @@ public class SoundButton {
 
     public void apagar(){
         this.encendido = false;
-        boton.setGraphic(new ImageView(MUSICAOFF));
+        boton.setText("SOUND: OFF");
+        //boton.setGraphic(new ImageView(MUSICAOFF));
     }
 
     public void prender(){
-        boton.setGraphic(new ImageView(MUSICAON));
+        //boton.setGraphic(new ImageView(MUSICAON));
         this.encendido = true;
+        boton.setText("SOUND: ON");
     }
 
     public Boolean prendido(){
