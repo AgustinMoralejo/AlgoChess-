@@ -21,6 +21,7 @@ public class Soldado extends Unidad{
         estadoBatallon = new SoldadoSolo();
         estadoAlianzas = new EstadoAliado();
         simbolo = "S";
+        seMovioEnEsteTurno = false;
     }
     
     @Override

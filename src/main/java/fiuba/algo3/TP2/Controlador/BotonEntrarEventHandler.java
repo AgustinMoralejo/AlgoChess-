@@ -61,7 +61,8 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);
 
-        controladorJuego.setInicioParaPruebas();
+        //para evitar que se lo lleve el recolector de basura
+        controladorJuego.setMusica(musicaDeFondo);
 
         /*
         theStage.setFullScreenExitHint("");

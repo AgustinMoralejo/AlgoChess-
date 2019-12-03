@@ -158,4 +158,9 @@ public class Jugador extends Subject {
         estadoAccion.realizarAccion(posUnidad, destino, this);
     }
 
+    public void setMovimientoUnidades() {
+        for(Unidad unidad : unidades){
+            unidad.seMovioEnEsteTurno(false);
+        }
+    }
 }

@@ -1,5 +1,6 @@
 package fiuba.algo3.TP2.Modelo.Unidad;
 import fiuba.algo3.TP2.Modelo.AlgoChess.EstadoAlianzas;
+import fiuba.algo3.TP2.Modelo.Excepciones.LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException;
 import fiuba.algo3.TP2.Modelo.Subject;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Unidad.Armas.Arma;
@@ -14,6 +15,7 @@ public abstract class Unidad extends Subject {
     protected int danioADistancia;
     protected EstadoAlianzas estadoAlianzas;
     protected String simbolo;
+    protected boolean seMovioEnEsteTurno;
 
     //Para la vista de la unidad
     protected int fila;
@@ -58,6 +60,7 @@ public abstract class Unidad extends Subject {
         this.fila = fila;
         this.columna = columna;
         notificarObservers();
+        this.seMovioEnEsteTurno = true;
     }
 
     public int getFila() {
@@ -73,4 +76,14 @@ public abstract class Unidad extends Subject {
         return estadoAlianzas.esAliado();
     }
 
+    public void seMovioEnEsteTurno() {
+        if(seMovioEnEsteTurno){
+            throw new LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException();
+        }
+    }
+
+
+    public void seMovioEnEsteTurno(boolean b) {
+        seMovioEnEsteTurno = b;
+    }
 }

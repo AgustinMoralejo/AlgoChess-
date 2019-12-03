@@ -96,6 +96,7 @@ public class Casillero extends Subject {
     }
 
     public void moverUnidad(int orientacion) {
+        unidad.seMovioEnEsteTurno();
         unidad.moveteA(this, orientacion);
     }
 

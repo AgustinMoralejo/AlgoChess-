@@ -7,6 +7,10 @@ import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
 import fiuba.algo3.TP2.Vista.VistaTablero;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.nio.file.Paths;
 
 public class ControladorJuego {
 
@@ -15,6 +19,8 @@ public class ControladorJuego {
     private VistaTablero vistaTablero;
     private boolean estaColocandoUnaUnidad;
     private String nombreUnidadAColocar;
+    private MediaPlayer musicaDeFondo;
+    private Reproductor reproductor;
 
     public void setJuego(AlgoChess juego) {
 
@@ -93,8 +99,6 @@ public class ControladorJuego {
         vistaTablero.desResaltarCasilleros();
     }
 
-
-
     public boolean estaColocandoUnaUnidad() {
         return estaColocandoUnaUnidad;
     }
@@ -115,8 +119,23 @@ public class ControladorJuego {
         vistaTablero.setVistaUnidadesOpaco();
     }
 
+    public void setVistaUnidadesTransparente() {
+        vistaTablero.setVistaUnidadesTransparente();
+    }
+
     public VistaTablero getVistaTablero(){
         return this.vistaTablero;
+    }
+
+    public void setMusica(MediaPlayer musicaDeFondo) {
+
+        this.musicaDeFondo = musicaDeFondo;
+        this.reproductor = new Reproductor();
+    }
+
+    public void reproducirSonido(String path) {
+
+        this.reproductor.reproducirSonido(path);
     }
 }
 

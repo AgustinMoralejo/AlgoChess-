@@ -129,10 +129,17 @@ public class VistaTablero extends Group {
 
     public void desResaltarCasilleros() {
 
-        /*
-        for (Node nodo : unidadGroup.getChildren()) {
+        for (Node nodo : casilleroGroup.getChildren()) {
             nodo.setEffect(null);
         }
-        */
+
     }
+
+    public void setVistaUnidadesTransparente() {
+
+        for (Node nodo : unidadGroup.getChildren()) {
+            nodo.setMouseTransparent(true);
+        }
+    }
+
 }
