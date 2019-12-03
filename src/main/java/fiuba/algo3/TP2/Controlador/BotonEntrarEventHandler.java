@@ -3,6 +3,7 @@ package fiuba.algo3.TP2.Controlador;
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
 import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
 import fiuba.algo3.TP2.Vista.ContenedorBotonesFaseInicial;
+import fiuba.algo3.TP2.Vista.MensajesDelJuego;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
@@ -43,12 +44,18 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         BarraDeEstadoJuego barraEstado = new BarraDeEstadoJuego(juego);
         vbox.getChildren().addAll(barraEstado, vistaTablero);
 
+        MensajesDelJuego mensajesDelJuego = new MensajesDelJuego();
         ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
+        VBox contenedrBotonesYMensajes = new VBox();
+        contenedrBotonesYMensajes.getChildren().addAll(contenedorBotones, mensajesDelJuego);
+
         //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
-        contenedorPrincipal.getChildren().addAll(vbox,contenedorBotones);//vbox.getChildren().add(contenedorBotones);
+        contenedorPrincipal.getChildren().addAll(vbox,contenedrBotonesYMensajes);//vbox.getChildren().add(contenedorBotones);
         //vbox.getChildren().remove(contenedorBotones);
 
+        //aca el controlador conoce a la vista y a la ventana de mensajes
         controladorJuego.asignarVistasACasilleros(vistaTablero);
+        controladorJuego.setMensajes(mensajesDelJuego);
         /***/
 
         musicaDeFondo.stop();

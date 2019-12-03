@@ -6,6 +6,7 @@ import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
+import fiuba.algo3.TP2.Vista.MensajesDelJuego;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -21,6 +22,7 @@ public class ControladorJuego {
     private String nombreUnidadAColocar;
     private MediaPlayer musicaDeFondo;
     private Reproductor reproductor;
+    private MensajesDelJuego mensajesDelJuego;
 
     public void setJuego(AlgoChess juego) {
 
@@ -59,6 +61,7 @@ public class ControladorJuego {
 
     public void realizarAccion(int[] primerClick, int[] segundoClick) {
 
+        mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion");
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.realizarAccion(primerClick, segundoClick);
 
@@ -136,6 +139,10 @@ public class ControladorJuego {
     public void reproducirSonido(String path) {
 
         this.reproductor.reproducirSonido(path);
+    }
+
+    public void setMensajes(MensajesDelJuego mensajesDelJuego) {
+        this.mensajesDelJuego = mensajesDelJuego;
     }
 }
 

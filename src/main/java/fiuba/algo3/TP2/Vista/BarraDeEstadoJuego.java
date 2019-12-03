@@ -20,7 +20,7 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
     public Label alertaJugadorRojo;
     public Label puntosJugadorAzul;
     public Label puntosJugadorRojo;
-    public Label winner;
+    public Label mensajes;
     private GridPane barraDeEstado;
 
     private AlgoChess juego;
@@ -32,7 +32,7 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         alertaJugadorRojo = new Label("");
         puntosJugadorAzul = new LabelPuntosJugador(juego.getJugador(0));
         puntosJugadorRojo = new LabelPuntosJugador(juego.getJugador(1));
-        winner = new Label("");
+        mensajes = new Label("");
         this.juego = juego;
 
         juego.agregarObserver(this);
@@ -56,7 +56,7 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         barraDeEstado.getRowConstraints().add(new RowConstraints(70.0 / 2));
 
         barraDeEstado.addRow(0, alertaJugadorAzul, botonActualizar, alertaJugadorRojo);
-        barraDeEstado.addRow(1, puntosJugadorAzul, winner, puntosJugadorRojo);
+        barraDeEstado.addRow(1, puntosJugadorAzul, mensajes, puntosJugadorRojo);
 
         for (Node n : barraDeEstado.getChildren()) {
             GridPane.setHalignment(n, HPos.CENTER);
