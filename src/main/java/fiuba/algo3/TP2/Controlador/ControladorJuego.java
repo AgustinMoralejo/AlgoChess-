@@ -23,6 +23,7 @@ public class ControladorJuego {
     private MediaPlayer musicaDeFondo;
     private Reproductor reproductor;
     private MensajesDelJuego mensajesDelJuego;
+    boolean modoOfensivo;
 
     public void setJuego(AlgoChess juego) {
 
@@ -30,6 +31,7 @@ public class ControladorJuego {
         this.tablero = juego.getTablero();
         estaColocandoUnaUnidad = false;
         nombreUnidadAColocar = "";
+        modoOfensivo = false;
     }
 
     public void asignarVistasACasilleros(VistaTablero vistaTablero) {
@@ -65,6 +67,9 @@ public class ControladorJuego {
         jugadorActual.realizarAccion(primerClick, segundoClick);
         mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion");
 
+        if(modoOfensivo==true){
+            reproductor.reproducirSonido("media/accion/ataque.wav");
+        }
     }
 
     private Jugador getJugadorActual() {
@@ -75,19 +80,27 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoOfensivo();
-
+        musicaDeFondo.stop();
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
+        modoOfensivo = true;
     }
 
     public void cambiarAModoPasivo() {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoPasivo();
+        musicaDeFondo.stop();
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
+        modoOfensivo = false;
 
     }
 
     public void terminarTurno() {
 
         juego.terminarTurnoYVerSiHayGanador();
+        musicaDeFondo.stop();
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
+        modoOfensivo = false;
 
     }
 
@@ -116,6 +129,8 @@ public class ControladorJuego {
 
         estaColocandoUnaUnidad = false;
         nombreUnidadAColocar = "";
+        reproductor.reproducirSonido("media/accion/crearSoldado.wav");
+
     }
 
     public void setVistaUnidadesOpaco() {
@@ -137,8 +152,7 @@ public class ControladorJuego {
     }
 
     public void reproducirSonido(String path) {
-
-        this.reproductor.reproducirSonido(path);
+        musicaDeFondo = this.reproductor.reproducirSonido(path);
     }
 
     public void setVentanaDeMensajes(MensajesDelJuego mensajesDelJuego) {
@@ -147,6 +161,10 @@ public class ControladorJuego {
 
     public void setMensaje(String mensaje) {
         mensajesDelJuego.setMensaje(mensaje);
+    }
+
+    public AlgoChess getJuego(){
+        return this.juego;
     }
 }
 

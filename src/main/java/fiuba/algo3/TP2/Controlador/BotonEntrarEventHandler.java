@@ -1,10 +1,7 @@
 package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
-import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
-import fiuba.algo3.TP2.Vista.ContenedorBotonesFaseInicial;
-import fiuba.algo3.TP2.Vista.MensajesDelJuego;
-import fiuba.algo3.TP2.Vista.VistaTablero;
+import fiuba.algo3.TP2.Vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -33,6 +30,15 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         ControladorJuego controladorJuego = new ControladorJuego();
 
+
+        musicaDeFondo.stop();
+
+        Media media = new Media(Paths.get("media/ambiente/1.05MachinadelDiablo.wav").toUri().toString());
+        musicaDeFondo = new MediaPlayer(media);
+        musicaDeFondo.setVolume(0.2);
+        musicaDeFondo.play();
+
+
         controladorJuego.setJuego(juego);
 
         /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
@@ -41,8 +47,9 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         HBox contenedorPrincipal = new HBox();
 
         VBox vbox = new VBox();
+        BarraDeMenu menuBar = new BarraDeMenu(theStage);
         BarraDeEstadoJuego barraEstado = new BarraDeEstadoJuego(juego);
-        vbox.getChildren().addAll(barraEstado, vistaTablero);
+        vbox.getChildren().addAll(menuBar, barraEstado, vistaTablero);
 
         MensajesDelJuego mensajesDelJuego = new MensajesDelJuego();
         ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
@@ -57,13 +64,6 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         controladorJuego.setVentanaDeMensajes(mensajesDelJuego);
         /***/
-
-        musicaDeFondo.stop();
-
-        Media media = new Media(Paths.get("media/ambiente/1.05MachinadelDiablo.wav").toUri().toString());
-        musicaDeFondo = new MediaPlayer(media);
-        musicaDeFondo.setVolume(0.03);
-        musicaDeFondo.play();
 
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);

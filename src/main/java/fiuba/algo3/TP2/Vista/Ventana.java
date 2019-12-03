@@ -63,7 +63,7 @@ public class Ventana extends StackPane implements Observer {
 
 //        this.setOnMouseEntered(event -> textoPosicion.setVisible(true));
 
-  //      this.setOnMouseExited(event -> textoPosicion.setVisible(false));
+        //      this.setOnMouseExited(event -> textoPosicion.setVisible(false));
 
 
     }
