@@ -97,7 +97,7 @@ public class Jugador extends Subject {
         if (vida <= 0) {
             zonaEnemiga.quitarUnidad();
         }
-        
+
     }
 
     public void moverUnidad(int fila, int columna, int orientacion){
@@ -163,4 +163,10 @@ public class Jugador extends Subject {
             unidad.seMovioEnEsteTurno(false);
         }
     }
+
+    public Unidad getUnidadPosicion(int[] posUnidad){
+        return (tablero.getCasillero(posUnidad[0], posUnidad[1]).getUnidad());
+
+    }
+
 }

@@ -67,7 +67,10 @@ public class ControladorJuego {
         jugadorActual.realizarAccion(primerClick, segundoClick);
         mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion");
 
-        if(modoOfensivo==true){
+        if(jugadorActual.getUnidadPosicion(primerClick).getSimbolo()=="CT" && modoOfensivo==true){
+            reproductor.reproducirSonido("media/accion/ataqueCatapulta.wav");
+        }
+        else if(modoOfensivo==true){
             reproductor.reproducirSonido("media/accion/ataque.wav");
         }
     }

@@ -50,15 +50,11 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
             if (mouse.esPrimerClick()) {
 
-                controladorJuego.reproducirSonido("media/accion/horseselect1.wav");
-
                 mouse.setPrimerClick(fila,columna);
 
                 System.out.println("has clickeado el casillero: " + fila + " , " + columna);
 
             } else {
-
-                controladorJuego.reproducirSonido("media/accion/horseflop1.wav");
 
                 mouse.setSegundoClick(fila,columna);
 
