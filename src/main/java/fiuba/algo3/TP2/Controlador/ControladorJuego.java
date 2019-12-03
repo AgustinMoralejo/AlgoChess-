@@ -157,5 +157,9 @@ public class ControladorJuego {
     public void setMensajes(MensajesDelJuego mensajesDelJuego) {
         this.mensajesDelJuego = mensajesDelJuego;
     }
+
+    public AlgoChess getJuego(){
+        return this.juego;
+    }
 }
 
