@@ -1,15 +1,10 @@
 package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.Excepciones.*;
-import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Vista.Ventana;
 import javafx.event.EventHandler;
 import javafx.scene.effect.Glow;
 import javafx.scene.input.MouseEvent;
-import javafx.scene.media.Media;
-import javafx.scene.media.MediaPlayer;
-
-import java.nio.file.Paths;
 
 public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
@@ -29,7 +24,7 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
         int fila = ventana.getCasillero().getFila();
         int columna = ventana.getCasillero().getColumna();
 
-        ventana.setEffect(new Glow(2));
+        ventana.setEffect(new Glow(20));
 
         if(controladorJuego.estaColocandoUnaUnidad()){
 
@@ -37,10 +32,12 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
                 controladorJuego.comprarUnidad(fila,columna);
             } catch (NoSePuedeColocarUnidadEnSectorEnemigoException e) {
                 System.out.println("¡NoSePuedeColocarUnidadEnSectorEnemigoException !");
-//                System.out.println("Seleccione nuevamente un casillero que este en sector aliado");
+                controladorJuego.setMensaje("¡NoSePuedeColocarUnidadEnSectorEnemigoException!");
+            //System.out.println("Seleccione nuevamente un casillero que este en sector aliado");
             } catch (CasilleroEstaOcupadoException e) {
                 System.out.println("¡CasilleroEstaOcupadoException !");
-  //              System.out.println("¡Seleccione nuevamente un casillero que no este ocupado!");
+                controladorJuego.setMensaje("¡CasilleroEstaOcupadoException!");
+                //              System.out.println("¡Seleccione nuevamente un casillero que no este ocupado!");
             } catch (PuntosInsuficientesException e) {
                 System.out.println("¡PuntosInsuficientesException!");
             }
@@ -71,18 +68,24 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
                     controladorJuego.realizarAccion(mouse.getPrimerClick(), mouse.getSegundoClick());
 
-                } catch (UnidadSoloSePuedeMoverUnCasilleroException e) {
-                    System.out.println("¡ UnidadSoloSePuedeMoverUnCasilleroException !");
+                } catch (UnidadSoloSePuedeMoverAUnCasilleroAdyacenteException e) {
+                    System.out.println("¡ UnidadSoloSePuedeMoverAUnCasilleroAdyacenteException !");
+                    controladorJuego.setMensaje("¡Solo puede moverse a un casillero contiguo!");
                 } catch (CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException e) {
+                    controladorJuego.setMensaje("¡CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException!");
                     System.out.println("¡¡¡ CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException !!!");
                 } catch (NoSePuedeAtacarAUnaUnidadAliadaException e) {
                     System.out.println("¡¡¡ NoSePuedeAtacarAUnaUnidadAliadaException !!!");
+                    controladorJuego.setMensaje("¡¡¡ NoSePuedeAtacarAUnaUnidadAliadaException !!!");
                 }catch (NoHayUnidadEnCasilleroException e) {
                     System.out.println("¡¡¡ NoHayUnidadEnCasilleroException !!!");
+                    controladorJuego.setMensaje("¡¡¡ NoHayUnidadEnCasilleroException !!!");
                 }catch (CasilleroEstaOcupadoException e) {
                     System.out.println("¡¡¡ CasilleroEstaOcupadoException !!!");
+                    controladorJuego.setMensaje("¡¡¡ CasilleroEstaOcupadoException !!!");
                 }catch (LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException e) {
                     System.out.println("¡¡¡ LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException !!!");
+                    controladorJuego.setMensaje("¡Ya ha movido a esta unidad!");
                 }
 
             }

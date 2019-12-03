@@ -1,7 +1,7 @@
 package fiuba.algo3.TP2.Modelo.Tablero;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.Movimiento;
-import fiuba.algo3.TP2.Modelo.Excepciones.UnidadSoloSePuedeMoverUnCasilleroException;
+import fiuba.algo3.TP2.Modelo.Excepciones.UnidadSoloSePuedeMoverAUnCasilleroAdyacenteException;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 
 import java.util.ArrayList;
@@ -165,7 +165,7 @@ public class Tablero{
 
         if (abs(difFil) > 1 || abs(difCol) > 1 || (difCol == 0 && difFil == 0)) {
 
-            throw new UnidadSoloSePuedeMoverUnCasilleroException();
+            throw new UnidadSoloSePuedeMoverAUnCasilleroAdyacenteException();
         }
 
         //si, no estoy muy orgullos pero fue lo mejor que se me ocurrio

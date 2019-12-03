@@ -4,6 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.EstadoAliado;
+import fiuba.algo3.TP2.Modelo.Excepciones.LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException;
 import fiuba.algo3.TP2.Modelo.Excepciones.ObjetivoFueraDeRangoException;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Unidad.Armas.Arma;
@@ -102,5 +103,15 @@ public class Soldado extends Unidad{
 
         estadoAlianzas.agregarCasilleroAlBatallon(batallon, casillero);
     }
+
+
+    @Override
+    public void seMovioEnEsteTurno() {
+        if(seMovioEnEsteTurno){
+            throw new LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException();
+        }
+    }
+
+
 
 }

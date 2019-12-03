@@ -61,9 +61,9 @@ public class ControladorJuego {
 
     public void realizarAccion(int[] primerClick, int[] segundoClick) {
 
-        mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion");
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.realizarAccion(primerClick, segundoClick);
+        mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion");
 
     }
 
@@ -141,8 +141,12 @@ public class ControladorJuego {
         this.reproductor.reproducirSonido(path);
     }
 
-    public void setMensajes(MensajesDelJuego mensajesDelJuego) {
+    public void setVentanaDeMensajes(MensajesDelJuego mensajesDelJuego) {
         this.mensajesDelJuego = mensajesDelJuego;
+    }
+
+    public void setMensaje(String mensaje) {
+        mensajesDelJuego.setMensaje(mensaje);
     }
 }
 

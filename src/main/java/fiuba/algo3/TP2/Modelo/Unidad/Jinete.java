@@ -1,6 +1,7 @@
 package fiuba.algo3.TP2.Modelo.Unidad;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.EstadoAliado;
+import fiuba.algo3.TP2.Modelo.Excepciones.LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException;
 import fiuba.algo3.TP2.Modelo.Excepciones.ObjetivoFueraDeRangoException;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Unidad.Armas.Arco;
@@ -84,5 +85,12 @@ public class Jinete extends Unidad{
     @Override
     public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {}
 
+
+    @Override
+    public void seMovioEnEsteTurno() {
+        if(seMovioEnEsteTurno){
+            throw new LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException();
+        }
+    }
 
 }

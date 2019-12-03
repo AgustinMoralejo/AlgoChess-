@@ -34,6 +34,11 @@ public class Catapulta extends Unidad{
     }
 
     @Override
+    public void seMovioEnEsteTurno() {
+
+    }
+
+    @Override
     public int getCosto() {
         return costo;
     }

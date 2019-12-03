@@ -76,12 +76,7 @@ public abstract class Unidad extends Subject {
         return estadoAlianzas.esAliado();
     }
 
-    public void seMovioEnEsteTurno() {
-        if(seMovioEnEsteTurno){
-            throw new LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException();
-        }
-    }
-
+    public abstract void seMovioEnEsteTurno();
 
     public void seMovioEnEsteTurno(boolean b) {
         seMovioEnEsteTurno = b;

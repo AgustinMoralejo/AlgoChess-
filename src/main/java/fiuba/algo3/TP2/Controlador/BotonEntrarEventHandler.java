@@ -55,14 +55,14 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         //aca el controlador conoce a la vista y a la ventana de mensajes
         controladorJuego.asignarVistasACasilleros(vistaTablero);
-        controladorJuego.setMensajes(mensajesDelJuego);
+        controladorJuego.setVentanaDeMensajes(mensajesDelJuego);
         /***/
 
         musicaDeFondo.stop();
 
         Media media = new Media(Paths.get("media/ambiente/1.05MachinadelDiablo.wav").toUri().toString());
         musicaDeFondo = new MediaPlayer(media);
-        musicaDeFondo.setVolume(0.3);
+        musicaDeFondo.setVolume(0.03);
         musicaDeFondo.play();
 
         Scene escenaInicial = new Scene(contenedorPrincipal);

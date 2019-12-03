@@ -1,25 +1,33 @@
 package fiuba.algo3.TP2.Vista;
 
-import fiuba.algo3.TP2.Controlador.ControladorJuego;
 import javafx.geometry.Insets;
-import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
 
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Queue;
+import java.util.Stack;
+
 public class MensajesDelJuego extends VBox {
 
-    public Label mensajes;
+    public TextArea areaTexto;
 
     private GridPane contenedor;
+    private String mensajeAnterior;
+    private List<String> mensajesAnteriores;
 
 
     public MensajesDelJuego() {
 
 
         contenedor = new GridPane();
-        mensajes = new Label("hola soy un label que deberia ocupar toda la cajaaaaaaaaaaaa");
+        areaTexto = new TextArea("hola soy un label que deberia ocupar toda la cajaaaaaaaaaaaa");
+        mensajeAnterior = "";
+        mensajesAnteriores = new ArrayList<>();
 
         ColumnConstraints columna = new ColumnConstraints();
         columna.setPercentWidth(100);
@@ -29,22 +37,36 @@ public class MensajesDelJuego extends VBox {
 
         contenedor.getRowConstraints().add(new RowConstraints(200));
 
-        contenedor.addRow(0, mensajes);
+        contenedor.addRow(0, areaTexto);
 
         contenedor.setVgap(10);
         contenedor.setHgap(10);
         contenedor.setPadding(new Insets(10, 10, 10, 10));
 
-        mensajes.setStyle("-fx-font-size: 10pt; -fx-font-weight: bold; -fx-opacity: 1.0;");
-
         contenedor.setStyle("-fx-background-color: burlyWood; -fx-effect: innershadow(gaussian, rgba(0,0,0,0.4), 75, 0.5, 0, 10);");
         contenedor.setSnapToPixel(false);
+
+        areaTexto.setStyle("-fx-font-size: 8pt; -fx-font-weight: bold; -fx-opacity: 1.0;");
+        areaTexto.setPrefRowCount(1);
+        areaTexto.setPrefColumnCount(1);
+        areaTexto.setWrapText(true);
+        areaTexto.setPrefWidth(150);
 
         getChildren().add(contenedor);
 
     }
 
     public void setMensaje(String mensaje) {
-        mensajes.setText(mensaje);
+        StringBuilder todosLosMensajes = new StringBuilder();
+
+        for(String mensajeAnterior : mensajesAnteriores){
+            todosLosMensajes.append(mensajeAnterior).append("\n");
+        }
+
+        areaTexto.setText(todosLosMensajes + mensaje);
+        mensajesAnteriores.add(mensaje);
+        if (mensajesAnteriores.size() > 10){
+            mensajesAnteriores.remove(0);
+        }
     }
 }
