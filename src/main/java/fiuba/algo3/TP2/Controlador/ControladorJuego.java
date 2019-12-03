@@ -7,6 +7,7 @@ import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
 import fiuba.algo3.TP2.Vista.MensajesDelJuego;
+import fiuba.algo3.TP2.Vista.SoundButton;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
@@ -73,6 +74,7 @@ public class ControladorJuego {
         else if(modoOfensivo){
             reproductor.reproducirSonido("media/accion/ataque.wav");
         }
+
     }
 
     private Jugador getJugadorActual() {
@@ -101,9 +103,7 @@ public class ControladorJuego {
     public void terminarTurno() {
 
         juego.terminarTurnoYVerSiHayGanador();
-        musicaDeFondo.stop();
-        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
-        modoOfensivo = false;
+        this.cambiarAModoPasivo();
 
     }
 
