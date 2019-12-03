@@ -17,7 +17,7 @@ public class ContenedorBotonesFaseInicial extends HBox {
     private Label etiqueta;
 
 
-    public ContenedorBotonesFaseInicial(ControladorJuego controladorJuego, Stage stage) {
+    public ContenedorBotonesFaseInicial(ControladorJuego controladorJuego) {
         super();
         this.setHeight(20);
 
@@ -39,7 +39,7 @@ public class ContenedorBotonesFaseInicial extends HBox {
         vBoxIzq.setSpacing(10); //separacion entre VBOX
         //contenedorPrincipal.setPadding(new Insets(20)); //separacion bordes
 
-        VBox vBoxDer = new VBox(new Label("VBOX opciones"), botonCambiarTurno, botonModoInspeccion, new BotonComenzarJuego(controladorJuego, stage));
+        VBox vBoxDer = new VBox(new Label("VBOX opciones"), botonCambiarTurno, botonModoInspeccion);
         vBoxDer.setSpacing(10); //separacion entre VBOX
 
         this.getChildren().add(vBoxIzq);

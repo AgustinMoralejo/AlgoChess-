@@ -53,12 +53,17 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         vbox.getChildren().addAll(menuBar, barraEstado, vistaTablero);
 
         MensajesDelJuego mensajesDelJuego = new MensajesDelJuego();
-        ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
-        VBox contenedrBotonesYMensajes = new VBox();
-        contenedrBotonesYMensajes.getChildren().addAll(contenedorBotones, mensajesDelJuego);
+        ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego);
+        VBox contenedorBotonesYMensajes = new VBox();
+
+        contenedorBotonesYMensajes.getChildren().addAll(contenedorBotones, mensajesDelJuego);
+        contenedorBotonesYMensajes.setSpacing(10);
+        BotonComenzarJuego botonComenzarJuego = new BotonComenzarJuego(controladorJuego, contenedorBotones, contenedorBotonesYMensajes);
+        contenedorBotonesYMensajes.getChildren().add(botonComenzarJuego);
         
         //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
-        hbox.getChildren().addAll(vbox,contenedrBotonesYMensajes);//vbox.getChildren().add(contenedorBotones);
+        hbox.getChildren().addAll(vbox, contenedorBotonesYMensajes);
+        //vbox.getChildren().add(contenedorBotones);
         //vbox.getChildren().remove(contenedorBotones);
         ScrollPane barraDesplazamiento = new ScrollPane();
         barraDesplazamiento.setContent(hbox);

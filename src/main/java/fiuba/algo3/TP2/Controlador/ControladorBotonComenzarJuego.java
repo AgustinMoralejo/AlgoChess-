@@ -1,9 +1,6 @@
 package fiuba.algo3.TP2.Controlador;
 
-import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
-import fiuba.algo3.TP2.Vista.BarraDeMenu;
-import fiuba.algo3.TP2.Vista.ContenedorBotones;
-import fiuba.algo3.TP2.Vista.VistaTablero;
+import fiuba.algo3.TP2.Vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
@@ -15,29 +12,25 @@ import javafx.scene.control.ScrollPane;
 public class ControladorBotonComenzarJuego implements EventHandler<ActionEvent> {
 
     private ControladorJuego controladorJuego;
-    private Stage stage;
+    private ContenedorBotonesFaseInicial botones;
+    private VBox vbox;
+    private BotonComenzarJuego botonComenzar;
 
-    public ControladorBotonComenzarJuego(ControladorJuego controladorJuego, Stage stage){
+    public ControladorBotonComenzarJuego(ControladorJuego controladorJuego, ContenedorBotonesFaseInicial contenedorBotones, BotonComenzarJuego botonComenzar, VBox vbox){
         this.controladorJuego = controladorJuego;
-        this.stage = stage;
+        this.botones = contenedorBotones;
+        this.vbox = vbox;
+        this.botonComenzar = botonComenzar;
+
 }
 
     @Override
     public void handle(ActionEvent event) {
-        VistaTablero vistaTablero = controladorJuego.getVistaTablero();
-        VBox vbox = new VBox();
-        HBox hbox = new HBox();
+        vbox.getChildren().remove(this.botones);
         ContenedorBotones contenedorBotones = new ContenedorBotones(this.controladorJuego);
-        BarraDeEstadoJuego barraDeEstadoJuego = new BarraDeEstadoJuego(this.controladorJuego.getJuego());
-        BarraDeMenu menuBar = new BarraDeMenu(stage);
-        
-        
-        vbox.getChildren().addAll(menuBar, barraDeEstadoJuego, contenedorBotones, vistaTablero);
-        ScrollPane barraDesplazamiento = new ScrollPane();
-        barraDesplazamiento.setContent(vbox);
-        hbox.getChildren().addAll(vbox, barraDesplazamiento);
-        Scene scene = new Scene(hbox);
-        stage.setScene(scene);
+        vbox.getChildren().add(contenedorBotones);
+        vbox.getChildren().remove(this.botonComenzar);
+
         //stage.setFullScreenExitHint("");
         //stage.setFullScreen(true);
         System.out.println("Comienzo de juego");
