@@ -22,7 +22,7 @@ public class Soldado extends Unidad{
         estadoBatallon = new SoldadoSolo();
         estadoAlianzas = new EstadoAliado();
         simbolo = "S";
-        seMovioEnEsteTurno = false;
+        atacoEnEsteTurno = false;
     }
     
     @Override
@@ -82,6 +82,7 @@ public class Soldado extends Unidad{
         int costo = unidadDefensa.calcularCostoAtaque(danioCuerpoACuerpo);
         int costo_total = defensa.calcularCostoUnidad(costo);
         defensa.perderVida(costo_total);
+        atacoEnEsteTurno = true;
         return defensa.getPuntosDeVida();
     }
 

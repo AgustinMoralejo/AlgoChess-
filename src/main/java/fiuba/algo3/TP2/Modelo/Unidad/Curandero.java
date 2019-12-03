@@ -18,6 +18,7 @@ public class Curandero extends Unidad{
         danioCuerpoACuerpo = -15;
         estadoAlianzas = new EstadoAliado();
         simbolo = "C";
+        atacoEnEsteTurno = false;
     }
     
     @Override
@@ -56,6 +57,7 @@ public class Curandero extends Unidad{
         int costoCuracion = defensa.calcularCostoCuracion(danioCuerpoACuerpo);
 
         defensa.perderVida(costoCuracion);
+        atacoEnEsteTurno = true;
         return defensa.getPuntosDeVida();
     }
 

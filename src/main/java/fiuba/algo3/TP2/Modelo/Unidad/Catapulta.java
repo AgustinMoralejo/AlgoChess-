@@ -19,6 +19,7 @@ public class Catapulta extends Unidad{
         danioCuerpoACuerpo = 0;
         estadoAlianzas = new EstadoAliado();
         simbolo = "CT";
+        atacoEnEsteTurno = false;
     }
 
     @Override
@@ -74,7 +75,7 @@ public class Catapulta extends Unidad{
         unidadesAtacadas = buscarUnidadesAdyacentes(unidadesAtacadas, casilleroDefensa);
 
         atacarUnidadesCorrespondientes(costoTotal, unidadesAtacadas);
-
+        atacoEnEsteTurno = true;
         return defensa.getPuntosDeVida();
     }
 

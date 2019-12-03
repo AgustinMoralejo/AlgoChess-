@@ -92,6 +92,7 @@ public class Jugador extends Subject {
         Casillero zonaEnemiga = tablero.getCasillero(filaEnemigo, columnaEnemigo);
         int distancia = zonaAliada.calcularDistancia(zonaEnemiga);
         Unidad unidadAliada = zonaAliada.getUnidad();
+        unidadAliada.atacoEnEsteTurno();
         ArrayList<Casillero> zonasCercanas = tablero.buscarCasilleros(3, filaAliada, columnaAliado);
         int vida = unidadAliada.atacar(zonasCercanas, distancia, zonaEnemiga);
         if (vida <= 0) {
@@ -161,6 +162,7 @@ public class Jugador extends Subject {
     public void resetMovimientoUnidades() {
         for(Unidad unidad : unidades){
             unidad.seMovioEnEsteTurno(false);
+            unidad.atacoEnEsteTurno(false);
         }
     }
 

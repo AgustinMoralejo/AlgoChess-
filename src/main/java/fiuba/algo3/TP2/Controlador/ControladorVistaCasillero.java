@@ -80,6 +80,8 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
                     controladorJuego.setMensaje("¡ El jinete no esta en condiciones de atacar !");
                 }catch (NoSePuedeCurarEnemigoException | NoSePuedenCurarUnidadesNoOrganicasException e) {
                     controladorJuego.setMensaje("¡ Curandero no puede curar a esta unidad ! ");
+                }catch (UnidadSoloPuedeAtacarUnaVezException e) {
+                    controladorJuego.setMensaje("¡ Esta unidad ya ha atacado ! ");
                 }
 
                 }

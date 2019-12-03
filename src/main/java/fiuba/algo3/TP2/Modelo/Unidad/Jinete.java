@@ -20,6 +20,7 @@ public class Jinete extends Unidad{
         danioADistancia = 15;
         estadoAlianzas = new EstadoAliado();
         simbolo = "J";
+        atacoEnEsteTurno = false;
     }
     
     @Override
@@ -66,6 +67,7 @@ public class Jinete extends Unidad{
     	Unidad defensa = unidadDefensa.getUnidad();
     	int costoTotal = defensa.calcularCostoUnidad(costoZona);
     	defensa.perderVida(costoTotal);
+    	atacoEnEsteTurno = true;
     	return defensa.getPuntosDeVida();
  
     }

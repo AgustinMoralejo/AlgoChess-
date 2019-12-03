@@ -50,6 +50,7 @@ public class AlgoChess extends Subject {
         //unidades se pueden mover de nuevo
         jugadores[0].resetMovimientoUnidades();
         jugadores[1].resetMovimientoUnidades();
+
         //barra de estado
         notificarObservers();
 
