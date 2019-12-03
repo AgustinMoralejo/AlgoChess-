@@ -9,12 +9,17 @@ public class Reproductor {
 
     private MediaPlayer sonido;
 
-    public void reproducirSonido(String path) {
+    public MediaPlayer reproducirSonido(String path) {
 
         Media media = new Media(Paths.get(path).toUri().toString());
         sonido = new MediaPlayer(media);
         sonido.setVolume(0.3);
         sonido.play();
-
+        return sonido;
     }
+
+    public void pausarSonido(MediaPlayer sonido) {
+        sonido.stop();
+    }
+
 }

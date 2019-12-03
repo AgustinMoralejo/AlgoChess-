@@ -75,19 +75,26 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoOfensivo();
-
+        musicaDeFondo.stop();
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
     }
 
     public void cambiarAModoPasivo() {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoPasivo();
+        musicaDeFondo.stop();
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
+
 
     }
 
     public void terminarTurno() {
 
         juego.terminarTurnoYVerSiHayGanador();
+        musicaDeFondo.stop();
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
+
 
     }
 
@@ -137,8 +144,7 @@ public class ControladorJuego {
     }
 
     public void reproducirSonido(String path) {
-
-        this.reproductor.reproducirSonido(path);
+        musicaDeFondo = this.reproductor.reproducirSonido(path);
     }
 
     public void setMensajes(MensajesDelJuego mensajesDelJuego) {

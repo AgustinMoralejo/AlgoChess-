@@ -42,7 +42,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         musicaDeFondo.play();
 
 
-        controladorJuego.setJuego(juego, musicaDeFondo);
+        controladorJuego.setJuego(juego);
 
         /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
         VistaTablero vistaTablero = new VistaTablero(controladorJuego);
