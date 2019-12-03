@@ -123,6 +123,8 @@ public class ControladorJuego {
 
         estaColocandoUnaUnidad = false;
         nombreUnidadAColocar = "";
+        reproductor.reproducirSonido("media/accion/crearSoldado.wav");
+
     }
 
     public void setVistaUnidadesOpaco() {
