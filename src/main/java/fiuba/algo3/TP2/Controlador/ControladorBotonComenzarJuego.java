@@ -8,7 +8,9 @@ import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
+import javafx.scene.layout.HBox;
 import javafx.stage.Stage;
+import javafx.scene.control.ScrollPane;
 
 public class ControladorBotonComenzarJuego implements EventHandler<ActionEvent> {
 
@@ -24,11 +26,17 @@ public class ControladorBotonComenzarJuego implements EventHandler<ActionEvent> 
     public void handle(ActionEvent event) {
         VistaTablero vistaTablero = controladorJuego.getVistaTablero();
         VBox vbox = new VBox();
+        HBox hbox = new HBox();
         ContenedorBotones contenedorBotones = new ContenedorBotones(this.controladorJuego);
         BarraDeEstadoJuego barraDeEstadoJuego = new BarraDeEstadoJuego(this.controladorJuego.getJuego());
         BarraDeMenu menuBar = new BarraDeMenu(stage);
+        
+        
         vbox.getChildren().addAll(menuBar, barraDeEstadoJuego, contenedorBotones, vistaTablero);
-        Scene scene = new Scene(vbox);
+        ScrollPane barraDesplazamiento = new ScrollPane();
+        barraDesplazamiento.setContent(vbox);
+        hbox.getChildren().addAll(vbox, barraDesplazamiento);
+        Scene scene = new Scene(hbox);
         stage.setScene(scene);
         //stage.setFullScreenExitHint("");
         //stage.setFullScreen(true);

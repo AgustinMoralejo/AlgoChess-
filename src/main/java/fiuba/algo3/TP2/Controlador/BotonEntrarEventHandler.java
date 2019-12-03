@@ -10,6 +10,7 @@ import javafx.scene.layout.VBox;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.stage.Stage;
+import javafx.scene.control.ScrollPane;
 
 import java.nio.file.Paths;
 
@@ -44,7 +45,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
         VistaTablero vistaTablero = new VistaTablero(controladorJuego);
 
-        HBox contenedorPrincipal = new HBox();
+        HBox hbox = new HBox();
 
         VBox vbox = new VBox();
         BarraDeMenu menuBar = new BarraDeMenu(theStage);
@@ -55,16 +56,19 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego, theStage);
         VBox contenedrBotonesYMensajes = new VBox();
         contenedrBotonesYMensajes.getChildren().addAll(contenedorBotones, mensajesDelJuego);
-
+        
         //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
-        contenedorPrincipal.getChildren().addAll(vbox,contenedrBotonesYMensajes);//vbox.getChildren().add(contenedorBotones);
+        hbox.getChildren().addAll(vbox,contenedrBotonesYMensajes);//vbox.getChildren().add(contenedorBotones);
         //vbox.getChildren().remove(contenedorBotones);
-
+        ScrollPane barraDesplazamiento = new ScrollPane();
+        barraDesplazamiento.setContent(hbox);
+        HBox contenedorPrincipal = new HBox();
+        contenedorPrincipal.getChildren().addAll(hbox, barraDesplazamiento);
         //aca el controlador conoce a la vista y a la ventana de mensajes
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         controladorJuego.setVentanaDeMensajes(mensajesDelJuego);
         /***/
-
+        
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);
 
