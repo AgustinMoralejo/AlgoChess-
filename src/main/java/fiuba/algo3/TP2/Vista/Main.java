@@ -38,7 +38,7 @@ public class Main extends Application {
 
         theStage.setTitle("AlgoChess");
 
-        Media media = new Media(Paths.get("src/main/java/fiuba/algo3/TP2/Vista/Recursos/Musica/ageofkingsmenu.wav").toUri().toString());
+        Media media = new Media(Paths.get("media/menu/ageofkingsmenu.wav").toUri().toString());
         MediaPlayer musicaMenu = new MediaPlayer(media);
         musicaMenu.setVolume(0.3);
         musicaMenu.play();
