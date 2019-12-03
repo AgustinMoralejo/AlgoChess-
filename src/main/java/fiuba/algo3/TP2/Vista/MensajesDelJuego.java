@@ -9,31 +9,27 @@ import javafx.scene.layout.VBox;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Queue;
-import java.util.Stack;
 
 public class MensajesDelJuego extends VBox {
 
     public TextArea areaTexto;
 
     private GridPane contenedor;
-    private String mensajeAnterior;
     private List<String> mensajesAnteriores;
-
 
     public MensajesDelJuego() {
 
 
         contenedor = new GridPane();
-        areaTexto = new TextArea("hola soy un label que deberia ocupar toda la cajaaaaaaaaaaaa");
-        mensajeAnterior = "";
+        areaTexto = new TextArea("hola soy un label que deberia ocupar toda la cajaaaaaa aaaaaaaaaaa aaaaaaaaa aaaaaaaaaa aaaaaaa " +
+                "aaaaaaaa");
         mensajesAnteriores = new ArrayList<>();
 
         ColumnConstraints columna = new ColumnConstraints();
         columna.setPercentWidth(100);
         contenedor.getColumnConstraints().add(columna);
 
-        contenedor.setPrefSize(150, 200);
+        contenedor.setPrefSize(400, 200);
 
         contenedor.getRowConstraints().add(new RowConstraints(200));
 
@@ -50,7 +46,7 @@ public class MensajesDelJuego extends VBox {
         areaTexto.setPrefRowCount(1);
         areaTexto.setPrefColumnCount(1);
         areaTexto.setWrapText(true);
-        areaTexto.setPrefWidth(150);
+        areaTexto.setPrefWidth(400);
 
         getChildren().add(contenedor);
 
