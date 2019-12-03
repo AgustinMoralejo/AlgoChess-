@@ -33,7 +33,16 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         ControladorJuego controladorJuego = new ControladorJuego();
 
-        controladorJuego.setJuego(juego);
+
+        musicaDeFondo.stop();
+
+        Media media = new Media(Paths.get("media/ambiente/1.05MachinadelDiablo.wav").toUri().toString());
+        musicaDeFondo = new MediaPlayer(media);
+        musicaDeFondo.setVolume(0.2);
+        musicaDeFondo.play();
+
+
+        controladorJuego.setJuego(juego, musicaDeFondo);
 
         /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
         VistaTablero vistaTablero = new VistaTablero(controladorJuego);
@@ -57,13 +66,6 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         controladorJuego.setMensajes(mensajesDelJuego);
         /***/
-
-        musicaDeFondo.stop();
-
-        Media media = new Media(Paths.get("media/ambiente/1.05MachinadelDiablo.wav").toUri().toString());
-        musicaDeFondo = new MediaPlayer(media);
-        musicaDeFondo.setVolume(0.3);
-        musicaDeFondo.play();
 
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);

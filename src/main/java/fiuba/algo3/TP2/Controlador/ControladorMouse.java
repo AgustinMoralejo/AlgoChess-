@@ -1,5 +1,10 @@
 package fiuba.algo3.TP2.Controlador;
 
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
+
+import java.nio.file.Paths;
+
 public class ControladorMouse {
 
     private static ControladorMouse mouse = new ControladorMouse();
@@ -19,6 +24,12 @@ public class ControladorMouse {
         System.out.println("primer click");
         this.primerClick[0] = fila;
         this.primerClick[1] = columna;
+
+        Media media = new Media(Paths.get("media/seleccion/selectUnidad.wav").toUri().toString());
+        MediaPlayer click = new MediaPlayer(media);
+        click.setVolume(1);
+        click.play();
+
         esPrimerClick = false;
     }
 
@@ -27,6 +38,13 @@ public class ControladorMouse {
         System.out.println("segundo click");
         this.segundoClick[0] = fila;
         this.segundoClick[1] = columna;
+
+        Media media = new Media(Paths.get("media/seleccion/selectUnidad.wav").toUri().toString());
+        MediaPlayer click = new MediaPlayer(media);
+        click.setVolume(1);
+        click.play();
+
+
         esPrimerClick = true;
 
     }

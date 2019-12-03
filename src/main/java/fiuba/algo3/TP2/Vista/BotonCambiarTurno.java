@@ -13,7 +13,6 @@ public class BotonCambiarTurno extends Button {
         this.setText("Terminar turno");
         this.setMinHeight(30);
         this.setOnAction(new ControladorBotonCambiarTurno(controladorJuego));
-
     }
 
 }
