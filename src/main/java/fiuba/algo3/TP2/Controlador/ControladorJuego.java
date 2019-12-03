@@ -23,6 +23,7 @@ public class ControladorJuego {
     private MediaPlayer musicaDeFondo;
     private Reproductor reproductor;
     private MensajesDelJuego mensajesDelJuego;
+    boolean modoOfensivo;
 
     public void setJuego(AlgoChess juego) {
 
@@ -30,6 +31,7 @@ public class ControladorJuego {
         this.tablero = juego.getTablero();
         estaColocandoUnaUnidad = false;
         nombreUnidadAColocar = "";
+        modoOfensivo = false;
     }
 
     public void asignarVistasACasilleros(VistaTablero vistaTablero) {
@@ -64,7 +66,9 @@ public class ControladorJuego {
         mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion");
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.realizarAccion(primerClick, segundoClick);
-
+        if(modoOfensivo==true){
+            reproductor.reproducirSonido("media/accion/ataque.wav");
+        }
     }
 
     private Jugador getJugadorActual() {
@@ -77,6 +81,7 @@ public class ControladorJuego {
         jugadorActual.cambiarAModoOfensivo();
         musicaDeFondo.stop();
         musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
+        modoOfensivo = true;
     }
 
     public void cambiarAModoPasivo() {
@@ -85,7 +90,7 @@ public class ControladorJuego {
         jugadorActual.cambiarAModoPasivo();
         musicaDeFondo.stop();
         musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
-
+        modoOfensivo = false;
 
     }
 
@@ -94,7 +99,7 @@ public class ControladorJuego {
         juego.terminarTurnoYVerSiHayGanador();
         musicaDeFondo.stop();
         musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
-
+        modoOfensivo = false;
 
     }
 
