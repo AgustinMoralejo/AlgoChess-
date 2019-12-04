@@ -54,11 +54,11 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
             try {
                 controladorJuego.comprarUnidad(fila,columna);
             } catch (NoSePuedeColocarUnidadEnSectorEnemigoException e) {
-                controladorJuego.setMensaje("¡ No se puede colocar unidad en sector enemigo !");
+                controladorJuego.setMensajeError("¡ No se puede colocar unidad en sector enemigo !");
             } catch (CasilleroEstaOcupadoException e) {
-                controladorJuego.setMensaje("¡ Casillero seleccionado esta ocupado !");
+                controladorJuego.setMensajeError("¡ Casillero seleccionado esta ocupado !");
             } catch (PuntosInsuficientesException e) {
-                controladorJuego.setMensaje("¡ Puntos insuficientes !");
+                controladorJuego.setMensajeError("¡ Puntos insuficientes !");
             }
 
             controladorJuego.modoDefault();
@@ -85,27 +85,27 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
                 
 
                 } catch (UnidadSoloSePuedeMoverAUnCasilleroAdyacenteException e) {
-                    controladorJuego.setMensaje("¡ Solo puede moverse a un casillero contiguo !");
+                    controladorJuego.setMensajeError("¡ Solo puede moverse a un casillero contiguo !");
                 } catch (CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException e) {
-                    controladorJuego.setMensaje("¡ Casillero seleccionado no posee ninguna unidad aliada !");
+                    controladorJuego.setMensajeError("¡ Casillero seleccionado no posee ninguna unidad aliada !");
                 } catch (NoSePuedeAtacarAUnaUnidadAliadaException e) {
-                    controladorJuego.setMensaje("¡ No se puede atacar a una unidad aliada !");
+                    controladorJuego.setMensajeError("¡ No se puede atacar a una unidad aliada !");
                 }catch (NoHayUnidadEnCasilleroException e) {
-                    controladorJuego.setMensaje("¡ No hay unidad en casillero !");
+                    controladorJuego.setMensajeError("¡ No hay unidad en casillero !");
                 }catch (CasilleroEstaOcupadoException e) {
-                    controladorJuego.setMensaje("¡ Casillero seleccionado esta ocupado !");
+                    controladorJuego.setMensajeError("¡ Casillero seleccionado esta ocupado !");
                 }catch (LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException e) {
-                    controladorJuego.setMensaje("¡ Ya ha movido a esta unidad !");
+                    controladorJuego.setMensajeError("¡ Ya ha movido a esta unidad !");
                 }catch (UnidadNoMovibleException e) {
-                    controladorJuego.setMensaje("¡ La catapulta no se puede mover !");
+                    controladorJuego.setMensajeError("¡ La catapulta no se puede mover !");
                 }catch (ObjetivoFueraDeRangoException e) {
-                    controladorJuego.setMensaje("¡ Objetivo esta fuera de alcance !");
+                    controladorJuego.setMensajeError("¡ Objetivo esta fuera de alcance !");
                 }catch (NoEstanDadasLasCondicionesDeAtaqueException e) {
-                    controladorJuego.setMensaje("¡ El jinete no esta en condiciones de atacar !");
+                    controladorJuego.setMensajeError("¡ El jinete no esta en condiciones de atacar !");
                 }catch (NoSePuedeCurarEnemigoException | NoSePuedenCurarUnidadesNoOrganicasException e) {
-                    controladorJuego.setMensaje("¡ Curandero no puede curar a esta unidad ! ");
+                    controladorJuego.setMensajeError("¡ Curandero no puede curar a esta unidad ! ");
                 }catch (UnidadSoloPuedeAtacarUnaVezException e) {
-                    controladorJuego.setMensaje("¡ Esta unidad ya ha atacado ! ");
+                    controladorJuego.setMensajeError("¡ Esta unidad ya ha atacado ! ");
                 }
 
                 controladorJuego.modoDefault();

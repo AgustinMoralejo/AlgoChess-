@@ -87,8 +87,8 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoOfensivo();
-        musicaDeFondo.stop();
-        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
+        //musicaDeFondo.stop();
+        //musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
         modoOfensivo = true;
     }
 
@@ -96,8 +96,8 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoPasivo();
-        musicaDeFondo.stop();
-        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
+        //musicaDeFondo.stop();
+        //musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
         modoOfensivo = false;
 
     }
@@ -167,7 +167,13 @@ public class ControladorJuego {
     public void setMensaje(String mensaje) {
         mensajesDelJuego.setMensaje(mensaje);
     }
-    
+
+
+    public void setMensajeError(String mensajeError) {
+        mensajesDelJuego.setMensaje(mensajeError);
+        reproductor.reproducirSonido("media/accion/error.wav");
+    }
+
     public void removerMensajes() {
     	mensajesDelJuego.removerMensajes();
     }
@@ -187,5 +193,6 @@ public class ControladorJuego {
         tablero.desResaltarCasilleros();
         vistaTablero.desResaltarCasilleros();
     }
+
 }
 
