@@ -14,8 +14,9 @@ public class BotonModoPasivo extends Button {
     public BotonModoPasivo(ControladorJuego controladorJuego) {
         super();
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.BURLYWOOD);
+        dropShadow.setColor(Color.BLACK);
         this.setEffect(dropShadow);
+        this.setStyle("-fx-base: burlyWood;");
         this.setText("Modo Pasivo");
         this.setMinHeight(30);
         this.setOnAction(new ControladorBotonModoPasivo(controladorJuego));

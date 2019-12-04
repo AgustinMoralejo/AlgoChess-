@@ -1,6 +1,7 @@
 package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Controlador.ControladorJuego;
+import javafx.geometry.Pos;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
 
@@ -12,6 +13,7 @@ public class ContenedorBotones extends HBox {
         VBox vbox = new VBox(new BotonModoOfensivo(controladorJuego), new BotonModoPasivo(controladorJuego),
                 new BotonCambiarTurno(controladorJuego));
         vbox.setSpacing(10);
+        vbox.setAlignment(Pos.TOP_CENTER);
         this.getChildren().add(vbox);
 
 

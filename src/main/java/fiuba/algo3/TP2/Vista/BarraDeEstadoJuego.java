@@ -58,6 +58,7 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         barraDeEstado.addRow(0, alertaJugadorAzul, botonActualizar, alertaJugadorRojo);
         barraDeEstado.addRow(1, puntosJugadorAzul, mensajes, puntosJugadorRojo);
 
+
         for (Node n : barraDeEstado.getChildren()) {
             GridPane.setHalignment(n, HPos.CENTER);
             GridPane.setValignment(n, VPos.CENTER);

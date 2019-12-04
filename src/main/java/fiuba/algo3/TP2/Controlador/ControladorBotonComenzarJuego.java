@@ -3,6 +3,7 @@ package fiuba.algo3.TP2.Controlador;
 import fiuba.algo3.TP2.Vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.VBox;
 import javafx.scene.layout.HBox;
@@ -27,7 +28,10 @@ public class ControladorBotonComenzarJuego implements EventHandler<ActionEvent> 
     @Override
     public void handle(ActionEvent event) {
         vbox.getChildren().remove(this.botones);
+        vbox.setSpacing(30);
         ContenedorBotones contenedorBotones = new ContenedorBotones(this.controladorJuego);
+        contenedorBotones.setAlignment(Pos.TOP_CENTER);
+
         vbox.getChildren().add(contenedorBotones);
         vbox.getChildren().remove(this.botonComenzar);
 

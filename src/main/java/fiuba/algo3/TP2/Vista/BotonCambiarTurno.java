@@ -13,8 +13,9 @@ public class BotonCambiarTurno extends Button {
 
         super();
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.BURLYWOOD);
+        dropShadow.setColor(Color.BLACK);
         this.setEffect(dropShadow);
+        this.setStyle("-fx-base: burlyWood;");
         this.setText("Terminar turno");
         this.setMinHeight(30);
         this.setOnAction(new ControladorBotonCambiarTurno(controladorJuego));

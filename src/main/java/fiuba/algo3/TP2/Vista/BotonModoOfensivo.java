@@ -14,8 +14,9 @@ public class BotonModoOfensivo extends Button {
 
         super();
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.BURLYWOOD);
+        dropShadow.setColor(Color.BLACK);
         this.setEffect(dropShadow);
+        this.setStyle("-fx-base: burlyWood;");
         this.setText("Modo Ofensivo");
         this.setMinHeight(30);
         this.setOnAction(new ControladorBotonModoAtaque(controladorJuego));

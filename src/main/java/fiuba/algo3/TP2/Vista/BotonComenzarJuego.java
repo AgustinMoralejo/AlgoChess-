@@ -14,8 +14,9 @@ public class BotonComenzarJuego extends Button {
 
         super();
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.CYAN);
+        dropShadow.setColor(Color.BLACK);
         this.setEffect(dropShadow);
+        this.setStyle("-fx-base: burlyWood;");
         this.setText("Comenzar Juego");
         this.setMinHeight(30);
         this.setOnAction(new ControladorBotonComenzarJuego(controladorJuego, contenedorBotones, this, vbox));
