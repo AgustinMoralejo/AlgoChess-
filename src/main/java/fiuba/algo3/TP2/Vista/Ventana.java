@@ -22,6 +22,7 @@ import static fiuba.algo3.TP2.Vista.VistaTablero.ANCHO_CASILLERO;
 
 public class Ventana extends StackPane implements Observer {
 
+    private Artista artista;
     private Rectangle rec;
     private Casillero casillero;
 
@@ -30,8 +31,8 @@ public class Ventana extends StackPane implements Observer {
     public Ventana(boolean alianza, Casillero casillero,
                    ControladorJuego controladorJuego) {
 
+        this.artista = new Artista(this);
         this.casillero = casillero;
-
         this.rec = new Rectangle();
 
         casillero.agregarObserver(this);
@@ -42,11 +43,9 @@ public class Ventana extends StackPane implements Observer {
         textoPosicion.setFill(Color.BLACK);
         textoPosicion.setVisible(false);
 
-        /*
-        Image imagen = new Image ("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/musica.png");
-        ImagePattern imagePattern = new ImagePattern(imagen);
+        ImagePattern imagePattern = this.artista.getImagePattern(this);
         rec.setFill(imagePattern);
-        */
+
 
         rec.setStroke(Color.BLACK);
         rec.setStrokeWidth(ANCHO_CASILLERO * 0.05);
@@ -56,9 +55,10 @@ public class Ventana extends StackPane implements Observer {
         relocate(casillero.getColumna() * ANCHO_CASILLERO,
                 casillero.getFila() * VistaTablero.ALTO_CASILLERO);
 
+        /*
         rec.setFill(alianza ? Color.DARKBLUE
                 : Color.DARKRED);
-
+*/
         getChildren().add(rec);
 
         ControladorVistaCasillero controlador = new ControladorVistaCasillero(this, controladorJuego);

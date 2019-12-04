@@ -26,6 +26,7 @@ public class VistaTablero extends Group {
     public static final int ALTO_CASILLERO = 32;
     private Tablero tablero;
 
+
     /*
     private GridPane table;
     private Pane[][] panes;
