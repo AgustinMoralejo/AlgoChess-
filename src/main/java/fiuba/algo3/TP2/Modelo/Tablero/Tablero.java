@@ -202,28 +202,6 @@ public class Tablero{
 
     }
 
-    public int getCantidadDeUnidades(int indice) {
-        int cantidadDeUnidades = 0;
-        if (indice == 0) {
-            for (int i = FILAS; i < FILAS / 2; i++) {
-                for (int j = 0; j < COLUMNAS; j++) {
-                    if (tablero[i][j].estaOcupado()) {
-                        cantidadDeUnidades++;
-                    }
-                }
-            }
-        } else {
-            for (int i = FILAS / 2; i < FILAS; i++) {
-                for (int j = 0; j < COLUMNAS; j++) {
-                    if (tablero[i][j].estaOcupado()) {
-                        cantidadDeUnidades++;
-                    }
-                }
-            }
-        }
-        return cantidadDeUnidades;
-    }
-
     public void desResaltarCasilleros() {
         for ( int i = 0; i < FILAS ; i++) {
             for (int j = 0; j < COLUMNAS ; j++) {

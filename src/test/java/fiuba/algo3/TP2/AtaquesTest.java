@@ -170,22 +170,34 @@ public class AtaquesTest {
         Jugador enemigo = new Jugador("lego", tablero);
 
         jugadorAzul.comprarUnidad("soldado", 9, 9);
+        jugadorAzul.resetMovimientoUnidades();
         tablero.cambiarEstado();
 
         enemigo.comprarUnidad("soldado", 11, 10);
+        enemigo.resetMovimientoUnidades();
 
         tablero.cambiarEstado();
 
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
         jugadorAzul.atacar(9,9,11,10);
+        jugadorAzul.resetMovimientoUnidades();
 
         Assertions.assertThrows(NoHayUnidadEnCasilleroException.class, () -> jugadorAzul.atacar(9,9,11,10));
     }

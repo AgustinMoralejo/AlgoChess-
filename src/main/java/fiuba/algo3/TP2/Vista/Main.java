@@ -71,7 +71,6 @@ public class Main extends Application {
         botonEntrar.setOnAction(botonEntrarHandler);
 
         vbox.getChildren().addAll(etiqueta, botonEntrar);
-
         Scene theScene = new Scene(vbox);
         theStage.setScene(theScene);
         theStage.show();

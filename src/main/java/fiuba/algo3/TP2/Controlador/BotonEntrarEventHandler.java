@@ -60,7 +60,6 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         contenedorBotonesYMensajes.getChildren().add(botonComenzarJuego);
 
         contenedorBotonesYMensajes.setAlignment(Pos.TOP_CENTER);
-
         hbox.getChildren().addAll(vbox, contenedorBotonesYMensajes);
         ScrollPane barraDesplazamiento = new ScrollPane();
         barraDesplazamiento.setContent(hbox);

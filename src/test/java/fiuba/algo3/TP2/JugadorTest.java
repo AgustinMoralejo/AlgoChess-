@@ -103,20 +103,89 @@ public class JugadorTest {
         Jugador jugadorAzul = new Jugador("agus", tablero);
         Jugador enemigo = new Jugador("lego", tablero);
 
-        jugadorAzul.comprarUnidad("catapulta", 3, 3);
-
+        jugadorAzul.comprarUnidad("soldado", 9, 9);
+        tablero.cambiarEstado();
+        enemigo.comprarUnidad("soldado", 10, 8);
         tablero.cambiarEstado();
 
-        enemigo.comprarUnidad("catapulta", 11, 10);
-        enemigo.comprarUnidad("catapulta", 12, 10);
-        enemigo.comprarUnidad("catapulta", 12, 11);
-        enemigo.comprarUnidad("catapulta", 11, 11);
+        //ataque
 
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
         tablero.cambiarEstado();
 
-        jugadorAzul.atacar(3,3,11,10);
-        jugadorAzul.atacar(3,3,11,10);
-        jugadorAzul.atacar(3,3,11,10);
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        enemigo.atacar(10,8,9,9);
+        enemigo.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
+        jugadorAzul.atacar(9,9,10,8);
+        jugadorAzul.resetMovimientoUnidades();
+        tablero.cambiarEstado();
+
 
         Assertions.assertTrue(enemigo.perdio());
 

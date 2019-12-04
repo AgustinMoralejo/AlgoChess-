@@ -4,6 +4,7 @@ import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
 import fiuba.algo3.TP2.Modelo.Excepciones.*;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
+import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import org.junit.jupiter.api.Assertions;
 import org.junit.Test;
 
@@ -17,8 +18,10 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
-        
+        jugador.resetMovimientoUnidades();
+
         jugador.moverUnidad(1,1, 0);
+
         
         Assertions.assertTrue(tablero.estaOcupado(0,1));
         Assertions.assertFalse(tablero.estaOcupado(1,1));
@@ -30,7 +33,8 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
-        
+        jugador.resetMovimientoUnidades();
+
         jugador.moverUnidad(1,1, 0);
         
         Assertions.assertTrue(tablero.estaOcupado(0,1));
@@ -43,7 +47,8 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
-        
+        jugador.resetMovimientoUnidades();
+
         jugador.moverUnidad(1,1,0);
         
         Assertions.assertTrue(tablero.estaOcupado(0,1));
@@ -68,6 +73,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,2);
         
@@ -81,6 +87,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,2);
         
@@ -94,6 +101,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,2);
         
@@ -121,6 +129,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,3);
         
@@ -134,6 +143,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,3);
         
@@ -147,6 +157,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 3);
         
@@ -175,6 +186,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 1);
         
@@ -188,6 +200,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,1);
         
@@ -201,6 +214,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,1);
         
@@ -228,6 +242,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 4);
         
@@ -241,6 +256,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,4);
         
@@ -254,6 +270,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 4);
         
@@ -282,6 +299,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 5);
         
@@ -295,6 +313,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 5);
         
@@ -308,6 +327,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 5);
         
@@ -336,6 +356,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 6);
         
@@ -349,6 +370,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,6);
         
@@ -362,6 +384,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1, 6);
         
@@ -390,6 +413,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("soldado",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,7);
         
@@ -403,6 +427,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,7);
         
@@ -416,6 +441,7 @@ public class MovimientosUnidadesTest {
     	Tablero tablero = new Tablero();
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("curandero",1,1);
+        jugador.resetMovimientoUnidades();
         
         jugador.moverUnidad(1,1,7);
         
@@ -442,6 +468,7 @@ public class MovimientosUnidadesTest {
         Jugador jugador = new Jugador("Juan", tablero);
         jugador.comprarUnidad("jinete",1,1);
         jugador.comprarUnidad("jinete",0,0);
+        jugador.resetMovimientoUnidades();
         
         Assertions.assertThrows(CasilleroEstaOcupadoException.class,
                 () -> jugador.moverUnidad(1,1,7));
@@ -470,8 +497,10 @@ public class MovimientosUnidadesTest {
     	Jugador jugador2 = new Jugador("Pedro", tablero);
     	
     	jugador1.comprarUnidad("jinete", 9, 10);
+        jugador1.resetMovimientoUnidades();
     	tablero.cambiarEstado();
     	jugador2.comprarUnidad("jinete", 11, 12);
+        jugador2.resetMovimientoUnidades();
     	tablero.cambiarEstado();
     	
     	Assertions.assertThrows(CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException.class,
@@ -488,6 +517,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",2,5);
         jugadorAliado.comprarUnidad("soldado",2,6);
         jugadorAliado.comprarUnidad("soldado",2,7);
+        jugadorAliado.resetMovimientoUnidades();
         
         jugadorAliado.moverUnidad(2,6,0);
         
@@ -507,6 +537,7 @@ public class MovimientosUnidadesTest {
 
         jugadorAliado.comprarUnidad("soldado",2,5);
         jugadorAliado.comprarUnidad("soldado",2,6);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(2,5,0);
 
@@ -525,6 +556,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",2,5);
         jugadorAliado.comprarUnidad("soldado",2,6);
         jugadorAliado.comprarUnidad("soldado",2,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         //tablero.imprimirTablero();
         jugadorAliado.moverUnidad(2,5,0);
@@ -549,6 +581,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,5);
         jugadorAliado.comprarUnidad("soldado",15,5);
         jugadorAliado.comprarUnidad("soldado",16,5);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(14,5,0);
 
@@ -569,6 +602,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,5);
         jugadorAliado.comprarUnidad("soldado",14,6);
         jugadorAliado.comprarUnidad("soldado",14,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(14,7,2);
 
@@ -589,6 +623,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,5);
         jugadorAliado.comprarUnidad("soldado",15,5);
         jugadorAliado.comprarUnidad("soldado",16,5);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(14,5,4);
 
@@ -609,6 +644,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,5);
         jugadorAliado.comprarUnidad("soldado",14,6);
         jugadorAliado.comprarUnidad("soldado",14,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(14,5,6);
 
@@ -629,6 +665,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",14,5);
         jugadorAliado.comprarUnidad("soldado",13,6);
         jugadorAliado.comprarUnidad("soldado",14,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(14,5,1);
 
@@ -648,6 +685,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",12,5);
         jugadorAliado.comprarUnidad("soldado",11,6);
         jugadorAliado.comprarUnidad("soldado",10,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(10,7,3);
 
@@ -666,6 +704,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",4,3);
         jugadorAliado.comprarUnidad("soldado",5,4);
         jugadorAliado.comprarUnidad("soldado",6,5);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(4,3,5);
 
@@ -684,6 +723,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("soldado",7,6);
         jugadorAliado.comprarUnidad("soldado",8,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(8,7,7);
 
@@ -702,6 +742,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("soldado",7,7);
         jugadorAliado.comprarUnidad("soldado",9,5);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(7,5,0);
 
@@ -722,6 +763,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado", 7, 5);
         jugadorAliado.comprarUnidad("soldado", 8, 6);
         jugadorAliado.comprarUnidad("soldado", 9, 6);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(6, 5, 0);
 
@@ -745,6 +787,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado", 7, 5);
         jugadorAliado.comprarUnidad("soldado", 7, 6);
         jugadorAliado.comprarUnidad("soldado", 8, 6);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(7, 5, 2);
 
@@ -767,6 +810,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado", 7, 5);
         jugadorAliado.comprarUnidad("jinete", 7, 3);
         jugadorAliado.comprarUnidad("jinete", 8, 6);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(6, 4, 2);
 
@@ -789,6 +833,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,6);
         jugadorAliado.comprarUnidad("soldado",7,7);
         jugadorAliado.comprarUnidad("soldado", 7,8);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(7,6,4);
 
@@ -810,6 +855,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,7);
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(7,7,4);
 
@@ -830,9 +876,12 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,7);
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
+        jugadorAliado.resetMovimientoUnidades();
 
         jugadorAliado.moverUnidad(7,7,4);
+        jugadorAliado.resetMovimientoUnidades();
         jugadorAliado.moverUnidad(8,7,4);
+        jugadorAliado.resetMovimientoUnidades();
         jugadorAliado.moverUnidad(9,7,4);
 
         Assertions.assertTrue(tablero.estaOcupado(10,7));
@@ -853,11 +902,14 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",5,6);
         jugadorAliado.comprarUnidad("soldado",6,6);
         jugadorAliado.comprarUnidad("catapulta", 5,7);
+        jugadorAliado.resetMovimientoUnidades();
 
      //   tablero.imprimirTablero();
         jugadorAliado.moverUnidad(4,6,2);
+        jugadorAliado.resetMovimientoUnidades();
       //  tablero.imprimirTablero();
         jugadorAliado.moverUnidad(4,7,2);
+        jugadorAliado.resetMovimientoUnidades();
       //  tablero.imprimirTablero();
         jugadorAliado.moverUnidad(4,8,2);
        // tablero.imprimirTablero();
@@ -880,10 +932,13 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",0,0);
         jugadorAliado.comprarUnidad("soldado",0,1);
         jugadorAliado.comprarUnidad("soldado",0,2);
+        jugadorAliado.resetMovimientoUnidades();
 
    //     tablero.imprimirTablero();
         jugadorAliado.moverUnidad(0,0,2);
+        jugadorAliado.resetMovimientoUnidades();
         jugadorAliado.moverUnidad(0,2,2);
+        jugadorAliado.resetMovimientoUnidades();
         jugadorAliado.moverUnidad(0,2,2);
 
         Assertions.assertTrue(tablero.estaOcupado(0,3));
@@ -903,6 +958,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",4,1);
         jugadorAliado.comprarUnidad("soldado",4,2);
         jugadorAliado.comprarUnidad("curandero",4,3);
+        jugadorAliado.resetMovimientoUnidades();
 
         Assertions.assertThrows(BatallonNoSePuedeMoverException.class,
                 () -> jugadorAliado.moverUnidad(4,0,2));
@@ -923,6 +979,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",6,2);
         jugadorAliado.comprarUnidad("soldado",7,2);
         jugadorAliado.comprarUnidad("catapulta",8,2);
+        jugadorAliado.resetMovimientoUnidades();
 
         Assertions.assertThrows(BatallonNoSePuedeMoverException.class,
                 () -> jugadorAliado.moverUnidad(4,2,4));
@@ -940,13 +997,17 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,6);
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
+        jugadorAliado.resetMovimientoUnidades();
 
  //       tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,5,4);
+        jugadorAliado.resetMovimientoUnidades();
  //       tablero.imprimirTablero();
         jugadorAliado.moverUnidad(8,6,4);
+        jugadorAliado.resetMovimientoUnidades();
  //       tablero.imprimirTablero();
         jugadorAliado.moverUnidad(9,7,4);
+        jugadorAliado.resetMovimientoUnidades();
 //        tablero.imprimirTablero();
 
         Assertions.assertTrue(tablero.estaOcupado(10,7));
@@ -968,6 +1029,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("jinete", 8,5);
         jugadorAliado.comprarUnidad("curandero", 8,6);
         jugadorAliado.comprarUnidad("catapulta", 8,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         Assertions.assertThrows(BatallonNoSePuedeMoverException.class,
                 () -> jugadorAliado.moverUnidad(7,6,4));
@@ -986,6 +1048,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("curandero", 8,6);
         jugadorAliado.comprarUnidad("jinete", 8,5);
+        jugadorAliado.resetMovimientoUnidades();
   //      tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,7,4);
 //        tablero.imprimirTablero();
@@ -1005,6 +1068,7 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,6);
         jugadorAliado.comprarUnidad("soldado",7,5);
         jugadorAliado.comprarUnidad("jinete", 8,5);
+        jugadorAliado.resetMovimientoUnidades();
 
     //    tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,7,4);
@@ -1025,13 +1089,17 @@ public class MovimientosUnidadesTest {
         jugadorAliado.comprarUnidad("soldado",7,7);
         jugadorAliado.comprarUnidad("soldado",8,4);
         jugadorAliado.comprarUnidad("soldado",9,4);
+        jugadorAliado.resetMovimientoUnidades();
 
         tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,7,6);
+        jugadorAliado.resetMovimientoUnidades();
         tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,6,6);
+        jugadorAliado.resetMovimientoUnidades();
         tablero.imprimirTablero();
         jugadorAliado.moverUnidad(7,5,6);
+        jugadorAliado.resetMovimientoUnidades();
         tablero.imprimirTablero();
 
         Assertions.assertTrue(tablero.estaOcupado(7,4));
@@ -1073,21 +1141,27 @@ public class MovimientosUnidadesTest {
 
         Tablero tablero = new Tablero();
 
-        Soldado soldado1 = new Soldado();
-        Soldado soldado2 = new Soldado();
-        Soldado soldado3 = new Soldado();
+        Jugador jugadorAliado = new Jugador("agus",tablero);
 
-        tablero.colocarUnidad(soldado3, 9, 7);
-        tablero.colocarUnidad(soldado1, 7, 8);
-        tablero.colocarUnidad(soldado2, 7, 9);
+        jugadorAliado.comprarUnidad("soldado", 9, 7);
+        jugadorAliado.comprarUnidad("soldado", 7, 8);
+        jugadorAliado.comprarUnidad("soldado", 7, 9);
+        jugadorAliado.resetMovimientoUnidades();
+
+        Unidad soldado1 = tablero.getUnidad(9,7);
+        Unidad soldado2 = tablero.getUnidad(7,8);
+        Unidad soldado3 = tablero.getUnidad(7,9);
 
         tablero.moverUnidad(9,7,0);
+        jugadorAliado.resetMovimientoUnidades();
         tablero.moverUnidad(8,7,0);
+        jugadorAliado.resetMovimientoUnidades();
         tablero.moverUnidad(7,7,0);
+        jugadorAliado.resetMovimientoUnidades();
 
-        Assertions.assertSame(tablero.getUnidad(6,7), soldado3);
-        Assertions.assertSame(tablero.getUnidad(5,8), soldado1);
-        Assertions.assertSame(tablero.getUnidad(5,9), soldado2);
+        Assertions.assertSame(tablero.getUnidad(6,7), soldado1);
+        Assertions.assertSame(tablero.getUnidad(5,8), soldado2);
+        Assertions.assertSame(tablero.getUnidad(5,9), soldado3);
 
     }
 
@@ -1100,6 +1174,7 @@ public class MovimientosUnidadesTest {
         Jugador jugadorAliado = new Jugador("agus",tablero);
 
         jugadorAliado.comprarUnidad("soldado",7,7);
+        jugadorAliado.resetMovimientoUnidades();
 
         int[] posUnidad = new int [2];
         int[] destino = new int [2];
