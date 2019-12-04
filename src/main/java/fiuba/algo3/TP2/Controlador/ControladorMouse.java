@@ -12,6 +12,7 @@ public class ControladorMouse {
     private int[] primerClick = new int[2];
     private int[] segundoClick = new int[2];
     boolean esPrimerClick = true;
+    Reproductor reproductor = new Reproductor();
 
     private ControladorMouse(){ }
 
@@ -25,10 +26,7 @@ public class ControladorMouse {
         this.primerClick[0] = fila;
         this.primerClick[1] = columna;
 
-        Media media = new Media(Paths.get("media/seleccion/selectUnidad.wav").toUri().toString());
-        MediaPlayer click = new MediaPlayer(media);
-        click.setVolume(1);
-        click.play();
+        reproductor.reproducirSonido("media/seleccion/selectUnidad.wav");
 
         esPrimerClick = false;
     }
@@ -39,10 +37,7 @@ public class ControladorMouse {
         this.segundoClick[0] = fila;
         this.segundoClick[1] = columna;
 
-        Media media = new Media(Paths.get("media/seleccion/selectUnidad.wav").toUri().toString());
-        MediaPlayer click = new MediaPlayer(media);
-        click.setVolume(1);
-        click.play();
+        reproductor.reproducirSonido("media/seleccion/selectUnidad.wav");
 
         esPrimerClick = true;
 
