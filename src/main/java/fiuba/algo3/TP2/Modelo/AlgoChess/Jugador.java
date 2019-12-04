@@ -60,6 +60,7 @@ public class Jugador extends Subject {
         unidadComprada = cuartel.getUnidad(nombreUnidad, this);
         unidades.add(unidadComprada);
         this.pagar(unidadComprada.getCosto());
+        this.resetMovimientoUnidades();
     }
 
     public void comprarUnidad(String nombreUnidad, int fila, int columna){
@@ -67,6 +68,7 @@ public class Jugador extends Subject {
         tablero.colocarUnidad(unidadComprada, fila, columna);
         unidades.add(unidadComprada);
         this.pagar(unidadComprada.getCosto());
+        this.resetMovimientoUnidades();
     }
 
     //vista
@@ -77,7 +79,7 @@ public class Jugador extends Subject {
         unidades.add(unidadComprada);
         this.pagar(unidadComprada.getCosto());
         notificarObservers();
-
+        this.resetMovimientoUnidades();
         return unidadComprada;
 
     }
