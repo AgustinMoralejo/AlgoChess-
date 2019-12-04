@@ -1,9 +1,11 @@
 package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.Excepciones.*;
+import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import fiuba.algo3.TP2.Vista.Ventana;
 import javafx.event.EventHandler;
 import javafx.scene.effect.Glow;
+import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
@@ -25,8 +27,19 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
         int columna = ventana.getCasillero().getColumna();
 
         ventana.setEffect(new Glow(20));
-
-        if(controladorJuego.estaColocandoUnaUnidad()){
+        
+        if (mouseEvent.getButton() == MouseButton.SECONDARY) {
+        	Unidad unidad = ventana.getCasillero().getUnidad();
+        	controladorJuego.removerMensajes();
+        	controladorJuego.setMensaje("Unidad: " + unidad.getSimbolo());
+        	if(unidad.esAliado()) {controladorJuego.setMensaje("Alianza: Aliado");}
+        	else {controladorJuego.setMensaje("Alianza: Enemigo");}
+        	controladorJuego.setMensaje("Vida: " + Integer.toString(unidad.getPuntosDeVida()));
+        	controladorJuego.setMensaje("Costo de compra: " + Integer.toString(unidad.getCosto()));
+        	controladorJuego.setMensaje("Daño cuerpo a cuerpo: " + Integer.toString(unidad.getAlcanceCorto()));
+        	controladorJuego.setMensaje("Daño cuerpo a cuerpo: " + Integer.toString(unidad.getAlcanceADistancia()));
+        }
+        else if(controladorJuego.estaColocandoUnaUnidad()){
 
             try {
                 controladorJuego.comprarUnidad(fila,columna);
@@ -57,8 +70,10 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
                 System.out.println("has clickeado el casillero: " + fila + " , " + columna);
 
                 try {
-
+                	
+                	controladorJuego.removerMensajes();
                     controladorJuego.realizarAccion(mouse.getPrimerClick(), mouse.getSegundoClick());
+                
 
                 } catch (UnidadSoloSePuedeMoverAUnCasilleroAdyacenteException e) {
                     controladorJuego.setMensaje("¡ Solo puede moverse a un casillero contiguo !");
@@ -84,9 +99,8 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
                     controladorJuego.setMensaje("¡ Esta unidad ya ha atacado ! ");
                 }
 
-                }
-
+            }
         }
     }
-
+        
 }

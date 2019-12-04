@@ -89,8 +89,17 @@ public abstract class Unidad extends Subject {
             throw new UnidadSoloPuedeAtacarUnaVezException();
         }
     }
+    
 
     public void atacoEnEsteTurno(boolean b) {
         atacoEnEsteTurno = b;
+    }
+    
+    public int getAlcanceCorto() {
+    	return danioCuerpoACuerpo;
+    }
+    
+    public int getAlcanceADistancia() {
+    	return danioADistancia;
     }
 }

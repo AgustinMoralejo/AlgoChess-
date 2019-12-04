@@ -32,14 +32,14 @@ public class ContenedorBotonesFaseInicial extends HBox {
         BotonComprarUnidad botonComprarCatapulta = new BotonComprarUnidad(controladorJuego, "catapulta");
 
         BotonCambiarTurno botonCambiarTurno = new BotonCambiarTurno(controladorJuego);
-        BotonModoInspeccion botonModoInspeccion = new BotonModoInspeccion(controladorJuego);
+        
 
         VBox vBoxIzq = new VBox(etiqueta, botonComprarSoldado, botonComprarJinete,
                 botonComprarCurandero, botonComprarCatapulta);
         vBoxIzq.setSpacing(10); //separacion entre VBOX
         //contenedorPrincipal.setPadding(new Insets(20)); //separacion bordes
 
-        VBox vBoxDer = new VBox(new Label("VBOX opciones"), botonCambiarTurno, botonModoInspeccion);
+        VBox vBoxDer = new VBox(new Label("VBOX opciones"), botonCambiarTurno);
         vBoxDer.setSpacing(10); //separacion entre VBOX
 
         this.getChildren().add(vBoxIzq);

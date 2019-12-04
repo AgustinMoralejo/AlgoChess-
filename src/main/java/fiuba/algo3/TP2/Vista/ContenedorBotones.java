@@ -10,7 +10,7 @@ public class ContenedorBotones extends HBox {
         super();
         this.setHeight(20);
         VBox vbox = new VBox(new BotonModoOfensivo(controladorJuego), new BotonModoPasivo(controladorJuego),
-                new BotonModoInspeccion(controladorJuego), new BotonCambiarTurno(controladorJuego));
+                new BotonCambiarTurno(controladorJuego));
         vbox.setSpacing(10);
         this.getChildren().add(vbox);
 

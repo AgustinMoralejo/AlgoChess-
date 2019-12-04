@@ -65,4 +65,8 @@ public class MensajesDelJuego extends VBox {
             mensajesAnteriores.remove(0);
         }
     }
+    
+    public void removerMensajes() {
+    	mensajesAnteriores.clear();
+    }
 }

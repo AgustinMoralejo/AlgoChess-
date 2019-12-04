@@ -165,6 +165,10 @@ public class ControladorJuego {
     public void setMensaje(String mensaje) {
         mensajesDelJuego.setMensaje(mensaje);
     }
+    
+    public void removerMensajes() {
+    	mensajesDelJuego.removerMensajes();
+    }
 
     public AlgoChess getJuego(){
         return this.juego;
