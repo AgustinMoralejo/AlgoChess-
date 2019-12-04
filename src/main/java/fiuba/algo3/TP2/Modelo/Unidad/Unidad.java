@@ -10,6 +10,10 @@ import java.util.*;
 
 public abstract class Unidad extends Subject {
 
+    protected final int DISTANCIA_CERCANA = 2;
+    protected final int DISTANCIA_MEDIA = 5;
+    protected final int DISTANCIA_LEJANA = 6;
+
     protected int vida;
     protected int costo;
     protected int danioCuerpoACuerpo;
@@ -102,4 +106,6 @@ public abstract class Unidad extends Subject {
     public int getAlcanceADistancia() {
     	return danioADistancia;
     }
+
+    public abstract int getDistanciaAtaque();
 }

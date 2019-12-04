@@ -40,6 +40,11 @@ public class Catapulta extends Unidad{
     }
 
     @Override
+    public int getDistanciaAtaque() {
+        return DISTANCIA_LEJANA;
+    }
+
+    @Override
     public int getCosto() {
         return costo;
     }
@@ -99,7 +104,7 @@ public class Catapulta extends Unidad{
 
     @Override
     protected void dentroRango(int distancia) {
-        if ( distancia < 6){
+        if ( distancia < DISTANCIA_LEJANA){
             throw new ObjetivoFueraDeRangoException();
         }
     }

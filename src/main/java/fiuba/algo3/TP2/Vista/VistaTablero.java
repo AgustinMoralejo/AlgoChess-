@@ -14,6 +14,9 @@ import javafx.scene.control.Label;
 import javafx.scene.image.Image;
 import javafx.scene.layout.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 
 public class VistaTablero extends Group {
 
@@ -27,6 +30,7 @@ public class VistaTablero extends Group {
     private GridPane table;
     private Pane[][] panes;
     */
+    private List<Ventana> ventanas = new ArrayList<>();
 
     private Group casilleroGroup = new Group();
     private Group unidadGroup = new Group();
@@ -43,7 +47,7 @@ public class VistaTablero extends Group {
         */
         Pane root = new Pane();
         root.setPrefSize(ancho, alto);
-        root.getChildren().addAll(casilleroGroup,unidadGroup);
+        root.getChildren().addAll(casilleroGroup, unidadGroup);
 
         /*
         for (int i = 0; i < tablero.getColumnas(); i++) {
@@ -68,9 +72,10 @@ public class VistaTablero extends Group {
             for (int j = 0; j < tablero.getFilas(); j++) {
 
                 Ventana vistaCasillero =
-                        new Ventana((i < 10), tablero.getCasillero(i,j),
+                        new Ventana((i < 10), tablero.getCasillero(i, j),
                                 controladorJuego);
 
+                ventanas.add(vistaCasillero);
                 casilleroGroup.getChildren().add(vistaCasillero);
             }
         }
@@ -88,24 +93,24 @@ public class VistaTablero extends Group {
 
     }
 
-/*
-    public void addViewOnMap(Node view, int x, int y) {
-        for (int i = 0; i < ancho; i++) {
-            for (int j = 0; j < alto; j++) {
-                try {
-                    panes[i][j].getChildren().remove(view);
-                } catch (Exception e) {
+    /*
+        public void addViewOnMap(Node view, int x, int y) {
+            for (int i = 0; i < ancho; i++) {
+                for (int j = 0; j < alto; j++) {
+                    try {
+                        panes[i][j].getChildren().remove(view);
+                    } catch (Exception e) {
+                    }
                 }
             }
+            panes[x][y].getChildren().add(0, view);
         }
-        panes[x][y].getChildren().add(0, view);
-    }
-*/
+    */
     public void agregarVista(Node view) {
         this.getChildren().add(view);
     }
 
-    public void agregarVistaUnidad(Unidad unidad, boolean esAzul){
+    public void agregarVistaUnidad(Unidad unidad, boolean esAzul) {
 
         VistaUnidad vistaUnidad = new VistaUnidad(unidad, esAzul);
         vistaUnidad.setMouseTransparent(true);
@@ -129,9 +134,10 @@ public class VistaTablero extends Group {
 
     public void desResaltarCasilleros() {
 
-        for (Node nodo : casilleroGroup.getChildren()) {
-            nodo.setEffect(null);
+        for(Ventana ventana : ventanas){
+            ventana.desResaltar();
         }
+        tablero.desResaltarCasilleros();
 
     }
 

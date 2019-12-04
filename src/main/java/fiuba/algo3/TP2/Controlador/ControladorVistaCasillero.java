@@ -4,8 +4,6 @@ import fiuba.algo3.TP2.Modelo.Excepciones.*;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
 import fiuba.algo3.TP2.Vista.Ventana;
 import javafx.event.EventHandler;
-import javafx.scene.effect.Glow;
-import javafx.scene.input.MouseButton;
 import javafx.scene.input.MouseEvent;
 
 public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
@@ -25,11 +23,21 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
         int fila = ventana.getCasillero().getFila();
         int columna = ventana.getCasillero().getColumna();
+        int distancia;
 
-        ventana.setEffect(new Glow(20));
-        
-        if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-        	Unidad unidad = ventana.getCasillero().getUnidad();
+
+
+        controladorJuego.desResaltarVentanas();
+
+        Unidad unidad = ventana.getCasillero().getUnidad();
+
+        distancia = unidad.getDistanciaAtaque();
+
+        controladorJuego.resaltarVentanas(distancia,fila,columna);
+
+        ventana.resaltar();
+
+        //if (mouseEvent.getButton() == MouseButton.SECONDARY) {
         	controladorJuego.removerMensajes();
         	controladorJuego.setMensaje("Unidad: " + unidad.getSimbolo());
         	if(unidad.esAliado()) {controladorJuego.setMensaje("Alianza: Aliado");}
@@ -37,9 +45,11 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
         	controladorJuego.setMensaje("Vida: " + Integer.toString(unidad.getPuntosDeVida()));
         	controladorJuego.setMensaje("Costo de compra: " + Integer.toString(unidad.getCosto()));
         	controladorJuego.setMensaje("Daño cuerpo a cuerpo: " + Integer.toString(unidad.getAlcanceCorto()));
-        	controladorJuego.setMensaje("Daño cuerpo a cuerpo: " + Integer.toString(unidad.getAlcanceADistancia()));
-        }
-        else if(controladorJuego.estaColocandoUnaUnidad()){
+        	controladorJuego.setMensaje("Daño a distancia: " + Integer.toString(unidad.getAlcanceADistancia()));
+       // }
+        /*else*/
+
+        if(controladorJuego.estaColocandoUnaUnidad()){
 
             try {
                 controladorJuego.comprarUnidad(fila,columna);
@@ -54,16 +64,15 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
             controladorJuego.modoDefault();
 
         }
-
         else{
 
-            if (mouse.esPrimerClick()) {
+            if (mouse.esPrimerClick() && !unidad.getSimbolo().equals("-")) {
 
                 mouse.setPrimerClick(fila,columna);
 
                 System.out.println("has clickeado el casillero: " + fila + " , " + columna);
 
-            } else {
+            } else if (!mouse.esPrimerClick()) {
 
                 mouse.setSegundoClick(fila,columna);
 
@@ -99,6 +108,7 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
                     controladorJuego.setMensaje("¡ Esta unidad ya ha atacado ! ");
                 }
 
+                controladorJuego.modoDefault();
             }
         }
     }

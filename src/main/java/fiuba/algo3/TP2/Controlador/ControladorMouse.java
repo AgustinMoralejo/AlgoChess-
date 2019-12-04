@@ -44,12 +44,12 @@ public class ControladorMouse {
         click.setVolume(1);
         click.play();
 
-
         esPrimerClick = true;
 
     }
 
-    public void setPrimerClickTrue(){
+    public void resetMouse(){
+
         esPrimerClick = true;
     }
 

@@ -7,8 +7,10 @@ import fiuba.algo3.TP2.Modelo.Observer;
 import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import javafx.scene.Group;
+import javafx.scene.image.Image;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
+import javafx.scene.paint.ImagePattern;
 import javafx.scene.shape.Rectangle;
 import javafx.scene.shape.StrokeType;
 import javafx.scene.text.Font;
@@ -22,16 +24,12 @@ public class Ventana extends StackPane implements Observer {
 
     private Rectangle rec;
     private Casillero casillero;
-    private Tablero tablero;
-    private boolean resaltado;
 
     private Text textoPosicion;
-
 
     public Ventana(boolean alianza, Casillero casillero,
                    ControladorJuego controladorJuego) {
 
-        resaltado = false;
         this.casillero = casillero;
 
         this.rec = new Rectangle();
@@ -44,6 +42,12 @@ public class Ventana extends StackPane implements Observer {
         textoPosicion.setFill(Color.BLACK);
         textoPosicion.setVisible(false);
 
+        /*
+        Image imagen = new Image ("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/musica.png");
+        ImagePattern imagePattern = new ImagePattern(imagen);
+        rec.setFill(imagePattern);
+        */
+
         rec.setStroke(Color.BLACK);
         rec.setStrokeWidth(ANCHO_CASILLERO * 0.05);
 
@@ -52,8 +56,8 @@ public class Ventana extends StackPane implements Observer {
         relocate(casillero.getColumna() * ANCHO_CASILLERO,
                 casillero.getFila() * VistaTablero.ALTO_CASILLERO);
 
-        rec.setFill(alianza ? Color.BLUE
-                : Color.RED);
+        rec.setFill(alianza ? Color.DARKBLUE
+                : Color.DARKRED);
 
         getChildren().add(rec);
 
@@ -61,9 +65,9 @@ public class Ventana extends StackPane implements Observer {
 
         this.setOnMouseClicked(controlador);
 
-//        this.setOnMouseEntered(event -> textoPosicion.setVisible(true));
+        this.setOnMouseEntered(event -> textoPosicion.setVisible(true));
 
-        //      this.setOnMouseExited(event -> textoPosicion.setVisible(false));
+        this.setOnMouseExited(event -> textoPosicion.setVisible(false));
 
 
     }
@@ -71,18 +75,28 @@ public class Ventana extends StackPane implements Observer {
 
     public void resaltar() {
         rec.setStrokeType(StrokeType.INSIDE);
-        rec.setStrokeWidth(ANCHO_CASILLERO * 0.05);
-        rec.setStroke(Color.GREEN);
+        rec.setStrokeWidth(ANCHO_CASILLERO * 0.08);
+        rec.setStroke(Color.DARKGREEN);
+    }
+
+
+    public void resaltar(int overload) {
+        rec.setStrokeType(StrokeType.INSIDE);
+        rec.setStrokeWidth(ANCHO_CASILLERO * 0.06);
+        rec.setStroke(Color.DARKORANGE);
     }
 
     public void desResaltar() {
-        rec.setStroke(null);
-        resaltado = false;
+        rec.setStrokeType(StrokeType.CENTERED);
+        rec.setStroke(Color.BLACK);
+        rec.setStrokeWidth(ANCHO_CASILLERO * 0.05);
     }
 
     @Override
     public void actualizar() {
-
+        if(casillero.estaResaltado()){
+            resaltar(1);
+        }
     }
 
     public Casillero getCasillero() {

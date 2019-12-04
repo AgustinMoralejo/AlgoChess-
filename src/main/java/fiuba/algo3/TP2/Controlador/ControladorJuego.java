@@ -2,6 +2,7 @@ package fiuba.algo3.TP2.Controlador;
 
 import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
 import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
+import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
@@ -13,6 +14,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 
 import java.nio.file.Paths;
+import java.util.ArrayList;
 
 public class ControladorJuego {
 
@@ -172,6 +174,18 @@ public class ControladorJuego {
 
     public AlgoChess getJuego(){
         return this.juego;
+    }
+
+    public void resaltarVentanas(int distancia, int fila, int columna) {
+        ArrayList<Casillero> casillerosAResaltar = tablero.buscarCasilleros(distancia, fila, columna);
+        for (Casillero casillero : casillerosAResaltar){
+            casillero.resaltar();
+        }
+    }
+
+    public void desResaltarVentanas() {
+        tablero.desResaltarCasilleros();
+        vistaTablero.desResaltarCasilleros();
     }
 }
 

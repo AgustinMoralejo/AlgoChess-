@@ -88,7 +88,7 @@ public class Soldado extends Unidad{
 
     @Override
     protected void dentroRango(int distancia) {
-        if(distancia > 2){
+        if(distancia > DISTANCIA_CERCANA){
             throw new ObjetivoFueraDeRangoException();
         }
     }
@@ -113,6 +113,10 @@ public class Soldado extends Unidad{
         }
     }
 
+    @Override
+    public int getDistanciaAtaque() {
+        return DISTANCIA_CERCANA;
+    }
 
 
 }

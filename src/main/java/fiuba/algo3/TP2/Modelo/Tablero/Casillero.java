@@ -21,6 +21,7 @@ public class Casillero extends Subject {
     private int fila;
     private int columna;
     private ArrayList<Casillero> adyacentes;
+    private boolean resaltado;
 
 
     public Casillero(int fil, int col){
@@ -30,6 +31,7 @@ public class Casillero extends Subject {
         this.estado = new EstadoCasilleroVacio();
         this.estadoAlianzas = new EstadoAliado();
         this.adyacentes = new ArrayList<Casillero>();
+        resaltado = false;
     }
     
     public void setUnidad(Unidad unaUnidad) {
@@ -157,5 +159,19 @@ public class Casillero extends Subject {
 
     public void unirABatallon(ArrayList<Casillero> batallon) {
         unidad.unirABatallon(batallon);
+    }
+
+    public void resaltar() {
+        this.resaltado = true;
+        notificarObservers();
+    }
+
+    public boolean estaResaltado() {
+        return resaltado;
+    }
+
+    public void desResaltarCasillero() {
+        this.resaltado = false;
+        notificarObservers();
     }
 }

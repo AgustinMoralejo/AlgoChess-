@@ -63,7 +63,7 @@ public class Curandero extends Unidad{
 
     @Override
     protected void dentroRango(int distancia) {
-        if(distancia > 2){
+        if(distancia > DISTANCIA_CERCANA){
             throw new ObjetivoFueraDeRangoException();
         }
     }
@@ -83,6 +83,11 @@ public class Curandero extends Unidad{
         if(seMovioEnEsteTurno){
             throw new LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException();
         }
+    }
+
+    @Override
+    public int getDistanciaAtaque() {
+        return DISTANCIA_CERCANA;
     }
 
 }

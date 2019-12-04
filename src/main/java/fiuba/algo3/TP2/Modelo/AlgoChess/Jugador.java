@@ -151,10 +151,6 @@ public class Jugador extends Subject {
         return tablero.darOrientacion(posUnidad, destino);
     }
 
-    public boolean getModo() {
-        return modoOfensivo;
-    }
-
     public void realizarAccion(int[] posUnidad, int[] destino) {
         estadoAccion.realizarAccion(posUnidad, destino, this);
     }

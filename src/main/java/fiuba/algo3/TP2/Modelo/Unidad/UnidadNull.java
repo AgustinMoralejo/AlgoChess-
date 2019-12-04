@@ -55,6 +55,11 @@ public class UnidadNull extends Unidad{
     }
 
     @Override
+    public int getDistanciaAtaque() {
+        return 0;
+    }
+
+    @Override
     public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa){
         throw new NoHayUnidadEnCasilleroException();
     }

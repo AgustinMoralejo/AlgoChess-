@@ -74,7 +74,7 @@ public class Jinete extends Unidad{
 
     @Override
     protected void dentroRango(int distancia) {
-        if(distancia < 6){
+        if(distancia < DISTANCIA_LEJANA){
             throw new ObjetivoFueraDeRangoException();
         }
     }
@@ -93,6 +93,12 @@ public class Jinete extends Unidad{
         if(seMovioEnEsteTurno){
             throw new LasUnidadesSoloSePuedenMoverUnCasilleroPorTurnoException();
         }
+    }
+
+    //Lucho ver como cambiar la distancia
+    @Override
+    public int getDistanciaAtaque() {
+        return 1;
     }
 
 }
