@@ -65,6 +65,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         barraDesplazamiento.setContent(hbox);
         HBox contenedorPrincipal = new HBox();
         contenedorPrincipal.getChildren().addAll(hbox, barraDesplazamiento);
+        contenedorPrincipal.setStyle("-fx-base: burlyWood;");
 
         //aca el controlador conoce a la vista y a la ventana de mensajes
         controladorJuego.asignarVistasACasilleros(vistaTablero);
