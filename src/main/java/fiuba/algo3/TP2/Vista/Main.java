@@ -55,9 +55,10 @@ public class Main extends Application {
         Button botonEntrar = new Button();
 
         DropShadow dropShadow = new DropShadow();
-        dropShadow.setColor(Color.DARKVIOLET);
-
+        dropShadow.setColor(Color.BLACK);
         botonEntrar.setEffect(dropShadow);
+
+        botonEntrar.setStyle("-fx-base: darkgray;");
         botonEntrar.setText("Comenzar");
 
         Label etiqueta = new Label();

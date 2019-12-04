@@ -4,6 +4,7 @@ import fiuba.algo3.TP2.Modelo.AlgoChess.AlgoChess;
 import fiuba.algo3.TP2.Vista.*;
 import javafx.event.ActionEvent;
 import javafx.event.EventHandler;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.layout.HBox;
 import javafx.scene.layout.VBox;
@@ -57,10 +58,12 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         VBox contenedorBotonesYMensajes = new VBox();
 
         contenedorBotonesYMensajes.getChildren().addAll(contenedorBotones, mensajesDelJuego);
-        contenedorBotonesYMensajes.setSpacing(10);
+        contenedorBotonesYMensajes.setSpacing(30);
         BotonComenzarJuego botonComenzarJuego = new BotonComenzarJuego(controladorJuego, contenedorBotones, contenedorBotonesYMensajes);
         contenedorBotonesYMensajes.getChildren().add(botonComenzarJuego);
-        
+
+        contenedorBotonesYMensajes.setAlignment(Pos.TOP_CENTER);
+
         //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
         hbox.getChildren().addAll(vbox, contenedorBotonesYMensajes);
         //vbox.getChildren().add(contenedorBotones);
