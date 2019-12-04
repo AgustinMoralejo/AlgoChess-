@@ -32,7 +32,6 @@ public class ContenedorBotonesFaseInicial extends HBox {
         BotonComprarUnidad botonComprarCatapulta = new BotonComprarUnidad(controladorJuego, "catapulta");
 
         BotonCambiarTurno botonCambiarTurno = new BotonCambiarTurno(controladorJuego);
-        
 
         VBox vBoxIzq = new VBox(etiqueta, botonComprarSoldado, botonComprarJinete,
                 botonComprarCurandero, botonComprarCatapulta);

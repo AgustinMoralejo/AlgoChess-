@@ -32,7 +32,6 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         ControladorJuego controladorJuego = new ControladorJuego();
 
-
         musicaDeFondo.stop();
 
         Media media = new Media(Paths.get("media/ambiente/1.05MachinadelDiablo.wav").toUri().toString());
@@ -40,10 +39,8 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         musicaDeFondo.setVolume(0.2);
         musicaDeFondo.play();
 
-
         controladorJuego.setJuego(juego);
 
-        /**esto lo deberia hacer el motodo asignarVistasACasilleros*/
         VistaTablero vistaTablero = new VistaTablero(controladorJuego);
 
         HBox hbox = new HBox();
@@ -64,30 +61,20 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         contenedorBotonesYMensajes.setAlignment(Pos.TOP_CENTER);
 
-        //ContenedorBotones contenedorBotones = new ContenedorBotones(controladorJuego);
         hbox.getChildren().addAll(vbox, contenedorBotonesYMensajes);
-        //vbox.getChildren().add(contenedorBotones);
-        //vbox.getChildren().remove(contenedorBotones);
         ScrollPane barraDesplazamiento = new ScrollPane();
         barraDesplazamiento.setContent(hbox);
         HBox contenedorPrincipal = new HBox();
         contenedorPrincipal.getChildren().addAll(hbox, barraDesplazamiento);
+
         //aca el controlador conoce a la vista y a la ventana de mensajes
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         controladorJuego.setVentanaDeMensajes(mensajesDelJuego);
-        /***/
-        
+
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);
 
-        //para evitar que se lo lleve el recolector de basura
         controladorJuego.setMusica(musicaDeFondo);
-
-        /*
-        theStage.setFullScreenExitHint("");
-        theStage.setFullScreen(true);
-        */
-
 
 
     }

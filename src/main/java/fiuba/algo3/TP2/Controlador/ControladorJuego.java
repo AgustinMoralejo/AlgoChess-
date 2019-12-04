@@ -68,7 +68,7 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.realizarAccion(primerClick, segundoClick);
-        mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion");
+        mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion", false);
 
         if(jugadorActual.getUnidadPosicion(primerClick).getSimbolo()=="CT" && modoOfensivo){
             reproductor.reproducirSonido("media/accion/ataqueCatapulta.wav");
@@ -165,12 +165,12 @@ public class ControladorJuego {
     }
 
     public void setMensaje(String mensaje) {
-        mensajesDelJuego.setMensaje(mensaje);
+        mensajesDelJuego.setMensaje(mensaje, false);
     }
 
 
     public void setMensajeError(String mensajeError) {
-        mensajesDelJuego.setMensaje(mensajeError);
+        mensajesDelJuego.setMensaje(mensajeError, true);
         reproductor.reproducirSonido("media/accion/error.wav");
     }
 

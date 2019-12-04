@@ -78,7 +78,6 @@ public class Main extends Application {
 
     }
 
-    /*TODO: El juego, los jugadores */
 
 
 

@@ -6,13 +6,17 @@ import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
 import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.VBox;
+import javafx.scene.paint.Color;
+import javafx.scene.text.Text;
+import javafx.scene.text.TextFlow;
 
+import java.awt.*;
 import java.util.ArrayList;
 import java.util.List;
 
 public class MensajesDelJuego extends VBox {
 
-    public TextArea areaTexto;
+    public TextFlow areaTexto;
 
     private GridPane contenedor;
     private List<String> mensajesAnteriores;
@@ -21,15 +25,16 @@ public class MensajesDelJuego extends VBox {
 
 
         contenedor = new GridPane();
-        areaTexto = new TextArea("hola soy un label que deberia ocupar toda la cajaaaaaa aaaaaaaaaaa aaaaaaaaa aaaaaaaaaa aaaaaaa " +
-                "aaaaaaaa");
+        areaTexto = new TextFlow();
+
         mensajesAnteriores = new ArrayList<>();
 
         ColumnConstraints columna = new ColumnConstraints();
         columna.setPercentWidth(100);
         contenedor.getColumnConstraints().add(columna);
 
-        contenedor.setPrefSize(400, 200);
+        contenedor.setPrefSize(350, 200);
+        contenedor.setMaxWidth(350);
 
         contenedor.getRowConstraints().add(new RowConstraints(200));
 
@@ -43,30 +48,33 @@ public class MensajesDelJuego extends VBox {
         contenedor.setSnapToPixel(false);
 
         areaTexto.setStyle("-fx-font-size: 8pt; -fx-font-weight: bold; -fx-opacity: 1.0;");
-        areaTexto.setPrefRowCount(1);
-        areaTexto.setPrefColumnCount(1);
-        areaTexto.setWrapText(true);
-        areaTexto.setPrefWidth(400);
+        //areaTexto.setPrefRowCount(1);
+        //areaTexto.setPrefColumnCount(1);
+        //areaTexto.setWrapText(true);
+        areaTexto.setPrefWidth(350);
 
         getChildren().add(contenedor);
 
     }
 
-    public void setMensaje(String mensaje) {
-        StringBuilder todosLosMensajes = new StringBuilder();
+    public void setMensaje(String mensaje, boolean esError) {
 
-        for(String mensajeAnterior : mensajesAnteriores){
-            todosLosMensajes.append(mensajeAnterior).append("\n");
-        }
+        Text textoMensaje = new Text(mensaje + "\n");
+        textoMensaje.setStyle(esError ? "-fx-fill: RED" : "-fx-fill: BLACK" );
 
-        areaTexto.setText(todosLosMensajes + mensaje);
+        areaTexto.getChildren().add(textoMensaje);
+
         mensajesAnteriores.add(mensaje);
-        if (mensajesAnteriores.size() > 10){
+        if (mensajesAnteriores.size() > 15){
             mensajesAnteriores.remove(0);
+            areaTexto.getChildren().remove(0);
         }
     }
-    
+
+
+
     public void removerMensajes() {
     	mensajesAnteriores.clear();
     }
+
 }

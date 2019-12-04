@@ -25,8 +25,6 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
         int columna = ventana.getCasillero().getColumna();
         int distancia;
 
-
-
         controladorJuego.desResaltarVentanas();
 
         Unidad unidad = ventana.getCasillero().getUnidad();
@@ -38,14 +36,14 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
         ventana.resaltar();
 
         //if (mouseEvent.getButton() == MouseButton.SECONDARY) {
-        	controladorJuego.removerMensajes();
-        	controladorJuego.setMensaje("Unidad: " + unidad.getSimbolo());
+        //	controladorJuego.removerMensajes();
+        //	controladorJuego.setMensaje("Unidad: " + unidad.getSimbolo());
         	if(unidad.esAliado()) {controladorJuego.setMensaje("Alianza: Aliado");}
         	else {controladorJuego.setMensaje("Alianza: Enemigo");}
-        	controladorJuego.setMensaje("Vida: " + Integer.toString(unidad.getPuntosDeVida()));
-        	controladorJuego.setMensaje("Costo de compra: " + Integer.toString(unidad.getCosto()));
-        	controladorJuego.setMensaje("Daño cuerpo a cuerpo: " + Integer.toString(unidad.getAlcanceCorto()));
-        	controladorJuego.setMensaje("Daño a distancia: " + Integer.toString(unidad.getAlcanceADistancia()));
+        //	controladorJuego.setMensaje("Vida: " + Integer.toString(unidad.getPuntosDeVida()));
+        //	controladorJuego.setMensaje("Costo de compra: " + Integer.toString(unidad.getCosto()));
+        //	controladorJuego.setMensaje("Daño cuerpo a cuerpo: " + Integer.toString(unidad.getAlcanceCorto()));
+        //	controladorJuego.setMensaje("Daño a distancia: " + Integer.toString(unidad.getAlcanceADistancia()));
        // }
         /*else*/
 
@@ -80,7 +78,6 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
                 try {
                 	
-                	controladorJuego.removerMensajes();
                     controladorJuego.realizarAccion(mouse.getPrimerClick(), mouse.getSegundoClick());
                 
 
