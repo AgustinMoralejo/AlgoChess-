@@ -93,7 +93,7 @@ public class ControladorJuego {
 
     public void terminarTurno() {
 
-        mensajesDelJuego.setMensaje("Turno Jugador" + juego.getIndiceJugadorActual() + "finalizado",false);
+        mensajesDelJuego.setMensaje("Turno Jugador " + juego.getIndiceJugadorActual() + " finalizado",false);
         juego.terminarTurnoYVerSiHayGanador();
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoPasivo();
