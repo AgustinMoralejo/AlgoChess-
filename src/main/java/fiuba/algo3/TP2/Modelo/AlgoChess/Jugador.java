@@ -98,7 +98,7 @@ public class Jugador extends Subject {
         ArrayList<Casillero> zonasCercanas = tablero.buscarCasilleros(3, filaAliada, columnaAliado);
         int vida = unidadAliada.atacar(zonasCercanas, distancia, zonaEnemiga);
         if (vida <= 0) {
-            zonaEnemiga.quitarUnidad();
+            zonaEnemiga.matarUnidad();
         }
 
     }

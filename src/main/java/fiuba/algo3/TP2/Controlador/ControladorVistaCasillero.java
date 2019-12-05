@@ -47,9 +47,6 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
         	
         }
 
-        
-        	
-
         else if(controladorJuego.estaColocandoUnaUnidad()){
 
         	try {

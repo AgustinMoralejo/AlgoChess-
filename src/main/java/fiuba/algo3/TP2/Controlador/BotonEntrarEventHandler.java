@@ -39,7 +39,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         musicaDeFondo.setVolume(0.2);
         musicaDeFondo.play();
 
-        controladorJuego.setJuego(juego);
+        controladorJuego.setJuego(juego, musicaDeFondo);
 
         VistaTablero vistaTablero = new VistaTablero(controladorJuego);
 
@@ -75,8 +75,6 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);
-
-        controladorJuego.setMusica(musicaDeFondo);
 
 
     }

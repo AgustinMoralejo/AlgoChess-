@@ -11,6 +11,7 @@ import static fiuba.algo3.TP2.Vista.VistaTablero.ALTO_CASILLERO;
 
 public class VistaUnidad extends Group implements Observer {
 
+    private VistaTablero vistaTablero;
     private Unidad unidad;
     private double columnaInicial;
     private double filaInicial;
@@ -28,9 +29,10 @@ public class VistaUnidad extends Group implements Observer {
 
 
 
-    public VistaUnidad(Unidad unidad, boolean esAzul) {
+    public VistaUnidad(Unidad unidad, boolean esAzul, VistaTablero vistaTablero) {
         this.unidad = unidad;
         this.imagenUnidad = new ImageView();
+        this.vistaTablero = vistaTablero;
 
         this.establecerUnidad(this.getNombreUnidad(esAzul));
         imagenUnidad.setFitHeight(32);
@@ -103,9 +105,13 @@ public class VistaUnidad extends Group implements Observer {
 
     @Override
     public void actualizar() {
-        columnaInicial = unidad.getColumna() * ALTO_CASILLERO;
-        filaInicial = unidad.getFila() * ALTO_CASILLERO;
-        relocate(columnaInicial, filaInicial);
+        if(unidad.getFila() == -1 && unidad.getColumna() == -1){
+            vistaTablero.borrarVistaUnidad(this);
+        } else {
+            columnaInicial = unidad.getColumna() * ALTO_CASILLERO;
+            filaInicial = unidad.getFila() * ALTO_CASILLERO;
+            relocate(columnaInicial, filaInicial);
+        }
 
     }
 

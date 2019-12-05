@@ -66,6 +66,13 @@ public class Casillero extends Subject {
         estado = new EstadoCasilleroVacio();
     }
 
+
+    public void matarUnidad() {
+        unidad.setPosicion(-1,-1);
+        unidad = new UnidadNull(fila,columna);
+        estado = new EstadoCasilleroVacio();
+    }
+
     public void cambiarEstadoAlianzas(){
        estadoAlianzas = estadoAlianzas.cambiarEstadoAlianzas();
        unidad.cambiarEstadoAlianzas();
@@ -183,4 +190,5 @@ public class Casillero extends Subject {
     public String getSimboloPintura() {
         return simboloPintura;
     }
+
 }

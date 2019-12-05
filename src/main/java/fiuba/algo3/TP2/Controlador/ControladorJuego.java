@@ -13,6 +13,7 @@ import fiuba.algo3.TP2.Vista.SoundButton;
 import fiuba.algo3.TP2.Vista.VistaTablero;
 import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
+import javafx.util.Duration;
 
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -30,13 +31,19 @@ public class ControladorJuego {
     private AtributosUnidades atributosUnidades;
     boolean modoOfensivo;
 
-    public void setJuego(AlgoChess juego) {
+    public void setJuego(AlgoChess juego, MediaPlayer musicaDeFondo) {
 
         this.juego = juego;
         this.tablero = juego.getTablero();
         estaColocandoUnaUnidad = false;
         nombreUnidadAColocar = "";
         modoOfensivo = false;
+        this.musicaDeFondo = musicaDeFondo;
+        this.reproductor = new Reproductor();
+
+
+        musicaDeFondo.setOnEndOfMedia(new Musica(musicaDeFondo));
+
     }
 
     public void asignarVistasACasilleros(VistaTablero vistaTablero) {
@@ -50,7 +57,12 @@ public class ControladorJuego {
     public void realizarAccion(int[] primerClick, int[] segundoClick) {
 
         Jugador jugadorActual = getJugadorActual();
+
         jugadorActual.realizarAccion(primerClick, segundoClick);
+
+        if(tablero.getCasillero(segundoClick[0],segundoClick[1]).getUnidad().getSimbolo().equals("-")  && modoOfensivo){
+            mensajesDelJuego.setMensaje("Jugador N°: " + (juego.getIndiceJugadorActual() + 1) + " una unidad ha muerto", false);
+        }
 
         if(jugadorActual.getUnidadPosicion(primerClick).getSimbolo().equals("CT") && modoOfensivo){
             reproductor.reproducirSonido("media/accion/ataqueCatapulta.wav");
@@ -154,7 +166,6 @@ public class ControladorJuego {
 
     public void setMusica(MediaPlayer musicaDeFondo) {
 
-        this.musicaDeFondo = musicaDeFondo;
         this.reproductor = new Reproductor();
     }
 
@@ -224,6 +235,7 @@ public class ControladorJuego {
         tablero.desResaltarCasilleros();
         vistaTablero.desResaltarCasilleros();
     }
+
 
 }
 

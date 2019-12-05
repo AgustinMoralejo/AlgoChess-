@@ -113,7 +113,7 @@ public class VistaTablero extends Group {
 
     public void agregarVistaUnidad(Unidad unidad, boolean esAzul) {
 
-        VistaUnidad vistaUnidad = new VistaUnidad(unidad, esAzul);
+        VistaUnidad vistaUnidad = new VistaUnidad(unidad, esAzul, this);
         vistaUnidad.setMouseTransparent(true);
 
         unidadGroup.getChildren().add(vistaUnidad);
@@ -149,4 +149,7 @@ public class VistaTablero extends Group {
         }
     }
 
+    public void borrarVistaUnidad(VistaUnidad vistaUnidad) {
+        unidadGroup.getChildren().remove(vistaUnidad);
+    }
 }
