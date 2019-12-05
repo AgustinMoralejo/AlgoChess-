@@ -55,6 +55,11 @@ public class AtributosUnidades extends VBox {
 	
 	public void setAtributos(Unidad unidad) {
 		
+		if (unidad.getSimbolo() == "-") {
+			this.removerAtributos();
+			return;
+		}
+		
 		Label nombreUnidad = new Label("UNIDAD");
         contenedor.addRow(0, nombreUnidad);
         

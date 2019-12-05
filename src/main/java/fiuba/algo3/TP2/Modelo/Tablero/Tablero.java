@@ -96,7 +96,20 @@ public class Tablero{
     	return casilleros;
     }
     
-
+    public void matarUnidades(){
+    	
+    	ArrayList<Unidad> unidades = new ArrayList();
+    	for(int i = 0; i < FILAS; i++) {
+    		for(int j = 0; j < COLUMNAS; j++) { 
+    			
+    			Unidad unidad = tablero[i][j].getUnidad();
+    			if (unidad.getPuntosDeVida() <= 0) {
+    				tablero[i][j].matarUnidad();
+    			}
+    		}
+    	}
+    	
+    }
 
     public ArrayList<Casillero> buscarCasilleros(int distancia, int fila, int columna){
     	ArrayList<Casillero> casilleros = new ArrayList<Casillero>();

@@ -13,15 +13,17 @@ public class UnidadNull extends Unidad{
 
 
     public UnidadNull(){
+    	
     	estadoAlianzas = new EstadoAliado();
     	vidaInicial = 100;
-    	vida = 0;
+    	vida = 100;
     }
 
     public UnidadNull(int fil, int col) {
         estadoAlianzas = new EstadoAliado();
         setPosicion(fil,col);
         vidaInicial = 100;
+        
     }
 
     @Override
