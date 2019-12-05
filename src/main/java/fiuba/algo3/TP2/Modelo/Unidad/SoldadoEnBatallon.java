@@ -65,6 +65,7 @@ public class SoldadoEnBatallon implements EstadoBatallon {
             try {
                 casilleroBatallon.moverUnidadBatallon(unidadDelBatallon, orientacion);
             } catch (CasilleroEstaOcupadoException e ) {
+                System.out.println("Un soldado no se pudo mover");
                 casilleroBatallon.ocuparUnidad(unidadDelBatallon);
             }
             i++;

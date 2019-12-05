@@ -14,12 +14,14 @@ public class UnidadNull extends Unidad{
 
     public UnidadNull(){
     	estadoAlianzas = new EstadoAliado();
+    	vidaInicial = 100;
+    	vida = 0;
     }
 
     public UnidadNull(int fil, int col) {
-        vida = 0;
         estadoAlianzas = new EstadoAliado();
         setPosicion(fil,col);
+        vidaInicial = 100;
     }
 
     @Override
@@ -55,10 +57,7 @@ public class UnidadNull extends Unidad{
 
     }
 
-    @Override
-    public int getDistanciaAtaque() {
-        return 0;
-    }
+    
 
     @Override
     public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa){
@@ -82,6 +81,22 @@ public class UnidadNull extends Unidad{
     
     @Override
     public void agregarUnCasilleroAlBatallon(List<Casillero> batallon, Casillero casillero) {}
+
+	@Override
+	public int getDistanciaAtaque(ArrayList<Casillero> zonasCercanas) {
+		// TODO Auto-generated method stub
+		return 0;
+	}
+	
+	@Override
+    public int getDistanciaAtaqueInicial(ArrayList<Casillero> zonasCercanas) {
+    	return 0;
+    }
+    
+    @Override
+    public int getDistanciaAtaqueFinal(ArrayList<Casillero> zonasCercanas) {
+    	return 0;
+    }
     
 
 }

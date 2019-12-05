@@ -16,6 +16,7 @@ public class Soldado extends Unidad{
 
     public Soldado(){
         vida = 100;
+        vidaInicial = 100;
         costo = 1;
         danioCuerpoACuerpo = 10;
         danioADistancia = 0;
@@ -114,8 +115,18 @@ public class Soldado extends Unidad{
     }
 
     @Override
-    public int getDistanciaAtaque() {
+    public int getDistanciaAtaque(ArrayList<Casillero> zonasCercanas) {
         return DISTANCIA_CERCANA;
+    }
+    
+    @Override
+    public int getDistanciaAtaqueInicial(ArrayList<Casillero> zonasCercanas) {
+    	return 0;
+    }
+    
+    @Override
+    public int getDistanciaAtaqueFinal(ArrayList<Casillero> zonasCercanas) {
+    	return DISTANCIA_CERCANA;
     }
 
 

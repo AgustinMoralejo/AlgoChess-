@@ -51,10 +51,11 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         vbox.getChildren().addAll(menuBar, barraEstado, vistaTablero);
 
         MensajesDelJuego mensajesDelJuego = new MensajesDelJuego();
+        AtributosUnidades atributosDelJuego = new AtributosUnidades();
         ContenedorBotonesFaseInicial contenedorBotones = new ContenedorBotonesFaseInicial(controladorJuego);
         VBox contenedorBotonesYMensajes = new VBox();
 
-        contenedorBotonesYMensajes.getChildren().addAll(contenedorBotones, mensajesDelJuego);
+        contenedorBotonesYMensajes.getChildren().addAll(contenedorBotones, mensajesDelJuego, atributosDelJuego);
         contenedorBotonesYMensajes.setSpacing(30);
         BotonComenzarJuego botonComenzarJuego = new BotonComenzarJuego(controladorJuego, contenedorBotones, contenedorBotonesYMensajes);
         contenedorBotonesYMensajes.getChildren().add(botonComenzarJuego);
@@ -70,6 +71,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
         //aca el controlador conoce a la vista y a la ventana de mensajes
         controladorJuego.asignarVistasACasilleros(vistaTablero);
         controladorJuego.setVentanaDeMensajes(mensajesDelJuego);
+        controladorJuego.setAtributosUnidades(atributosDelJuego);
 
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);

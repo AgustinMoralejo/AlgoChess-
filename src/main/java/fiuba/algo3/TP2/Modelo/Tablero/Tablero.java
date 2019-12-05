@@ -81,6 +81,21 @@ public class Tablero{
         }
     }
 
+    public ArrayList<Casillero> getCasillerosRango(int distanciaInicial, int distanciaFinal, int fila, int columna){
+    	ArrayList<Casillero> casilleros = new ArrayList();
+    	int distanciaCasilleros;
+    	for(int i = 0; i < FILAS; i++) {
+    		for(int j = 0; j < COLUMNAS; j++) { 
+    			distanciaCasilleros = tablero[i][j].calcularDistancia(tablero[fila][columna]);
+    			if(distanciaCasilleros >= distanciaInicial && distanciaCasilleros <= distanciaFinal) {
+    				casilleros.add(tablero[i][j]);
+    			}
+    			
+    		}
+    	}
+    	return casilleros;
+    }
+    
 
 
     public ArrayList<Casillero> buscarCasilleros(int distancia, int fila, int columna){

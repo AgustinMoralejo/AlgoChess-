@@ -7,4 +7,7 @@ public interface Arma {
 	public abstract Arma cambiarArmaOtraUnidad();
 	public abstract Arma cambiarArmaNull();
 	public abstract Arma cambiarArmaEnemiga();
+	public abstract int getRangoAtaque(int costoCuerpoACuerpo, int costoADistancia);
+	public abstract int getRangoAtaqueInicial(int opcion1, int opcion2);
+	public abstract int getRangoAtaqueFinal(int opcion1, int opcion2);
 }

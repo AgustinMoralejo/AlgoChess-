@@ -15,6 +15,7 @@ public abstract class Unidad extends Subject {
     protected final int DISTANCIA_LEJANA = 6;
 
     protected int vida;
+    protected int vidaInicial;
     protected int costo;
     protected int danioCuerpoACuerpo;
     protected int danioADistancia;
@@ -58,6 +59,8 @@ public abstract class Unidad extends Subject {
     public abstract void moveteA(Casillero zonaInicial, int orientacion);
     protected abstract void dentroRango(int distancia);
     public abstract Unidad copiar();
+    public abstract int getDistanciaAtaqueInicial(ArrayList<Casillero> zonasCercanas);
+    public abstract int getDistanciaAtaqueFinal(ArrayList<Casillero> zonasCercanas);
 
     public abstract void unirABatallon(ArrayList<Casillero> batallon);
 
@@ -106,6 +109,14 @@ public abstract class Unidad extends Subject {
     public int getAlcanceADistancia() {
     	return danioADistancia;
     }
+    
+    public int getVidaInicial() {
+    	return vidaInicial;
+    }
+    
+    public boolean realizoAccion() {
+    	return atacoEnEsteTurno || seMovioEnEsteTurno;
+    }
 
-    public abstract int getDistanciaAtaque();
+    public abstract int getDistanciaAtaque(ArrayList<Casillero> zonasCercanas);
 }

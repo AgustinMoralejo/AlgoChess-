@@ -15,6 +15,7 @@ public class Jinete extends Unidad{
 
     public Jinete(){
         vida = 100;
+        vidaInicial = 100;
         costo = 3;
         danioCuerpoACuerpo = 5;
         danioADistancia = 15;
@@ -54,14 +55,8 @@ public class Jinete extends Unidad{
 
     @Override
     public int atacar(ArrayList<Casillero> zonasCercanas, int distancia, Casillero unidadDefensa) {
-    	estadoAlianzas.puedeActuar();
-    	Arma arma = new Arco();
-    	for(int i = 0; i < zonasCercanas.size(); i++) {
-    		Casillero casillero = zonasCercanas.get(i);
-    		Unidad unidad = casillero.getUnidad();
-    		arma = unidad.seleccionarArmasJinete(arma);
-
-    	}
+    	
+    	Arma arma = this.seleccionarArma(zonasCercanas);
     	int costoArma = arma.atacar(distancia, danioCuerpoACuerpo, danioADistancia);
     	int costoZona = unidadDefensa.calcularCostoAtaque(costoArma);
     	Unidad defensa = unidadDefensa.getUnidad();
@@ -70,6 +65,16 @@ public class Jinete extends Unidad{
     	atacoEnEsteTurno = true;
     	return defensa.getPuntosDeVida();
  
+    }
+    
+    public Arma seleccionarArma(ArrayList<Casillero> zonasCercanas) {
+    	Arma arma = new Arco();
+    	for(int i = 0; i < zonasCercanas.size(); i++) {
+    		Casillero casillero = zonasCercanas.get(i);
+    		Unidad unidad = casillero.getUnidad();
+    		arma = unidad.seleccionarArmasJinete(arma);
+    	}
+    	return arma;
     }
 
     @Override
@@ -97,8 +102,21 @@ public class Jinete extends Unidad{
 
     //Lucho ver como cambiar la distancia
     @Override
-    public int getDistanciaAtaque() {
-        return DISTANCIA_LEJANA;
+    public int getDistanciaAtaque(ArrayList<Casillero> zonasCercanas) {
+        Arma arma = this.seleccionarArma(zonasCercanas);
+        return arma.getRangoAtaque(DISTANCIA_CERCANA, DISTANCIA_LEJANA);
+    }
+    
+    @Override
+    public int getDistanciaAtaqueInicial(ArrayList<Casillero> zonasCercanas) {
+    	Arma arma = this.seleccionarArma(zonasCercanas);
+    	return arma.getRangoAtaqueInicial(1, 4);
+    }
+    
+    @Override
+    public int getDistanciaAtaqueFinal(ArrayList<Casillero> zonasCercanas) {
+    	Arma arma = this.seleccionarArma(zonasCercanas);
+    	return arma.getRangoAtaqueFinal(3, 6);
     }
 
 }

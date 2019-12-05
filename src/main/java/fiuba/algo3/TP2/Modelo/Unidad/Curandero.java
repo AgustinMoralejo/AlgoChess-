@@ -13,6 +13,7 @@ public class Curandero extends Unidad{
 
     public Curandero(){
         vida = 75;
+        vidaInicial = 75;
         costo = 2;
         danioADistancia = 0;
         danioCuerpoACuerpo = -15;
@@ -86,8 +87,18 @@ public class Curandero extends Unidad{
     }
 
     @Override
-    public int getDistanciaAtaque() {
+    public int getDistanciaAtaque(ArrayList<Casillero> zonasCercanas) {
         return DISTANCIA_CERCANA;
+    }
+    
+    @Override
+    public int getDistanciaAtaqueInicial(ArrayList<Casillero> zonasCercanas) {
+    	return 0;
+    }
+    
+    @Override
+    public int getDistanciaAtaqueFinal(ArrayList<Casillero> zonasCercanas) {
+    	return DISTANCIA_CERCANA;
     }
 
 }

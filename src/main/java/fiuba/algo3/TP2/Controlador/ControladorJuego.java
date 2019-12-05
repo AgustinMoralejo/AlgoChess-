@@ -6,6 +6,7 @@ import fiuba.algo3.TP2.Modelo.Tablero.Casillero;
 import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import fiuba.algo3.TP2.Modelo.Unidad.Unidad;
+import fiuba.algo3.TP2.Vista.AtributosUnidades;
 import fiuba.algo3.TP2.Vista.BarraDeEstadoJuego;
 import fiuba.algo3.TP2.Vista.MensajesDelJuego;
 import fiuba.algo3.TP2.Vista.SoundButton;
@@ -26,6 +27,7 @@ public class ControladorJuego {
     private MediaPlayer musicaDeFondo;
     private Reproductor reproductor;
     private MensajesDelJuego mensajesDelJuego;
+    private AtributosUnidades atributosUnidades;
     boolean modoOfensivo;
 
     public void setJuego(AlgoChess juego) {
@@ -177,17 +179,45 @@ public class ControladorJuego {
     public void removerMensajes() {
     	mensajesDelJuego.removerMensajes();
     }
+    
+    public void setAtributosUnidades(AtributosUnidades atributosMensajes) {
+    	this.atributosUnidades = atributosMensajes;
+    }
+    
+    public void setAtributos(Unidad unidad) {
+    	atributosUnidades.setAtributos(unidad);
+    }
+    
+    public void removerAtributos() {
+    	
+    	atributosUnidades.removerAtributos();
+    }
 
     public AlgoChess getJuego(){
         return this.juego;
     }
 
     public void resaltarVentanas(int distancia, int fila, int columna, Unidad unidad) {
-        ArrayList<Casillero> casillerosAResaltar = tablero.buscarCasilleros(distancia, fila, columna);
-        for (Casillero casillero : casillerosAResaltar){
+    	ArrayList<Casillero> casillerosAResaltar;
+    	if(unidad.getSimbolo() != "J") {
+    		casillerosAResaltar = tablero.buscarCasilleros(distancia, fila, columna);
+    		resaltarCasilleros(casillerosAResaltar, unidad);
+    		return;
+    	}
+        
+    	ArrayList<Casillero> zonasCercanas = tablero.buscarCasilleros(3, fila, columna);
+    	int distanciaInicial = unidad.getDistanciaAtaqueInicial(zonasCercanas);
+    	int distanciaFinal = unidad.getDistanciaAtaqueFinal(zonasCercanas);
+    	ArrayList<Casillero> resaltar = tablero.getCasillerosRango(distanciaInicial, distanciaFinal, fila, columna);
+    	resaltarCasilleros(resaltar, unidad);
+    	
+    }
+        
+    public void resaltarCasilleros(ArrayList<Casillero> casillerosAResaltar, Unidad unidad) {
+    	for (Casillero casillero : casillerosAResaltar){
             casillero.setSimboloPintura(unidad.getSimbolo());
             casillero.resaltar();
-        }
+    	}
     }
 
     public void desResaltarVentanas() {

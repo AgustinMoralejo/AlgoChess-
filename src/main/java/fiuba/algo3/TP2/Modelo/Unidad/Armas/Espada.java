@@ -26,4 +26,19 @@ public class Espada implements Arma {
 	public Arma cambiarArmaNull() {
 		return this;
 	}
+	
+	@Override
+	public int getRangoAtaque(int costoCuerpoACuerpo, int costoADistancia) {
+		return costoCuerpoACuerpo;
+	}
+	
+	@Override 
+	public int getRangoAtaqueInicial(int opcion1, int opcion2) {
+		return opcion1;
+	}
+	
+	@Override
+	public int getRangoAtaqueFinal(int opcion1, int opcion2) {
+		return opcion1;
+	}
 }

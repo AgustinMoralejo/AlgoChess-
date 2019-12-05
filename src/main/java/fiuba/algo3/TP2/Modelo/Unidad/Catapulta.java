@@ -14,6 +14,7 @@ public class Catapulta extends Unidad{
 
     public Catapulta(){
         vida = 50;
+        vidaInicial = 50;
         costo = 5;
         danioADistancia = 20;
         danioCuerpoACuerpo = 0;
@@ -40,7 +41,7 @@ public class Catapulta extends Unidad{
     }
 
     @Override
-    public int getDistanciaAtaque() {
+    public int getDistanciaAtaque(ArrayList<Casillero> zonasCercanas) {
         return DISTANCIA_LEJANA;
     }
 
@@ -113,6 +114,16 @@ public class Catapulta extends Unidad{
     public
     Arma seleccionarArmasJinete(Arma armaAnterior) {
     	return estadoAlianzas.seleccionarArmaOtraUnidad(armaAnterior);
+    }
+    
+    @Override
+    public int getDistanciaAtaqueInicial(ArrayList<Casillero> zonasCercanas) {
+    	return DISTANCIA_LEJANA + 1;
+    }
+    
+    @Override
+    public int getDistanciaAtaqueFinal(ArrayList<Casillero> zonasCercanas) {
+    	return 20;
     }
     
     @Override
