@@ -74,11 +74,10 @@ public class ControladorJuego {
             mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha atacado", false);
 
         }
-        if(juego.hayGanador()){
+        if(juego.indiceGanador() != -1){
             reproductor.pausarSonido(musicaDeFondo);
             reproductor.reproducirSonido("media/ambiente/victory.wav");
-            mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ¡HA GANADO!", false);
-
+            mensajesDelJuego.setMensaje(("El Jugador N°: " + juego.indiceGanador() + " ES EL GANADOR"), false);
         }
 
 
