@@ -38,26 +38,7 @@ public class ControladorJuego {
     }
 
     public void asignarVistasACasilleros(VistaTablero vistaTablero) {
-        //ACA DEBERIA ESTAR LO QUE HACE EL BUTTON HANDLER, PERO NO SE COMO MANEJAR EL VBOX PARA LA ESCENA
         this.vistaTablero = vistaTablero;
-    }
-
-    //SOLO PARA PRUEBAS
-    public void setInicioParaPruebas() {
-
-        Soldado soldadoAzul = new Soldado();
-        Soldado soldadoRojo = new Soldado();
-
-        vistaTablero.agregarVistaUnidad(soldadoAzul, true);
-
-        tablero.colocarUnidad(soldadoAzul,7,7);
-
-        juego.terminarTurnoYVerSiHayGanador();
-
-        vistaTablero.agregarVistaUnidad(soldadoRojo, false);
-
-        tablero.colocarUnidad(soldadoRojo,11,7);
-
     }
 
     public Tablero getTablero() {
@@ -68,14 +49,17 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.realizarAccion(primerClick, segundoClick);
-        mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha realizado accion", false);
 
-        if(jugadorActual.getUnidadPosicion(primerClick).getSimbolo()=="CT" && modoOfensivo){
+        if(jugadorActual.getUnidadPosicion(primerClick).getSimbolo().equals("CT") && modoOfensivo){
             reproductor.reproducirSonido("media/accion/ataqueCatapulta.wav");
+            mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha atacado", false);
         }
         else if(modoOfensivo){
             reproductor.reproducirSonido("media/accion/ataque.wav");
+            mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha atacado", false);
+
         }
+
 
     }
 
@@ -89,6 +73,8 @@ public class ControladorJuego {
         jugadorActual.cambiarAModoOfensivo();
         //musicaDeFondo.stop();
         //musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
+        mensajesDelJuego.setMensaje("¡ Modo Ofensivo !", false);
+
         modoOfensivo = true;
     }
 
@@ -99,11 +85,13 @@ public class ControladorJuego {
         //musicaDeFondo.stop();
         //musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
         modoOfensivo = false;
+        mensajesDelJuego.setMensaje("Modo Pasivo", false);
 
     }
 
     public void terminarTurno() {
 
+        mensajesDelJuego.setMensaje("Turno Jugador" + juego.getIndiceJugadorActual() + "finalizado",false);
         juego.terminarTurnoYVerSiHayGanador();
         this.cambiarAModoPasivo();
 
@@ -112,6 +100,7 @@ public class ControladorJuego {
     public void modoColocarUnidad(String nombreUnidadAColocar) {
         this.estaColocandoUnaUnidad = true;
         this.nombreUnidadAColocar = nombreUnidadAColocar;
+        mensajesDelJuego.setMensaje("Comprar: Seleccione donde colocar " + nombreUnidadAColocar, false);
     }
 
     public void modoDefault() {
@@ -182,9 +171,10 @@ public class ControladorJuego {
         return this.juego;
     }
 
-    public void resaltarVentanas(int distancia, int fila, int columna) {
+    public void resaltarVentanas(int distancia, int fila, int columna, Unidad unidad) {
         ArrayList<Casillero> casillerosAResaltar = tablero.buscarCasilleros(distancia, fila, columna);
         for (Casillero casillero : casillerosAResaltar){
+            casillero.setSimboloPintura(unidad.getSimbolo());
             casillero.resaltar();
         }
     }

@@ -6,7 +6,6 @@ import javafx.geometry.HPos;
 import javafx.geometry.Insets;
 import javafx.geometry.VPos;
 import javafx.scene.Node;
-import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
@@ -15,24 +14,24 @@ import javafx.scene.layout.RowConstraints;
 
 public class BarraDeEstadoJuego extends HBox implements Observer {
 
-    private Button botonActualizar;
+    private Label titulo;
     public Label alertaJugadorAzul;
     public Label alertaJugadorRojo;
     public Label puntosJugadorAzul;
     public Label puntosJugadorRojo;
-    public Label mensajes;
+    public Label dummy;
     private GridPane barraDeEstado;
 
     private AlgoChess juego;
 
     public BarraDeEstadoJuego(AlgoChess juego) {
         barraDeEstado = new GridPane();
-        botonActualizar = new Button("Actualizar");
+        titulo = new Label("Algo Chess V1.0");
         alertaJugadorAzul = new Label("Turno jugador Azul");
         alertaJugadorRojo = new Label("");
         puntosJugadorAzul = new LabelPuntosJugador(juego.getJugador(0));
         puntosJugadorRojo = new LabelPuntosJugador(juego.getJugador(1));
-        mensajes = new Label("");
+        dummy = new Label("");
         this.juego = juego;
 
         juego.agregarObserver(this);
@@ -55,8 +54,8 @@ public class BarraDeEstadoJuego extends HBox implements Observer {
         barraDeEstado.getRowConstraints().add(new RowConstraints(70.0 / 2));
         barraDeEstado.getRowConstraints().add(new RowConstraints(70.0 / 2));
 
-        barraDeEstado.addRow(0, alertaJugadorAzul, botonActualizar, alertaJugadorRojo);
-        barraDeEstado.addRow(1, puntosJugadorAzul, mensajes, puntosJugadorRojo);
+        barraDeEstado.addRow(0, alertaJugadorAzul, titulo, alertaJugadorRojo);
+        barraDeEstado.addRow(1, puntosJugadorAzul, dummy, puntosJugadorRojo);
 
 
         for (Node n : barraDeEstado.getChildren()) {

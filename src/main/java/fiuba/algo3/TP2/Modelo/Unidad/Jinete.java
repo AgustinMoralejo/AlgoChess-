@@ -98,7 +98,7 @@ public class Jinete extends Unidad{
     //Lucho ver como cambiar la distancia
     @Override
     public int getDistanciaAtaque() {
-        return 1;
+        return DISTANCIA_LEJANA;
     }
 
 }

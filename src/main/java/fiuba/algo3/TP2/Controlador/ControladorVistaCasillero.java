@@ -31,15 +31,15 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
         distancia = unidad.getDistanciaAtaque();
 
-        controladorJuego.resaltarVentanas(distancia,fila,columna);
+        controladorJuego.resaltarVentanas(distancia,fila,columna,unidad);
 
         ventana.resaltar();
 
         //if (mouseEvent.getButton() == MouseButton.SECONDARY) {
         //	controladorJuego.removerMensajes();
         //	controladorJuego.setMensaje("Unidad: " + unidad.getSimbolo());
-        	if(unidad.esAliado()) {controladorJuego.setMensaje("Alianza: Aliado");}
-        	else {controladorJuego.setMensaje("Alianza: Enemigo");}
+       // 	if(unidad.esAliado()) {controladorJuego.setMensaje("Alianza: Aliado");}
+       // 	else {controladorJuego.setMensaje("Alianza: Enemigo");}
         //	controladorJuego.setMensaje("Vida: " + Integer.toString(unidad.getPuntosDeVida()));
         //	controladorJuego.setMensaje("Costo de compra: " + Integer.toString(unidad.getCosto()));
         //	controladorJuego.setMensaje("Daño cuerpo a cuerpo: " + Integer.toString(unidad.getAlcanceCorto()));
@@ -68,23 +68,18 @@ public class ControladorVistaCasillero implements EventHandler<MouseEvent> {
 
                 mouse.setPrimerClick(fila,columna);
 
-                System.out.println("has clickeado el casillero: " + fila + " , " + columna);
-
             } else if (!mouse.esPrimerClick()) {
 
                 mouse.setSegundoClick(fila,columna);
 
-                System.out.println("has clickeado el casillero: " + fila + " , " + columna);
-
                 try {
                 	
                     controladorJuego.realizarAccion(mouse.getPrimerClick(), mouse.getSegundoClick());
-                
 
                 } catch (UnidadSoloSePuedeMoverAUnCasilleroAdyacenteException e) {
                     controladorJuego.setMensajeError("¡ Solo puede moverse a un casillero contiguo !");
                 } catch (CasilleroSeleccionadoNoPoseeNingunaUnidadAliadaException e) {
-                    controladorJuego.setMensajeError("¡ Casillero seleccionado no posee ninguna unidad aliada !");
+                    controladorJuego.setMensajeError("¡ Casillero seleccionado no posee unidad aliada !");
                 } catch (NoSePuedeAtacarAUnaUnidadAliadaException e) {
                     controladorJuego.setMensajeError("¡ No se puede atacar a una unidad aliada !");
                 }catch (NoHayUnidadEnCasilleroException e) {

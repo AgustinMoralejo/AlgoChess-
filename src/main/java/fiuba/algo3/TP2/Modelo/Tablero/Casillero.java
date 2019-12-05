@@ -22,6 +22,7 @@ public class Casillero extends Subject {
     private int columna;
     private ArrayList<Casillero> adyacentes;
     private boolean resaltado;
+    private String simboloPintura;
 
 
     public Casillero(int fil, int col){
@@ -173,5 +174,13 @@ public class Casillero extends Subject {
     public void desResaltarCasillero() {
         this.resaltado = false;
         notificarObservers();
+    }
+
+    public void setSimboloPintura(String simbolo) {
+        this.simboloPintura = simbolo;
+    }
+
+    public String getSimboloPintura() {
+        return simboloPintura;
     }
 }

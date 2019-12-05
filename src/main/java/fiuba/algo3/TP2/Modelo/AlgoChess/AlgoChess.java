@@ -45,8 +45,6 @@ public class AlgoChess extends Subject {
             indiceJugadorActual = 0;
         }
 
-        System.out.println("Jugador Actual: " + indiceJugadorActual);
-
         //unidades se pueden mover de nuevo
         jugadores[0].resetMovimientoUnidades();
         jugadores[1].resetMovimientoUnidades();

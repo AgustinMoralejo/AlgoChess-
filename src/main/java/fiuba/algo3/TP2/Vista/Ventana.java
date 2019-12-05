@@ -81,7 +81,7 @@ public class Ventana extends StackPane implements Observer {
     public void resaltar(int overload) {
         rec.setStrokeType(StrokeType.INSIDE);
         rec.setStrokeWidth(ANCHO_CASILLERO * STROKE_RESALTAR_CASILLERO);
-        rec.setStroke(Color.DARKORANGE);
+        rec.setStroke(casillero.getSimboloPintura().equals("CT") ? Color.RED : Color.DARKORANGE );
     }
 
     public void desResaltar() {

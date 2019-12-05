@@ -40,9 +40,9 @@ public class VistaUnidad extends Group implements Observer {
         unidad.agregarObserver(this);
         actualizar();
 
-        ControladorVistaUnidad controlador = new ControladorVistaUnidad(unidad);
+        //ControladorVistaUnidad controlador = new ControladorVistaUnidad(unidad);
 
-        this.setOnMouseClicked(controlador);
+        //this.setOnMouseClicked(controlador);
 
 
     }

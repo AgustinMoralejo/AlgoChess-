@@ -16,7 +16,6 @@ public class ControladorBotonCambiarTurno implements EventHandler<ActionEvent> {
     @Override
     public void handle(ActionEvent actionEvent) {
         controladorJuego.terminarTurno();
-        System.out.println("Paso de turno");
 
     }
 }
