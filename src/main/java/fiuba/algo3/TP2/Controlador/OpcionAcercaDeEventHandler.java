@@ -10,8 +10,13 @@ public class OpcionAcercaDeEventHandler implements EventHandler<ActionEvent> {
     public void handle(ActionEvent actionEvent) {
         Alert alert = new Alert(Alert.AlertType.INFORMATION);
         alert.setTitle("Acerca de...");
-        alert.setHeaderText("Ejemplo de mensaje de alerta");
-        String mensaje = "¡Completar!.";
+        alert.setHeaderText("ALGO CHESS: Reglas del Juego");
+        String mensaje = "- Es un juego de DOS JUGADORES \n" +
+                "- Cada jugador luego de terminar una acción debe presionar 'Terminar turno' \n' " +
+                "- Cada jugador solo puede mover una unidad por turno \n" +
+                "- El jugador que logre matar todas las unidades de su contrincante es el GANADOR.\n" +
+                " ......... ";
+
         alert.setContentText(mensaje);
         alert.show();
     }
