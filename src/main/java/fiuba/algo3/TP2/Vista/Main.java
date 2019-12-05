@@ -1,13 +1,7 @@
 package fiuba.algo3.TP2.Vista;
 
 import fiuba.algo3.TP2.Controlador.BotonEntrarEventHandler;
-import fiuba.algo3.TP2.Modelo.AlgoChess.Jugador;
-import fiuba.algo3.TP2.Modelo.Tablero.Tablero;
 
-import fiuba.algo3.TP2.Modelo.Unidad.Catapulta;
-import fiuba.algo3.TP2.Modelo.Unidad.Curandero;
-import fiuba.algo3.TP2.Modelo.Unidad.Jinete;
-import fiuba.algo3.TP2.Modelo.Unidad.Soldado;
 import javafx.application.Application;
 import javafx.geometry.Insets;
 import javafx.geometry.Pos;

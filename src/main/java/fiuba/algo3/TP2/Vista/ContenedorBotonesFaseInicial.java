@@ -3,6 +3,7 @@ package fiuba.algo3.TP2.Vista;
 import fiuba.algo3.TP2.Controlador.ControladorBotonComenzarJuego;
 import fiuba.algo3.TP2.Controlador.ControladorJuego;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Label;
 import javafx.scene.layout.HBox;
@@ -24,7 +25,7 @@ public class ContenedorBotonesFaseInicial extends HBox {
         etiqueta = new Label();
 
         this.etiqueta.setText("VBOX Comprar Unidades");
-        this.etiqueta.setTextFill(Color.web("#336600"));
+        this.etiqueta.setAlignment(Pos.TOP_CENTER);
 
         BotonComprarUnidad botonComprarSoldado = new BotonComprarUnidad(controladorJuego, "soldado");
         BotonComprarUnidad botonComprarJinete = new BotonComprarUnidad(controladorJuego, "jinete");
@@ -39,6 +40,7 @@ public class ContenedorBotonesFaseInicial extends HBox {
         //contenedorPrincipal.setPadding(new Insets(20)); //separacion bordes
 
         VBox vBoxDer = new VBox(new Label("VBOX opciones"), botonCambiarTurno);
+        vBoxDer.setAlignment(Pos.TOP_CENTER);
         vBoxDer.setSpacing(10); //separacion entre VBOX
 
         this.getChildren().add(vBoxIzq);

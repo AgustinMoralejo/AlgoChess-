@@ -75,6 +75,8 @@ public class ControladorJuego {
         //musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
         mensajesDelJuego.setMensaje("¡ Modo Ofensivo !", false);
 
+        reproductor.pausarSonido(musicaDeFondo);
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
         modoOfensivo = true;
     }
 
@@ -82,8 +84,8 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoPasivo();
-        //musicaDeFondo.stop();
-        //musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
+        reproductor.pausarSonido(musicaDeFondo);
+        musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
         modoOfensivo = false;
         mensajesDelJuego.setMensaje("Modo Pasivo", false);
 
@@ -93,7 +95,14 @@ public class ControladorJuego {
 
         mensajesDelJuego.setMensaje("Turno Jugador" + juego.getIndiceJugadorActual() + "finalizado",false);
         juego.terminarTurnoYVerSiHayGanador();
-        this.cambiarAModoPasivo();
+        Jugador jugadorActual = getJugadorActual();
+        jugadorActual.cambiarAModoPasivo();
+
+        if(musicaDeFondo.getMedia().getSource().contains("file:///home/usuario/AlgoChess-/media/ambiente/ambienteCombate.wav")) {
+            reproductor.pausarSonido(musicaDeFondo);
+            musicaDeFondo = reproductor.reproducirSonido("media/ambiente/1.05MachinadelDiablo.wav");
+            modoOfensivo = false;
+        }
 
     }
 
