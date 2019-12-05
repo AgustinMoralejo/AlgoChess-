@@ -17,6 +17,7 @@ public class UnidadNull extends Unidad{
     }
 
     public UnidadNull(int fil, int col) {
+        vida = 0;
         estadoAlianzas = new EstadoAliado();
         setPosicion(fil,col);
     }

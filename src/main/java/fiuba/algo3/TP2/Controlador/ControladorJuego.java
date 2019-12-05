@@ -59,6 +59,10 @@ public class ControladorJuego {
             mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ha atacado", false);
 
         }
+        if(juego.hayGanador()){
+            reproductor.pausarSonido(musicaDeFondo);
+            reproductor.reproducirSonido("media/ambiente/victory.wav");
+        }
 
 
     }
@@ -71,8 +75,6 @@ public class ControladorJuego {
 
         Jugador jugadorActual = getJugadorActual();
         jugadorActual.cambiarAModoOfensivo();
-        //musicaDeFondo.stop();
-        //musicaDeFondo = reproductor.reproducirSonido("media/ambiente/ambienteCombate.wav");
         mensajesDelJuego.setMensaje("¡ Modo Ofensivo !", false);
 
         reproductor.pausarSonido(musicaDeFondo);

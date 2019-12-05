@@ -55,6 +55,15 @@ public class AlgoChess extends Subject {
         tablero.cambiarEstado();
     }
 
+    public boolean hayGanador(){
+        int siguiente = indiceJugadorActual + 1;
+
+        if(siguiente >= 2){
+            siguiente = 0;
+        }
+        return jugadores[siguiente].perdio();
+    }
+
     public Jugador getJugador(int indice) {
         return jugadores[indice];
     }
