@@ -67,6 +67,7 @@ public class Main extends Application {
         vbox.getChildren().addAll(etiqueta, botonEntrar);
         Scene theScene = new Scene(vbox);
         theStage.setScene(theScene);
+        theStage.centerOnScreen();
         theStage.show();
 
     }

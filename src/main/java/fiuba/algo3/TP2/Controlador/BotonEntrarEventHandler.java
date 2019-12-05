@@ -75,6 +75,7 @@ public class BotonEntrarEventHandler implements EventHandler<ActionEvent> {
 
         Scene escenaInicial = new Scene(contenedorPrincipal);
         theStage.setScene(escenaInicial);
+        theStage.centerOnScreen();
 
 
     }
