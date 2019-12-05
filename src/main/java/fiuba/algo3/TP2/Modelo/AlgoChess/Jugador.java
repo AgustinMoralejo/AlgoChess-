@@ -104,10 +104,8 @@ public class Jugador extends Subject {
     }
 
     public void moverUnidad(int fila, int columna, int orientacion){
-
         tablero.moverUnidad(fila, columna, orientacion);
     }
-
 
     public void moverUnidad(int[] posUnidad, int[] destino){
 

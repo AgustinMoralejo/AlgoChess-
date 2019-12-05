@@ -26,9 +26,6 @@ public class VistaUnidad extends Group implements Observer {
     private static final Image SOLDADOAZUL = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/soldadoAzul.png");
     private static final Image SOLDADOROJO = new Image("file:src/main/java/fiuba/algo3/TP2/Vista/Imagenes/soldadoRojo.png");
 
-
-
-
     public VistaUnidad(Unidad unidad, boolean esAzul, VistaTablero vistaTablero) {
         this.unidad = unidad;
         this.imagenUnidad = new ImageView();

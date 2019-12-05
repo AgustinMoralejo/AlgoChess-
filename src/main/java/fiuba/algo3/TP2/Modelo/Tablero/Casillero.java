@@ -45,6 +45,7 @@ public class Casillero extends Subject {
 
     }
 
+
     public void recibirUnidad(Unidad unaUnidad, Casillero CasilleroAnterior){
         estado.agregarUnidad(unaUnidad, this, CasilleroAnterior);
     }

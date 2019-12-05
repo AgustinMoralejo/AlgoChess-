@@ -121,7 +121,6 @@ public class Tablero{
         }
     }
 
-
     public void moverUnidad(int fila, int columna, int orientacion){
 
         Casillero casilleroInicial = tablero[fila][columna];

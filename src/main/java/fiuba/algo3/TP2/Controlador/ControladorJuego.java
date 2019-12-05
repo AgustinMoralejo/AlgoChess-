@@ -15,6 +15,7 @@ import javafx.scene.media.Media;
 import javafx.scene.media.MediaPlayer;
 import javafx.util.Duration;
 
+
 import java.nio.file.Paths;
 import java.util.ArrayList;
 
@@ -76,6 +77,8 @@ public class ControladorJuego {
         if(juego.hayGanador()){
             reproductor.pausarSonido(musicaDeFondo);
             reproductor.reproducirSonido("media/ambiente/victory.wav");
+            mensajesDelJuego.setMensaje("Jugador N°: " + juego.getIndiceJugadorActual() + " ¡HA GANADO!", false);
+
         }
 
 
